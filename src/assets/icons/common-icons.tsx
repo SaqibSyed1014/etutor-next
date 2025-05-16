@@ -44,7 +44,7 @@ export const Cart = () => {
     )
 }
 
-export const ArrowRight = ({ classes }) => {
+export const ArrowRight = ({ classes }: { classes?: string }) => {
   return (
       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none" className={classes}>
           <path d="M4.25 12H20.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
