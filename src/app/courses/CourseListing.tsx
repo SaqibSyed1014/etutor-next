@@ -1,0 +1,181 @@
+'use client';
+
+import {CourseCard} from "@/components/CourseCard.tsx";
+import { useState, useEffect } from "react";
+import { Input } from "@/components/ui/input.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import FilterSidebar from "./FilterSidebar.tsx";
+import SearchSuggestions from "@/components/SearchSuggestions";
+import CustomPagination from "@/components/CustomPagination";
+import { useCourseFilter } from "@/hooks/useCourseFilter";
+import {FilterState, SortOption} from "@/lib/@fake-db/courses/type.ts";
+import {MagnifyingGlass} from "@/assets/icons/common-icons.tsx";
+import {FilterFaders} from "@/assets/icons/icons.tsx";
+import DropdownMenuWrapper from "@/components/DropdownMenuWrapper.tsx";
+import {sortOptions} from "@/lib/@fake-db/courses";
+
+type Props = {
+    preSelectedFilters?: FilterState;
+};
+
+const Courses = ({ preSelectedFilters }: Props) => {
+    const [showFilters, setShowFilters] = useState(false);
+    const [searchInput, setSearchInput] = useState("");
+    const {
+        paginatedCourses,
+        currentPage,
+        totalPages,
+        filters,
+        sortOption,
+        setCurrentPage,
+        setFilters,
+        setSortOption,
+    } = useCourseFilter();
+
+    useEffect(() => {
+        if (preSelectedFilters?.categories?.length) {
+            setFilters({ ...filters, categories: preSelectedFilters.categories });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [preSelectedFilters]);
+
+    const handleSearch = (text :string) => {
+        if (!text.length) setSearchInput('');
+        else setSearchInput(text);
+        setFilters({ ...filters, search: text });
+    };
+
+    const handleSortChange = (value: string) => {
+        setSortOption(value as SortOption);
+    };
+
+    const handleSuggestionClick = (suggestion: string) => {
+        setSearchInput(suggestion);
+        setFilters({ ...filters, search: suggestion });
+    };
+
+    const suggestions = ["user interface", "user experience", "web design", "interface", "app"];
+
+    return (
+        <>
+            <div className="py-10">
+                <div className="container">
+                    <div className="section-layout">
+                        <div className="flex flex-col">
+                            <div className="flex justify-between items-center">
+                                <div className="flex gap-6">
+                                    <Button
+                                        variant="outlineInvert"
+                                        className="flex items-center gap-3 border border-primary-500"
+                                        onClick={() => setShowFilters(!showFilters)}
+                                    >
+                                        <FilterFaders/>
+                                        Filter
+                                        <span
+                                            className="bg-primary-500 text-white h-6 px-1.5 grid place-items-center text-xs ml-2">
+                              3
+                            </span>
+                                    </Button>
+                                    <div className="relative hidden lg:block ">
+                                <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black">
+                                  <MagnifyingGlass/>
+                                </span>
+                                        <Input
+                                            type="search"
+                                            placeholder="Search..."
+                                            className="pl-12 pr-4 py-2 w-full min-w-[424px] placeholder:text-gray-500 focus:ring-etutor-primary focus:border-etutor-primary outline-0"
+                                            value={searchInput}
+                                            onReset={(e) => handleSearch('')}
+                                            onChange={(e) => handleSearch(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center gap-6">
+                                    <p>Sort by:</p>
+                                    <div className="w-52">
+                                        <DropdownMenuWrapper
+                                            options={sortOptions}
+                                            selected={sortOption}
+                                            onChange={handleSortChange}
+                                            triggerClasses="text-sm text-gray-700 flex items-center gap-1.5 border border-gray-100 justify-between min-w-[200px] px-[18px] py-3"
+                                            contentContentClasses="min-w-[200px] bg-white border border-gray-100 !text-gray-900"
+                                            activeOptionClass="bg-gray-200"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div className="flex justify-between items-center">
+                                <div>
+                                    {/* Search Suggestions */}
+                                    <SearchSuggestions
+                                        suggestions={suggestions}
+                                        onSuggestionClick={handleSuggestionClick}
+                                    />
+                                </div>
+
+                                {/* Results Summary */}
+                                <div>
+                                    <p>
+                                        <span
+                                            className="text-gray-900 font-medium">{paginatedCourses.length} </span>
+                                        results find for "{filters?.search || 'all courses'}"
+                                    </p>
+                                </div>
+                            </div>
+
+                            <hr/>
+                        </div>
+
+
+                        <div className="flex flex-col md:flex-row gap-6">
+                            {/* Filter Sidebar */}
+                            {showFilters && (
+                                <div className="md:w-1/4">
+                                    <FilterSidebar
+                                        filters={filters}
+                                        onFilterChange={setFilters}
+                                    />
+                                </div>
+                            )}
+
+                            {/* Course Grid */}
+                            <div className={showFilters ? "md:w-3/4" : "w-full"}>
+                                {/* Course Cards */}
+                                <div
+                                    className={`grid gap-6 ${showFilters ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'}`}>
+                                    {paginatedCourses.map((course, index) => (
+                                        <CourseCard key={index} course={course}/>
+                                    ))}
+                                </div>
+
+                                {/* No Results */}
+                                {paginatedCourses.length === 0 && (
+                                    <div className="text-center py-10">
+                                        <h3 className="text-xl font-semibold mb-2">No courses found</h3>
+                                        <p className="text-gray-500">Try adjusting your search or filter
+                                            criteria</p>
+                                    </div>
+                                )}
+
+                                {/* Pagination */}
+                                {paginatedCourses.length > 0 && (
+                                    <CustomPagination
+                                        currentPage={currentPage}
+                                        totalPages={totalPages}
+                                        onPageChange={setCurrentPage}
+                                        className="mt-8"
+                                    />
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default Courses;
