@@ -1,4 +1,4 @@
-import {CourseCategory} from "@/lib/@fake-db/courseCategories/type.ts";
+import {CourseCategory} from "@/lib/@fake-db/courseCategories/type";
 
 export interface Course {
     id: number;

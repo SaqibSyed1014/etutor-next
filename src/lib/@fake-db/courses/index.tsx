@@ -1,5 +1,5 @@
 import { courseCategories } from "@/lib/@fake-db/courseCategories";
-import { Course } from "@/lib/@fake-db/courses/type.ts"
+import { Course } from "@/lib/@fake-db/courses/type"
 
 export const coursesData: Course[] = [
   {

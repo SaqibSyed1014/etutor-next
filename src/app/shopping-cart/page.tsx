@@ -6,7 +6,7 @@ import {Breadcrumbs} from "@/components/Breadcrumbs";
 import {Rating} from "@/components/tiny/tiny-collection";
 import {XCircle, ArrowRight} from "@/assets/icons/common-icons";
 import {coursesData} from "@/lib/@fake-db/courses";
-import {Course} from "@/lib/@fake-db/courses/type.ts";
+import {Course} from "@/lib/@fake-db/courses/type";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 
 const Page = () => {
