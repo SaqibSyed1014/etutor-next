@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button.tsx";
 import {Breadcrumbs} from "@/components/Breadcrumbs.tsx";
 import {Envelope, PaperPlaneRight} from "@/assets/icons/common-icons.tsx";
-import DefaultLayout from "@/components/layouts/DefaultLayout";
+import DefaultLayout from "@/components/layouts/DefaultLayout.tsx";
 
 const Contact = () => {
   return (

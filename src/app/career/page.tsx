@@ -8,7 +8,7 @@ import {CheckCircle, ArrowRight, MapPin, BriefCase, ClipboardText} from "@/asset
 import {OurGallery} from "@/components/OurGallery.tsx";
 import {perksAndBenefits, openPositions} from "@/lib/@fake-db/collections/index.tsx";
 import TrustedCompanies from "@/components/sections/TrustedCompanies.tsx";
-import DefaultLayout from "@/components/layouts/DefaultLayout";
+import DefaultLayout from "@/components/layouts/DefaultLayout.tsx";
 
 
 const Career = () => {

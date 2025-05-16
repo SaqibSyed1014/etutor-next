@@ -6,7 +6,7 @@ import BecomeInstructor from "@/components/sections/BecomeInstructor";
 import TopInstructors from "@/components/sections/TopInstructors";
 import TrustedCompanies from "@/components/sections/TrustedCompanies";
 import CtaSection from "@/components/sections/CtaSection";
-import DefaultLayout from "@/components/layouts/DefaultLayout";
+import DefaultLayout from "@/components/layouts/DefaultLayout.tsx";
 
 export default function Home() {
   return (

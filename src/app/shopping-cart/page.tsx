@@ -7,7 +7,7 @@ import {Rating} from "@/components/tiny/tiny-collection.tsx";
 import {XCircle, ArrowRight} from "@/assets/icons/common-icons.tsx";
 import {coursesData} from "@/lib/@fake-db/courses/index.tsx";
 import {Course} from "@/lib/@fake-db/courses/type.ts";
-import DefaultLayout from "@/components/layouts/DefaultLayout";
+import DefaultLayout from "@/components/layouts/DefaultLayout.tsx";
 
 const Page = () => {
     const [cartItems, setCartItems] = useState<Course[]>([coursesData[0], coursesData[1], coursesData[2]])

@@ -1,7 +1,7 @@
 'use client';
 
-import DefaultLayout from "@/components/layouts/DefaultLayout";
-import CourseListing from "@/app/courses/CourseListing";
+import DefaultLayout from "@/components/layouts/DefaultLayout.tsx";
+import CourseListing from "@/app/courses/CourseListing.tsx";
 
 
 const Courses = () => {

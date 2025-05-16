@@ -17,7 +17,7 @@ import {
 import TopInstructors from "@/components/sections/TopInstructors";
 import CourseListing from "@/app/courses/CourseListing";
 import { useCourseFilter } from "@/hooks/useCourseFilter";
-import DefaultLayout from "@/components/layouts/DefaultLayout";
+import DefaultLayout from "@/components/layouts/DefaultLayout.tsx";
 
 interface Tool {
     id: number;

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { openPositions } from "@/lib/@fake-db/collections";
 import { ArrowRight, MapPin, BriefCase, ClipboardText, Check } from "@/assets/icons/common-icons";
 import { Button } from "@/components/ui/button";
-import DefaultLayout from "@/components/layouts/DefaultLayout";
+import DefaultLayout from "@/components/layouts/DefaultLayout.tsx";
 
 const CareerDetail = () => {
     const params = useParams();
