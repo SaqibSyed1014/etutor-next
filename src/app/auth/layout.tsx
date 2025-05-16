@@ -1,6 +1,6 @@
 import Minimal from "@/components/layouts/Minimal";
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: Readonly<{ children: React.ReactNode; }>) => {
     return (
         <>
             <Minimal slot="auth">
