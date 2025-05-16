@@ -2,7 +2,7 @@
 
 import { trustedCompanies } from "@/lib/@fake-db/collections";
 
-const TrustedCompanies = ({ title, showStats, BGColor }) => {
+const TrustedCompanies = ({ title, showStats, BGColor } : { title?: string; showStats?: boolean; BGColor?: string }) => {
   return (
       <section className={`bg-gray-50 py-16 ${BGColor}`}>
           <div className="container">
