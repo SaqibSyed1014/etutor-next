@@ -105,13 +105,13 @@ const Page = () => {
                                             type="button"
                                             className="size-12 flex items-center justify-center rounded-full text-primary-500 transition hover:bg-primary-100 disabled:hover:bg-transparent disabled:text-primary-100"
                                         >
-                                            <ArrowLeft className="h-4 w-4"/>
+                                            <ArrowLeft classes="h-4 w-4"/>
                                         </button>
                                         <button
                                             type="button"
                                             className="size-12 flex items-center justify-center rounded-full text-primary-500 transition hover:bg-primary-100 disabled:hover:bg-transparent disabled:text-primary-100"
                                         >
-                                            <ArrowRight className="h-4 w-4"/>
+                                            <ArrowRight classes="h-4 w-4"/>
                                         </button>
                                     </div>
                                 </div>

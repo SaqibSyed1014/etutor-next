@@ -53,7 +53,7 @@ export const ArrowRight = ({ classes }: { classes?: string }) => {
   )
 }
 
-export const ArrowLeft = () => {
+export const ArrowLeft = ({ classes }: { classes?: string }) => {
   return (
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
           <path d="M17.25 8H0.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

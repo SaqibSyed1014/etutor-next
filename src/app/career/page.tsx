@@ -181,7 +181,7 @@ const Career = () => {
                                             </div>
                                             <Link href={`/career/${job.id}`} className="shrink-0">
                                                 <Button variant="outline" className="size-12">
-                                                    <ArrowRight className="h-5 w-5 text-orange-500"/>
+                                                    <ArrowRight classes="h-5 w-5 text-primary-500"/>
                                                 </Button>
                                             </Link>
                                         </div>
