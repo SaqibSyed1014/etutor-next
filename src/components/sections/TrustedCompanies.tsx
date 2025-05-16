@@ -1,6 +1,6 @@
 'use client';
 
-import { trustedCompanies } from "@/lib/@fake-db/collections/index.tsx";
+import { trustedCompanies } from "@/lib/@fake-db/collections";
 
 const TrustedCompanies = ({ title, showStats, BGColor }) => {
   return (

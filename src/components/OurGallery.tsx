@@ -1,7 +1,7 @@
 "use client";
 
-import {Button} from "@/components/ui/button.tsx";
-import { ArrowRight } from "@/assets/icons/common-icons.tsx";
+import {Button} from "@/components/ui/button";
+import { ArrowRight } from "@/assets/icons/common-icons";
 
 export const OurGallery = ({ showButton, BGColor } : { showButton?: boolean, BGColor?: string }) => {
     return (

@@ -1,7 +1,7 @@
 'use client'
 
-import Navbar from "@/components/Navbar.tsx";
-import {Button} from "@/components/ui/button.tsx";
+import Navbar from "@/components/Navbar";
+import {Button} from "@/components/ui/button";
 import {useRouter} from 'next/navigation';
 
 const NotFound = () => {

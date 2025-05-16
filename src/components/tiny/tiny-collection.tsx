@@ -1,6 +1,6 @@
 'use client';
 
-import {Facebook, Instagram, Linkedin, Twitter, Youtube} from "@/assets/icons/icons.tsx";
+import {Facebook, Instagram, Linkedin, Twitter, Youtube} from "@/assets/icons/icons";
 
 export const StudentCount = ({ count, showIcon }: { count?: string | number; showIcon: boolean }) => {
     return (

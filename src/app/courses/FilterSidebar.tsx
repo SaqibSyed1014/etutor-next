@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { FilterState } from "@/lib/@fake-db/courses/type.ts";
+import { FilterState } from "@/lib/@fake-db/courses/type";
 import {
   Accordion,
   AccordionContent,
@@ -11,7 +11,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
 import { courseCategories } from "@/lib/@fake-db/courseCategories";
-import { tools, ratings, courseLevels, durations } from "@/lib/@fake-db/courses/index.tsx";
+import { tools, ratings, courseLevels, durations } from "@/lib/@fake-db/courses";
 
 interface FilterSidebarProps {
   filters: FilterState;

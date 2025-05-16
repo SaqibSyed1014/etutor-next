@@ -6,8 +6,8 @@ import {
     DropdownMenuTrigger,
     DropdownMenuContent,
     DropdownMenuItem,
-} from "@/components/ui/dropdown-menu.tsx";
-import {CaretDown, CaretDownSmall} from "@/assets/icons/common-icons.tsx";
+} from "@/components/ui/dropdown-menu";
+import {CaretDown, CaretDownSmall} from "@/assets/icons/common-icons";
 
 
 type Option = {

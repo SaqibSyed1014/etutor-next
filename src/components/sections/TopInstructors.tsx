@@ -3,8 +3,8 @@
 import {Card, CardContent, CardFooter} from "@/components/ui/card";
 import { topInstructors } from "@/lib/@fake-db/instructors";
 import Link from "next/link";
-import {Rating, StudentCount} from "@/components/tiny/tiny-collection.tsx";
-import {ArrowRight} from "@/assets/icons/common-icons.tsx";
+import {Rating, StudentCount} from "@/components/tiny/tiny-collection";
+import {ArrowRight} from "@/assets/icons/common-icons";
 
 const InstructorCard = ({ instructor }: { instructor: typeof topInstructors[0] }) => {
   return (

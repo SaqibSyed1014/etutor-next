@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
-import { courseCategories } from "@/lib/@fake-db/courseCategories/index";
-import { coursesData } from "@/lib/@fake-db/courses/index";
+import { courseCategories } from "@/lib/@fake-db/courseCategories";
+import { coursesData } from "@/lib/@fake-db/courses";
 import { CourseCard } from "@/components/CourseCard";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, ArrowLeft } from "@/assets/icons/common-icons";
@@ -17,7 +17,7 @@ import {
 import TopInstructors from "@/components/sections/TopInstructors";
 import CourseListing from "@/app/courses/CourseListing";
 import { useCourseFilter } from "@/hooks/useCourseFilter";
-import DefaultLayout from "@/components/layouts/DefaultLayout.tsx";
+import DefaultLayout from "@/components/layouts/DefaultLayout";
 
 interface Tool {
     id: number;

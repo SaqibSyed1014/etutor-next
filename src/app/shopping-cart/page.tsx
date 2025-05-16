@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {Breadcrumbs} from "@/components/Breadcrumbs.tsx";
-import {Rating} from "@/components/tiny/tiny-collection.tsx";
-import {XCircle, ArrowRight} from "@/assets/icons/common-icons.tsx";
-import {coursesData} from "@/lib/@fake-db/courses/index.tsx";
+import {Breadcrumbs} from "@/components/Breadcrumbs";
+import {Rating} from "@/components/tiny/tiny-collection";
+import {XCircle, ArrowRight} from "@/assets/icons/common-icons";
+import {coursesData} from "@/lib/@fake-db/courses";
 import {Course} from "@/lib/@fake-db/courses/type.ts";
-import DefaultLayout from "@/components/layouts/DefaultLayout.tsx";
+import DefaultLayout from "@/components/layouts/DefaultLayout";
 
 const Page = () => {
     const [cartItems, setCartItems] = useState<Course[]>([coursesData[0], coursesData[1], coursesData[2]])

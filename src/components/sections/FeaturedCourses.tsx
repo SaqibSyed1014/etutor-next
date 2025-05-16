@@ -1,9 +1,9 @@
 'use client';
 
-import { featuredCourses } from "@/lib/@fake-db/courses/index.tsx";
+import { featuredCourses } from "@/lib/@fake-db/courses";
 import Link from "next/link";
-import RecentCourses from "@/components/RecentCourses.tsx";
-import {CourseCard} from "@/components/CourseCard.tsx";
+import RecentCourses from "@/components/RecentCourses";
+import {CourseCard} from "@/components/CourseCard";
 
 const FeaturedCourses = () => {
   return (

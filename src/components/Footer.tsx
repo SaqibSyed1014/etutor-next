@@ -1,12 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import {ArrowRight, BrandLogo, CaretDown} from "@/assets/icons/common-icons.tsx";
-import {Facebook, Instagram, Linkedin, Twitter, Youtube} from "@/assets/icons/icons.tsx";
-import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel} from "@/components/ui/dropdown-menu.tsx";
+import {ArrowRight, BrandLogo} from "@/assets/icons/common-icons";
 import {useState} from "react";
-import DropdownMenuWrapper from "@/components/DropdownMenuWrapper.tsx";
-import {SocialMediaLinks} from "@/components/tiny/tiny-collection.tsx";
+import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
+import {SocialMediaLinks} from "@/components/tiny/tiny-collection";
 
 const Footer = () => {
   const [selectedLang, selectLang] = useState('eng');

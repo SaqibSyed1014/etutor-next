@@ -1,14 +1,14 @@
 'use client';
 
-import {Breadcrumbs} from "@/components/Breadcrumbs.tsx";
+import {Breadcrumbs} from "@/components/Breadcrumbs";
 import Link from "next/link"
-import {CardContent, Card, CardFooter} from "@/components/ui/card.tsx";
-import {Button} from "@/components/ui/button.tsx";
-import {CheckCircle, ArrowRight, MapPin, BriefCase, ClipboardText} from "@/assets/icons/common-icons.tsx";
-import {OurGallery} from "@/components/OurGallery.tsx";
-import {perksAndBenefits, openPositions} from "@/lib/@fake-db/collections/index.tsx";
-import TrustedCompanies from "@/components/sections/TrustedCompanies.tsx";
-import DefaultLayout from "@/components/layouts/DefaultLayout.tsx";
+import {CardContent, Card, CardFooter} from "@/components/ui/card";
+import {Button} from "@/components/ui/button";
+import {CheckCircle, ArrowRight, MapPin, BriefCase, ClipboardText} from "@/assets/icons/common-icons";
+import {OurGallery} from "@/components/OurGallery";
+import {perksAndBenefits, openPositions} from "@/lib/@fake-db/collections";
+import TrustedCompanies from "@/components/sections/TrustedCompanies";
+import DefaultLayout from "@/components/layouts/DefaultLayout";
 
 
 const Career = () => {

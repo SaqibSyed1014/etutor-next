@@ -1,17 +1,17 @@
 'use client';
 
-import {CourseCard} from "@/components/CourseCard.tsx";
+import {CourseCard} from "@/components/CourseCard";
 import { useState, useEffect } from "react";
-import { Input } from "@/components/ui/input.tsx";
-import { Button } from "@/components/ui/button.tsx";
-import FilterSidebar from "./FilterSidebar.tsx";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import FilterSidebar from "./FilterSidebar";
 import SearchSuggestions from "@/components/SearchSuggestions";
 import CustomPagination from "@/components/CustomPagination";
 import { useCourseFilter } from "@/hooks/useCourseFilter";
-import {FilterState, SortOption} from "@/lib/@fake-db/courses/type.ts";
-import {MagnifyingGlass} from "@/assets/icons/common-icons.tsx";
-import {FilterFaders} from "@/assets/icons/icons.tsx";
-import DropdownMenuWrapper from "@/components/DropdownMenuWrapper.tsx";
+import {FilterState, SortOption} from "@/lib/@fake-db/courses/type";
+import {MagnifyingGlass} from "@/assets/icons/common-icons";
+import {FilterFaders} from "@/assets/icons/icons";
+import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import {sortOptions} from "@/lib/@fake-db/courses";
 
 type Props = {

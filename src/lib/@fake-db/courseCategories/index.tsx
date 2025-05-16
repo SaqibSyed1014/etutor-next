@@ -6,8 +6,8 @@ import {
     PenNib,
     Processor,
     Receipt
-} from "@/assets/icons/icons.tsx";
-import { CourseCategory } from "@/lib/@fake-db/courseCategories/type.ts"
+} from "@/assets/icons/icons";
+import { CourseCategory } from "@/lib/@fake-db/courseCategories/type"
 
 export const courseCategories: Record<string, CourseCategory> = {
     LEGAL: {

@@ -1,11 +1,11 @@
 "use client";
 
 import {useEffect, useRef, useState} from "react";
-import {Card, CardContent, CardFooter} from "@/components/ui/card.tsx";
-import {Button} from "@/components/ui/button.tsx";
-import {Heart} from "@/assets/icons/common-icons.tsx";
-import {CategoryBadge, Rating, StudentCount} from "@/components/tiny/tiny-collection.tsx";
-import {Course} from "@/lib/@fake-db/courses/type.ts";
+import {Card, CardContent, CardFooter} from "@/components/ui/card";
+import {Button} from "@/components/ui/button";
+import {Heart} from "@/assets/icons/common-icons";
+import {CategoryBadge, Rating, StudentCount} from "@/components/tiny/tiny-collection";
+import {Course} from "@/lib/@fake-db/courses/type";
 import Link from 'next/link'
 
 export const CourseCard = ({ course, inListForm }: { course: Course, inListForm?: boolean }) => {

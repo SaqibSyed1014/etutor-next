@@ -1,11 +1,11 @@
 "use client";
 
 
-import { recentlyAddedCourses } from "@/lib/@fake-db/courses/index.tsx";
+import { recentlyAddedCourses } from "@/lib/@fake-db/courses";
 
 import { Button } from "@/components/ui/button";
-import {CourseCard} from "@/components/CourseCard.tsx";
-import {ArrowRight} from "@/assets/icons/common-icons.tsx";
+import {CourseCard} from "@/components/CourseCard";
+import {ArrowRight} from "@/assets/icons/common-icons";
 import Link from "next/link";
 
 const RecentCourses = () => {

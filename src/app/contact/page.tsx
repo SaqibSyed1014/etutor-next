@@ -1,9 +1,9 @@
 'use client';
 
-import { Button } from "@/components/ui/button.tsx";
-import {Breadcrumbs} from "@/components/Breadcrumbs.tsx";
-import {Envelope, PaperPlaneRight} from "@/assets/icons/common-icons.tsx";
-import DefaultLayout from "@/components/layouts/DefaultLayout.tsx";
+import { Button } from "@/components/ui/button";
+import {Breadcrumbs} from "@/components/Breadcrumbs";
+import {Envelope, PaperPlaneRight} from "@/assets/icons/common-icons";
+import DefaultLayout from "@/components/layouts/DefaultLayout";
 
 const Contact = () => {
   return (

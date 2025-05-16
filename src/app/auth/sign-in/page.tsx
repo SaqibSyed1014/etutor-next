@@ -8,7 +8,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
-import {ArrowRight} from "@/assets/icons/common-icons.tsx";
+import {ArrowRight} from "@/assets/icons/common-icons";
 
 const loginSchema = z.object({
     email: z.string().min(1, "Email is required"),

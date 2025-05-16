@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import {CaretDownLarge} from "@/assets/icons/common-icons.tsx";
+import {CaretDownLarge} from "@/assets/icons/common-icons";
 
 import { cn } from "@/lib/utils"
 

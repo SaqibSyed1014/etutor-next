@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from '@/lib/utils';
-import {ArrowRight, ArrowLeft} from "@/assets/icons/common-icons.tsx"
+import {ArrowRight, ArrowLeft} from "@/assets/icons/common-icons"
 
 interface CustomPaginationProps {
     currentPage: number;

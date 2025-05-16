@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from "react";
-import {Input} from "@/components/ui/input.tsx";
+import {Input} from "@/components/ui/input";
 import {Eye, EyeOff} from "lucide-react";
-import {Checkbox} from "@/components/ui/checkbox.tsx";
-import {Button} from "@/components/ui/button.tsx";
-import {ArrowRight} from "@/assets/icons/common-icons.tsx";
+import {Checkbox} from "@/components/ui/checkbox";
+import {Button} from "@/components/ui/button";
+import {ArrowRight} from "@/assets/icons/common-icons";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { z } from "zod";

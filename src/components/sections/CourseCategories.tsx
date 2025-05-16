@@ -1,7 +1,7 @@
 'use client';
 
-import { ArrowRight } from "@/assets/icons/common-icons.tsx";
-import { topCourses } from "@/lib/@fake-db/courses/index.tsx";
+import { ArrowRight } from "@/assets/icons/common-icons";
+import { topCourses } from "@/lib/@fake-db/courses";
 import Link from 'next/link'
 
 

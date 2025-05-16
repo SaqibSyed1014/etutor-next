@@ -2,8 +2,8 @@ import {
     GoogleLogo,
     LenovoLogo, LexMarkLogo, MicrosoftLogo, NetflixLogo,
     SlackLogo, VerizonLogo, YoutubeLogo
-} from "@/assets/icons/icons.tsx";
-import {Company, Perk, JobPosition} from "@/lib/@fake-db/collections/type.ts";
+} from "@/assets/icons/icons";
+import {Company, Perk, JobPosition} from "@/lib/@fake-db/collections/type";
 
 
 

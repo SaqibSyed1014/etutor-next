@@ -1,7 +1,7 @@
 "use client";
 
 import { bestSellingCourses } from "@/lib/@fake-db/courses";
-import {CourseCard} from "@/components/CourseCard.tsx";
+import {CourseCard} from "@/components/CourseCard";
 
 
 const BestSellingCourses = () => {

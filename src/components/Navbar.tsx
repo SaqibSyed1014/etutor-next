@@ -2,11 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {Bell, Heart, Cart, BrandLogo, MagnifyingGlass} from "@/assets/icons/common-icons.tsx";
+import {Bell, Heart, Cart, BrandLogo, MagnifyingGlass} from "@/assets/icons/common-icons";
 import Link from 'next/link'
 import {usePathname} from "next/navigation";
 import {useState} from "react";
-import DropdownMenuWrapper from "@/components/DropdownMenuWrapper.tsx"
+import DropdownMenuWrapper from "@/components/DropdownMenuWrapper"
 
 
 const Navbar = () => {

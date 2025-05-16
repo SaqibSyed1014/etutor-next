@@ -1,10 +1,10 @@
 'use client';
 
-import TrustedCompanies from "@/components/sections/TrustedCompanies.tsx";
-import {Breadcrumbs} from "@/components/Breadcrumbs.tsx";
-import {trustedCompanies} from "@/lib/@fake-db/collections/index.tsx";
-import {OurGallery} from "@/components/OurGallery.tsx";
-import DefaultLayout from "@/components/layouts/DefaultLayout.tsx";
+import TrustedCompanies from "@/components/sections/TrustedCompanies";
+import {Breadcrumbs} from "@/components/Breadcrumbs";
+import {trustedCompanies} from "@/lib/@fake-db/collections";
+import {OurGallery} from "@/components/OurGallery";
+import DefaultLayout from "@/components/layouts/DefaultLayout";
 
 const About = () => {
   return (

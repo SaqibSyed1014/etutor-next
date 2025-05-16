@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { Course, FilterState, SortOption } from '@/lib/@fake-db/courses/type.ts';
-import { coursesData } from '@/lib/@fake-db/courses/index.tsx';
+import { Course, FilterState, SortOption } from '@/lib/@fake-db/courses/type';
+import { coursesData } from '@/lib/@fake-db/courses/index';
 
 export const useCourseFilter = () => {
     const [courses, setCourses] = useState<Course[]>(coursesData);
