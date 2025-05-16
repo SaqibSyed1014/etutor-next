@@ -18,7 +18,7 @@ interface FilterSidebarProps {
   onFilterChange: (filters: FilterState) => void;
 }
 
-const FilterSidebar = ({ filters, onFilterChange }) => {
+const FilterSidebar = ({ filters, onFilterChange } :FilterSidebarProps) => {
   const [priceRange, setPriceRange] = useState<[number, number]>(filters.priceRange);
 
   const handleCategoryChange = (category: string, checked: boolean) => {
