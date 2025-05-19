@@ -4,7 +4,24 @@ import {CaretDownLarge} from "@/assets/icons/common-icons";
 
 import { cn } from "@/lib/utils"
 
-const Accordion = AccordionPrimitive.Root
+const Accordion = ({
+                       children,
+                       value,
+                       onValueChange,
+                       type = "single", // default to single accordion behavior
+                       ...props
+                   }: AccordionPrimitive.AccordionSingleProps & {
+    children: React.ReactNode
+}) => (
+    <AccordionPrimitive.Root
+        value={value}
+        onValueChange={onValueChange}
+        type={type}
+        {...props}
+    >
+        {children}
+    </AccordionPrimitive.Root>
+)
 
 const AccordionItem = React.forwardRef<
     React.ElementRef<typeof AccordionPrimitive.Item>,
@@ -20,8 +37,8 @@ AccordionItem.displayName = "AccordionItem"
 
 const AccordionTrigger = React.forwardRef<
     React.ElementRef<typeof AccordionPrimitive.Trigger>,
-    React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+    React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> & { icon?: React.ReactNode }
+>(({ className, children,  icon = <CaretDownLarge />, ...props }, ref) => (
     <AccordionPrimitive.Header className="flex">
         <AccordionPrimitive.Trigger
             ref={ref}
@@ -32,7 +49,7 @@ const AccordionTrigger = React.forwardRef<
             {...props}
         >
             {children}
-            <CaretDownLarge/>
+            {icon}
         </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
 ))

@@ -3,7 +3,8 @@ import {
     LenovoLogo, LexMarkLogo, MicrosoftLogo, NetflixLogo,
     SlackLogo, VerizonLogo, YoutubeLogo
 } from "@/assets/icons/icons";
-import {Company, Perk, JobPosition} from "@/lib/@fake-db/collections/type";
+import {Company, Perk, JobPosition, FAQ} from "@/lib/@fake-db/collections/type";
+import React from "react";
 
 
 
@@ -257,6 +258,84 @@ export const openPositions: JobPosition[] = [
         ],
         address: '1702 Olympic Boulevard Santa Monica, CA 90404',
     }
+];
+
+export const faqItems: FAQ[] = [
+    {
+        id: "faq-1",
+        category: "nulla-tempor-odio",
+        question: "Fusce placerat interdum magna, ut ultrices odio pharetra pulvinar.",
+        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur efficitur, quam nisl congue nisi, vitae ultricies nisl nisi vel augue."
+    },
+    {
+        id: "faq-2",
+        category: "nulla-tempor-odio",
+        question: "Proin lacinia laoreetis metus, ut faucibus eros ullamcorper et.",
+        answer: "Nullam euismod, nisi vel consectetur efficitur, quam nisl congue nisi, vitae ultricies nisl nisi vel augue."
+    },
+    {
+        id: "faq-3",
+        category: "donec-malesuada",
+        question: "Etiam a nisl dui. Integer sed eros sed leo blandit interdum eget nec.",
+        answer: "Nullam euismod, nisi vel consectetur efficitur, quam nisl congue nisi, vitae ultricies nisl nisi vel augue."
+    },
+    {
+        id: "faq-4",
+        category: "quisque",
+        question: "Nulla id ligula ligula.",
+        answer: (
+            <div className="space-y-4">
+                <p>Aliquam semper tellus vel lacus rutrum mollis. Fusce vitae laculis lacus, id fringilla leo. Nulla dictum, sem nec consequat auctor, tortor mi rutrum urna, sed luctus urna nibh at amet velit. Sed varius sem semper leo ultrices tincidunt. Etiam id ligula ut augue auctor molestie ut quis felis.</p>
+                <ol className="list-decimal pl-5 space-y-2">
+                    <li>Sed lorem elit, aliquam vel neque condimentum, blandit cursus nisi.</li>
+                    <li>Cras elementum posuere felis et volutpat.</li>
+                    <li>Donec dignissim metus felis, non posuere arcu finibus a.</li>
+                </ol>
+                <p>Sed tincidunt dolor at elit, vitae mollis nisl congue nec. Ut felis metus, posuere vel odio ut, ullamcorper rutrum ex. Curabitur porttitor sem nec felis mollis, nec laoreet leo aliquet.</p>
+                <ul className="list-disc pl-5">
+                    <li>ac magna laculis imperdiet ut viverra arcu.</li>
+                </ul>
+                <p>Proin quis elementum velit, eget efficitur nulla. Donec tellus massa, faucibus id nulla id amet, fringilla viverra justo. Curabitur auctor nibh ut arcu laculis, ac finibus sem pulvinar. Suspendisse vestibulum in odio eget posuere. Curabitur justo nisl, vehicula ac mollis sit amet, gravida quis erat.</p>
+            </div>
+        )
+    },
+    {
+        id: "faq-5",
+        category: "tincidunt",
+        question: "Etiam non tellus non dolor suscipit vehicula.",
+        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed eros sed leo blandit interdum eget nec velit."
+    },
+    {
+        id: "faq-6",
+        category: "quisque",
+        question: "Vestibulum pellentesque ex magna.",
+        answer: "Ut felis metus, posuere vel odio ut, ullamcorper rutrum ex. Curabitur porttitor sem nec felis mollis."
+    },
+    {
+        id: "faq-7",
+        category: "phasellus",
+        question: "Ut ullamcorper est sit amet quam aliquiet mattis.",
+        answer: "Sed varius sem semper leo ultrices tincidunt. Etiam id ligula ut augue auctor molestie ut quis felis."
+    },
+    {
+        id: "faq-8",
+        category: "etiam-eu",
+        question: "Donec malesuada question example?",
+        answer: "Donec malesuada answer content goes here."
+    },
+    {
+        id: "faq-9",
+        category: "ut-sed",
+        question: "Donec malesuada question example?",
+        answer: "Donec malesuada answer content goes here."
+    },
+    {
+        id: "faq-10",
+        category: "nullam-non",
+        question: "Donec malesuada question example?",
+        answer: "Donec malesuada answer content goes here."
+    },
+    // Add more FAQ items for each category as needed
 ];
 
 

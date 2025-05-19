@@ -30,3 +30,10 @@ export interface JobPosition {
     requirements?: string[];
     address: string;
 }
+
+export interface FAQ {
+    id: string;
+    category: string;
+    question: string;
+    answer: string | React.ReactNode;
+}

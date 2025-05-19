@@ -78,7 +78,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/become-instructor" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
+                <Link href="/become-an-instructor" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
                   Become Instructor
                   <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
                 </Link>
@@ -120,7 +120,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
+                <Link href="/faqs" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
                   FAQs
                   <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
                 </Link>

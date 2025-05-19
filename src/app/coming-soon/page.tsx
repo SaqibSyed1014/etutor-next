@@ -168,7 +168,7 @@ const ComingSoon = () => {
                             </p>
 
                             <div className="flex gap-6 items-center">
-                                <Link href="/">FAQs</Link>
+                                <Link href="/faqs">FAQs</Link>
                                 <Link href="/">Privacy Policy</Link>
                                 <Link href="/">Terms & Condition</Link>
                             </div>
