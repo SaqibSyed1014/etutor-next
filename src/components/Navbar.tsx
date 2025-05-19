@@ -70,7 +70,7 @@ const Navbar = () => {
             <Link href="/courses" className={`${pathname === '/courses' && 'active'}`}>Courses</Link>
             <Link href="/about" className={`${pathname === '/about' && 'active'}`}>About</Link>
             <Link href="/contact" className={`${pathname === '/contact' && 'active'}`}>Contact</Link>
-            <Link href="/become-instructor" className={`${pathname === '/become-instructor' && 'active'}`}>Become an Instructor</Link>
+            <Link href="/become-an-instructor" className={`${pathname === '/become-instructor' && 'active'}`}>Become an Instructor</Link>
           </div>
           <div className="flex space-x-6 text-sm">
             <DropdownMenuWrapper

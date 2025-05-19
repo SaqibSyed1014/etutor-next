@@ -24,7 +24,8 @@ export default {
 				}
 			},
 			fontSize: {
-				'sm': ['14px', '22px']
+				'sm': ['14px', '22px'],
+				'lg': ['18px', '24px']
 			},
 			colors: {
 				card: {

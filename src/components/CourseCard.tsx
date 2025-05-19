@@ -15,7 +15,7 @@ export const CourseCard = ({ course, inListForm }: { course: Course, inListForm?
     useEffect(() => {
         const checkPosition = () => {
             if (!popupRef.current) return;
-            const rect = popupRef.current.getBoundingClientRect();
+            const rect = popupRef?.current?.getBoundingClientRect();
             const willOverflowRight = rect.left + rect.width > window.innerWidth;
             setPositionLeft(willOverflowRight);
         };

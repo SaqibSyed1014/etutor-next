@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { Course, FilterState, SortOption } from '@/lib/@fake-db/courses/type';
-import { coursesData } from '@/lib/@fake-db/courses/index';
+import { coursesData } from '@/lib/@fake-db/courses';
 
 export const useCourseFilter = () => {
     const [courses, setCourses] = useState<Course[]>(coursesData);

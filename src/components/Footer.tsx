@@ -157,20 +157,21 @@ const Footer = () => {
 
       </div>
 
-      <div className="container">
-        <div className=" py-9 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center shadow-[0_1px_0_0_#363B4780_inset]">
-          <p className="text-gray-500 text-sm">
-            © 2023 - E-tutor. Designed by <span className="text-white">Templatecookie</span>. All rights reserved
-          </p>
+        <div className="shadow-[0_1px_0_0_#363B4780_inset]">
+          <div className="container">
+            <div className="py-6 flex flex-col md:flex-row justify-between items-center">
+              <p className="text-gray-500 text-sm">
+                © 2023 - E-tutor. Designed by <span className="text-white">Templatecookie</span>. All rights reserved
+              </p>
 
-          <DropdownMenuWrapper
-              options={languages}
-              selected={selectedLang}
-              onChange={selectLang}
-              triggerClasses="text-base !text-gray-500 px-[18px] py-3 border border-gray-800 justify-between min-w-[200px]"
-              contentContentClasses="min-w-[200px] bg-gray-800"
-          />
-
+              <DropdownMenuWrapper
+                  options={languages}
+                  selected={selectedLang}
+                  onChange={selectLang}
+                  triggerClasses="text-base !text-gray-500 px-[18px] py-3 border border-gray-800 justify-between min-w-[200px]"
+                  contentContentClasses="min-w-[200px] bg-gray-800"
+              />
+            </div>
         </div>
       </div>
     </footer>
