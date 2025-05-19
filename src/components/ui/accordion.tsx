@@ -4,13 +4,25 @@ import {CaretDownLarge} from "@/assets/icons/common-icons";
 
 import { cn } from "@/lib/utils"
 
+type AccordionProps =
+    | ({
+    type: "single";
+    value?: string;
+    onValueChange?: (value: string) => void;
+} & Omit<AccordionPrimitive.AccordionSingleProps, "type">)
+    | ({
+    type: "multiple";
+    value?: string[];
+    onValueChange?: (value: string[]) => void;
+} & Omit<AccordionPrimitive.AccordionMultipleProps, "type">);
+
 const Accordion = ({
                        children,
                        value,
                        onValueChange,
                        type = "single", // default to single accordion behavior
                        ...props
-                   }: AccordionPrimitive.AccordionSingleProps & {
+                   }: AccordionProps & {
     children: React.ReactNode
 }) => (
     <AccordionPrimitive.Root

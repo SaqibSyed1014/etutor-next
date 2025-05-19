@@ -20,7 +20,7 @@ const buttonVariants = cva(
         outlineInvert:
               "bg-white text-etutor-primary hover:bg-white/90",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "bg-white border border-gray-100 text-gray-700 hover:opacity-90",
         ghost: "text-primary-500 hover:bg-primary-100 hover:text-primary-600",
         link: "text-primary underline-offset-4 hover:underline",
       },

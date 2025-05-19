@@ -188,7 +188,7 @@ export const CourseCard = ({ course, inListForm }: { course: Course, inListForm?
                         </Button>
                     </Link>
 
-                    <Link href={`/course-detail/${course.id}`}>
+                    <Link href={`/courses/${course.id}`}>
                         <Button variant="outline" className="w-full">
                             Course Detail
                         </Button>

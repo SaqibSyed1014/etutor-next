@@ -77,50 +77,6 @@ const Page = () => {
         "One-on-one coaching sessions are available to improve your teaching skills."
     ];
 
-    interface Testimonial {
-        id: number;
-        name: string;
-        position: string;
-        rating: number;
-        text: string;
-        image: string;
-    }
-
-    const testimonials: Testimonial[] = [
-        {
-            id: 1,
-            name: "Emma Thompson",
-            position: "Photography Instructor",
-            rating: 5,
-            text: "Becoming an instructor on this platform has been the best decision of my career. The support team is amazing, and the platform makes course creation so intuitive.",
-            image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-        },
-        {
-            id: 2,
-            name: "John Davis",
-            position: "Business Instructor",
-            rating: 5,
-            text: "I've been able to reach students across the globe and share my knowledge. The analytics tools help me improve my courses continuously and grow my audience.",
-            image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
-        },
-        {
-            id: 3,
-            name: "Sarah Johnson",
-            position: "Design Instructor",
-            rating: 5,
-            text: "After joining as an instructor, I was able to quit my 9-5 job and focus on teaching full-time. The platform makes it easy to create engaging content for my students.",
-            image: "https://images.unsplash.com/photo-1501854140801-50d01698950b"
-        },
-        {
-            id: 4,
-            name: "Michael Chen",
-            position: "Technology Instructor",
-            rating: 5,
-            text: "What sets this platform apart is the community of instructors. We collaborate, share tips, and help each other grow. It's more than just a teaching platform.",
-            image: "https://images.unsplash.com/photo-1518770660439-4636190af475"
-        }
-    ];
-
     return (
         <>
             <DefaultLayout>
