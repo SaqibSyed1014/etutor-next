@@ -4,36 +4,40 @@ import {CaretDownLarge} from "@/assets/icons/common-icons";
 
 import { cn } from "@/lib/utils"
 
-type AccordionProps =
-    | ({
-    type: "single";
+type AccordionSingleProps = {
+    type?: "single";
     value?: string;
     onValueChange?: (value: string) => void;
-} & Omit<AccordionPrimitive.AccordionSingleProps, "type">)
-    | ({
+} & Omit<AccordionPrimitive.AccordionSingleProps, "type" | "value" | "onValueChange"> & {
+    children: React.ReactNode;
+};
+
+type AccordionMultipleProps = {
     type: "multiple";
     value?: string[];
     onValueChange?: (value: string[]) => void;
-} & Omit<AccordionPrimitive.AccordionMultipleProps, "type">);
+} & Omit<AccordionPrimitive.AccordionMultipleProps, "type" | "value" | "onValueChange"> & {
+    children: React.ReactNode;
+};
 
-const Accordion = ({
-                       children,
-                       value,
-                       onValueChange,
-                       type = "single", // default to single accordion behavior
-                       ...props
-                   }: AccordionProps & {
-    children: React.ReactNode
-}) => (
-    <AccordionPrimitive.Root
-        value={value}
-        onValueChange={onValueChange}
-        type={type}
-        {...props}
-    >
-        {children}
-    </AccordionPrimitive.Root>
-)
+type AccordionProps = AccordionSingleProps | AccordionMultipleProps;
+
+function Accordion(props: AccordionSingleProps): JSX.Element;
+function Accordion(props: AccordionMultipleProps): JSX.Element;
+function Accordion(props: AccordionProps) {
+    const { children, type = "single", value, onValueChange, ...rest } = props;
+
+    return (
+        <AccordionPrimitive.Root
+            type={type}
+            value={value as any}
+            onValueChange={onValueChange as any}
+            {...rest}
+        >
+            {children}
+        </AccordionPrimitive.Root>
+    );
+}
 
 const AccordionItem = React.forwardRef<
     React.ElementRef<typeof AccordionPrimitive.Item>,
