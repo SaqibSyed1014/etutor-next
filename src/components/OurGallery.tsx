@@ -17,7 +17,7 @@ export const OurGallery = ({ showButton, BGColor } : { showButton?: boolean, BGC
                             Fusce lobortis leo augue, sit amet tristique nisi commodo in. Aliquam ac libero quis tellus venenatis imperdiet.
                             Sed sed nunc libero. Curabitur in urna ligula, torquent per conubia nostra.
                         </p>
-                        {showButton && <Button>Join Our Team <ArrowRight className=""/> </Button>}
+                        {showButton && <Button>Join Our Team <ArrowRight  /> </Button>}
                     </div>
                     <div className="shrink-0">
                         <div className="flex flex-col items-center gap-5">

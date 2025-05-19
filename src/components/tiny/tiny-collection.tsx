@@ -1,6 +1,7 @@
 'use client';
 
 import {Facebook, Instagram, Linkedin, Twitter, Youtube} from "@/assets/icons/icons";
+import {CourseCategory} from "@/lib/@fake-db/courseCategories/type";
 
 export const StudentCount = ({ count, showIcon }: { count?: string | number; showIcon: boolean }) => {
     return (
@@ -18,7 +19,7 @@ export const StudentCount = ({ count, showIcon }: { count?: string | number; sho
     );
 };
 
-export const CategoryBadge = ({ category }) => {
+export const CategoryBadge = ({ category } : { category: CourseCategory }) => {
     const colorVariants = {
         primary: "bg-primary-100 text-primary-700",
         secondary: "bg-secondary-100 text-secondary-700",

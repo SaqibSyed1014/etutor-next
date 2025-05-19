@@ -73,9 +73,6 @@ export const useCourseFilter = () => {
             case 'high-rating':
                 result.sort((a, b) => b.rating - a.rating);
                 break;
-            case 'low-rating':
-                result.sort((a, b) => a.rating - b.rating);
-                break;
         }
 
         setFilteredCourses(result);

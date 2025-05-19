@@ -163,7 +163,7 @@ export const CourseCard = ({ course, inListForm }: { course: Course, inListForm?
                         size="icon"
                         className="ml-auto h-8 w-8 group"
                     >
-                        <Heart className="h-4 w-4 text-etutor-primary group-hover:text-white transition" />
+                        <div className="h-4 w-4 text-etutor-primary group-hover:text-white transition"><Heart /></div>
                     </Button>
                 </div>
 

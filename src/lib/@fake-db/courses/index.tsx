@@ -396,7 +396,7 @@ export const topCourses = [courseCategories.LEGAL, courseCategories.BUSINESS, co
 export const bestSellingCourses = coursesData.filter((course) => course.category.isBestSelling);
 export const featuredCourses = coursesData.slice(10, 14);
 export const recentlyAddedCourses = coursesData.slice(7, 16);
-export const getSingleCourse = (id: string) => coursesData.find(course => course.id === id) || null;
+export const getSingleCourse = (id: number) => coursesData.find(course => course.id === id) || null;
 export const getCoursesByCategory = (category: string) =>
   coursesData.filter(course => course.category.title.toLowerCase() === category.toLowerCase());
 

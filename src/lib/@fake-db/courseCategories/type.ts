@@ -4,7 +4,7 @@ export interface CourseCategory {
     id: number;
     title: string,
     courses: string
-    color: string;
+    color: "primary" | "secondary" | "warning" | "success" | "error" | "white" | "gray";
     isBestSelling: boolean
     icon: ReactElement
 }

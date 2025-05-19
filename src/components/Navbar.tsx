@@ -66,7 +66,7 @@ const Navbar = () => {
       <div className="top-bar">
         <div className="flex justify-between items-center">
           <div className="flex gap-2 text-sm text-gray-500 font-medium">
-            <Link href="/" exact className={`${pathname === '/' && 'active'}`}>Home</Link>
+            <Link href="/" className={`${pathname === '/' && 'active'}`}>Home</Link>
             <Link href="/courses" className={`${pathname === '/courses' && 'active'}`}>Courses</Link>
             <Link href="/about" className={`${pathname === '/about' && 'active'}`}>About</Link>
             <Link href="/contact" className={`${pathname === '/contact' && 'active'}`}>Contact</Link>
