@@ -158,7 +158,7 @@ const CourseCurriculum = () => {
                                             {item.type === 'video' ? (
                                                 <Link href={`/courses/${id}/watch-course`}><Play /></Link>
                                             ) : (
-                                                <File className="mr-3 text-gray-500"/>
+                                                <File />
                                             )}
                                             <p>{item.title}</p>
                                         </div>
