@@ -183,7 +183,6 @@ const CourseReviews = ({ rating }: CourseReviewsProps) => {
                     {[1, 2, 3, 4, 5].map(star => (
                         <Star
                             key={star}
-                            className={`${star <= review.rating ? "text-gray-900 fill-gray-100" : "text-gray-300"}`}
                         />
                     ))}
                   </div>
