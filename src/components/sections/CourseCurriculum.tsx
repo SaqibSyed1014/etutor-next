@@ -156,7 +156,7 @@ const CourseCurriculum = () => {
                                          className="flex justify-between items-center px-5 last:pb-4">
                                         <div className="flex items-center gap-2">
                                             {item.type === 'video' ? (
-                                                <Link href={`/courses/${id}/watch-course`}><Play className="mr-3 text-gray-500"/></Link>
+                                                <Link href={`/courses/${id}/watch-course`}><Play /></Link>
                                             ) : (
                                                 <File className="mr-3 text-gray-500"/>
                                             )}
