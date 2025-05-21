@@ -161,9 +161,9 @@ export const CourseCard = ({ course, inListForm }: { course: Course, inListForm?
                     <Button
                         variant="outline"
                         size="icon"
-                        className="ml-auto h-8 w-8 group"
+                        className="ml-auto h-8 w-8 group grid place-items-center text-primary-500 hover:text-white transition"
                     >
-                        <div className="h-4 w-4 text-etutor-primary group-hover:text-white transition"><Heart /></div>
+                        <Heart />
                     </Button>
                 </div>
 

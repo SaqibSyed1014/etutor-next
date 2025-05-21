@@ -2,15 +2,29 @@
 
 import { useParams } from "next/navigation";;
 import { coursesData } from "@/lib/@fake-db/courses";
-import { Clock, Video, Users, NotebookPen } from "lucide-react";
-// import { Badge } from "@/components/ui/badge";
+import { Clock } from "lucide-react";
+import { Tabs, TabsContent, TabsTrigger, TabsList } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
-import {Rating} from "@/components/tiny/tiny-collection";
 import Link from "next/link";
-import {Facebook, Instagram, Linkedin, Twitter, Youtube} from "@/assets/icons/icons";
-import {ArrowRight} from "@/assets/icons/common-icons";
+import {Facebook, Instagram, Linkedin, Youtube} from "@/assets/icons/icons";
+import {
+    Alarm,
+    ArrowRight,
+    BarChart, CheckCircle,
+    CurrencyDollarSimple,
+    Monitor,
+    Notebook,
+    Notepad,
+    Stack,
+    Trophy,
+    Users
+} from "@/assets/icons/common-icons";
+import {CourseCard} from "@/components/CourseCard";
+import CourseCurriculum from "@/components/sections/CourseCurriculum";
+import CourseInstructor from "@/components/sections/CourseInstructor";
+import CourseReviews from "@/components/sections/CourseReviews";
 
 export default function CourseDetailsPage() {
     const params = useParams();
@@ -146,109 +160,163 @@ export default function CourseDetailsPage() {
                                         </svg>
                                     </div>
                                 </div>
-                                <div className="flex flex-col gap-10">
-                                    <div className="space-y-5">
-                                        <h4 className="text-2xl">Description</h4>
-                                        <p>
-                                            It gives you a huge self-satisfaction when you look at your work and say, "I
-                                            made this!". I love that feeling after I'm done working on something. When I
-                                            lean back in my chair, look at the final result with a smile, and have this
-                                            little "spark joy" moment. It's especially satisfying when I know I just
-                                            made
-                                            $5,000.
-                                        </p>
-                                        <p>
-                                            It gives you a huge self-satisfaction when you look at your work and say, "I
-                                            made this!". I love that feeling after I'm done working on something. When I
-                                            lean back in my chair, look at the final result with a smile, and have this
-                                            little "spark joy" moment. It's especially satisfying when I know I just
-                                            made
-                                            $5,000.
-                                        </p>
-                                        <p>
-                                            It gives you a huge self-satisfaction when you look at your work and say, "I
-                                            made this!". I love that feeling after I'm done working on something. When I
-                                            lean back in my chair, look at the final result with a smile, and have this
-                                            little "spark joy" moment. It's especially satisfying when I know I just
-                                            made
-                                            $5,000.
-                                        </p>
-                                        <p>
-                                            It gives you a huge self-satisfaction when you look at your work and say, "I
-                                            made this!". I love that feeling after I'm done working on something. When I
-                                            lean back in my chair, look at the final result with a smile, and have this
-                                            little "spark joy" moment. It's especially satisfying when I know I just
-                                            made
-                                            $5,000.
-                                        </p></div>
 
-                                    <div className="space-y-5">
-                                        <h4 className="text-2xl">Who this course is for:</h4>
-                                        <ul className="space-y-3 text-gray-900">
-                                            <li className="flex items-center gap-2">
-                                                <div className="shrink-0">
-                                                    <ArrowRight classes="text-primary-500"/>
-                                                </div>
-                                                <span className="text-gray-700 text-sm">
-                                                This course is for those who want to launch a Freelance Web Design career.
-                                            </span>
-                                            </li>
-                                            <li className="flex items-center gap-2">
-                                                <div className="shrink-0">
-                                                    <ArrowRight classes="text-primary-500"/>
-                                                </div>
-                                                <span className="text-gray-700 text-sm">
-                                                This course is for those who want to launch a Freelance Web Design career.
-                                            </span>
-                                            </li>
-                                            <li className="flex items-center gap-2">
-                                                <div className="shrink-0">
-                                                    <ArrowRight classes="text-primary-500"/>
-                                                </div>
-                                                <span className="text-gray-700 text-sm">
-                                                This course is for those who want to launch a Freelance Web Design career.
-                                            </span>
-                                            </li>
-                                            <li className="flex items-center gap-2">
-                                                <div className="shrink-0">
-                                                    <ArrowRight classes="text-primary-500"/>
-                                                </div>
-                                                <span className="text-gray-700 text-sm">
-                                                This course is for those who want to launch a Freelance Web Design career.
-                                            </span>
-                                            </li>
-                                            <li className="flex items-center gap-2">
-                                                <div className="shrink-0">
-                                                    <ArrowRight classes="text-primary-500"/>
-                                                </div>
-                                                <span className="text-gray-700 text-sm">
-                                                This course is for those who want to launch a Freelance Web Design career.
-                                            </span>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <Tabs defaultValue="overview" className="w-full space-y-10">
+                                    <TabsList className="w-full grid grid-cols-4 border-b border-gray-100">
+                                        <TabsTrigger value="overview">Overview</TabsTrigger>
+                                        <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
+                                        <TabsTrigger value="instructor">Instructor</TabsTrigger>
+                                        <TabsTrigger value="reviews">Reviews</TabsTrigger>
+                                    </TabsList>
 
-                                    <div className="space-y-5">
-                                        <h4 className="text-2xl">Course requirements</h4>
-                                        <ul className="list-disc text-gray-900 text-base [&_li]:ml-5 space-y-3">
-                                            <li>
-                                                Nunc auctor consequat lorem, in posuere enim hendrerit sed.
-                                            </li>
-                                            <li>
-                                                Duis ornare enim ullamcorper congue consectetur suspendisse interdum
-                                                tristique est sed molestie.
-                                            </li>
-                                            <li>
-                                                Those who are looking to reboot their work life and try a new profession
-                                                that is fun, rewarding and highly in-demand.
-                                            </li>
-                                            <li>
-                                                Nunc auctor consequat lorem, in posuere enim hendrerit sed.
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                    {/* Overview Tab */}
+                                    <TabsContent value="overview">
+                                        <div className="flex flex-col gap-10">
+                                            <div className="space-y-5">
+                                                <h4 className="text-2xl">Description</h4>
+                                                <p>
+                                                    It gives you a huge self-satisfaction when you look at your work and say, "I
+                                                    made this!". I love that feeling after I'm done working on something. When I
+                                                    lean back in my chair, look at the final result with a smile, and have this
+                                                    little "spark joy" moment. It's especially satisfying when I know I just
+                                                    made
+                                                    $5,000.
+                                                </p>
+                                                <p>
+                                                    It gives you a huge self-satisfaction when you look at your work and say, "I
+                                                    made this!". I love that feeling after I'm done working on something. When I
+                                                    lean back in my chair, look at the final result with a smile, and have this
+                                                    little "spark joy" moment. It's especially satisfying when I know I just
+                                                    made
+                                                    $5,000.
+                                                </p>
+                                                <p>
+                                                    It gives you a huge self-satisfaction when you look at your work and say, "I
+                                                    made this!". I love that feeling after I'm done working on something. When I
+                                                    lean back in my chair, look at the final result with a smile, and have this
+                                                    little "spark joy" moment. It's especially satisfying when I know I just
+                                                    made
+                                                    $5,000.
+                                                </p>
+                                                <p>
+                                                    It gives you a huge self-satisfaction when you look at your work and say, "I
+                                                    made this!". I love that feeling after I'm done working on something. When I
+                                                    lean back in my chair, look at the final result with a smile, and have this
+                                                    little "spark joy" moment. It's especially satisfying when I know I just
+                                                    made
+                                                    $5,000.
+                                                </p></div>
 
+                                            <div className="bg-[#E1F7E366] p-10 space-y-5">
+                                                <h4 className="text-2xl">Who this course is for:</h4>
+                                                <div className="grid grid-cols-2 gap-5">
+                                                    <div className="flex gap-2 [&>svg]:shrink-0 [&>svg]:size-6">
+                                                        <CheckCircle />
+                                                        <p>You will learn how to design beautiful websites using Figma, an interface design tool used by designers at Uber, Airbnb and Microsoft.</p>
+                                                    </div>
+                                                    <div className="flex gap-2 [&>svg]:shrink-0 [&>svg]:size-6">
+                                                        <CheckCircle />
+                                                        <p>You will learn secret tips of Freelance Web Designers and how they make great money freelancing online.</p>
+                                                    </div>
+                                                    <div className="flex gap-2 [&>svg]:shrink-0 [&>svg]:size-6">
+                                                        <CheckCircle />
+                                                        <p>Understand how to use both the Jupyter Notebook and create .py files</p>
+                                                    </div>
+                                                    <div className="flex gap-2 [&>svg]:shrink-0 [&>svg]:size-6">
+                                                        <CheckCircle />
+                                                        <p>You will learn how to design beautiful websites using Figma, an interface design tool used by designers at Uber, Airbnb and Microsoft.</p>
+                                                    </div>
+                                                    <div className="flex gap-2 [&>svg]:shrink-0 [&>svg]:size-6">
+                                                        <CheckCircle />
+                                                        <p>Learn to use Python professionally, learning both Python 2 and Python 3!</p>
+                                                    </div>
+                                                    <div className="flex gap-2 [&>svg]:shrink-0 [&>svg]:size-6">
+                                                        <CheckCircle />
+                                                        <p>Get an understanding of how to create GUIs in the Jupyter Notebook system!</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="space-y-5">
+                                                <h4 className="text-2xl">Who this course is for:</h4>
+                                                <ul className="space-y-3 text-gray-900">
+                                                    <li className="flex items-center gap-2">
+                                                        <div className="shrink-0">
+                                                            <ArrowRight classes="text-primary-500"/>
+                                                        </div>
+                                                        <span className="text-gray-700 text-sm">
+                                                This course is for those who want to launch a Freelance Web Design career.
+                                            </span>
+                                                    </li>
+                                                    <li className="flex items-center gap-2">
+                                                        <div className="shrink-0">
+                                                            <ArrowRight classes="text-primary-500"/>
+                                                        </div>
+                                                        <span className="text-gray-700 text-sm">
+                                                This course is for those who want to launch a Freelance Web Design career.
+                                            </span>
+                                                    </li>
+                                                    <li className="flex items-center gap-2">
+                                                        <div className="shrink-0">
+                                                            <ArrowRight classes="text-primary-500"/>
+                                                        </div>
+                                                        <span className="text-gray-700 text-sm">
+                                                This course is for those who want to launch a Freelance Web Design career.
+                                            </span>
+                                                    </li>
+                                                    <li className="flex items-center gap-2">
+                                                        <div className="shrink-0">
+                                                            <ArrowRight classes="text-primary-500"/>
+                                                        </div>
+                                                        <span className="text-gray-700 text-sm">
+                                                This course is for those who want to launch a Freelance Web Design career.
+                                            </span>
+                                                    </li>
+                                                    <li className="flex items-center gap-2">
+                                                        <div className="shrink-0">
+                                                            <ArrowRight classes="text-primary-500"/>
+                                                        </div>
+                                                        <span className="text-gray-700 text-sm">
+                                                This course is for those who want to launch a Freelance Web Design career.
+                                            </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div className="space-y-5">
+                                                <h4 className="text-2xl">Course requirements</h4>
+                                                <ul className="list-disc text-gray-900 text-base [&_li]:ml-5 space-y-3">
+                                                    <li>
+                                                        Nunc auctor consequat lorem, in posuere enim hendrerit sed.
+                                                    </li>
+                                                    <li>
+                                                        Duis ornare enim ullamcorper congue consectetur suspendisse interdum
+                                                        tristique est sed molestie.
+                                                    </li>
+                                                    <li>
+                                                        Those who are looking to reboot their work life and try a new profession
+                                                        that is fun, rewarding and highly in-demand.
+                                                    </li>
+                                                    <li>
+                                                        Nunc auctor consequat lorem, in posuere enim hendrerit sed.
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </TabsContent>
+
+                                    <TabsContent value="curriculum">
+                                        <CourseCurriculum />
+                                    </TabsContent>
+
+                                    <TabsContent value="instructor">
+                                        <CourseInstructor />
+                                    </TabsContent>
+
+                                    <TabsContent value="reviews">
+                                        <CourseReviews rating={course.rating} />
+                                    </TabsContent>
+                                </Tabs>
                             </div>
                         </div>
 
@@ -263,11 +331,63 @@ export default function CourseDetailsPage() {
                                                     {course.originalPrice && `$${course.originalPrice.toFixed(2)}`}
                                                 </div>
                                             </div>
-                                            <div className="text-sm bg-primary-100 text-primary-500 px-3 py-2">50% OFF</div>
+                                            <div className="text-sm bg-primary-100 text-primary-500 font-medium px-3 py-2">
+                                                50% OFF
+                                            </div>
                                         </div>
-                                        <p className="text-error-500 font-medium">2 days left at this price!</p>
+                                        <div className="flex items-center gap-2 text-error-500">
+                                            <Alarm />
+                                            <p className="font-medium text-error-500">2 days left at this price!</p>
+                                        </div>
                                     </div>
                                     <hr/>
+                                    <div className="p-6 flex flex-col items-stretch gap-4">
+                                        <div className="flex justify-between items-center [&>p]:text-gray-600">
+                                            <div className="flex gap-2 items-center [&>p]:text-gray-900">
+                                                <div className="size-6 flex items-center justify-center [&>svg]:text-gray-400"> {/* New wrapper div with centering */}
+                                                    <Clock />
+                                                </div>
+                                                <p>Course Duration</p>
+                                            </div>
+                                            <p>6 Month</p>
+                                        </div>
+                                        <div className="flex justify-between items-center [&>p]:text-gray-600">
+                                            <div className="flex gap-2 items-center [&>p]:text-gray-900">
+                                                <div className="size-6 flex items-center justify-center [&>svg]:text-gray-400"> {/* New wrapper div with centering */}
+                                                    <BarChart />
+                                                </div>
+                                                <p>Course Level</p>
+                                            </div>
+                                            <p>Beginner and Intermediate</p>
+                                        </div>
+                                        <div className="flex justify-between items-center [&>p]:text-gray-600">
+                                            <div className="flex gap-2 items-center [&>p]:text-gray-900">
+                                                <div className="size-6 flex items-center justify-center [&>svg]:text-gray-400"> {/* New wrapper div with centering */}
+                                                    <Users />
+                                                </div>
+                                                <p>Students Enrolled</p>
+                                            </div>
+                                            <p>69,419,618</p>
+                                        </div>
+                                        <div className="flex justify-between items-center [&>p]:text-gray-600">
+                                            <div className="flex gap-2 items-center [&>p]:text-gray-900">
+                                                <div className="size-6 flex items-center justify-center [&>svg]:text-gray-400"> {/* New wrapper div with centering */}
+                                                    <Notebook />
+                                                </div>
+                                                <p>Language</p>
+                                            </div>
+                                            <p>Mandarin</p>
+                                        </div>
+                                        <div className="flex justify-between items-center [&>p]:text-gray-600">
+                                            <div className="flex gap-2 items-center [&>p]:text-gray-900">
+                                                <div className="size-6 flex items-center justify-center [&>svg]:text-gray-400"> {/* New wrapper div with centering */}
+                                                    <Notepad />
+                                                </div>
+                                                <p>Subtittle Language</p>
+                                            </div>
+                                            <p>English</p>
+                                        </div>
+                                    </div>                                    <hr/>
                                     <div className="p-6 flex flex-col items-stretch gap-3">
                                         <Link href="/shopping-cart">
                                             <Button className="w-full">
@@ -295,6 +415,55 @@ export default function CourseDetailsPage() {
                                     <hr/>
                                     <div className="p-6 flex flex-col items-stretch gap-4">
                                         <p className="text-base font-medium text-gray-900">
+                                            This course includes:
+                                        </p>
+                                        <div className="space-y-3">
+                                            <div className="flex gap-3 items-center">
+                                                <div className="size-6 [&>svg]:text-primary-500"> {/* New wrapper div */}
+                                                    <Clock />
+                                                </div>
+                                                <p>Lifetime access</p>
+                                            </div>
+                                            <div className="flex gap-3 items-center">
+                                                <div className="size-6 [&>svg]:text-primary-500"> {/* New wrapper div */}
+                                                    <CurrencyDollarSimple />
+                                                </div>
+                                                <p>30-days money-back guarantee</p>
+                                            </div>
+                                            <div className="flex gap-3 items-center">
+                                                <div className="size-6 [&>svg]:text-primary-500 flex items-center justify-center"> {/* New wrapper div */}
+                                                    <Notebook />
+                                                </div>
+                                                <p>Free exercises file & downloadable resources</p>
+                                            </div>
+                                            <div className="flex gap-3 items-center">
+                                                <div className="size-6 [&>svg]:text-primary-500"> {/* New wrapper div */}
+                                                    <Trophy />
+                                                </div>
+                                                <p>Shareable certificate of completion</p>
+                                            </div>
+                                            <div className="flex gap-3 items-center">
+                                                <div className="size-6 [&>svg]:text-primary-500"> {/* New wrapper div */}
+                                                    <Monitor />
+                                                </div>
+                                                <p>Access on mobile , tablet and TV</p>
+                                            </div>
+                                            <div className="flex gap-3 items-center">
+                                                <div className="size-6 [&>svg]:text-primary-500"> {/* New wrapper div */}
+                                                    <Notepad />
+                                                </div>
+                                                <p>English subtitles</p>
+                                            </div>
+                                            <div className="flex gap-3 items-center">
+                                                <div className="size-6 [&>svg]:text-primary-500"> {/* New wrapper div */}
+                                                    <Stack />
+                                                </div>
+                                                <p>100% online course</p>
+                                            </div>
+                                        </div>                                    </div>
+                                    <hr/>
+                                    <div className="p-6 flex flex-col items-stretch gap-4">
+                                        <p className="text-base font-medium text-gray-900">
                                             Share this course:
                                         </p>
                                         <div className="flex gap-2 flex-1">
@@ -319,6 +488,28 @@ export default function CourseDetailsPage() {
                         </div>
                     </div>
                 </div>
+
+                {/*Related Courses*/}
+                <section className="py-20 shadow-[0_1px_0_0_#E9EAF0_inset]">
+                    <div className="container">
+                        <div className="section-layout">
+                            <div className="flex justify-between items-center">
+                                <h2 className="section-heading">Related Courses</h2>
+                                <Link href="/courses">
+                                    <Button variant="outline">
+                                        View All <ArrowRight/>
+                                    </Button>
+                                </Link>
+                            </div>
+
+                            <div className="grid grid-cols-5 gap-6">
+                                {coursesData.slice(0, 5).map((course, index) => {
+                                    return <CourseCard key={index} course={course} />
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </DefaultLayout>
     );
