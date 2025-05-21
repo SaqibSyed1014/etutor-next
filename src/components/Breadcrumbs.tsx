@@ -29,10 +29,10 @@ export const Breadcrumbs = () => {
                     {segments[0]?.replace('-', ' ') || 'Home'}
                 </h1>
                 <div className="flex items-center justify-center space-x-2 mt-2 text-gray-600 text-sm">
-                    <Link className="hover:text-gray-700" href="/">Home</Link>
+                    <Link className="hover:text-gray-700 capitalize" href="/">Home</Link>
                     {segments.length > 0 && <span>/</span>}
                     {breadcrumbItems.reduce((acc, item, index) => {
-                        if (index !== 0) acc.push(<span key={`sep-${index}`}>/dd</span>);
+                        if (index !== 0) acc.push(<span key={`sep-${index}`}>/</span>);
                         acc.push(item);
                         return acc;
                     }, [] as JSX.Element[])}

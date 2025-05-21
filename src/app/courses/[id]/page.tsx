@@ -405,9 +405,11 @@ export default function CourseDetailsPage() {
                                             <Button variant="secondary" className="flex-1">
                                                 Add to wishlist
                                             </Button>
-                                            <Button variant="secondary" className="flex-1">
-                                                Gift Course
-                                            </Button>
+                                            <Link href={`/courses/${id}/gift-course`} className="block flex-1">
+                                                <Button variant="secondary" className="w-full">
+                                                    Gift Course
+                                                </Button>
+                                            </Link>
                                         </div>
 
                                         <p className="text-gray-500"><b>Note:</b> all course have 30-days money-back guarantee</p>
