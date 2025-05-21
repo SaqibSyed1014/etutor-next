@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandLogo } from "@/assets/icons/common-icons";
 import { Button } from "@/components/ui/button";
-import { SocialMediaLinks } from "@/components/tiny/tiny-collection";
+import { SocialMediaLinks } from "@/components/common/tiny-collection";
 import { ReactNode } from "react";
 
 interface LayoutProps {

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {Breadcrumbs} from "@/components/Breadcrumbs";
-import {Rating} from "@/components/tiny/tiny-collection";
+import {Rating} from "@/components/common/tiny-collection";
 import {XCircle, ArrowRight} from "@/assets/icons/common-icons";
 import {coursesData} from "@/lib/@fake-db/courses";
 import {Course} from "@/lib/@fake-db/courses/type";

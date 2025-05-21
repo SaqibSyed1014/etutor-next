@@ -11,7 +11,7 @@ const BestSellingCourses = () => {
         <h2 className="text-3xl font-bold text-center mb-10">Best selling courses</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {bestSellingCourses.slice(0, 10).map((course) => (
-              <CourseCard key={course.id} course={course} />
+              <CourseCard key={course.id} course={course} showStudentIcon={false} />
           ))}
         </div>
       </div>

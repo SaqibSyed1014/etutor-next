@@ -1,7 +1,7 @@
 'use client';
 
 import { trustedCompanies } from "@/lib/@fake-db/collections";
-import {Stats} from "@/components/tiny/tiny-collection"
+import {Stats} from "@/components/common/tiny-collection"
 
 const TrustedCompanies = ({ title, showStats, BGColor } : { title?: string; showStats?: boolean; BGColor?: string }) => {
   return (

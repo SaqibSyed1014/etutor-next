@@ -3,12 +3,12 @@
 import {useEffect, useRef, useState} from "react";
 import {Card, CardContent, CardFooter} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
-import {Heart} from "@/assets/icons/common-icons";
-import {CategoryBadge, Rating, StudentCount} from "@/components/tiny/tiny-collection";
+import {Heart, Stack, Clock, BarChart} from "@/assets/icons/common-icons";
+import {CategoryBadge, Rating, StudentCount} from "@/components/common/tiny-collection";
 import {Course} from "@/lib/@fake-db/courses/type";
 import Link from 'next/link'
 
-export const CourseCard = ({ course, inListForm }: { course: Course, inListForm?: boolean }) => {
+export const CourseCard = ({ course, inListForm, showStudentIcon = true }: { course: Course, inListForm?: boolean, showStudentIcon?: boolean }) => {
     const popupRef = useRef<HTMLDivElement>(null);
     const [positionLeft, setPositionLeft] = useState(false);
 
@@ -69,13 +69,17 @@ export const CourseCard = ({ course, inListForm }: { course: Course, inListForm?
                         </CardContent>
                         <CardFooter>
                             <div className="flex flex-col md:flex-row justify-between flex-1 text-sm text-gray-700">
-                                <StudentCount showIcon={true} />
+                                <StudentCount showIcon={showStudentIcon} />
                                 <div className="flex items-center gap-1.5">
-                                    {/*<Clock className="h-4 w-4 text-gray-400"/>*/}
+                                    <div className="text-error-500">
+                                        <BarChart />
+                                    </div>
                                     <span>Beginner</span>
                                 </div>
                                 <div className="flex items-center gap-1.5">
-                                    {/*<Clock className="h-4 w-4 text-gray-400"/>*/}
+                                    <div className="text-success-500">
+                                        <Clock/>
+                                    </div>
                                     <span>{course.duration} hour</span>
                                 </div>
                             </div>
@@ -105,7 +109,7 @@ export const CourseCard = ({ course, inListForm }: { course: Course, inListForm?
                         rating={Number.isInteger(course.rating) ? `${course.rating}.0` : course.rating}
                         showCount={false}
                     />
-                    <StudentCount count={course.students} showIcon={true} />
+                    <StudentCount count={course.students} showIcon={showStudentIcon} />
                 </CardFooter>
             </Card>}
 
@@ -138,13 +142,17 @@ export const CourseCard = ({ course, inListForm }: { course: Course, inListForm?
                         </div>
                         <div className="flex items-center gap-3 mb-4">
                             <div className="flex flex-col md:flex-row justify-between flex-1 text-sm text-gray-700">
-                                <StudentCount showIcon={true}/>
+                                <StudentCount showIcon={true} />
                                 <div className="flex items-center gap-1.5">
-                                    {/*<Clock className="h-4 w-4 text-gray-400"/>*/}
+                                    <div className="text-error-500">
+                                        <BarChart />
+                                    </div>
                                     <span>Beginner</span>
                                 </div>
                                 <div className="flex items-center gap-1.5">
-                                    {/*<Clock className="h-4 w-4 text-gray-400"/>*/}
+                                    <div className="text-success-500">
+                                        <Clock/>
+                                    </div>
                                     <span>{course.duration} hour</span>
                                 </div>
                             </div>

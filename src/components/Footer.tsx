@@ -4,7 +4,7 @@ import Link from "next/link";
 import {ArrowRight, BrandLogo} from "@/assets/icons/common-icons";
 import {useState} from "react";
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
-import {SocialMediaLinks} from "@/components/tiny/tiny-collection";
+import {SocialMediaLinks} from "@/components/common/tiny-collection";
 
 const Footer = () => {
   const [selectedLang, selectLang] = useState('eng');

@@ -1,9 +1,13 @@
+'use client';
 
 import { useState } from "react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown, ChevronUp, FileText } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { Clock, Play, FolderNotchOpen, File, PlayCircle } from "@/assets/icons/common-icons"
 import { Button } from "@/components/ui/button";
+import {useParams} from "next/navigation";
+import Link from "next/link";
+import CourseLength from "@/components/common/CourseLength";
 
 interface CurriculumSection {
     id: number;
@@ -20,6 +24,9 @@ interface CurriculumSection {
 }
 
 const CourseCurriculum = () => {
+    const params = useParams();
+    const id = params?.id;
+
     const [openSections, setOpenSections] = useState<number[]>([1]);
 
     const toggleSection = (sectionId: number) => {
@@ -106,20 +113,7 @@ const CourseCurriculum = () => {
         <div className="space-y-5">
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl">Curriculum</h2>
-                <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-1.5">
-                        <FolderNotchOpen />
-                        <p>6 Sections</p>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                        <PlayCircle />
-                        <p>202 lectures</p>
-                    </div>
-                    <div className="flex items-center gap-1.5 [&>svg]:text-warning-500">
-                        <Clock />
-                        <p>19h 37m</p>
-                    </div>
-                </div>
+                <CourseLength />
             </div>
 
             <div className="divide-y-2 divide-gray-100 border border-gray-100">
@@ -162,7 +156,7 @@ const CourseCurriculum = () => {
                                          className="flex justify-between items-center px-5 last:pb-4">
                                         <div className="flex items-center gap-2">
                                             {item.type === 'video' ? (
-                                                <Play className="mr-3 text-gray-500"/>
+                                                <Link href={`/courses/${id}/watch-course`}><Play className="mr-3 text-gray-500"/></Link>
                                             ) : (
                                                 <File className="mr-3 text-gray-500"/>
                                             )}

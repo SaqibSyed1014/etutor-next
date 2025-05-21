@@ -1,7 +1,7 @@
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import {Breadcrumbs} from "@/components/Breadcrumbs";
 import {Button} from "@/components/ui/button";
-import {Stats} from "@/components/tiny/tiny-collection"
+import {Stats} from "@/components/common/tiny-collection"
 import {ArrowRight, CheckCircle, Envelope} from "@/assets/icons/common-icons";
 import Link from "next/link";
 import TestimonialSlider from "@/components/TestimonialSlider";
