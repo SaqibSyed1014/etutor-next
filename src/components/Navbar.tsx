@@ -7,6 +7,8 @@ import Link from 'next/link'
 import {usePathname} from "next/navigation";
 import {useState} from "react";
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper"
+import {useIsStudentPage} from "@/hooks/useStudentPage";
+import {Avatar, AvatarImage} from "@/components/ui/avatar";
 
 
 const Navbar = () => {
@@ -14,6 +16,7 @@ const Navbar = () => {
   const [selectedLang, selectLang] = useState('eng');
   const [selectedCurrency, selectCurrency] = useState('usd');
   const [selectedBrowse, selectBrowse] = useState('');
+  const isStudent = useIsStudentPage();
 
   const languages = [
     {
@@ -63,7 +66,7 @@ const Navbar = () => {
   return (
     <div className="w-full">
       {/* Top navbar */}
-      <div className="top-bar">
+      <nav className="top-bar">
         <div className="flex justify-between items-center">
           <div className="flex gap-2 text-sm text-gray-500 font-medium">
             <Link href="/" className={`${pathname === '/' && 'active'}`}>Home</Link>
@@ -93,7 +96,7 @@ const Navbar = () => {
             />
           </div>
         </div>
-      </div>
+      </nav>
 
       {/* Main navbar */}
       <div className="bg-white py-6 px-8" style={{ boxShadow: '0px -1px 0px 0px #E9EAF0 inset'}}>
@@ -139,20 +142,28 @@ const Navbar = () => {
             <Link href="/shopping-cart" className={`hover:text-primary-500 ${pathname === '/shopping-cart' ? 'text-primary-500' : 'text-gray-900'}`}>
               <Cart />
             </Link>
-            <div className="space-x-3">
-              <Link href="/auth/sign-up">
-                <Button
-                  variant="outline"
-                >
-                  Create Account
-                </Button>
-              </Link>
-              <Link href="/auth/sign-in">
-                <Button>
-                  Sign in
-                </Button>
-              </Link>
-            </div>
+            { isStudent ?
+              <div>
+                <Avatar className="size-12">
+                  <AvatarImage src="/images/people/student-1.jpg"></AvatarImage>
+                </Avatar>
+              </div>
+                :
+                <div className="space-x-3">
+                  <Link href="/auth/sign-up">
+                    <Button
+                        variant="outline"
+                    >
+                      Create Account
+                    </Button>
+                  </Link>
+                  <Link href="/auth/sign-in">
+                    <Button>
+                      Sign in
+                    </Button>
+                  </Link>
+                </div>
+            }
           </div>
         </div>
       </div>
