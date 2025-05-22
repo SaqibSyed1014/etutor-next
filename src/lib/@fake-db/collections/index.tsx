@@ -3,7 +3,7 @@ import {
     LenovoLogo, LexMarkLogo, MicrosoftLogo, NetflixLogo,
     SlackLogo, VerizonLogo, YoutubeLogo
 } from "@/assets/icons/icons";
-import {Company, Perk, JobPosition, FAQ} from "@/lib/@fake-db/collections/type";
+import {Company, Perk, JobPosition, FAQ, CurriculumSection} from "@/lib/@fake-db/collections/type";
 import React from "react";
 
 
@@ -337,5 +337,150 @@ export const faqItems: FAQ[] = [
     },
     // Add more FAQ items for each category as needed
 ];
+
+export const curriculumData: CurriculumSection[] = [
+    {
+        id: 1,
+        title: "Getting Started",
+        lectures: 4,
+        duration: "51m",
+        items: [
+            { id: 101, title: "What's is Webflow?", duration: "07:31", type: "video" },
+            { id: 102, title: "Sign up in Webflow", duration: "07:31", type: "video" },
+            { id: 103, title: "Webflow Terms & Conditions", duration: "", type: "file", size: "5.3 MB" },
+            { id: 104, title: "Teaser of Webflow", duration: "07:31", type: "video" },
+            { id: 105, title: "Practice Project", duration: "", type: "file", size: "5.3 MB" }
+        ]
+    },
+    {
+        id: 2,
+        title: "Secret of Good Design",
+        lectures: 52,
+        duration: "5h 49m",
+        items: [
+            { id: 201, title: "Introduction to Design Principles", duration: "12:45", type: "video" },
+            { id: 202, title: "Color Theory Basics", duration: "15:22", type: "video" },
+            { id: 203, title: "Typography in Web Design", duration: "18:10", type: "video" },
+            { id: 204, title: "Layout and Composition", duration: "20:05", type: "video" }
+        ]
+    },
+    {
+        id: 3,
+        title: "Practice Design Like an Artist",
+        lectures: 43,
+        duration: "53m",
+        items: [
+            { id: 301, title: "Finding Inspiration", duration: "09:18", type: "video" },
+            { id: 302, title: "Sketching for Web Design", duration: "11:45", type: "video" },
+            { id: 303, title: "Design Practice Guide", duration: "", type: "file", size: "3.2 MB" }
+        ]
+    },
+    {
+        id: 4,
+        title: "Web Development (webflow)",
+        lectures: 137,
+        duration: "10h 6m",
+        items: [
+            { id: 401, title: "Introduction to Webflow", duration: "08:22", type: "video" },
+            { id: 402, title: "Setting Up Your First Project", duration: "15:47", type: "video" },
+            { id: 403, title: "Basic Layout Structure", duration: "12:33", type: "video" }
+        ]
+    },
+    {
+        id: 5,
+        title: "Secrets of Making Money Freelancing",
+        lectures: 21,
+        duration: "38m",
+        items: [
+            { id: 501, title: "Freelance Business Basics", duration: "10:15", type: "video" },
+            { id: 502, title: "Finding Your First Clients", duration: "08:42", type: "video" },
+            { id: 503, title: "Pricing Your Services", duration: "12:36", type: "video" }
+        ]
+    },
+    {
+        id: 6,
+        title: "Advanced",
+        lectures: 39,
+        duration: "91m",
+        items: [
+            { id: 601, title: "Advanced Animations", duration: "16:28", type: "video" },
+            { id: 602, title: "Responsive Design Mastery", duration: "18:55", type: "video" },
+            { id: 603, title: "Integration with External Services", duration: "22:10", type: "video" }
+        ]
+    }
+];
+
+export const courseComments = [
+    {
+        id: '1',
+        author: {
+            id: '101',
+            name: 'Ronald Richards',
+            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e',
+        },
+        content: 'Maecenas risus tortor, tincidunt nec purus eu, gravida suscipit tortor.',
+        createdAt: '1 week ago',
+        replies: [
+            {
+                id: '2',
+                author: {
+                    id: '102',
+                    name: 'Kristin Watson',
+                    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2',
+                    isAdmin: true,
+                },
+                content: 'Nulla pellentesque leo vitae lorem hendrerit, sit amet elementum ipsum rutrum. Morbi ultricies volutpat orci quis fringilla. Suspendisse faucibus augue quis dictum egestas.',
+                createdAt: '1 week ago',
+                replies: [],
+            },
+            {
+                id: '3',
+                author: {
+                    id: '103',
+                    name: 'Cody Fisher',
+                    avatar: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0',
+                },
+                content: 'Thank You so much sir, you\'re a great mentor.',
+                createdAt: '1 week ago',
+                replies: [],
+            },
+        ],
+    },
+    {
+        id: '4',
+        author: {
+            id: '104',
+            name: 'Guy Hawkins',
+            avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
+        },
+        content: 'Thank you for your helpful video. May I ask what is the application use to demo the animation at [4:24], is it the runnable mobile application?\n\nAs what I know, Figma Mirror app cannot do that. Please help me\n\nGreat thanks',
+        createdAt: '2 weeks ago',
+        replies: [
+            {
+                id: '5',
+                author: {
+                    id: '105',
+                    name: 'Esther Howard',
+                    avatar: 'https://images.unsplash.com/photo-1521119989659-a83eee488004',
+                },
+                content: 'Quality content',
+                createdAt: '2 weeks ago',
+                replies: [],
+            },
+        ],
+    },
+    {
+        id: '6',
+        author: {
+            id: '106',
+            name: 'Theresa Webb',
+            avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2',
+        },
+        content: 'Now i know that i will spent that 5 minutes of my life with pure pleasure',
+        createdAt: '3 weeks ago',
+        replies: [],
+    },
+];
+
 
 

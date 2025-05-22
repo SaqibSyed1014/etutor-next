@@ -2,28 +2,14 @@
 
 import { useState } from "react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown, ChevronUp } from "lucide-react";
-import { Clock, Play, FolderNotchOpen, File, PlayCircle } from "@/assets/icons/common-icons"
-import { Button } from "@/components/ui/button";
+import { Clock, Checks, Play, File, PlayCircle, ChevronUp, ChevronDown } from "@/assets/icons/common-icons"
 import {useParams} from "next/navigation";
 import Link from "next/link";
 import CourseLength from "@/components/common/CourseLength";
+import {curriculumData} from "@/lib/@fake-db/collections";
+import { Checkbox } from "@/components/ui/checkbox";
 
-interface CurriculumSection {
-    id: number;
-    title: string;
-    lectures: number;
-    duration: string;
-    items: {
-        id: number;
-        title: string;
-        duration: string;
-        type: "video" | "file";
-        size?: string;
-    }[];
-}
-
-const CourseCurriculum = () => {
+const CourseCurriculum = ({ showHeader = true, showFinishedStat, showControlHandles }: { showHeader?: boolean; showFinishedStat?: boolean; showControlHandles?: boolean }) => {
     const params = useParams();
     const id = params?.id;
 
@@ -37,107 +23,42 @@ const CourseCurriculum = () => {
         );
     };
 
-    const curriculumData: CurriculumSection[] = [
-        {
-            id: 1,
-            title: "Getting Started",
-            lectures: 4,
-            duration: "51m",
-            items: [
-                { id: 101, title: "What's is Webflow?", duration: "07:31", type: "video" },
-                { id: 102, title: "Sign up in Webflow", duration: "07:31", type: "video" },
-                { id: 103, title: "Webflow Terms & Conditions", duration: "", type: "file", size: "5.3 MB" },
-                { id: 104, title: "Teaser of Webflow", duration: "07:31", type: "video" },
-                { id: 105, title: "Practice Project", duration: "", type: "file", size: "5.3 MB" }
-            ]
-        },
-        {
-            id: 2,
-            title: "Secret of Good Design",
-            lectures: 52,
-            duration: "5h 49m",
-            items: [
-                { id: 201, title: "Introduction to Design Principles", duration: "12:45", type: "video" },
-                { id: 202, title: "Color Theory Basics", duration: "15:22", type: "video" },
-                { id: 203, title: "Typography in Web Design", duration: "18:10", type: "video" },
-                { id: 204, title: "Layout and Composition", duration: "20:05", type: "video" }
-            ]
-        },
-        {
-            id: 3,
-            title: "Practice Design Like an Artist",
-            lectures: 43,
-            duration: "53m",
-            items: [
-                { id: 301, title: "Finding Inspiration", duration: "09:18", type: "video" },
-                { id: 302, title: "Sketching for Web Design", duration: "11:45", type: "video" },
-                { id: 303, title: "Design Practice Guide", duration: "", type: "file", size: "3.2 MB" }
-            ]
-        },
-        {
-            id: 4,
-            title: "Web Development (webflow)",
-            lectures: 137,
-            duration: "10h 6m",
-            items: [
-                { id: 401, title: "Introduction to Webflow", duration: "08:22", type: "video" },
-                { id: 402, title: "Setting Up Your First Project", duration: "15:47", type: "video" },
-                { id: 403, title: "Basic Layout Structure", duration: "12:33", type: "video" }
-            ]
-        },
-        {
-            id: 5,
-            title: "Secrets of Making Money Freelancing",
-            lectures: 21,
-            duration: "38m",
-            items: [
-                { id: 501, title: "Freelance Business Basics", duration: "10:15", type: "video" },
-                { id: 502, title: "Finding Your First Clients", duration: "08:42", type: "video" },
-                { id: 503, title: "Pricing Your Services", duration: "12:36", type: "video" }
-            ]
-        },
-        {
-            id: 6,
-            title: "Advanced",
-            lectures: 39,
-            duration: "91m",
-            items: [
-                { id: 601, title: "Advanced Animations", duration: "16:28", type: "video" },
-                { id: 602, title: "Responsive Design Mastery", duration: "18:55", type: "video" },
-                { id: 603, title: "Integration with External Services", duration: "22:10", type: "video" }
-            ]
-        }
-    ];
+    const [selectedItems, setSelectedItems] = useState<number[]>([]); // track selected video IDs
+
+    const handleCheckboxChange = (itemId: number, checked: boolean) => {
+        setSelectedItems((prev) =>
+            checked ? [...prev, itemId] : prev.filter((id) => id !== itemId)
+        );
+    };
 
     return (
         <div className="space-y-5">
-            <div className="flex justify-between items-center">
+            {showHeader && <div className="flex justify-between items-center">
                 <h2 className="text-2xl">Curriculum</h2>
-                <CourseLength />
-            </div>
+                <CourseLength/>
+            </div>}
 
             <div className="divide-y-2 divide-gray-100 border border-gray-100">
-                {curriculumData.map(section => (
+                {curriculumData.map((section, index) => (
                     <Collapsible
                         key={section.id}
                         open={openSections.includes(section.id)}
                         onOpenChange={() => toggleSection(section.id)}
-                        className="  overflow-hidden"
+                        className="overflow-hidden"
                     >
                         <CollapsibleTrigger asChild>
-                            <Button
-                                variant="ghost"
-                                className="flex justify-between items-center w-full p-4 hover:!bg-transparent"
+                            <button
+                                className={`flex justify-between items-center w-full p-4 ${openSections.includes(section.id) ? 'bg-gray-50': 'hh'}`}
                             >
-                                <div className="flex items-center">
+                                <div className={`flex items-center gap-2 text-base ${openSections.includes(section.id) ? 'font-medium [&>p]:text-primary-500 [&>svg]:text-primary-500':'font-normal [&>svg]:text-gray-600 [&>p]:text-gray-900'}`}>
                                     {openSections.includes(section.id) ? (
-                                        <ChevronUp size={16} className="mr-2 text-orange-500"/>
+                                        <ChevronUp />
                                     ) : (
-                                        <ChevronDown size={16} className="mr-2 text-orange-500"/>
+                                        <ChevronDown />
                                     )}
-                                    <p className={`${openSections.includes(section.id) ? 'font-medium text-primary-500':'font-normal'} font-medium`}>{section.title}</p>
+                                    <p>{section.title}</p>
                                 </div>
-                                <div className="flex items-center gap-4 text-sm text-gray-500 font-normal">
+                                <div className="flex items-center gap-4 text-sm text-gray-700 font-normal">
                                     <div className="flex items-center gap-1">
                                         <PlayCircle/>
                                         <p>{section.lectures} lectures</p>
@@ -146,28 +67,61 @@ const CourseCurriculum = () => {
                                         <Clock/>
                                         <p>{section.duration}</p>
                                     </div>
+                                    {showFinishedStat && index === 0 && <div className="flex items-center gap-1 [&>svg]:text-warning-500">
+                                        <Checks/>
+                                        <p>25% finish <span className="text-gray-500">(1/4)</span></p>
+                                    </div>}
                                 </div>
-                            </Button>
+                            </button>
                         </CollapsibleTrigger>
                         <CollapsibleContent className="">
-                            <div className="space-y-[14px]">
-                                {section.items.map(item => (
-                                    <div key={item.id}
-                                         className="flex justify-between items-center px-5 last:pb-4">
-                                        <div className="flex items-center gap-2">
-                                            {item.type === 'video' ? (
-                                                <Link href={`/courses/${id}/watch-course`}><Play /></Link>
-                                            ) : (
-                                                <File />
-                                            )}
-                                            <p>{item.title}</p>
+                            <div>
+                                {showControlHandles ?
+                                <div className="py-3">
+                                    {section.items.filter((item) => item.type === 'video').map((item, index) => (
+                                        <div key={item.id}
+                                             className="flex justify-between items-center px-5 hover:bg-primary-100 group py-3 cursor-pointer"
+                                             onClick={() =>
+                                                 handleCheckboxChange(item.id, !selectedItems.includes(item.id))
+                                             }
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                <Checkbox
+                                                    id={`item-${item.id}`}
+                                                    checked={selectedItems.includes(item.id)}
+                                                    onClick={(e) => e.stopPropagation()}
+                                                />
+                                                <p className="group-hover:text-gray-900">{index}. {item.title}</p>
+                                            </div>
+                                            <div className="flex items-center gap-2 text-sm text-gray-500 group-hover:text-gray-900">
+                                                <Play/>
+                                                {item.duration}
+                                            </div>
                                         </div>
-                                        <div className="text-sm text-gray-500">
-                                            {item.type === 'video' ? item.duration : item.size}
+                                    ))}
+                                </div>
+                                :
+                                <div className="space-y-[14px] py-4">
+                                    {section.items.map(item => (
+                                        <div key={item.id}
+                                             className="flex justify-between items-center px-5">
+                                            <div className="flex items-center gap-2">
+                                                {item.type === 'video' ? (
+                                                    <Link href={`/courses/${id}/watch-course`}>
+                                                        <Play/>
+                                                    </Link>
+                                                ) : (
+                                                    <File/>
+                                                )}
+                                                <p>{item.title}</p>
+                                            </div>
+                                            <div className="text-sm text-gray-500">
+                                                {item.type === 'video' ? item.duration : item.size}
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
+                                    ))}
+                                </div>
+                            }</div>
                         </CollapsibleContent>
                     </Collapsible>
                 ))}

@@ -301,8 +301,8 @@ export const Play = () => {
 export const FolderNotchOpen = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M2.5 16.25V5C2.5 4.83424 2.56585 4.67527 2.68306 4.55806C2.80027 4.44085 2.95924 4.375 3.125 4.375H7.29167C7.4269 4.375 7.55848 4.41886 7.66667 4.5L9.83333 6.125C9.94152 6.20614 10.0731 6.25 10.2083 6.25H15.625C15.7908 6.25 15.9497 6.31585 16.0669 6.43306C16.1842 6.55027 16.25 6.70924 16.25 6.875V8.75" stroke="#FF6636" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2.5 16.25L4.84285 10.3929C4.88924 10.2769 4.96932 10.1775 5.07275 10.1075C5.17619 10.0374 5.29823 10 5.42315 10H9.18576C9.30916 10 9.42979 9.96348 9.53245 9.89503L11.0925 8.85497C11.1952 8.78652 11.3158 8.75 11.4392 8.75H17.8829C17.9819 8.75 18.0795 8.77353 18.1677 8.81866C18.2558 8.86379 18.332 8.92922 18.3899 9.00956C18.4478 9.0899 18.4858 9.18284 18.5007 9.28074C18.5156 9.37864 18.5071 9.47869 18.4758 9.57264L16.25 16.25H2.5Z" stroke="#FF6636" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2.5 16.25V5C2.5 4.83424 2.56585 4.67527 2.68306 4.55806C2.80027 4.44085 2.95924 4.375 3.125 4.375H7.29167C7.4269 4.375 7.55848 4.41886 7.66667 4.5L9.83333 6.125C9.94152 6.20614 10.0731 6.25 10.2083 6.25H15.625C15.7908 6.25 15.9497 6.31585 16.0669 6.43306C16.1842 6.55027 16.25 6.70924 16.25 6.875V8.75" stroke="#FF6636" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M2.5 16.25L4.84285 10.3929C4.88924 10.2769 4.96932 10.1775 5.07275 10.1075C5.17619 10.0374 5.29823 10 5.42315 10H9.18576C9.30916 10 9.42979 9.96348 9.53245 9.89503L11.0925 8.85497C11.1952 8.78652 11.3158 8.75 11.4392 8.75H17.8829C17.9819 8.75 18.0795 8.77353 18.1677 8.81866C18.2558 8.86379 18.332 8.92922 18.3899 9.00956C18.4478 9.0899 18.4858 9.18284 18.5007 9.28074C18.5156 9.37864 18.5071 9.47869 18.4758 9.57264L16.25 16.25H2.5Z" stroke="#FF6636" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     )
 }
@@ -310,8 +310,8 @@ export const FolderNotchOpen = () => {
 export const PlayCircle = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" stroke="#564FFD" stroke-width="1.3" stroke-miterlimit="10"/>
-            <path d="M12.5 10L8.75 7.5V12.5L12.5 10Z" stroke="#564FFD" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" stroke="#564FFD" strokeWidth="1.3" stroke-miterlimit="10"/>
+            <path d="M12.5 10L8.75 7.5V12.5L12.5 10Z" stroke="#564FFD" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     )
 }
@@ -319,8 +319,8 @@ export const PlayCircle = () => {
 export const PlayCircleFill = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" fill="#FF6636" stroke="#FF6636" stroke-width="1.5" stroke-miterlimit="10"/>
-            <path d="M12.5 10L8.75 7.5V12.5L12.5 10Z" fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" fill="#FF6636" stroke="#FF6636" strokeWidth="1.5" stroke-miterlimit="10"/>
+            <path d="M12.5 10L8.75 7.5V12.5L12.5 10Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     )
 }
@@ -328,9 +328,9 @@ export const PlayCircleFill = () => {
 export const File = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M12.5 14H3.49998C3.36737 14 3.2402 13.9473 3.14643 13.8535C3.05267 13.7598 3 13.6326 3 13.5V2.5C3 2.3674 3.05267 2.24022 3.14643 2.14645C3.2402 2.05268 3.36737 2 3.49998 2H9.50017L13 5.5V13.5C13 13.6326 12.9473 13.7598 12.8536 13.8535C12.7598 13.9473 12.6326 14 12.5 14Z" fill="white" stroke="#1D2026" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.5 14H3.49998C3.36737 14 3.2402 13.9473 3.14643 13.8535C3.05267 13.7598 3 13.6326 3 13.5V2.5C3 2.3674 3.05267 2.24022 3.14643 2.14645C3.2402 2.05268 3.36737 2 3.49998 2H9.50017L13 5.5V13.5C13 13.6326 12.9473 13.7598 12.8536 13.8535C12.7598 13.9473 12.6326 14 12.5 14Z" fill="white" stroke="#1D2026" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M9.5 2V5.5H13.0005" fill="#1D2026"/>
-            <path d="M9.5 2V5.5H13.0005" stroke="#1D2026" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.5 2V5.5H13.0005" stroke="#1D2026" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     )
 }
@@ -346,10 +346,54 @@ export const Star = ({ classes = 'text-warning-500' } : { classes?: string }) =>
 export const CreditCard = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M28 7H4C3.44772 7 3 7.44772 3 8V24C3 24.5523 3.44772 25 4 25H28C28.5523 25 29 24.5523 29 24V8C29 7.44772 28.5523 7 28 7Z" stroke="#FF6636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M20.999 21H24.999" stroke="#FF6636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14.999 21H16.999" stroke="#FF6636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2.99902 12.1064H28.999" stroke="#FF6636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M28 7H4C3.44772 7 3 7.44772 3 8V24C3 24.5523 3.44772 25 4 25H28C28.5523 25 29 24.5523 29 24V8C29 7.44772 28.5523 7 28 7Z" stroke="#FF6636" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M20.999 21H24.999" stroke="#FF6636" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M14.999 21H16.999" stroke="#FF6636" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M2.99902 12.1064H28.999" stroke="#FF6636" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    )
+}
+
+export const Checks = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M11.5625 6.5625L4.6875 13.4375L1.25 10.0002" stroke="#23BD33" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M18.7498 6.5625L11.8748 13.4375L10.0488 11.6116" stroke="#23BD33" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    )
+}
+
+export const ChevronUp = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+            <path d="M12.8337 6.91699L7.00033 1.08366L1.16699 6.91699" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    )
+}
+
+export const ChevronDown = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+            <path d="M12.8337 1.08301L7.00033 6.91634L1.16699 1.08301" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    )
+}
+
+export const DownloadSimple = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M8.0625 10.3135L12 14.2499L15.9375 10.3135" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 3.75V14.2472" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M20.25 14.25V19.5C20.25 19.6989 20.171 19.8897 20.0303 20.0303C19.8897 20.171 19.6989 20.25 19.5 20.25H4.5C4.30109 20.25 4.11032 20.171 3.96967 20.0303C3.82902 19.8897 3.75 19.6989 3.75 19.5V14.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    )
+}
+
+export const ChatCircle = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M2.66184 10.9962C1.96297 9.81803 1.71822 8.4253 1.97355 7.07949C2.22888 5.73368 2.96672 4.52737 4.04852 3.68708C5.13033 2.84679 6.48168 2.43031 7.84882 2.51587C9.21596 2.60142 10.5048 3.18311 11.4735 4.15171C12.4421 5.12032 13.0238 6.4092 13.1093 7.77634C13.1949 9.14348 12.7784 10.4948 11.9381 11.5766C11.0978 12.6584 9.89152 13.3963 8.54572 13.6516C7.19991 13.907 5.80718 13.6622 4.62905 12.9634L4.62907 12.9633L2.6863 13.5184C2.60592 13.5413 2.52086 13.5424 2.43994 13.5214C2.35902 13.5005 2.28518 13.4582 2.22607 13.3991C2.16696 13.34 2.12473 13.2662 2.10376 13.1852C2.08279 13.1043 2.08384 13.0193 2.10681 12.9389L2.66189 10.9961L2.66184 10.9962Z" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M7.19189 13.7411C7.46841 14.5261 7.91559 15.24 8.5012 15.8314C9.08682 16.4228 9.7963 16.877 10.5785 17.1612C11.3608 17.4454 12.1963 17.5526 13.025 17.4751C13.8537 17.3975 14.6548 17.1371 15.3707 16.7127L15.3707 16.7127L17.3135 17.2677C17.3939 17.2907 17.4789 17.2918 17.5599 17.2708C17.6408 17.2498 17.7146 17.2076 17.7737 17.1485C17.8328 17.0894 17.8751 17.0155 17.896 16.9346C17.917 16.8537 17.9159 16.7686 17.893 16.6883L17.3379 14.7455L17.338 14.7455C17.8311 13.9138 18.1016 12.9689 18.1234 12.0022C18.1451 11.0354 17.9173 10.0794 17.4619 9.22635C17.0066 8.37329 16.3391 7.65197 15.5238 7.132C14.7085 6.61202 13.773 6.31095 12.8074 6.25781" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     )
 }

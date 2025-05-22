@@ -37,3 +37,18 @@ export interface FAQ {
     question: string;
     answer: string | React.ReactNode;
 }
+
+
+export interface CurriculumSection {
+    id: number;
+    title: string;
+    lectures: number;
+    duration: string;
+    items: {
+        id: number;
+        title: string;
+        duration: string;
+        type: "video" | "file";
+        size?: string;
+    }[];
+}
