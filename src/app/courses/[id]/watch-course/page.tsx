@@ -1,35 +1,34 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, ChevronRight, Clock, ChevronLeft } from 'lucide-react';
 import VideoPlayer from '@/components/common/VideoPlayer';
 import { Progress } from '@/components/ui/progress';
 import StackedAvatars from '@/components/common/StackedAvatars';
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import CourseLength from "@/components/common/CourseLength";
 import {
-    ArrowLeft,
-    ArrowRight,
-    CheckCircle,
-    Checks,
-    ChevronUp, DownloadSimple,
-    File,
-    Play,
-    PlayCircle
+    ArrowLeft, DownloadSimple, PaperPlaneRight, PaperPlaneRightSolid, Star,
 } from "@/assets/icons/common-icons";
 import {Button} from "@/components/ui/button";
-import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "@/components/ui/collapsible";
-import Link from "next/link";
-import {curriculumData} from "@/lib/@fake-db/collections";
 import CourseCurriculum from "@/components/sections/CourseCurriculum";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
-import CourseInstructor from "@/components/sections/CourseInstructor";
-import CourseReviews from "@/components/sections/CourseReviews";
-import CommentList from "@/components/common/CommentListing";
 import CommentsSection from "@/components/sections/CommentsSection";
+import {
+    Dialog,
+    DialogTrigger,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogDescription,
+    DialogFooter,
+    DialogClose,
+} from "@/components/ui/dialog"
+import {useRouter} from "next/navigation";
 
 const WatchCourse = () => {
     const [completionPercentage, setCompletionPercentage] = useState(15);
+
+    const router = useRouter();
 
     return (
         <DefaultLayout>
@@ -39,7 +38,9 @@ const WatchCourse = () => {
                     <div className="flex justify-between items-center">
                         <div className="flex items-center gap-4">
                             <div
-                                className="bg-white rounded-full size-[58px] grid place-items-center hover:bg-primary-500 hover:text-white cursor-pointer">
+                                onClick={() => router.back()}
+                                className="bg-white rounded-full size-[58px] grid place-items-center hover:bg-primary-500 hover:text-white cursor-pointer"
+                            >
                                 <ArrowLeft/>
                             </div>
                             <div className="space-y-3">
@@ -50,7 +51,44 @@ const WatchCourse = () => {
                             </div>
                         </div>
                         <div className="flex">
-                            <Button variant="outlineInvert">Write a Review</Button>
+                            <Dialog>
+                                <DialogTrigger asChild>
+                                    <Button variant="outlineInvert">Write a Review</Button>
+                                </DialogTrigger>
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle>Write a Review</DialogTitle>
+                                    </DialogHeader>
+                                    <DialogDescription>
+                                        <div className="flex flex-col items-center gap-3">
+                                            <h4 className="text-xl font-bold">
+                                                4.5 <span className="text-lg font-normal text-gray-500">(Good/Amazing)</span>
+                                            </h4>
+                                            <div className="flex [&_svg]:size-12">
+                                                <Star />
+                                                <Star />
+                                                <Star />
+                                                <Star />
+                                                <Star />
+
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col gap-1 mt-6">
+                                            <label htmlFor="">Feedback</label>
+                                            <textarea rows="4" placeholder="Write down your feedback here..." className="w-full" />
+                                        </div>
+                                    </DialogDescription>
+                                    <DialogFooter>
+                                        <DialogClose asChild>
+                                            <Button variant="gray">Cancel</Button>
+                                        </DialogClose>
+                                        <Button>
+                                            Submit Review
+                                            <PaperPlaneRightSolid />
+                                        </Button>
+                                    </DialogFooter>
+                                </DialogContent>
+                            </Dialog>
 
                             <Button>Next lecture</Button>
                         </div>
