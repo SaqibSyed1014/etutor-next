@@ -75,7 +75,7 @@ const WatchCourse = () => {
                                         </div>
                                         <div className="flex flex-col gap-1 mt-6">
                                             <label htmlFor="">Feedback</label>
-                                            <textarea rows="4" placeholder="Write down your feedback here..." className="w-full" />
+                                            <textarea rows={4} placeholder="Write down your feedback here..." className="w-full" />
                                         </div>
                                     </DialogDescription>
                                     <DialogFooter>
