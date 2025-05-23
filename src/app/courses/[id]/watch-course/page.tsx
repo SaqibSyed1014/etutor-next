@@ -95,9 +95,9 @@ const WatchCourse = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-6 gap-6 px-8">
+                <div className="flex gap-6 px-8">
                     {/* Video Player Column */}
-                    <div className="col-span-3 xl:col-span-4">
+                    <div className="flex-1">
                         <VideoPlayer/>
 
                         {/* Lecture Title and Controls */}
@@ -242,7 +242,7 @@ const WatchCourse = () => {
                     </div>
 
                     {/* Course Content Column */}
-                    <div className="col-span-3 xl:col-span-2">
+                    <div className="w-[500px] 2xl:w-[600px] shrink-0">
                         <div className="">
                             <div className="flex justify-between items-center mb-4">
                                 <h4>Course Contents</h4>
