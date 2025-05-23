@@ -13,15 +13,12 @@ const CourseCurriculum = ({ showHeader = true, showFinishedStat, showControlHand
     const params = useParams();
     const id = params?.id;
 
-    const [openSections, setOpenSections] = useState<number[]>([1]);
+    const [openSectionId, setOpenSectionId] = useState<number | null>(null);
 
-    const toggleSection = (sectionId: number) => {
-        setOpenSections(prev =>
-            prev.includes(sectionId)
-                ? prev.filter(id => id !== sectionId)
-                : [...prev, sectionId]
-        );
+    const toggleSection = (id: number) => {
+        setOpenSectionId(prev => (prev === id ? null : id));
     };
+
 
     const [selectedItems, setSelectedItems] = useState<number[]>([]); // track selected video IDs
 
@@ -42,16 +39,16 @@ const CourseCurriculum = ({ showHeader = true, showFinishedStat, showControlHand
                 {curriculumData.map((section, index) => (
                     <Collapsible
                         key={section.id}
-                        open={openSections.includes(section.id)}
+                        open={openSectionId === section.id}
                         onOpenChange={() => toggleSection(section.id)}
                         className="overflow-hidden"
                     >
                         <CollapsibleTrigger asChild>
                             <button
-                                className={`flex justify-between items-center w-full p-4 ${openSections.includes(section.id) ? 'bg-gray-50': 'hh'}`}
+                                className={`flex justify-between items-center w-full p-4 ${openSectionId === section.id ? 'bg-gray-50': 'hh'}`}
                             >
-                                <div className={`flex items-center gap-2 text-base ${openSections.includes(section.id) ? 'font-medium [&>p]:text-primary-500 [&>svg]:text-primary-500':'font-normal [&>svg]:text-gray-600 [&>p]:text-gray-900'}`}>
-                                    {openSections.includes(section.id) ? (
+                                <div className={`flex items-center gap-2 text-base ${openSectionId === section.id ? 'font-medium [&>p]:text-primary-500 [&>svg]:text-primary-500':'font-normal [&>svg]:text-gray-600 [&>p]:text-gray-900'}`}>
+                                    {openSectionId === section.id ? (
                                         <ChevronUp />
                                     ) : (
                                         <ChevronDown />

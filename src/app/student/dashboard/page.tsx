@@ -83,7 +83,7 @@ const Page = () => {
 
             <div className="flex flex-col gap-6">
                 <div className="flex justify-between items-center">
-                    <h4>Let’s start learning, Kevin {courseProgressData.length}</h4>
+                    <h4>Let’s start learning, Kevin</h4>
                     <div className="flex gap-2">
                         <Button variant="outline" className="size-10" onClick={() => swiper?.slidePrev()}>
                             <ArrowLeft />

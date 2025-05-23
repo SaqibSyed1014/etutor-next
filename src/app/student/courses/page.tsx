@@ -74,7 +74,7 @@ const CourseListingPage = () => {
     return (
         <div className="container mx-auto px-4 py-8">
             <div className="mb-8">
-                <h1 className="text-2xl font-semibold">Courses ({filteredCourses.length})</h1>
+                <h1 className="text-2xl font-semibold">Courses <span className="font-normal">({filteredCourses.length})</span></h1>
 
                 <div className="flex [&_div]:grow gap-6 mt-6">
                     {/* Search */}
