@@ -5,7 +5,7 @@ export interface Instructor {
   role: string;
   avatar: string;
   rating: number;
-  students: r;
+  students: number;
   courses?: number;
 }
 
