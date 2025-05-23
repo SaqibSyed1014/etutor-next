@@ -40,7 +40,7 @@
 
 @layer utilities{
     .top-bar{
-        @apply bg-etutor-darkblue text-white px-8;
+        @apply bg-gray-900 text-white px-8;
     }
     .top-bar a{
         @apply relative hover:text-white p-4;

@@ -82,8 +82,7 @@ const Navbar = () => {
                 onChange={selectCurrency}
                 size="sm"
                 alignment="end"
-                triggerClasses="text-gray-400 flex items-center gap-1.5"
-                contentContentClasses="bg-etutor-darkblue"
+                variant="dark"
             />
             <DropdownMenuWrapper
                 options={languages}
@@ -91,8 +90,7 @@ const Navbar = () => {
                 onChange={selectLang}
                 size="sm"
                 alignment="end"
-                triggerClasses="text-gray-400 flex items-center gap-1.5"
-                contentContentClasses="bg-etutor-darkblue"
+                variant="dark"
             />
           </div>
         </div>

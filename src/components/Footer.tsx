@@ -168,8 +168,9 @@ const Footer = () => {
                   options={languages}
                   selected={selectedLang}
                   onChange={selectLang}
+                  variant="dark"
                   triggerClasses="text-base !text-gray-500 px-[18px] py-3 border border-gray-800 justify-between min-w-[200px]"
-                  contentContentClasses="min-w-[200px] bg-gray-800"
+                  contentContentClasses="min-w-[200px] bg-gray-900 !text-gray-500"
               />
             </div>
         </div>

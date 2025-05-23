@@ -1,5 +1,14 @@
+'use client';
+
 import {Card} from "@/components/ui/card";
-import CourseProgressCard from "@/components/common/CourseProgressCard";
+import {CourseProgressCard} from "@/components/CourseCard";
+import {useState} from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperType } from 'swiper/types';
+import 'swiper/css';
+import {Button} from "@/components/ui/button";
+import {ArrowLeft, ArrowRight} from "@/assets/icons/common-icons";
+import { courseProgressData } from "@/lib/@fake-db/courses";
 
 const Page = () => {
     const stats = [
@@ -50,39 +59,8 @@ const Page = () => {
         },
     ]
 
-    const courseProgressList = [
-        {
-            image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-            courseTitle: "Reiki Level I, II and Master/Teacher Program",
-            currentLecture: "Intorductions",
-            lectureNumber: "1",
-            slug: "reiki-level-i-ii-and-master-teacher-program",
-        },
-        {
-            image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-            courseTitle: "The Complete 2021 Web Development Bootcamp",
-            currentLecture: "What You'll Need to Get Started - Setup",
-            lectureNumber: "167",
-            slug: "the-complete-2021-web-development-bootcamp",
-            progress: 61,
-        },
-        {
-            image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-            courseTitle: "Reiki Level I, II and Master/Teacher Program",
-            currentLecture: "Intorductions",
-            lectureNumber: "1",
-            slug: "reiki-level-i-ii-and-master-teacher-program",
-        },
-        {
-            image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-            courseTitle: "2021 Complete Python Bootcamp From Zero to up up",
-            currentLecture: "Advanced CSS - Selector Priority",
-            lectureNumber: "9",
-            slug: "the-complete-2021-web-development-bootcamp",
-            progress: 12,
-        },
-    ];
 
+    const [swiper, setSwiper] = useState<SwiperType | null>(null)
 
     return (
         <div className="flex flex-col gap-10 mt-10">
@@ -104,11 +82,34 @@ const Page = () => {
             </div>
 
             <div className="flex flex-col gap-6">
-                <h4>Let’s start learning, Kevin</h4>
-                <div className="grid grid-cols-4 gap-6">
-                    {courseProgressList.map((course) => (
-                        <CourseProgressCard key={course.slug} {...course} />
-                    ))}
+                <div className="flex justify-between items-center">
+                    <h4>Let’s start learning, Kevin {courseProgressData.length}</h4>
+                    <div className="flex gap-2">
+                        <Button variant="outline" className="size-10" onClick={() => swiper?.slidePrev()}>
+                            <ArrowLeft />
+                        </Button>
+
+                        <Button variant="outline" className="size-10" onClick={() => swiper?.slideNext()}>
+                            <ArrowRight />
+                        </Button>
+                    </div>
+                </div>
+
+                <div className="w-full">
+                    <Swiper
+                        spaceBetween={24}
+                        slidesPerView={4}
+                        loop={true}
+                        onSwiper={(swiperInstance) => setSwiper(swiperInstance)}
+                    >
+                        {courseProgressData.map((course, index) => {
+                            return (
+                                <SwiperSlide key={index} className="w-full">
+                                    <CourseProgressCard course={course}/>
+                                </SwiperSlide>
+                            )
+                        })}
+                    </Swiper>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { courseCategories } from "@/lib/@fake-db/courseCategories";
-import { Course } from "@/lib/@fake-db/courses/type"
+import { Course, CourseProgress } from "@/lib/@fake-db/courses/type"
 
 export const coursesData: Course[] = [
   {
@@ -389,6 +389,101 @@ export const coursesData: Course[] = [
     ],
     isBestSelling: false
   }
+];
+
+export const courseProgressData :CourseProgress[] = [
+  {
+    ...coursesData[0],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
+  {
+    ...coursesData[1],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress',
+    progress: 61,
+  },
+  {
+    ...coursesData[2],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
+  {
+    ...coursesData[3],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress',
+    progress: 12,
+  },
+  {
+    ...coursesData[4],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
+  {
+    ...coursesData[6],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
+  {
+    ...coursesData[7],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
+  {
+    ...coursesData[9],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
+  {
+    ...coursesData[5],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
+  {
+    ...coursesData[10],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
+  {
+    ...coursesData[11],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
+  {
+    ...coursesData[12],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
+  {
+    ...coursesData[13],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
+  {
+    ...coursesData[14],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
+  {
+    ...coursesData[15],
+    currentLecture: "Intorductions",
+    lectureNumber: 1,
+    status: 'in-progress'
+  },
 ];
 
 export const topCourses = [courseCategories.LEGAL, courseCategories.BUSINESS, courseCategories.FINANCE, courseCategories.IT, courseCategories.PERSONALDEVELOPMENT, courseCategories.OFFICE, courseCategories.MARKETING, courseCategories.PHOTOGRAPHY, courseCategories.LIFESTYLE, courseCategories.DESIGN, courseCategories.HEALTH, courseCategories.MUSIC]

@@ -30,6 +30,13 @@ export interface Course {
     isBestSelling: boolean
 }
 
+export interface CourseProgress extends Course {
+    currentLecture: string;
+    lectureNumber: number;
+    status: 'in-progress' | 'completed' | 'not-started';
+    progress?: number; // e.g., percentage completed
+}
+
 export type SortOption = 'trending' | 'high-rating' | 'lowest-rating';
 
 export interface FilterState {

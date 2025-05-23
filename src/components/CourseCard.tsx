@@ -1,11 +1,11 @@
 "use client";
 
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Card, CardContent, CardFooter} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
 import {Heart, Stack, Clock, BarChart} from "@/assets/icons/common-icons";
 import {CategoryBadge, Rating, StudentCount} from "@/components/common/tiny-collection";
-import {Course} from "@/lib/@fake-db/courses/type";
+import {Course, CourseProgress} from "@/lib/@fake-db/courses/type";
 import Link from 'next/link'
 
 export const CourseCard = ({ course, inListForm, showStudentIcon = true }: { course: Course, inListForm?: boolean, showStudentIcon?: boolean }) => {
@@ -206,3 +206,34 @@ export const CourseCard = ({ course, inListForm, showStudentIcon = true }: { cou
         </div>
     );
 };
+
+
+export const CourseProgressCard = ({ course } : { course: CourseProgress }) => {
+    return (
+        <div className="flex flex-col h-full border border-gray-100 relative hover:shadow-[0_12px_48px_0_#1D20261F] transition-shadow">
+            <div className="aspect-[4/3] w-full overflow-hidden">
+                <img
+                    src={course.image}
+                    alt={course.title}
+                    className="w-full h-full object-cover"
+                />
+            </div>
+            <div className="p-4 space-y-1.5">
+                <p className="text-xs text-gray-600 line-clamp-1">{course.title}</p>
+                <p className="font-medium text-gray-900 text-sm">{course.lectureNumber}. {course.currentLecture}</p>
+            </div>
+            <div className="p-4 mt-auto border-t border-gray-100">
+                <div className="flex justify-between items-center">
+                    <Link
+                        href={`/course/${course.id}/watch-course`}
+                        className="w-full flex-1"
+                    >
+                        <Button variant="outline" className="w-full">Watch Lecture</Button>
+                    </Link>
+                    {course.progress && <span className="text-success-500 font-medium text-sm flex-1 text-end">{course.progress}% Completed</span>}
+                    {course.progress && <div className="bg-primary-500 h-[2px] absolute bottom-0 left-0" style={{ width: `${course.progress}%` }}></div>}
+                </div>
+            </div>
+        </div>
+    )
+}
