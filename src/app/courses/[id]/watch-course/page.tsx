@@ -50,7 +50,7 @@ const WatchCourse = () => {
                                 <CourseLength/>
                             </div>
                         </div>
-                        <div className="flex">
+                        <div className="flex gap-3">
                             <Dialog>
                                 <DialogTrigger asChild>
                                     <Button variant="outlineInvert">Write a Review</Button>
@@ -244,9 +244,11 @@ const WatchCourse = () => {
                     {/* Course Content Column */}
                     <div className="col-span-1">
                         <div className="">
-                            <div className="mb-4">
+                            <div className="flex justify-between items-center mb-4">
                                 <h4>Course Contents</h4>
-                                <div className="text-base text-success-500">{completionPercentage}% Completed</div>
+                                <div className="text-base font-bold text-success-500">
+                                    {completionPercentage}% Completed
+                                </div>
                             </div>
 
                             <Progress value={completionPercentage} className="h-1 mb-6"/>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Clock, Checks, Play, File, PlayCircle, ChevronUp, ChevronDown } from "@/assets/icons/common-icons"
+import {Clock, Checks, Play, File, PlayCircle, ChevronUp, ChevronDown, Pause} from "@/assets/icons/common-icons"
 import {useParams} from "next/navigation";
 import Link from "next/link";
 import CourseLength from "@/components/common/CourseLength";
@@ -74,54 +74,54 @@ const CourseCurriculum = ({ showHeader = true, showFinishedStat, showControlHand
                                 </div>
                             </button>
                         </CollapsibleTrigger>
-                        <CollapsibleContent className="">
+                        <CollapsibleContent>
                             <div>
                                 {showControlHandles ?
-                                <div className="py-3">
-                                    {section.items.filter((item) => item.type === 'video').map((item, index) => (
-                                        <div key={item.id}
-                                             className="flex justify-between items-center px-5 hover:bg-primary-100 group py-3 cursor-pointer"
-                                             onClick={() =>
-                                                 handleCheckboxChange(item.id, !selectedItems.includes(item.id))
-                                             }
-                                        >
-                                            <div className="flex items-center gap-3">
-                                                <Checkbox
-                                                    id={`item-${item.id}`}
-                                                    checked={selectedItems.includes(item.id)}
-                                                    onClick={(e) => e.stopPropagation()}
-                                                />
-                                                <p className="group-hover:text-gray-900">{index}. {item.title}</p>
+                                    <div className="py-3">
+                                        {section.items.filter((item) => item.type === 'video').map((item, index) => (
+                                            <div key={item.id}
+                                                 className="flex justify-between items-center px-5 hover:bg-primary-100 group py-3 cursor-pointer"
+                                                 onClick={() =>
+                                                     handleCheckboxChange(item.id, !selectedItems.includes(item.id))
+                                                 }
+                                            >
+                                                <div className="flex items-center gap-3">
+                                                    <Checkbox
+                                                        id={`item-${item.id}`}
+                                                        checked={selectedItems.includes(item.id)}
+                                                        onClick={(e) => e.stopPropagation()}
+                                                    />
+                                                    <p className="group-hover:text-gray-900">{index}. {item.title}</p>
+                                                </div>
+                                                <div className="flex items-center gap-2 text-sm text-gray-500 group-hover:text-gray-900">
+                                                    {selectedItems.includes(item.id) ? <Pause /> : <Play />}
+                                                    {item.duration}
+                                                </div>
                                             </div>
-                                            <div className="flex items-center gap-2 text-sm text-gray-500 group-hover:text-gray-900">
-                                                <Play/>
-                                                {item.duration}
+                                        ))}
+                                    </div>
+                                    :
+                                    <div className="space-y-[14px] py-4">
+                                        {section.items.map(item => (
+                                            <div key={item.id}
+                                                 className="flex justify-between items-center px-5">
+                                                <div className="flex items-center gap-2">
+                                                    {item.type === 'video' ? (
+                                                        <Link href={`/courses/${id}/watch-course`}>
+                                                            <Play/>
+                                                        </Link>
+                                                    ) : (
+                                                        <File/>
+                                                    )}
+                                                    <p>{item.title}</p>
+                                                </div>
+                                                <div className="text-sm text-gray-500">
+                                                    {item.type === 'video' ? item.duration : item.size}
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))}
-                                </div>
-                                :
-                                <div className="space-y-[14px] py-4">
-                                    {section.items.map(item => (
-                                        <div key={item.id}
-                                             className="flex justify-between items-center px-5">
-                                            <div className="flex items-center gap-2">
-                                                {item.type === 'video' ? (
-                                                    <Link href={`/courses/${id}/watch-course`}>
-                                                        <Play/>
-                                                    </Link>
-                                                ) : (
-                                                    <File/>
-                                                )}
-                                                <p>{item.title}</p>
-                                            </div>
-                                            <div className="text-sm text-gray-500">
-                                                {item.type === 'video' ? item.duration : item.size}
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            }</div>
+                                        ))}
+                                    </div>
+                                }</div>
                         </CollapsibleContent>
                     </Collapsible>
                 ))}

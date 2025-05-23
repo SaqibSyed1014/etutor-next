@@ -103,8 +103,10 @@ const CommentList: React.FC<CommentListProps> = ({
                     <span className="text-sm">REPLY</span>
                 </button>
 
+                {comment.replies?.map((reply, index) => renderComment(reply, true, index === comment.replies.length - 1))}
+
                 {replyingTo === comment.id && (
-                    <div className="mt-3">
+                    <div className="mt-3 relative">
                         <div className="flex gap-2">
                             <div className="relative flex-1">
                                 <input
@@ -117,16 +119,18 @@ const CommentList: React.FC<CommentListProps> = ({
                                     <ChatCircle/>
                                 </div>
                             </div>
-                                <Button
-                                    onClick={() => handleAddReply(comment.id)}
-                                >
-                                    Post Reply
-                                </Button>
+                            <Button
+                                onClick={() => handleAddReply(comment.id)}
+                            >
+                                Post Reply
+                            </Button>
                         </div>
+
+                        <div className="w-8 h-px bg-gray-100 absolute right-full top-1/2 -translate-y-1/2"></div>
+
+                        <div className="h-[50%] bg-white w-10 absolute -left-[40px] bottom-0 z-10"></div>
                     </div>
                 )}
-
-                {comment.replies?.map((reply, index) => renderComment(reply, true, index === comment.replies.length - 1))}
             </div>
         </div>
     );
