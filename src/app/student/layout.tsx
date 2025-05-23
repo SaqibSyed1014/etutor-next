@@ -9,6 +9,7 @@ import {ArrowRight} from "@/assets/icons/common-icons";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import StudentDashboard from "./dashboard/page"
 import StudentCourses from "./courses/page"
+import StudentTeachers from "./teachers/page"
 import { useRouter, usePathname } from "next/navigation"
 
 export default function StudentLayout({
@@ -84,6 +85,9 @@ export default function StudentLayout({
                                 </TabsContent>
                                 <TabsContent value="courses">
                                     <StudentCourses />
+                                </TabsContent>
+                                <TabsContent value="teachers">
+                                    <StudentTeachers />
                                 </TabsContent>
                             </Tabs>
                         </div>

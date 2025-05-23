@@ -428,13 +428,15 @@ export const courseProgressData :CourseProgress[] = [
     ...coursesData[6],
     currentLecture: "Intorductions",
     lectureNumber: 1,
-    status: 'in-progress'
+    status: 'in-progress',
+    progress: 20,
   },
   {
     ...coursesData[7],
     currentLecture: "Intorductions",
     lectureNumber: 1,
-    status: 'in-progress'
+    status: 'in-progress',
+    progress: 95,
   },
   {
     ...coursesData[9],
@@ -446,7 +448,8 @@ export const courseProgressData :CourseProgress[] = [
     ...coursesData[5],
     currentLecture: "Intorductions",
     lectureNumber: 1,
-    status: 'in-progress'
+    status: 'in-progress',
+    progress: 45,
   },
   {
     ...coursesData[10],
@@ -458,7 +461,8 @@ export const courseProgressData :CourseProgress[] = [
     ...coursesData[11],
     currentLecture: "Intorductions",
     lectureNumber: 1,
-    status: 'in-progress'
+    status: 'in-progress',
+    progress: 75,
   },
   {
     ...coursesData[12],
@@ -476,13 +480,15 @@ export const courseProgressData :CourseProgress[] = [
     ...coursesData[14],
     currentLecture: "Intorductions",
     lectureNumber: 1,
-    status: 'in-progress'
+    status: 'in-progress',
+    progress: 90,
   },
   {
     ...coursesData[15],
     currentLecture: "Intorductions",
     lectureNumber: 1,
-    status: 'in-progress'
+    status: 'in-progress',
+    progress: 38,
   },
 ];
 
