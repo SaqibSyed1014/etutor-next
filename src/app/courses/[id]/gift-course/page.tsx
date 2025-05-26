@@ -159,7 +159,7 @@ export default function Page() {
                                             )
                                         })}
                                         <div  className="group cursor-pointer border border-gray-100 px-6 py-4 flex items-center gap-6">
-                                            <CreditCard />
+                                            <div className="text-primary-500"><CreditCard/></div>
                                             <p>New Payment Cards</p>
                                             <div className="opacity-0 group-hover:opacity-100 [&>svg]:size-6 ml-auto"><CheckCircle/></div>
                                         </div>

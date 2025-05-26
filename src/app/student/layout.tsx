@@ -12,6 +12,7 @@ import StudentCourses from "./courses/page"
 import StudentTeachers from "./teachers/page"
 import Chat from "./chat/page"
 import WishList from "./wishlist/page"
+import PurchaseHistory from "./purchase-history/page"
 import Settings from "./settings/page"
 import { useRouter, usePathname } from "next/navigation"
 
@@ -80,7 +81,7 @@ export default function StudentLayout({
                                     <TabsTrigger value="teachers">Teachers</TabsTrigger>
                                     <TabsTrigger value="chat">Message</TabsTrigger>
                                     <TabsTrigger value="wishlist">Wishlist</TabsTrigger>
-                                    <TabsTrigger value="purchaseHistory">Purchase History</TabsTrigger>
+                                    <TabsTrigger value="purchase-history">Purchase History</TabsTrigger>
                                     <TabsTrigger value="settings">Settings</TabsTrigger>
                                 </TabsList>
                                 <TabsContent value="dashboard">
@@ -97,6 +98,9 @@ export default function StudentLayout({
                                 </TabsContent>
                                 <TabsContent value="wishlist">
                                     <WishList />
+                                </TabsContent>
+                                <TabsContent value="purchase-history">
+                                    <PurchaseHistory />
                                 </TabsContent>
                                 <TabsContent value="settings">
                                     <Settings />
