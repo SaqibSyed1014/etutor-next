@@ -10,6 +10,7 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import StudentDashboard from "./dashboard/page"
 import StudentCourses from "./courses/page"
 import StudentTeachers from "./teachers/page"
+import Chat from "./chat/page"
 import WishList from "./wishlist/page"
 import Settings from "./settings/page"
 import { useRouter, usePathname } from "next/navigation"
@@ -77,7 +78,7 @@ export default function StudentLayout({
                                     <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
                                     <TabsTrigger value="courses">Courses</TabsTrigger>
                                     <TabsTrigger value="teachers">Teachers</TabsTrigger>
-                                    <TabsTrigger value="message">Message</TabsTrigger>
+                                    <TabsTrigger value="chat">Message</TabsTrigger>
                                     <TabsTrigger value="wishlist">Wishlist</TabsTrigger>
                                     <TabsTrigger value="purchaseHistory">Purchase History</TabsTrigger>
                                     <TabsTrigger value="settings">Settings</TabsTrigger>
@@ -90,6 +91,9 @@ export default function StudentLayout({
                                 </TabsContent>
                                 <TabsContent value="teachers">
                                     <StudentTeachers />
+                                </TabsContent>
+                                <TabsContent value="chat">
+                                    <Chat />
                                 </TabsContent>
                                 <TabsContent value="wishlist">
                                     <WishList />

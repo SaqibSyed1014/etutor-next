@@ -85,7 +85,7 @@ export default function DropdownMenuWrapper({
 
             <DropdownMenuContent
                 align={alignment ?? "start"}
-                className={`${variantContentClasses[variant]} ${contentContentClasses ?? ""} w-full text-white shadow-none`}
+                className={`${variantContentClasses[variant]} ${contentContentClasses ?? ""} w-full text-white max-h-[400px] overflow-auto shadow-none`}
             >
                 {options.map((item) => (
                     <DropdownMenuItem

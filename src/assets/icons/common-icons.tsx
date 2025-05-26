@@ -123,6 +123,26 @@ export const PaperPlaneRightSolid = () => {
     )
 }
 
+export const DotsThree = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 10.4746C12.8422 10.4746 13.5254 11.1578 13.5254 12C13.5254 12.8422 12.8422 13.5254 12 13.5254C11.1578 13.5254 10.4746 12.8422 10.4746 12C10.4746 11.1578 11.1578 10.4746 12 10.4746Z" fill="#1D2026" stroke="#1D2026" stroke-width="0.8"/>
+            <path d="M19 10.4746C19.8422 10.4746 20.5254 11.1578 20.5254 12C20.5254 12.8422 19.8422 13.5254 19 13.5254C18.1578 13.5254 17.4746 12.8422 17.4746 12C17.4746 11.1578 18.1578 10.4746 19 10.4746Z" fill="#1D2026" stroke="#1D2026" stroke-width="0.8"/>
+            <path d="M5 10.4746C5.84223 10.4746 6.52539 11.1578 6.52539 12C6.52539 12.8422 5.84223 13.5254 5 13.5254C4.15777 13.5254 3.47461 12.8422 3.47461 12C3.47461 11.1578 4.15777 10.4746 5 10.4746Z" fill="#1D2026" stroke="#1D2026" stroke-width="0.8"/>
+        </svg>
+    )
+}
+
+export const PencilLine = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 20.2499H4.5C4.30109 20.2499 4.11032 20.1709 3.96967 20.0302C3.82902 19.8896 3.75 19.6988 3.75 19.4999V15.3105C3.75 15.2121 3.7694 15.1145 3.80709 15.0235C3.84478 14.9325 3.90003 14.8499 3.96967 14.7802L15.2197 3.53022C15.3603 3.38956 15.5511 3.31055 15.75 3.31055C15.9489 3.31055 16.1397 3.38956 16.2803 3.53022L20.4697 7.71956C20.6103 7.86021 20.6893 8.05097 20.6893 8.24989C20.6893 8.4488 20.6103 8.63956 20.4697 8.78022L9 20.2499Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.75 6L18 11.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20.2501 20.2492H9.00013L3.79785 15.0469" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    )
+}
+
 export const Envelope = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
