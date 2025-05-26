@@ -27,9 +27,9 @@ export default function StudentLayout({
         "dashboard",
         "courses",
         "teachers",
-        "message",
+        "chat",
         "wishlist",
-        "purchaseHistory",
+        "purchase-history",
         "settings",
     ]
      const router = useRouter()
@@ -56,7 +56,7 @@ export default function StudentLayout({
                     <div className="bg-primary-100 h-[280px] absolute top-0 w-full"></div>
                     <div className="container relative z-10">
                         <div className="bg-white">
-                            <div className=" p-10 border-b border-primary-100">
+                            <div className="p-10 border-b border-primary-100">
                                 <div className="flex justify-between items-center">
                                     <div className="flex gap-6 items-center">
                                         <Avatar className="size-[110px]">
