@@ -35,7 +35,7 @@ const ComposeMessageDialog = ({ open, onOpenChange, onSendMessage }: ComposeMess
   }, [instructorsData]);
 
   const handleSend = () => {
-    const selectedTeacher = instructorsData.find(item => item.id == selectedTeacherID)
+    const selectedTeacher = instructorsData.find(item => String(item.id) == selectedTeacherID)
     if (selectedTeacher && message.trim()) {
       onSendMessage(selectedTeacher, message);
       setSelectedTeacherID('');
@@ -43,11 +43,11 @@ const ComposeMessageDialog = ({ open, onOpenChange, onSendMessage }: ComposeMess
     }
   };
 
-  const handleCancel = () => {
-    setSelectedTeacherID(null);
-    setMessage('');
-    onOpenChange(false);
-  };
+  // const handleCancel = () => {
+  //   setSelectedTeacherID(null);
+  //   setMessage('');
+  //   onOpenChange(false);
+  // };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
