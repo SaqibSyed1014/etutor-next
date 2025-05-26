@@ -11,6 +11,7 @@ import StudentDashboard from "./dashboard/page"
 import StudentCourses from "./courses/page"
 import StudentTeachers from "./teachers/page"
 import WishList from "./wishlist/page"
+import Settings from "./settings/page"
 import { useRouter, usePathname } from "next/navigation"
 
 export default function StudentLayout({
@@ -92,6 +93,9 @@ export default function StudentLayout({
                                 </TabsContent>
                                 <TabsContent value="wishlist">
                                     <WishList />
+                                </TabsContent>
+                                <TabsContent value="settings">
+                                    <Settings />
                                 </TabsContent>
                             </Tabs>
                         </div>
