@@ -15,6 +15,7 @@ import WishList from "./wishlist/page"
 import PurchaseHistory from "./purchase-history/page"
 import Settings from "./settings/page"
 import { useRouter, usePathname } from "next/navigation"
+import Link from "next/link";
 
 export default function StudentLayout({
                                           children,
@@ -67,10 +68,12 @@ export default function StudentLayout({
                                                 Instructor</p>
                                         </div>
                                     </div>
-                                    <Button variant="outline">
-                                        Become Instructor
-                                        <ArrowRight/>
-                                    </Button>
+                                    <Link href="/become-an-instructor" target="_blank">
+                                        <Button variant="outline">
+                                            Become Instructor
+                                            <ArrowRight/>
+                                        </Button>
+                                    </Link>
                                 </div>
                             </div>
 

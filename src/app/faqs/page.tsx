@@ -15,6 +15,7 @@ import {Breadcrumbs} from "@/components/Breadcrumbs";
 import {ArrowUp} from "@/assets/icons/common-icons";
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
+import {DropdownOption} from "../../../types";
 
 const Page = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>("nulla-tempor-odio");
@@ -47,7 +48,7 @@ const Page = () => {
     const [activeFaq, setActiveFaq] = React.useState<string | undefined>(undefined);
 
     const [selectedOption, setSelectedOption] = useState('students');
-    const dropdownOptions = [
+    const dropdownOptions :DropdownOption[] = [
         {
             value: 'students',
             label: 'Students'

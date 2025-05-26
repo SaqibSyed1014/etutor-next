@@ -14,6 +14,7 @@ import { Label } from '@/components/ui/label';
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import {Instructor, instructorsData} from "@/lib/@fake-db/instructors";
 import {PaperPlaneRightSolid} from "@/assets/icons/common-icons";
+import {DropdownOption} from "../../../../types";
 
 interface ComposeMessageDialogProps {
   open: boolean;
@@ -23,12 +24,12 @@ interface ComposeMessageDialogProps {
 
 const ComposeMessageDialog = ({ open, onOpenChange, onSendMessage }: ComposeMessageDialogProps) => {
   const [selectedTeacherID, setSelectedTeacherID] = useState<string>('');
-  const [teachersList, setTeachers] = useState([]);
+  const [teachersList, setTeachers] = useState<DropdownOption[]>([]);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
     setTeachers(instructorsData.map(item => ({
-      value: item.id,
+      value: String(item.id),
       label: item.name
     })))
   }, [instructorsData]);

@@ -1,5 +1,6 @@
 import { courseCategories } from "@/lib/@fake-db/courseCategories";
 import { Course, CourseProgress } from "@/lib/@fake-db/courses/type"
+import {DropdownOption} from "../../../../types";
 
 export const coursesData: Course[] = [
   {
@@ -501,7 +502,7 @@ export const getSingleCourse = (id: number) => coursesData.find(course => course
 export const getCoursesByCategory = (category: string) =>
   coursesData.filter(course => course.category.title.toLowerCase() === category.toLowerCase());
 
-export const sortOptions: { value: string; label: string }[] = [
+export const sortOptions: DropdownOption[] = [
   {
     value: 'trending',
     label: 'Trending'

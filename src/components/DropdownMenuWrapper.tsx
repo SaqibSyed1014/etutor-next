@@ -8,16 +8,12 @@ import {
     DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import {CaretDown, CaretDownSmall} from "@/assets/icons/common-icons";
+import { DropdownOption } from "../../types";
 
 type Variant = "default" | "dark";
 
-type Option = {
-    label: string;
-    value: string;
-};
-
 interface DropdownMenuWrapperProps {
-    options: Option[];
+    options: DropdownOption[];
     selected: string;
     defaultPlaceholder?: string;
     onChange: (value: string) => void;
