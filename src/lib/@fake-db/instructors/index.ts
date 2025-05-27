@@ -1,3 +1,5 @@
+import { coursesData } from "@/lib/@fake-db/courses"
+import {Course} from "@/lib/@fake-db/courses/type";
 
 export interface Instructor {
   id: number;
@@ -6,7 +8,8 @@ export interface Instructor {
   avatar: string;
   rating: number;
   students: number;
-  courses?: number;
+  courses?: Course[];
+  reviews: number;
 }
 
 export const instructorsData: Instructor[] = [
@@ -17,7 +20,8 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/man-1.png',
     rating: 4.8,
     students: 8100,
-    courses: 12
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 2,
@@ -26,7 +30,8 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/man-2.png',
     rating: 4.6,
     students: 4442,
-    courses: 8
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 3,
@@ -35,7 +40,8 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-1.png',
     rating: 4.8,
     students: 8092,
-    courses: 15
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 4,
@@ -44,7 +50,8 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/man-3.png',
     rating: 4.7,
     students: 300872,
-    courses: 10
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 5,
@@ -52,8 +59,9 @@ export const instructorsData: Instructor[] = [
     role: 'Senior Developer',
     avatar: '/images/people/man-4.png',
     rating: 4.6,
-    students: 101,
-    courses: 5
+    students: 300872,
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 6,
@@ -62,7 +70,8 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/man-6.png',
     rating: 4.2,
     students: 8492,
-    courses: 12
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 7,
@@ -70,8 +79,9 @@ export const instructorsData: Instructor[] = [
     role: 'Lead Developer',
     avatar: '/images/people/girl-2.png',
     rating: 4.4,
-    students: 421,
-    courses: 8
+    students: 300872,
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 8,
@@ -80,7 +90,8 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-4.png',
     rating: 4.4,
     students: 1566,
-    courses: 52
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 9,
@@ -88,8 +99,9 @@ export const instructorsData: Instructor[] = [
     role: 'Engineer',
     avatar: '/images/people/man-5.png',
     rating: 4.1,
-    students: 7001,
-    courses: 5
+    students: 300872,
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 10,
@@ -98,7 +110,8 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-6.png',
     rating: 4.5,
     students: 5020,
-    courses: 90
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 11,
@@ -107,7 +120,8 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-7.png',
     rating: 4.4,
     students: 4890,
-    courses: 75
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 12,
@@ -116,7 +130,8 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/man-5.png',
     rating: 4.2,
     students: 346,
-    courses: 50
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 13,
@@ -125,7 +140,8 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-9.png',
     rating: 3.5,
     students: 4500,
-    courses: 15
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   },
   {
     id: 14,
@@ -134,7 +150,8 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-8.jpg',
     rating: 4.3,
     students: 2090,
-    courses: 5
+    courses: [coursesData[0], coursesData[1]],
+    reviews: 134633
   }
 ];
 

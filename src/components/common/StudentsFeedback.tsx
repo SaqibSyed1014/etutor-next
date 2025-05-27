@@ -4,74 +4,19 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import {Star} from "@/assets/icons/common-icons"
+import {Review} from "@/lib/@fake-db/reviews/type";
 
-interface Review {
-  id: string;
-  name: string;
-  avatar: string;
-  rating: number;
-  comment: string;
-  date: string;
-}
+
 
 interface CourseReviewsProps {
+  reviews: Review[];
   rating: number;
+  showRatingSummary?: boolean;
 }
 
-const CourseReviews = ({ rating }: CourseReviewsProps) => {
+const StudentsFeedback = ({ reviews, rating, showRatingSummary = true }: CourseReviewsProps) => {
   const [selectedRating, setSelectedRating] = useState<string>("all");
   const [visibleReviews, setVisibleReviews] = useState<number>(3);
-
-  const mockReviews: Review[] = [
-    {
-      id: "r1",
-      name: "Guy Hawkins",
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-      rating: 5,
-      comment: "I appreciate the precise short videos (10 mins or less each) because overly long videos tend to make me lose focus. The instructor is very knowledgeable in Web Design and it shows as he shares his knowledge. These were my best 6 months of training. Thanks, Vako.",
-      date: "1 week ago"
-    },
-    {
-      id: "r2",
-      name: "Dianne Russell",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-      rating: 5,
-      comment: "This course is just amazing! has great course content, the best practices, and a lot of real-world knowledge. I love the way of giving examples, the best tips by the instructor which are pretty interesting, fun and knowledgable and I was never getting bored throughout the course. This course meets more than my expectation and, I made the best investment of time to learn and practice what I am passionate about. Thank you so much to our excellent instructor Vako! Highly recommend this course! Take the next step.",
-      date: "51 mins ago"
-    },
-    {
-      id: "r3",
-      name: "Bessie Cooper",
-      avatar: "https://randomuser.me/api/portraits/women/67.jpg",
-      rating: 5,
-      comment: "Webflow course was good, it coves design sectes, and to build responsive web pages, blog, and some more tricks and tips about webflow. I enjoyed the course and it helped me to add web development skills related to webflow in my toolbox. Thank you Vako.",
-      date: "6 hours ago"
-    },
-    {
-      id: "r4",
-      name: "Eleanor Pena",
-      avatar: "https://randomuser.me/api/portraits/women/32.jpg",
-      rating: 5,
-      comment: "I appreciate the precise short videos (10 mins or less each) because overly long videos tend to make me lose focus. The instructor is very knowledgeable in Web Design and it shows as he shares his knowledge. These were my best 6 months of training. Thanks, Vako.",
-      date: "1 days ago"
-    },
-    {
-      id: "r5",
-      name: "Ralph Edwards",
-      avatar: "https://randomuser.me/api/portraits/men/11.jpg",
-      rating: 4,
-      comment: "GREAT Course! Instructor was very descriptive and professional. I learned a TON that is going to apply immediately to real life work. Thanks so much, cant wait for the next one!",
-      date: "2 days ago"
-    },
-    {
-      id: "r6",
-      name: "Arlene McCoy",
-      avatar: "https://randomuser.me/api/portraits/women/12.jpg",
-      rating: 3,
-      comment: "This should be one of the best course I ever made about UX/UI in Udemy. Highly recommend to those who is new to UX/UI and want to become UX/UI freelancer!",
-      date: "1 week ago"
-    }
-  ];
 
   const ratingDistribution = [
     { stars: 5, percentage: 75 },
@@ -82,8 +27,8 @@ const CourseReviews = ({ rating }: CourseReviewsProps) => {
   ];
 
   const filteredReviews = selectedRating === "all"
-    ? mockReviews
-    : mockReviews.filter(review => review.rating === parseInt(selectedRating));
+    ? reviews
+    : reviews.filter(review => review.rating === parseInt(selectedRating));
 
   const displayedReviews = filteredReviews.slice(0, visibleReviews);
 
@@ -102,15 +47,15 @@ const CourseReviews = ({ rating }: CourseReviewsProps) => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {showRatingSummary && <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Rating Summary */}
-        <div className="flex flex-col justify-center items-center text-center border border-gray-100 pr-6">
+        <div className="flex flex-col justify-center items-center text-center border pr-6">
           <div className="text-5xl font-bold mb-6">{rating.toFixed(1)}</div>
           <div className="flex justify-center mb-3">
             {[1, 2, 3, 4, 5].map(star => (
-              <Star
-                key={star}
-              />
+                <Star
+                    key={star}
+                />
             ))}
           </div>
           <p className="font-medium text-gray-900">Course Rating</p>
@@ -141,7 +86,7 @@ const CourseReviews = ({ rating }: CourseReviewsProps) => {
             {selectedRating === "all" ? "< 1% of reviews are 1 star" : ""}
           </div>
         </div>
-      </div>
+      </div>}
 
       {/* Reviews List */}
       <div className="space-y-5 mt-10">
@@ -208,4 +153,4 @@ const CourseReviews = ({ rating }: CourseReviewsProps) => {
   );
 };
 
-export default CourseReviews;
+export default StudentsFeedback;

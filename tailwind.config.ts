@@ -1,5 +1,7 @@
 
 import type { Config } from "tailwindcss";
+const colors = require('tailwindcss/colors')
+
 
 export default {
 	darkMode: ["class"],
@@ -79,6 +81,9 @@ export default {
 					darkblue: '#111827',
 					lightgray: '#F3F4F6',
 				}
+			},
+			borderColor: {
+				DEFAULT: colors.gray[100]
 			},
 			boxShadow: {
 				custom: '0px 0px 32px 0px #091A4412',

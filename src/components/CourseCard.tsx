@@ -8,7 +8,14 @@ import {CategoryBadge, Rating, StudentCount} from "@/components/common/tiny-coll
 import {Course, CourseProgress} from "@/lib/@fake-db/courses/type";
 import Link from 'next/link'
 
-export const CourseCard = ({ course, inListForm, showStudentIcon = true }: { course: Course, inListForm?: boolean, showStudentIcon?: boolean }) => {
+interface CourseCardProps {
+    course: Course;
+    inListForm?: boolean;
+    showStudentIcon: boolean;
+    cardBig?: boolean
+}
+
+export const CourseCard = ({ course, inListForm, showStudentIcon = true, cardBig }: CourseCardProps) => {
     const popupRef = useRef<HTMLDivElement>(null);
     const [positionLeft, setPositionLeft] = useState(false);
 
@@ -98,9 +105,9 @@ export const CourseCard = ({ course, inListForm, showStudentIcon = true }: { cou
                 <CardContent className="p-4">
                     <div className="flex justify-between">
                         <CategoryBadge category={course.category}/>
-                        <span className="font-bold text-etutor-primary">${course.price}</span>
+                        <span className={`font-semibold text-primary-500 ${cardBig && 'text-2xl'}`}>${course.price}</span>
                     </div>
-                    <h3 className="text-sm font-medium line-clamp-2">
+                    <h3 className={`font-medium line-clamp-2 ${cardBig ? 'text-lg mt-2':'text-sm'}`}>
                         {course.title}
                     </h3>
                 </CardContent>

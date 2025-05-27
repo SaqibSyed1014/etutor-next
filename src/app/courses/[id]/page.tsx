@@ -24,7 +24,8 @@ import {
 import {CourseCard} from "@/components/CourseCard";
 import CourseCurriculum from "@/components/sections/CourseCurriculum";
 import CourseInstructor from "@/components/sections/CourseInstructor";
-import CourseReviews from "@/components/sections/CourseReviews";
+import StudentsFeedback from "@/components/common/StudentsFeedback";
+import {courseReviews} from "@/lib/@fake-db/reviews";
 
 export default function CourseDetailsPage() {
     const params = useParams();
@@ -314,7 +315,7 @@ export default function CourseDetailsPage() {
                                     </TabsContent>
 
                                     <TabsContent value="reviews">
-                                        <CourseReviews rating={course.rating} />
+                                        <StudentsFeedback reviews={courseReviews} rating={course.rating} />
                                     </TabsContent>
                                 </Tabs>
                             </div>
