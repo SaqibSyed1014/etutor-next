@@ -11,7 +11,7 @@ import Link from 'next/link'
 interface CourseCardProps {
     course: Course;
     inListForm?: boolean;
-    showStudentIcon: boolean;
+    showStudentIcon?: boolean;
     cardBig?: boolean;
     showDetailPopup?: boolean;
     showCourseOptions?: boolean

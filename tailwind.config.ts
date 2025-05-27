@@ -55,7 +55,8 @@ export default {
 				secondary: {
 					100: '#EBEBFF',
 					500: '#564FFD',
-					700: '#342F98'
+					700: '#342F98',
+					900: '#111033'
 				},
 				success: {
 					100: '#E1F7E3',

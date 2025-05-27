@@ -126,9 +126,9 @@ export const PaperPlaneRightSolid = () => {
 export const DotsThree = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 10.4746C12.8422 10.4746 13.5254 11.1578 13.5254 12C13.5254 12.8422 12.8422 13.5254 12 13.5254C11.1578 13.5254 10.4746 12.8422 10.4746 12C10.4746 11.1578 11.1578 10.4746 12 10.4746Z" fill="#1D2026" stroke="#1D2026" stroke-width="0.8"/>
-            <path d="M19 10.4746C19.8422 10.4746 20.5254 11.1578 20.5254 12C20.5254 12.8422 19.8422 13.5254 19 13.5254C18.1578 13.5254 17.4746 12.8422 17.4746 12C17.4746 11.1578 18.1578 10.4746 19 10.4746Z" fill="#1D2026" stroke="#1D2026" stroke-width="0.8"/>
-            <path d="M5 10.4746C5.84223 10.4746 6.52539 11.1578 6.52539 12C6.52539 12.8422 5.84223 13.5254 5 13.5254C4.15777 13.5254 3.47461 12.8422 3.47461 12C3.47461 11.1578 4.15777 10.4746 5 10.4746Z" fill="#1D2026" stroke="#1D2026" stroke-width="0.8"/>
+            <path d="M12 10.4746C12.8422 10.4746 13.5254 11.1578 13.5254 12C13.5254 12.8422 12.8422 13.5254 12 13.5254C11.1578 13.5254 10.4746 12.8422 10.4746 12C10.4746 11.1578 11.1578 10.4746 12 10.4746Z" fill="#1D2026" stroke="#1D2026" strokeWidth="0.8"/>
+            <path d="M19 10.4746C19.8422 10.4746 20.5254 11.1578 20.5254 12C20.5254 12.8422 19.8422 13.5254 19 13.5254C18.1578 13.5254 17.4746 12.8422 17.4746 12C17.4746 11.1578 18.1578 10.4746 19 10.4746Z" fill="#1D2026" stroke="#1D2026" strokeWidth="0.8"/>
+            <path d="M5 10.4746C5.84223 10.4746 6.52539 11.1578 6.52539 12C6.52539 12.8422 5.84223 13.5254 5 13.5254C4.15777 13.5254 3.47461 12.8422 3.47461 12C3.47461 11.1578 4.15777 10.4746 5 10.4746Z" fill="#1D2026" stroke="#1D2026" strokeWidth="0.8"/>
         </svg>
     )
 }
@@ -136,9 +136,9 @@ export const DotsThree = () => {
 export const PencilLine = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M9 20.2499H4.5C4.30109 20.2499 4.11032 20.1709 3.96967 20.0302C3.82902 19.8896 3.75 19.6988 3.75 19.4999V15.3105C3.75 15.2121 3.7694 15.1145 3.80709 15.0235C3.84478 14.9325 3.90003 14.8499 3.96967 14.7802L15.2197 3.53022C15.3603 3.38956 15.5511 3.31055 15.75 3.31055C15.9489 3.31055 16.1397 3.38956 16.2803 3.53022L20.4697 7.71956C20.6103 7.86021 20.6893 8.05097 20.6893 8.24989C20.6893 8.4488 20.6103 8.63956 20.4697 8.78022L9 20.2499Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12.75 6L18 11.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M20.2501 20.2492H9.00013L3.79785 15.0469" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 20.2499H4.5C4.30109 20.2499 4.11032 20.1709 3.96967 20.0302C3.82902 19.8896 3.75 19.6988 3.75 19.4999V15.3105C3.75 15.2121 3.7694 15.1145 3.80709 15.0235C3.84478 14.9325 3.90003 14.8499 3.96967 14.7802L15.2197 3.53022C15.3603 3.38956 15.5511 3.31055 15.75 3.31055C15.9489 3.31055 16.1397 3.38956 16.2803 3.53022L20.4697 7.71956C20.6103 7.86021 20.6893 8.05097 20.6893 8.24989C20.6893 8.4488 20.6103 8.63956 20.4697 8.78022L9 20.2499Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12.75 6L18 11.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M20.2501 20.2492H9.00013L3.79785 15.0469" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     )
 }
@@ -174,7 +174,7 @@ export const CheckCircle = () => {
 export const XCircle = ({ classes }: { classes?: string }) => {
   return (
       <svg className={classes} xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-          <path d="M12.5 21C17.4706 21 21.5 16.9706 21.5 12C21.5 7.02944 17.4706 3 12.5 3C7.52944 3 3.5 7.02944 3.5 12C3.5 16.9706 7.52944 21 12.5 21Z" stroke="currentColor" strokeWidth="1.5" stroke-miterlimit="10"/>
+          <path d="M12.5 21C17.4706 21 21.5 16.9706 21.5 12C21.5 7.02944 17.4706 3 12.5 3C7.52944 3 3.5 7.02944 3.5 12C3.5 16.9706 7.52944 21 12.5 21Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10"/>
           <path d="M15.5 9L9.5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           <path d="M15.5 15L9.5 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
@@ -217,7 +217,7 @@ export const Alarm = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path d="M10 5.625V10H14.375" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M10 16.875C13.797 16.875 16.875 13.797 16.875 10C16.875 6.20304 13.797 3.125 10 3.125C6.20304 3.125 3.125 6.20304 3.125 10C3.125 13.797 6.20304 16.875 10 16.875Z" stroke="currentColor" strokeWidth="1.3" stroke-miterlimit="10"/>
+            <path d="M10 16.875C13.797 16.875 16.875 13.797 16.875 10C16.875 6.20304 13.797 3.125 10 3.125C6.20304 3.125 3.125 6.20304 3.125 10C3.125 13.797 6.20304 16.875 10 16.875Z" stroke="currentColor" strokeWidth="1.3" strokeMiterlimit="10"/>
             <path d="M15.3032 2.04492L17.9549 4.69657" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M2.04492 4.69657L4.69657 2.04492" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
@@ -227,7 +227,7 @@ export const Alarm = () => {
 export const Clock = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="currentColor" strokeWidth="1.5" stroke-miterlimit="10"/>
+            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10"/>
             <path d="M12 6.75V12H17.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     )
@@ -246,7 +246,7 @@ export const BarChart = () => {
 export const Users = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M8.25 15C10.9424 15 13.125 12.8174 13.125 10.125C13.125 7.43261 10.9424 5.25 8.25 5.25C5.55761 5.25 3.375 7.43261 3.375 10.125C3.375 12.8174 5.55761 15 8.25 15Z" stroke="currentColor" strokeWidth="1.5" stroke-miterlimit="10"/>
+            <path d="M8.25 15C10.9424 15 13.125 12.8174 13.125 10.125C13.125 7.43261 10.9424 5.25 8.25 5.25C5.55761 5.25 3.375 7.43261 3.375 10.125C3.375 12.8174 5.55761 15 8.25 15Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10"/>
             <path d="M14.5698 5.43173C15.2403 5.24281 15.9436 5.19978 16.6321 5.30552C17.3207 5.41126 17.9786 5.66333 18.5615 6.04475C19.1444 6.42616 19.6389 6.92807 20.0115 7.51666C20.3841 8.10525 20.6263 8.76685 20.7217 9.45692C20.8171 10.147 20.7635 10.8495 20.5645 11.5171C20.3655 12.1847 20.0258 12.8019 19.5682 13.3272C19.1107 13.8524 18.5458 14.2735 17.9118 14.5621C17.2777 14.8507 16.5892 15.0001 15.8926 15.0001" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M1.49951 18.5059C2.26089 17.4229 3.27166 16.539 4.4465 15.9288C5.62133 15.3186 6.92574 15.0001 8.24959 15C9.57344 14.9999 10.8779 15.3184 12.0528 15.9285C13.2276 16.5386 14.2385 17.4225 14.9999 18.5054" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M15.8926 15C17.2166 14.999 18.5213 15.3171 19.6962 15.9273C20.8712 16.5375 21.8819 17.4218 22.6426 18.5054" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -348,7 +348,7 @@ export const FolderNotchOpen = () => {
 export const PlayCircle = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" stroke="#564FFD" strokeWidth="1.3" stroke-miterlimit="10"/>
+            <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" stroke="#564FFD" strokeWidth="1.3" strokeMiterlimit="10"/>
             <path d="M12.5 10L8.75 7.5V12.5L12.5 10Z" stroke="#564FFD" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     )
@@ -357,7 +357,7 @@ export const PlayCircle = () => {
 export const PlayCircleFill = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" fill="#FF6636" stroke="#FF6636" strokeWidth="1.5" stroke-miterlimit="10"/>
+            <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" fill="#FF6636" stroke="#FF6636" strokeWidth="1.5" strokeMiterlimit="10"/>
             <path d="M12.5 10L8.75 7.5V12.5L12.5 10Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     )
