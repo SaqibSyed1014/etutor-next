@@ -10,7 +10,7 @@ import {
 import {CaretDown, CaretDownSmall} from "@/assets/icons/common-icons";
 import { DropdownOption } from "../../types";
 
-type Variant = "default" | "dark";
+type Variant = "default" | "dark" | "white";
 
 interface DropdownMenuWrapperProps {
     options: DropdownOption[];
@@ -43,30 +43,34 @@ export default function DropdownMenuWrapper({
 
     // Define variant-based classes
     const variantTriggerClasses = {
-        default: "text-sm text-gray-700 flex items-center gap-1.5 border border-gray-100 justify-between min-w-[200px] px-[18px] py-3",
-        dark: "text-gray-400 flex items-center gap-1.5"
+        default: "text-sm text-gray-700  border border-gray-100",
+        dark: "text-gray-400 flex items-center gap-1.5",
+        white: "text-gray-700 bg-white border-0"
     };
 
     const variantContentClasses = {
         default: "min-w-[200px] bg-white !text-gray-900",
-        dark: "bg-gray-900 !border-gray-800"
+        dark: "bg-gray-900 !border-gray-800",
+        white: "bg-white"
     };
 
     const variantOptionClasses = {
         default: "hover:bg-gray-200",
-        dark: "hover:bg-gray-800"
+        dark: "hover:bg-gray-800",
+        white: "text-gray-700 hover:bg-gray-100"
     };
 
     const variantActiveClasses = {
         default: "bg-gray-200",
-        dark: "bg-gray-300 text-gray-900"
+        dark: "bg-gray-300 text-gray-900",
+        white: "bg-gray-700 text-white"
     };
 
     return (
         <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
             <DropdownMenuTrigger asChild>
                 <div
-                    className={`${variantTriggerClasses[variant]} ${triggerClasses ?? ""} ${
+                    className={`flex items-center gap-1.5 justify-between min-w-[200px] px-[18px] py-3 ${variantTriggerClasses[variant]} ${triggerClasses ?? ""} ${
                         size === "sm" ? "text-sm" : ""
                     } cursor-pointer`}
                 >

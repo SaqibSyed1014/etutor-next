@@ -75,4 +75,8 @@
     .error-message{
         @apply text-red-500 text-xs mt-1;
     }
+
+    .sidebar-link{
+        @apply flex items-center gap-3 font-medium text-sm px-6 py-3 cursor-pointer transition [&_svg]:size-6;
+    }
 }

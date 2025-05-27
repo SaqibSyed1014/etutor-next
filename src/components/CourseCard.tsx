@@ -3,7 +3,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Card, CardContent, CardFooter} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
-import {Heart, Stack, Clock, BarChart} from "@/assets/icons/common-icons";
+import {Heart, Stack, Clock, BarChart, DotsThree} from "@/assets/icons/common-icons";
 import {CategoryBadge, Rating, StudentCount} from "@/components/common/tiny-collection";
 import {Course, CourseProgress} from "@/lib/@fake-db/courses/type";
 import Link from 'next/link'
@@ -12,10 +12,19 @@ interface CourseCardProps {
     course: Course;
     inListForm?: boolean;
     showStudentIcon: boolean;
-    cardBig?: boolean
+    cardBig?: boolean;
+    showDetailPopup?: boolean;
+    showCourseOptions?: boolean
 }
 
-export const CourseCard = ({ course, inListForm, showStudentIcon = true, cardBig }: CourseCardProps) => {
+export const CourseCard = ({
+   course,
+   inListForm,
+   showStudentIcon = true,
+   cardBig,
+   showDetailPopup = true,
+   showCourseOptions = false
+}: CourseCardProps) => {
     const popupRef = useRef<HTMLDivElement>(null);
     const [positionLeft, setPositionLeft] = useState(false);
 
@@ -95,41 +104,52 @@ export const CourseCard = ({ course, inListForm, showStudentIcon = true, cardBig
                 </Card>
                 :
                 <Card className="overflow-hidden h-full group-hover:shadow-[0_2px_6px_0px_#1D20260F]">
-                <div className="aspect-[4/3] w-full overflow-hidden">
-                    <img
-                        src={course.image}
-                        alt={course.title}
-                        className="w-full h-full object-cover"
-                    />
-                </div>
-                <CardContent className="p-4">
-                    <div className="flex justify-between">
-                        <CategoryBadge category={course.category}/>
-                        <span className={`font-semibold text-primary-500 ${cardBig && 'text-2xl'}`}>${course.price}</span>
+                    <div className="aspect-[4/3] w-full overflow-hidden">
+                        <img
+                            src={course.image}
+                            alt={course.title}
+                            className="w-full h-full object-cover"
+                        />
                     </div>
-                    <h3 className={`font-medium line-clamp-2 ${cardBig ? 'text-lg mt-2':'text-sm'}`}>
-                        {course.title}
-                    </h3>
-                </CardContent>
-                <CardFooter className="flex items-center justify-between">
-                    <Rating
-                        rating={Number.isInteger(course.rating) ? `${course.rating}.0` : course.rating}
-                        showCount={false}
-                    />
-                    <StudentCount count={course.students} showIcon={showStudentIcon} />
-                </CardFooter>
-            </Card>}
+                    <CardContent className="p-4">
+                        <div className="flex justify-between">
+                            <CategoryBadge category={course.category}/>
+                            {!showCourseOptions && <span
+                                className={`font-semibold text-primary-500 ${cardBig && 'text-2xl'}`}>${course.price}</span>}
+                        </div>
+                        <h3 className={`font-medium line-clamp-2 ${cardBig ? 'text-lg mt-2':'text-sm'}`}>
+                            {course.title}
+                        </h3>
+                    </CardContent>
+                    <CardFooter className="flex-col items-start p-0">
+                        <div className="flex items-center justify-between w-full p-4">
+                            <Rating
+                                rating={Number.isInteger(course.rating) ? `${course.rating}.0` : course.rating}
+                                showCount={false}
+                            />
+                            <StudentCount count={course.students} showIcon={showStudentIcon}/>
+                        </div>
+                        {showCourseOptions && <div className="flex items-center justify-between w-full p-4 border-t border-gray-100">
+                            <span className="font-semibold text-primary-500 text-lg">${course.price}</span>
+                            <div className="text-gray-600 hover:text-gray-900 cursor-pointer">
+                                <DotsThree/>
+                            </div>
+                        </div>}
+
+                    </CardFooter>
+                </Card>
+            }
 
             {/*Popup*/}
-            <div
+            {showDetailPopup && <div
                 ref={popupRef}
                 className={`w-[433px] invisible group-hover:visible group-hover:opacity-100 transition bg-white pt-6 shadow-lg absolute z-20 top-1/2 -translate-y-1/2 ${
                     positionLeft ? "right-full" : "left-full"
                 }`}
-                style={{ boxShadow: "0px 4px 20px 0px #1D20261F" }}
+                style={{boxShadow: "0px 4px 20px 0px #1D20261F"}}
             >
                 <div className="px-6">
-                    <CategoryBadge category={course.category} />
+                    <CategoryBadge category={course.category}/>
 
                     <h3 className="text-xl font-bold mb-4">{course.title}</h3>
 
@@ -149,10 +169,10 @@ export const CourseCard = ({ course, inListForm, showStudentIcon = true, cardBig
                         </div>
                         <div className="flex items-center gap-3 mb-4">
                             <div className="flex flex-col md:flex-row justify-between flex-1 text-sm text-gray-700">
-                                <StudentCount showIcon={true} />
+                                <StudentCount showIcon={true}/>
                                 <div className="flex items-center gap-1.5">
                                     <div className="text-error-500">
-                                        <BarChart />
+                                        <BarChart/>
                                     </div>
                                     <span>Beginner</span>
                                 </div>
@@ -172,13 +192,15 @@ export const CourseCard = ({ course, inListForm, showStudentIcon = true, cardBig
                     <div className="text-sm text-gray-500 line-through">
                         {course.originalPrice && `$${course.originalPrice.toFixed(2)}`}
                     </div>
-                    <div className="text-xs bg-etutor-primary-light text-etutor-primary px-2 py-1 rounded ml-1.5">50% OFF</div>
+                    <div className="text-xs bg-etutor-primary-light text-etutor-primary px-2 py-1 rounded ml-1.5">50%
+                        OFF
+                    </div>
                     <Button
                         variant="outline"
                         size="icon"
                         className="ml-auto h-8 w-8 group grid place-items-center text-primary-500 hover:text-white transition"
                     >
-                        <Heart />
+                        <Heart/>
                     </Button>
                 </div>
 
@@ -209,7 +231,7 @@ export const CourseCard = ({ course, inListForm, showStudentIcon = true, cardBig
                         </Button>
                     </Link>
                 </div>
-            </div>
+            </div>}
         </div>
     );
 };

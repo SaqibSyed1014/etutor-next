@@ -12,11 +12,11 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
-                                                 placeholder = "What do you want to learn...",
-                                                 value,
-                                                 onChange,
-                                                 className = "",
-                                             }) => {
+     placeholder = "What do you want to learn...",
+     value,
+     onChange,
+     className = "",
+ }) => {
     return (
         <div className={`relative hidden lg:block`}>
       <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black">
