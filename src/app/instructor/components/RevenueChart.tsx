@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { LineChart, AreaChart, ComposedChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip, Area } from 'recharts';
+import { AreaChart, XAxis, YAxis, ResponsiveContainer, Tooltip, Area } from 'recharts';
 
 const RevenueChart = () => {
   const [timeframe, setTimeframe] = useState('today');

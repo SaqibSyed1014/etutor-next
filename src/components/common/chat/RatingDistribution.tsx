@@ -38,7 +38,7 @@ const RatingDistribution = ({ showStars, showBelowLine = false, isGrayProgressBa
             ))}
 
             <div className="text-xs text-gray-500 mt-1">
-                {showBelowLine === "all" ? "< 1% of reviews are 1 star" : ""}
+                {showBelowLine && "all" ? "< 1% of reviews are 1 star" : ""}
             </div>
         </div>
     );

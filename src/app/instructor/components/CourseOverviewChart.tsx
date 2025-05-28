@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import {LineChart, Line, XAxis, YAxis, ResponsiveContainer, AreaChart, Tooltip, Area} from 'recharts';
+import {XAxis, YAxis, ResponsiveContainer, AreaChart, Tooltip, Area} from 'recharts';
 
 const CourseOverviewChart = () => {
   const [timeframe, setTimeframe] = useState('week');

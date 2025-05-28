@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import { Star } from 'lucide-react';
 import RatingSummary from "@/components/common/RatingSummary";
 import RatingDistribution from "@/components/common/chat/RatingDistribution";
 
