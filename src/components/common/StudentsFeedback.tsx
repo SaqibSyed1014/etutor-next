@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import {Star} from "@/assets/icons/common-icons"
 import {Review} from "@/lib/@fake-db/reviews/type";
+import RatingSummary from "@/components/common/RatingSummary";
+import RatingDistribution from "@/components/common/chat/RatingDistribution";
 
 
 
@@ -18,13 +20,7 @@ const StudentsFeedback = ({ reviews, rating, showRatingSummary = true }: CourseR
   const [selectedRating, setSelectedRating] = useState<string>("all");
   const [visibleReviews, setVisibleReviews] = useState<number>(3);
 
-  const ratingDistribution = [
-    { stars: 5, percentage: 75 },
-    { stars: 4, percentage: 21 },
-    { stars: 3, percentage: 3 },
-    { stars: 2, percentage: 1 },
-    { stars: 1, percentage: 0 }
-  ];
+
 
   const filteredReviews = selectedRating === "all"
     ? reviews
@@ -49,42 +45,16 @@ const StudentsFeedback = ({ reviews, rating, showRatingSummary = true }: CourseR
     <div>
       {showRatingSummary && <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Rating Summary */}
-        <div className="flex flex-col justify-center items-center text-center border pr-6">
-          <div className="text-5xl font-bold mb-6">{rating.toFixed(1)}</div>
-          <div className="flex justify-center mb-3">
-            {[1, 2, 3, 4, 5].map(star => (
-                <Star
-                    key={star}
-                />
-            ))}
-          </div>
-          <p className="font-medium text-gray-900">Course Rating</p>
-        </div>
+        <RatingSummary
+          rating={rating}
+          text="Course Rating"
+        />
 
         {/* Rating Distribution */}
         <div className="md:col-span-2">
-          {ratingDistribution.map(item => (
-            <div key={item.stars} className="flex items-center mb-2.5">
-              <div className="flex items-center w-24 text-gray-600">
-                <span>{item.stars} Star Rating</span>
-              </div>
-
-              <div className="flex-grow mx-3">
-                <div className="h-2 bg-warning-100">
-                  <div
-                    className="h-2 bg-warning-500"
-                    style={{ width: `${item.percentage}%` }}
-                  ></div>
-                </div>
-              </div>
-
-              <div className="w-12 text-right font-medium text-gray-900">{item.percentage}%</div>
-            </div>
-          ))}
-
-          <div className="text-xs text-gray-500 mt-1">
-            {selectedRating === "all" ? "< 1% of reviews are 1 star" : ""}
-          </div>
+          <RatingDistribution
+              showStars={true}
+          />
         </div>
       </div>}
 

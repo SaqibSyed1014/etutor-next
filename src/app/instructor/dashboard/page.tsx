@@ -76,7 +76,7 @@ const Dashboard = () => {
                 </div>
 
                 {/* Revenue Chart */}
-                <div className="grow h-full">
+                <div className="grow">
                     <RevenueChart />
                 </div>
 

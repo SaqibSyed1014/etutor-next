@@ -3,8 +3,10 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import { Star } from 'lucide-react';
+import RatingSummary from "@/components/common/RatingSummary";
+import RatingDistribution from "@/components/common/chat/RatingDistribution";
 
 const CourseRatingCard = () => {
   const [timeframe, setTimeframe] = useState('week');
@@ -28,9 +30,9 @@ const CourseRatingCard = () => {
   ];
 
   return (
-    <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-lg font-semibold">Overall Course Rating</CardTitle>
+    <Card className="dashboard-card">
+      <CardHeader className="dashboard-card-header">
+        <CardTitle>Overall Course Rating</CardTitle>
         {/*<Select value={timeframe} onValueChange={setTimeframe}>*/}
         {/*  <SelectTrigger className="w-32">*/}
         {/*    <SelectValue />*/}
@@ -43,70 +45,35 @@ const CourseRatingCard = () => {
         {/*</Select>*/}
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="flex">
           {/* Rating Score */}
-          <div className="bg-orange-50 rounded-lg p-6 text-center">
-            <div className="text-4xl font-bold text-gray-800 mb-2">4.6</div>
-            <div className="flex justify-center mb-2">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <Star
-                  key={star}
-                  className="w-4 h-4 fill-orange-400 text-orange-400"
-                />
-              ))}
-            </div>
-            <div className="text-sm text-gray-600">Overall Rating</div>
-          </div>
+          <RatingSummary
+            rating={4.6}
+            text="Overall Rating"
+            className="bg-warning-100 border-0 size-[180px] shrink-0"
+          />
 
           {/* Rating Breakdown */}
-          <div className="space-y-3">
-            {ratingBreakdown.map((rating) => (
-              <div key={rating.stars} className="flex items-center gap-3">
-                <div className="flex items-center gap-1 w-16">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`w-3 h-3 ${
-                        i < rating.stars 
-                          ? 'fill-orange-400 text-orange-400' 
-                          : 'text-gray-300'
-                      }`}
-                    />
-                  ))}
-                </div>
-                <div className="flex-1">
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div
-                      className={`${rating.color} h-2 rounded-full`}
-                      style={{ width: `${rating.percentage}%` }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="text-sm text-gray-600 w-12 text-right">
-                  {rating.percentage}%
-                </div>
-              </div>
-            ))}
+          <div className="flex-1">
+            <div className="h-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={ratingData}>
+                  <XAxis hide dataKey="name" axisLine={false} tickLine={false} />
+                  <YAxis hide domain={[4, 5]} />
+                  <Area type="monotone" dataKey="value" strokeWidth={3} stroke="#FD8E1F" fill="#FFF2E5" />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </div>
 
         {/* Rating Trend Chart */}
         <div className="mt-6">
-          <div className="h-32">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={ratingData}>
-                <XAxis dataKey="name" axisLine={false} tickLine={false} />
-                <YAxis hide domain={[4, 5]} />
-                <Line
-                  type="monotone"
-                  dataKey="value"
-                  stroke="#fb923c"
-                  strokeWidth={2}
-                  dot={{ fill: '#fb923c', strokeWidth: 2, r: 4 }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
+          <RatingDistribution
+              showStars={true}
+              showBelowLine={false}
+              isGrayProgressBar={true}
+            />
         </div>
       </CardContent>
     </Card>

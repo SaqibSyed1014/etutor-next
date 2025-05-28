@@ -3,17 +3,19 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { LineChart, ComposedChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip, Area } from 'recharts';
+import { LineChart, AreaChart, ComposedChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip, Area } from 'recharts';
 
 const RevenueChart = () => {
   const [timeframe, setTimeframe] = useState('today');
 
   const dataToday = [
-    { name: 'Aug 07', value: 400 },
-    { name: 'Aug 08', value: 600 },
-    { name: 'Aug 09', value: 500 },
-    { name: 'Aug 10', value: 700 },
-    { name: 'Aug 11', value: 650 },
+    { name: 'Aug 07', value: 100 },
+    { name: 'Aug 08', value: 200 },
+    { name: 'Aug 09', value: 250 },
+    { name: 'Aug 10', value: 80 },
+    { name: 'Aug 11', value: 70 },
+    { name: 'Aug 12', value: 165 },
+    { name: 'Aug 13', value: 300 },
   ];
 
   const dataWeek = [
@@ -52,7 +54,7 @@ const RevenueChart = () => {
   };
 
   return (
-    <Card className="dashboard-card h-full">
+    <Card className="dashboard-card h-full flex flex-col">
       <CardHeader className="dashboard-card-header">
         <CardTitle>Revenue</CardTitle>
         {/*<Select value={timeframe} onValueChange={setTimeframe}>*/}
@@ -66,50 +68,51 @@ const RevenueChart = () => {
         {/*  </SelectContent>*/}
         {/*</Select>*/}
       </CardHeader>
-      <CardContent className="h-full">
-        <div className="h-52 w-full">
-          <div className="h-52 w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={getCurrentData()} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#6366f1" stopOpacity={0.2} />
-                    <stop offset="100%" stopColor="#6366f1" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <XAxis
-                    dataKey="name"
-                    axisLine={false}
-                    tickLine={false}
-                    tick={{ fill: '#999', fontSize: 12 }}
-                />
-                <YAxis
-                    scale="log"
-                    domain={[1, 'auto']}
-                    axisLine={false}
-                    tickLine={false}
-                    tick={{ fill: '#999', fontSize: 12 }}
-                    type="number"
-                />
-                <Tooltip
-                    contentStyle={{ backgroundColor: '#111827', border: 'none', borderRadius: '6px' }}
-                    labelStyle={{ color: '#fff' }}
-                    itemStyle={{ color: '#fff' }}
-                    formatter={(value: number) => value.toLocaleString()}
-                />
-                <Line
-                    type="monotone"
-                    dataKey="value"
-                    stroke="#6366f1"
-                    strokeWidth={2}
-                    dot={{ r: 4, stroke: '#fff', strokeWidth: 2, fill: '#6366f1' }}
-                    activeDot={{ r: 6, stroke: '#fff', strokeWidth: 2, fill: '#6366f1' }}
-                    fill="url(#gradient)"
-                    fillOpacity={1}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
+      <CardContent className="flex-1 flex items-end">
+        <div className="h-[330px] w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={getCurrentData()} margin={{ top: 10, right: 0, left: -10, bottom: 0 }}>
+              <defs>
+                <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#6366f1" stopOpacity={0.2} />
+                  <stop offset="100%" stopColor="#6366f1" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <XAxis
+                  dataKey="name"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: '#999', fontSize: 12 }}
+              />
+              <YAxis
+                  scale="log"
+                  domain={[1, 'auto']}
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: '#999', fontSize: 12 }}
+                  tickMargin={15}
+                  type="number"
+              />
+              <Tooltip
+                  contentStyle={{ backgroundColor: '#1D2026', border: 'none', borderRadius: '0' }}
+                  cursor={{ strokeDasharray: '8 4', stroke: '#564FFD' }}
+                  labelStyle={{ color: '#fff' }}
+                  itemStyle={{ color: '#8C94A3' }}
+                  formatter={(value: number) => value.toLocaleString()}
+              />
+              {/*<Line*/}
+              {/*    type="monotone"*/}
+              {/*    dataKey="value"*/}
+              {/*    stroke="#564FFD"*/}
+              {/*    strokeWidth={2}*/}
+              {/*    dot={false}*/}
+              {/*    activeDot={{ r: 6, stroke: '#fff', strokeWidth: 2, fill: '#564FFD' }}*/}
+              {/*    fill="url(#gradient)"*/}
+              {/*    fillOpacity={1}*/}
+              {/*/>*/}
+              <Area type="monotone" dataKey="value" strokeWidth={3} stroke="#564FFD" fill="url(#gradient)" />
+            </AreaChart>
+          </ResponsiveContainer>
         </div>
       </CardContent>
     </Card>
