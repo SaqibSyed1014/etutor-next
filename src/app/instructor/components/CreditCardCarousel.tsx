@@ -121,7 +121,7 @@ const CreditCardCarousel = () => {
         </div>
           <div className="flex items-center gap-3 text-gray-700 [&_svg]:cursor-pointer">
               <div className={activeIndex === 0 ? 'pointer-events-none text-gray-200' : ''} onClick={() => swiper?.slidePrev()}><ArrowLeft/></div>
-              <div className={activeIndex === swiper?.slides.length - 1 ? 'pointer-events-none text-gray-200' : ''} onClick={() => swiper?.slideNext()}><ArrowRight/></div>
+              <div className={activeIndex === (swiper?.slides?.length ?? 0) - 1 ? 'pointer-events-none text-gray-200' : ''} onClick={() => swiper?.slideNext()}><ArrowRight/></div>
           </div>
       </div>
 

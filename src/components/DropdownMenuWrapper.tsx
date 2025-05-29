@@ -46,7 +46,8 @@ export default function DropdownMenuWrapper({
     const variantTriggerClasses = {
         default: "text-sm text-gray-700 border border-gray-100",
         dark: "text-gray-400 flex items-center gap-1.5",
-        white: "text-gray-700 bg-white border-0"
+        white: "text-gray-700 bg-white border-0",
+        primary: ""
     };
 
     const variantContentClasses = {
@@ -66,7 +67,8 @@ export default function DropdownMenuWrapper({
     const variantActiveClasses = {
         default: "bg-gray-200",
         dark: "bg-gray-300 text-gray-900",
-        white: "bg-gray-700 text-white"
+        white: "bg-gray-700 text-white",
+        primary: ""
     };
 
     return (
