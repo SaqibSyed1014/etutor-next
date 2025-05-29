@@ -7,6 +7,9 @@ import {Heart, Stack, Clock, BarChart, DotsThree} from "@/assets/icons/common-ic
 import {CategoryBadge, Rating, StudentCount} from "@/components/common/tiny-collection";
 import {Course, CourseProgress} from "@/lib/@fake-db/courses/type";
 import Link from 'next/link'
+import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
+import {DropdownOption} from "../../types";
+import {useRouter} from "next/navigation";
 
 interface CourseCardProps {
     course: Course;
@@ -27,6 +30,7 @@ export const CourseCard = ({
 }: CourseCardProps) => {
     const popupRef = useRef<HTMLDivElement>(null);
     const [positionLeft, setPositionLeft] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         const checkPosition = () => {
@@ -44,8 +48,28 @@ export const CourseCard = ({
         return () => window.removeEventListener("resize", checkPosition);
     }, []);
 
+    const [selectedOption, setSelectedOption] = useState<string>('');
+    const courseOptions :DropdownOption[] = [
+        {
+            label: 'View Details',
+            value: 'view'
+        },
+        {
+            label: 'Edit Course',
+            value: 'edit'
+        },
+        {
+            label: 'Delete Course',
+            value: 'delete'
+        }
+    ]
+
+    useEffect(() => {
+        if (selectedOption === 'view') router.push(`/instructor/my-courses/${course.id}`)
+    }, [selectedOption]);
+
     return (
-        <div className="relative group text-primary-100">
+        <div className={`relative group text-primary-100 ${showCourseOptions && 'bg-white'}`}>
             {inListForm ?
                 <Card className="overflow-hidden flex flex-col md:flex-row border-0 hover:shadow-[0_2px_6px_0px_#1D20260F] transition">
                     <div className="w-full md:w-[220px] md:h-[195px] shrink-0">
@@ -131,9 +155,18 @@ export const CourseCard = ({
                         </div>
                         {showCourseOptions && <div className="flex items-center justify-between w-full p-4 border-t border-gray-100">
                             <span className="font-semibold text-primary-500 text-lg">${course.price}</span>
-                            <div className="text-gray-600 hover:text-gray-900 cursor-pointer">
-                                <DotsThree/>
-                            </div>
+                            <DropdownMenuWrapper
+                                options={courseOptions}
+                                selected={selectedOption}
+                                onChange={setSelectedOption}
+                                variant="primary"
+                                contentContentClasses="!w-[200px]"
+                                customTrigger={
+                                    <div className="text-gray-600 hover:text-gray-900 cursor-pointer">
+                                        <DotsThree/>
+                                    </div>
+                                }>
+                            </DropdownMenuWrapper>
                         </div>}
 
                     </CardFooter>

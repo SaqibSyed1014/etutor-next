@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AreaChart, XAxis, YAxis, ResponsiveContainer, Tooltip, Area } from 'recharts';
 
-const RevenueChart = () => {
+const RevenueChart = ({ chartColor = '#6366f1' }: { chartColor?: string }) => {
   const [timeframe, setTimeframe] = useState('today');
 
   const dataToday = [
@@ -74,8 +74,8 @@ const RevenueChart = () => {
             <AreaChart data={getCurrentData()} margin={{ top: 10, right: 0, left: -10, bottom: 0 }}>
               <defs>
                 <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#6366f1" stopOpacity={0.2} />
-                  <stop offset="100%" stopColor="#6366f1" stopOpacity={0} />
+                  <stop offset="0%" stopColor={chartColor} stopOpacity={0.2} />
+                  <stop offset="100%" stopColor={chartColor} stopOpacity={0} />
                 </linearGradient>
               </defs>
               <XAxis
@@ -95,7 +95,7 @@ const RevenueChart = () => {
               />
               <Tooltip
                   contentStyle={{ backgroundColor: '#1D2026', border: 'none', borderRadius: '0' }}
-                  cursor={{ strokeDasharray: '8 4', stroke: '#564FFD' }}
+                  cursor={{ strokeDasharray: '8 4', stroke: chartColor }}
                   labelStyle={{ color: '#fff' }}
                   itemStyle={{ color: '#8C94A3' }}
                   formatter={(value: number) => value.toLocaleString()}
@@ -110,7 +110,7 @@ const RevenueChart = () => {
               {/*    fill="url(#gradient)"*/}
               {/*    fillOpacity={1}*/}
               {/*/>*/}
-              <Area type="monotone" dataKey="value" strokeWidth={3} stroke="#564FFD" fill="url(#gradient)" />
+              <Area type="monotone" dataKey="value" strokeWidth={3} stroke={chartColor} fill="url(#gradient)" />
             </AreaChart>
           </ResponsiveContainer>
         </div>

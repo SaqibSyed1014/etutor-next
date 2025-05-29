@@ -24,12 +24,13 @@ const buttonVariants = cva(
         ghost: "text-primary-500 hover:bg-primary-100 hover:text-primary-600",
         gray: "bg-gray-50 text-gray-900 hover:opacity-90",
         link: "text-primary underline-offset-4 hover:underline",
+        onlyIcon: "bg-gray-50 text-gray-900 hover:opacity-60"
       },
       size: {
         default: "px-6",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        icon: "h-12 w-12",
       },
     },
     defaultVariants: {

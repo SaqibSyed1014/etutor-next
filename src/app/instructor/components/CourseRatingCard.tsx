@@ -43,8 +43,8 @@ const CourseRatingCard = () => {
         {/*  </SelectContent>*/}
         {/*</Select>*/}
       </CardHeader>
-      <CardContent>
-        <div className="flex">
+      <CardContent className="p-0">
+        <div className="flex px-5 py-6">
           {/* Rating Score */}
           <RatingSummary
             rating={4.6}
@@ -66,8 +66,10 @@ const CourseRatingCard = () => {
           </div>
         </div>
 
-        {/* Rating Trend Chart */}
-        <div className="mt-6">
+
+        <hr/>
+
+        <div className="px-5 py-6">
           <RatingDistribution
               showStars={true}
               showBelowLine={false}
