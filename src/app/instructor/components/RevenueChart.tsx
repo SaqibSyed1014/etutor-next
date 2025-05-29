@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AreaChart, XAxis, YAxis, ResponsiveContainer, Tooltip, Area } from 'recharts';
 
-const RevenueChart = ({ chartColor = '#6366f1' }: { chartColor?: string }) => {
+const RevenueChart = ({ cardTitle = 'Revenue', chartColor = '#6366f1' }: { cardTitle?: string; chartColor?: string }) => {
   const [timeframe, setTimeframe] = useState('today');
 
   const dataToday = [
@@ -56,7 +56,7 @@ const RevenueChart = ({ chartColor = '#6366f1' }: { chartColor?: string }) => {
   return (
     <Card className="dashboard-card h-full flex flex-col">
       <CardHeader className="dashboard-card-header">
-        <CardTitle>Revenue</CardTitle>
+        <CardTitle>{cardTitle}</CardTitle>
         {/*<Select value={timeframe} onValueChange={setTimeframe}>*/}
         {/*  <SelectTrigger className="w-32">*/}
         {/*    <SelectValue />*/}
