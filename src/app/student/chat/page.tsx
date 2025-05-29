@@ -8,78 +8,10 @@ import ChatWindow from '@/components/common/chat/ChatWindow';
 import ComposeMessageDialog from '@/components/common/chat/ComposeMessageDialog';
 import SearchInput from "@/components/common/SearchInput";
 import {Instructor} from "@/lib/@fake-db/instructors";
-
-// Mock data for chats
-const initialChats = [
-    {
-        id: 1,
-        name: 'Jane Cooper',
-        lastMessage: 'Yeah sure, tell me zafor',
-        time: 'just now',
-        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b371?w=40&h=40&fit=crop&crop=face',
-        isActive: true,
-        messages: [
-            {
-                id: 1,
-                text: 'Hello and thanks for signing up to the course. If you have any questions about the course or Adobe XD, feel free to get in touch and I\'ll be happy to help 😊',
-                sender: 'Jane Cooper',
-                time: 'Today',
-                isOwn: false
-            },
-            {
-                id: 2,
-                text: 'I only have a small doubt about your lecture, can you give me some time for chat?',
-                sender: 'You',
-                time: 'Time',
-                isOwn: true
-            },
-            {
-                id: 3,
-                text: 'Yeah sure, tell me zafor',
-                sender: 'Jane Cooper',
-                time: 'Time',
-                isOwn: false
-            }
-        ]
-    },
-    {
-        id: 2,
-        name: 'Jenny Wilson',
-        lastMessage: 'Thank you so much, sir',
-        time: '2 d',
-        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face',
-        isActive: false,
-        messages: [
-            {
-                id: 1,
-                text: 'Thank you so much, sir',
-                sender: 'Jenny Wilson',
-                time: '2 days ago',
-                isOwn: false
-            }
-        ]
-    },
-    {
-        id: 3,
-        name: 'Marvin McKinney',
-        lastMessage: 'You\'re welcome',
-        time: '1 m',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face',
-        isActive: false,
-        messages: [
-            {
-                id: 1,
-                text: 'You\'re welcome',
-                sender: 'Marvin McKinney',
-                time: '1 minute ago',
-                isOwn: false
-            }
-        ]
-    }
-];
+import {studentChats} from "@/lib/@fake-db/chats";
 
 const Page = () => {
-    const [chats, setChats] = useState(initialChats);
+    const [chats, setChats] = useState(studentChats);
     const [selectedChatId, setSelectedChatId] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
     const [isComposeOpen, setIsComposeOpen] = useState(false);
