@@ -118,10 +118,10 @@ const Page = () => {
 
                             <FormField
                                 control={basicInfoForm.control}
-                                name="subcategory"
+                                name="subCategory"
                                 render={({field}) => (
                                     <FormItem>
-                                        <FormLabel>Course Sub-ategory</FormLabel>
+                                        <FormLabel>Course Sub-Category</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={(value) => console.log("Selected:", value)} {...field} >
                                                 <SelectTrigger>
@@ -158,7 +158,7 @@ const Page = () => {
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                             <FormField
                                 control={basicInfoForm.control}
-                                name="lanugaue"
+                                name="language"
                                 render={({field}) => (
                                     <FormItem>
                                         <FormLabel>Course Language</FormLabel>
