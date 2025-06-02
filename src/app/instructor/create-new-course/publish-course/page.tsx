@@ -35,7 +35,7 @@ const Page = () => {
         },
     });
 
-    const onFormSubmit = (data) => {
+    const onFormSubmit = (data :MessageValues) => {
         console.log('data', data)
         toast({
             title: "Changes saved",

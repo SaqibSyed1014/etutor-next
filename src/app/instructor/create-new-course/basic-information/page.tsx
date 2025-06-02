@@ -46,7 +46,7 @@ const Page = () => {
         },
     });
 
-    const onFormSubmit = (data) => {
+    const onFormSubmit = (data :BasicInfoValues) => {
         console.log('data', data)
         toast({
             title: "Changes saved",
