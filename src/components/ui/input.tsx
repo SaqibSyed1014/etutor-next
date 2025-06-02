@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 type InputProps = React.ComponentProps<"input"> & {
     charLimit?: number
 }
-const Input = React.forwardRef<HTMLInputElement, InputProps, React.ComponentProps<"input">>(
+const Input = React.forwardRef<HTMLInputElement, InputProps & React.ComponentProps<"input">>(
   ({ className, type, charLimit , ...props }, ref) => {
 
       const [value, setValue] = React.useState("")
