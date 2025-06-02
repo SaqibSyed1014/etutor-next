@@ -4,7 +4,7 @@ import React from 'react';
 import {Button} from "@/components/ui/button";
 import {useRouter} from "next/navigation";
 
-const MultiFormStepFooter = ({ formStepIndex, submitForm }) => {
+const MultiFormStepFooter = ({ formStepIndex, submitForm } : { formStepIndex?: number; submitForm: (val :any) => void }) => {
     const router = useRouter();
     function saveForm() {
         // submitForm();
