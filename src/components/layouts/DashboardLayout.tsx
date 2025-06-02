@@ -11,8 +11,10 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             <div className="flex-1 flex flex-col">
                 <TopBar />
                 <main className="flex-1 overflow-auto bg-gray-50">
-                    <div className="container pt-6 pb-10">
-                        {children}
+                    <div className="min-h-screen">
+                        <div className="container pt-6 pb-10">
+                            {children}
+                        </div>
                     </div>
 
                     <Footer />

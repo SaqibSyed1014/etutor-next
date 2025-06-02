@@ -69,6 +69,10 @@ const SideBar = () => {
                                 {link.icon}
                             </div>
                             <span>{link.label}</span>
+                            {link.route === '/instructor/chats' && <div
+                                className="bg-primary-500 text-white rounded-full size-6 grid place-items-center ml-auto">
+                                3
+                            </div>}
                         </Link>
                     )
                 })}
@@ -77,7 +81,7 @@ const SideBar = () => {
                 <div className="size-6">
                     <SignOut />
                 </div>
-                <span>Sign-out</span>
+                <span>Sign out</span>
             </div>
         </aside>
     );

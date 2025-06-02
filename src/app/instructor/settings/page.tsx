@@ -217,7 +217,7 @@ const Page = () => {
                                                         <FormLabel>Phone Number</FormLabel>
                                                         <FormControl>
                                                             <div className="relative">
-                                                                <span className="absolute left-0 top-0 bottom-0 inline-flex items-center px-3 text-base">
+                                                                <span className="absolute z-10 left-0 top-0 bottom-0 inline-flex items-center px-3 text-base">
                                                                   <select className="text-primary-500 font-medium focus:outline-0 active:outline-0">
                                                                       <option className="font-normal text-gray-900">+92</option>
                                                                       <option className="font-normal text-gray-900">+91</option>
@@ -289,14 +289,11 @@ const Page = () => {
                                             <FormItem>
                                                 <FormLabel>Title</FormLabel>
                                                 <FormControl>
-                                                    <div className="relative"><Input
-                                                        placeholder="Your title, profession or small biography" {...field} />
-                                                        <div
-                                                            className="flex justify-between absolute right-3 top-1/2 -translate-y-1/2">
-                                                        <span className="text-base text-gray-700">
-                                                            {field.value?.length || 0}/50
-                                                        </span>
-                                                        </div>
+                                                    <div className="relative">
+                                                        <Input
+                                                            charLimit={50}
+                                                            placeholder="Your title, profession or small biography" {...field}
+                                                        />
                                                     </div>
                                                 </FormControl>
                                                 <FormMessage />

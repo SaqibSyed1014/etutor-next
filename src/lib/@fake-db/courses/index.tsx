@@ -535,6 +535,14 @@ export const ratings = [
   { value: 1, label: "1 Star & up", count: 1345 }
 ];
 
+export const courseLanguage = [
+  { value: "eng", name: "English" },
+  { value: "french", name: "French" },
+  { value: "portuguese", name: "Portuguese" },
+  { value: "danish", name: "Danish" },
+  { value: "hindi", name: "Hindi" }
+];
+
 export const courseLevels = [
   { id: "all", name: "All Level", count: 1345 },
   { id: "beginner", name: "Beginner", count: 1345 },

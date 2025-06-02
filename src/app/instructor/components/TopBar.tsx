@@ -15,6 +15,7 @@ const TopBar = () => {
         if (pathname === '/instructor/earning') return 'My Earning'
         if (pathname === '/instructor/chats') return 'Messages (3)'
         if (pathname === '/instructor/settings') return 'Settings'
+        if (pathname.startsWith('/instructor/create-new-course')) return 'Create a new course'
         return 'Dashboard'
     }
 

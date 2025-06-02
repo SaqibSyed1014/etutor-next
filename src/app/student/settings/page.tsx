@@ -212,11 +212,9 @@ const Page = () => {
                                           <div className="relative">
                                               <Input
                                                   placeholder="Your tittle, proffesion or small biography"
+                                                  charLimit={50}
                                                   {...field}
                                               />
-                                                  <p className="absolute right-5 top-1/2 -translate-y-1/2 text-base">
-                                                      {field.value?.length || 0}/50
-                                                  </p>
                                           </div>
                                       </FormControl>
                                       <div className="flex justify-between">
