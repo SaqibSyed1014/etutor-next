@@ -4,6 +4,7 @@ import React from "react";
 import { useEffect, useState } from "react"
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import BasicInformation from "@/app/instructor/create-new-course/basic-information/page"
+import AdvanceInformation from "@/app/instructor/create-new-course/advance-information/page"
 import PublishCourse from "@/app/instructor/create-new-course/publish-course/page"
 import { useRouter, usePathname } from "next/navigation"
 
@@ -78,7 +79,7 @@ const Layout = () => {
                                 <BasicInformation />
                             </TabsContent>
                             <TabsContent value="advance-information">
-                                <div>ad</div>
+                                <AdvanceInformation />
                             </TabsContent>
                             <TabsContent value="publish-course">
                                 <PublishCourse />
