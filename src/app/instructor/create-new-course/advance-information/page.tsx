@@ -4,10 +4,11 @@ import React, { useState } from 'react';
 import MultiStepFormHeader from "@/app/instructor/create-new-course/components/MultiStepFormHeader";
 import MultiFormStepFooter from "@/app/instructor/create-new-course/components/MultiFormStepFooter";
 import MultiStepFormBody from "@/app/instructor/create-new-course/components/MultiStepFormBody";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import DynamicSection from "@/components/common/DynamicSection";
 import RichTextEditor from "@/components/common/RichTextEditor";
+import {Upload, X} from "lucide-react";
+import {UploadSimple} from "@/assets/icons/common-icons";
 
 interface SectionItem {
     id: string;
@@ -15,8 +16,8 @@ interface SectionItem {
 }
 
 const Page = () => {
-    const [thumbnail, setThumbnail] = useState<File | null>(null);
-    const [trailer, setTrailer] = useState<File | null>(null);
+    const [thumbnail, setThumbnail] = useState<string>('');
+    const [trailer, setTrailer] = useState<string>('');
     const [description, setDescription] = useState('');
     const [teachings, setTeachings] = useState<SectionItem[]>([
         { id: '1', text: '' },
@@ -39,14 +40,19 @@ const Page = () => {
     const handleThumbnailUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
-            setThumbnail(file);
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setThumbnail(e.target?.result as string);
+            };
+            reader.readAsDataURL(file);
         }
     };
 
     const handleTrailerUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
-            setTrailer(file);
+            const videoUrl = URL.createObjectURL(file);
+            setTrailer(videoUrl); // can be used as <video src={thumbnail} />
         }
     };
 
@@ -65,9 +71,15 @@ const Page = () => {
                             <div className="space-y-4">
                                 <div className="flex gap-6">
                                     <div
-                                        className="w-[228px] h-[160px] shrink-0 bg-gray-50 flex items-center justify-center">
-                                        <img src="/images/illustrations/image-mockup.png" alt=""/>
-                                        {/*<Upload className="w-8 h-8 text-gray-400" />*/}
+                                        className="w-[228px] h-[160px] relative shrink-0 bg-gray-50 flex items-center justify-center">
+                                        {thumbnail.length ?
+                                            <img src={thumbnail} alt="" className="size-full object-cover"/>
+                                            :
+                                            <img src="/images/illustrations/image-mockup.png" alt=""/>
+                                        }
+                                        {thumbnail.length ? <div className="absolute top-2 right-2 cursor-pointer transition hover:scale-125">
+                                            <X className="text-gray-900" onClick={() => setThumbnail('')}/>
+                                        </div> : ''}
                                     </div>
                                     <div className="space-y-6">
                                         <p className="text-sm text-gray-600">
@@ -85,8 +97,8 @@ const Page = () => {
                                             variant="outline"
                                             onClick={() => document.getElementById('thumbnail-upload')?.click()}
                                         >
-                                            {/*<Upload className="w-4 h-4 mr-2" />*/}
                                             Upload Image
+                                            <UploadSimple />
                                         </Button>
                                     </div>
                                 </div>
@@ -99,9 +111,15 @@ const Page = () => {
                             <div className="space-y-4">
                                 <div className="flex gap-6">
                                     <div
-                                        className="w-[228px] h-[160px] shrink-0 bg-gray-50 flex items-center justify-center">
-                                        <img src="/images/illustrations/video-mockup.png" alt=""/>
-                                        {/*<Upload className="w-8 h-8 text-gray-400" />*/}
+                                        className="w-[228px] h-[160px] relative shrink-0 bg-gray-50 flex items-center justify-center">
+                                        {trailer.length ?
+                                            <video src={trailer} id="videoPreview" controls width="400" autoPlay={true} className="size-full object-cover"></video>
+                                            :
+                                            <img src="/images/illustrations/video-mockup.png" alt=""/>
+                                        }
+                                        {trailer.length ? <div className="absolute top-2 right-2 cursor-pointer transition hover:scale-125">
+                                            <X className="text-gray-900" onClick={() => setTrailer('')}/>
+                                        </div> : ''}
                                     </div>
                                     <div className="space-y-6">
                                         <p className="text-sm text-gray-600">
@@ -119,8 +137,8 @@ const Page = () => {
                                             variant="outline"
                                             onClick={() => document.getElementById('trailer-upload')?.click()}
                                         >
-                                            {/*<Upload className="w-4 h-4 mr-2" />*/}
                                             Upload Video
+                                            <UploadSimple />
                                         </Button>
                                     </div>
                                 </div>
