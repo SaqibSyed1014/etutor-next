@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import CurriculumSection from '@/app/instructor/create-new-course/components/CurriculumSection';
@@ -97,31 +96,6 @@ const Page = () => {
         ));
     };
 
-    const onDragEnd = (result: DropResult) => {
-        if (!result.destination) return;
-
-        const { source, destination, type } = result;
-
-        if (type === 'SECTION') {
-            const newSections = Array.from(sections);
-            const [reorderedSection] = newSections.splice(source.index, 1);
-            newSections.splice(destination.index, 0, reorderedSection);
-            setSections(newSections);
-        } else if (type === 'LECTURE') {
-            const sectionId = source.droppableId;
-            const section = sections.find(s => s.id === sectionId);
-            if (!section) return;
-
-            const newLectures = Array.from(section.lectures);
-            const [reorderedLecture] = newLectures.splice(source.index, 1);
-            newLectures.splice(destination.index, 0, reorderedLecture);
-
-            setSections(sections.map(s =>
-                s.id === sectionId ? { ...s, lectures: newLectures } : s
-            ));
-        }
-    };
-
     const onFormSubmit = () => {
         toast({
             title: "Changes saved",
@@ -135,10 +109,7 @@ const Page = () => {
 
             <MultiStepFormBody>
                 <div className="p-10 space-y-8">
-                    <DragDropContext onDragEnd={onDragEnd}>
-                    <Droppable droppableId="sections" type="SECTION">
-                        {(provided) => (
-                            <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-4">
+                            <div className="space-y-4">
                                 {sections.map((section, index) => (
                                     <CurriculumSection
                                         key={section.id}
@@ -153,11 +124,7 @@ const Page = () => {
                                         onDeleteLecture={deleteLecture}
                                     />
                                 ))}
-                                {provided.placeholder}
                             </div>
-                        )}
-                    </Droppable>
-                </DragDropContext>
 
                     <Button
                         onClick={addSection}

@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { Draggable } from 'react-beautiful-dnd';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import EditSectionDialog from './EditSectionDialog';
@@ -63,17 +62,11 @@ const LectureItem: React.FC<LectureItemProps> = ({
   };
 
   return (
-    <Draggable draggableId={lecture.id} index={index}>
-      {(provided, snapshot) => (
         <div
-          ref={provided.innerRef}
-          {...provided.draggableProps}
-          className={`flex items-center justify-between p-3 bg-white ${
-            snapshot.isDragging ? 'shadow-lg' : ''
-          }`}
+          className={`flex items-center justify-between p-3 bg-white`}
         >
           <div className="flex items-center space-x-3">
-            <div {...provided.dragHandleProps} className="cursor-grab text-gray-500">
+            <div className="cursor-grab text-gray-500">
               <ThreeBars />
             </div>
             <span className="text-sm text-gray-900">{lecture.name.length ? lecture.name : 'Lecture name'}</span>
@@ -162,8 +155,6 @@ const LectureItem: React.FC<LectureItemProps> = ({
             onSave={() => setNotesDialog(false)}
           />
         </div>
-      )}
-    </Draggable>
   );
 };
 

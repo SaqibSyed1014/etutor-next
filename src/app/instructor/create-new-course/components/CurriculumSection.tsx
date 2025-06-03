@@ -1,9 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Draggable, Droppable } from 'react-beautiful-dnd';
-import { Button } from '@/components/ui/button';
-import { Plus, Edit, GripVertical } from 'lucide-react';
+import React from 'react';
+import { Plus } from 'lucide-react';
 import LectureItem from './LectureItem';
 import {Trash, PencilLine, ThreeBars} from "@/assets/icons/common-icons";
 
@@ -40,16 +38,13 @@ const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                                                                  onDeleteLecture
                                                              }) => {
     return (
-        <Draggable draggableId={section.id} index={index}>
-            {(provided, snapshot) => (
+
                 <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    className={`bg-gray-50 p-6 ${snapshot.isDragging ? 'shadow-lg' : ''}`}
+                    className={`bg-gray-50 p-6`}
                 >
                     <div className="flex flex-row items-center justify-between py-4">
                         <div className="flex items-center space-x-3 text-gray-900 text-base">
-                            <div {...provided.dragHandleProps} className="cursor-grab">
+                            <div className="cursor-grab">
                                 <ThreeBars />
                             </div>
                             <span className="font-medium">Sections {String(index + 1).padStart(2, '0')}:</span>
@@ -78,9 +73,7 @@ const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                         </div>
                     </div>
                     <div className="pt-0">
-                        <Droppable droppableId={section.id} type="LECTURE">
-                            {(provided) => (
-                                <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-2">
+                                <div className="space-y-2">
                                     {section.lectures.map((lecture, lectureIndex) => (
                                         <LectureItem
                                             key={lecture.id}
@@ -91,14 +84,9 @@ const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                                             onDeleteLecture={onDeleteLecture}
                                         />
                                     ))}
-                                    {provided.placeholder}
                                 </div>
-                            )}
-                        </Droppable>
                     </div>
                 </div>
-            )}
-        </Draggable>
     );
 };
 
