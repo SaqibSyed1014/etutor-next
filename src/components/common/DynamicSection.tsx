@@ -52,9 +52,8 @@ const DynamicSection: React.FC<DynamicSectionProps> = ({
         <div className="flex flex-row items-center justify-between">
           <label className="text-lg font-medium">{title} ({items.length}/{maxCount})</label>
           <div
-              className="flex gap-2 items-center text-primary-500 font-medium text-sm cursor-pointer hover:opacity-70"
+              className={`flex gap-2 items-center text-primary-500 font-medium text-sm cursor-pointer hover:opacity-70 ${items.length >= maxCount ? 'opacity-70 pointer-events-none':''}`}
               onClick={addNewItem}
-              disabled={items.length >= maxCount}
           >
             <Plus className="w-4 h-4 mr-1"/>
             Add new
