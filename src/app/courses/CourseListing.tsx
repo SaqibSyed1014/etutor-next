@@ -13,6 +13,7 @@ import {MagnifyingGlass} from "@/assets/icons/common-icons";
 import {FilterFaders} from "@/assets/icons/icons";
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import {sortOptions} from "@/lib/@fake-db/courses";
+import SearchInput from "@/components/common/SearchInput";
 
 type Props = {
     preSelectedFilters?: FilterState;
@@ -73,21 +74,11 @@ const Courses = ({ preSelectedFilters }: Props) => {
                                         Filter
                                         <span
                                             className="bg-primary-500 text-white h-6 px-1.5 grid place-items-center text-xs ml-2">
-                              3
-                            </span>
+                                          3
+                                        </span>
                                     </Button>
                                     <div className="relative hidden lg:block ">
-                                <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black">
-                                  <MagnifyingGlass/>
-                                </span>
-                                        <Input
-                                            type="search"
-                                            placeholder="Search..."
-                                            className="pl-12 pr-4 py-2 w-full min-w-[424px] placeholder:text-gray-500 focus:ring-etutor-primary focus:border-etutor-primary outline-0"
-                                            value={searchInput}
-                                            onReset={(e) => handleSearch('')}
-                                            onChange={(e) => handleSearch(e.target.value)}
-                                        />
+                                        <SearchInput placeholder="Search..." />
                                     </div>
                                 </div>
 

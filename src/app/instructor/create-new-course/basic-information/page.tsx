@@ -72,7 +72,7 @@ const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
                                 <FormItem>
                                     <FormLabel>Title</FormLabel>
                                     <FormControl>
-                                        <Input control={basicInfoForm.control} placeholder="You course title" charLimit={80} {...field} />
+                                        <Input placeholder="You course title" charLimit={80} {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -254,7 +254,6 @@ const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
                                 )}
                             />
                         </div>
-
 
                     </form>
                 </Form>

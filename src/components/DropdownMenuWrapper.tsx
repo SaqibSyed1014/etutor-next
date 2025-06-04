@@ -78,7 +78,7 @@ export default function DropdownMenuWrapper({
                     customTrigger // ✅ Use custom trigger if provided
                 ) : (
                     <div
-                        className={`flex items-center gap-1.5 justify-between min-w-[200px] px-[18px] py-3 ${variantTriggerClasses[variant]} ${triggerClasses ?? ""} ${size === "sm" ? "text-sm" : ""} cursor-pointer`}
+                        className={`flex items-center gap-1.5 justify-between py-3 ${variantTriggerClasses[variant]} ${triggerClasses ?? ""} ${size === "sm" ? "text-sm" : ""} cursor-pointer`}
                     >
                         {children || (
                             <>
