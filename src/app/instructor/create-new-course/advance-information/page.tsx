@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState } from 'react';
 import MultiStepFormHeader from "@/app/instructor/create-new-course/components/MultiStepFormHeader";
@@ -7,7 +7,7 @@ import MultiStepFormBody from "@/app/instructor/create-new-course/components/Mul
 import { Button } from "@/components/ui/button";
 import DynamicSection from "@/components/common/DynamicSection";
 import RichTextEditor from "@/components/common/RichTextEditor";
-import {Upload, X} from "lucide-react";
+import {X} from "lucide-react";
 import {UploadSimple} from "@/assets/icons/common-icons";
 import {useRouter} from "next/navigation";
 
