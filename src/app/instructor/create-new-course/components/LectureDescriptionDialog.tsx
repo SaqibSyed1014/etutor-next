@@ -27,7 +27,7 @@ const LectureDescriptionDialog: React.FC<LectureDescriptionDialogProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>Add Lecture Description</DialogTitle>
         </DialogHeader>

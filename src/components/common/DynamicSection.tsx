@@ -48,7 +48,7 @@ const DynamicSection: React.FC<DynamicSectionProps> = ({
   };
 
   return (
-      <div className="py-8 px-10 space-y-6">
+      <div className="tab-content-spacing space-y-6">
         <div className="flex flex-row items-center justify-between">
           <label className="text-lg font-medium">{title} ({items.length}/{maxCount})</label>
           <div

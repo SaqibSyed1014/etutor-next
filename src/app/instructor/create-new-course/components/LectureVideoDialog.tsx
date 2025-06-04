@@ -17,14 +17,36 @@ const LectureVideoDialog: React.FC<LectureVideoDialogProps> = ({
 }) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [hasUploadedFile, setHasUploadedFile] = useState(false);
+  const [thumbnail, setThumbnail] = useState<string>('');
+  const [selectedVideoDuration, setVideoDuration] = useState('');
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      const video = document.createElement('video');
+      video.preload = 'metadata';
+
+      video.onloadedmetadata = function () {
+        setVideoDuration(formatTime(video.duration));
+      };
+      video.src = URL.createObjectURL(file);
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setThumbnail(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+
       setSelectedFile(file);
       setHasUploadedFile(true);
     }
   };
+
+  function formatTime(seconds: number): string {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  }
 
   const handleSave = () => {
     if (hasUploadedFile) {
@@ -36,68 +58,67 @@ const LectureVideoDialog: React.FC<LectureVideoDialogProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>Lecture Video</DialogTitle>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="absolute right-4 top-4"
-            onClick={onClose}
-          >
-            <X className="h-4 w-4" />
-          </Button>
         </DialogHeader>
-        <div className="space-y-4">
+        <div className="space-y-6 py-6 px-[22px]">
           {!hasUploadedFile ? (
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+            <div className="">
               <div className="space-y-4">
-                <div className="text-gray-500">Upload Files</div>
-                <input
-                  type="file"
-                  id="video-upload"
-                  className="hidden"
-                  accept=".mp4,.mov,.avi,.mkv"
-                  onChange={handleFileUpload}
-                />
-                <Button
-                  variant="outline"
-                  onClick={() => document.getElementById('video-upload')?.click()}
-                >
-                  Upload File
-                </Button>
-                <p className="text-xs text-gray-500">
-                  Note: All files should be at least 720p and less than 4.0 GB.
+                <div className="flex items-center pl-[18px] border">
+                  <div className="text-gray-500 flex-1  ">Upload Files</div>
+                  <input
+                      type="file"
+                      id="video-upload"
+                      className="hidden"
+                      accept=".mp4,.mov,.avi,.mkv"
+                      onChange={handleFileUpload}
+                  />
+                  <Button
+                      variant="gray"
+                      onClick={() => document.getElementById('video-upload')?.click()}
+                  >
+                    Upload File
+                  </Button>
+                </div>
+                <p className="text-gray-900">
+                  <b>Note:</b> All files should be at least 720p and less than 4.0 GB.
                 </p>
               </div>
             </div>
           ) : (
-            <div className="border rounded-lg p-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-16 h-12 bg-gray-200 rounded flex items-center justify-center">
-                  <Upload className="w-6 h-6 text-gray-400" />
+            <div className="">
+              <div className="flex items-start space-x-3">
+                <div className="w-40 h-[90px] shrink-0 flex items-center justify-center">
+                  <video src={thumbnail} id="videoPreview" controls={false} loop={true} autoPlay={true} className="size-full object-cover"></video>
                 </div>
-                <div className="flex-1">
-                  <div className="text-sm font-medium text-green-600">UPLOADED • 1:55</div>
-                  <div className="text-sm text-gray-600">
-                    Conduct-ux-research_01 - Introduction to Course 4 Conduct UX Research and Test Early Concepts.mp4
+                <div className="flex-1 space-y-2">
+                  <div className="space-y-0.5">
+                    <div className="text-xs font-medium text-success-500">FILE UPLOADED <span className="text-gray-700"> • {selectedVideoDuration}</span>
+                    </div>
+                    <div className="text-sm text-gray-900">
+                      {selectedFile?.name}
+                    </div>
                   </div>
-                  <Button variant="link" className="text-blue-500 text-xs p-0 h-auto">
+                  <button
+                      onClick={() => document.getElementById('video-upload')?.click()}
+                      className="text-secondary-500 font-medium text-sm cursor-pointer"
+                  >
                     Replace Video
-                  </Button>
+                  </button>
                 </div>
               </div>
             </div>
           )}
-          
-          <div className="flex justify-end space-x-2">
-            <Button variant="outline" onClick={onClose}>
+
+          <div className="flex justify-between space-x-2">
+            <Button variant="gray" onClick={onClose}>
               Cancel
             </Button>
-            <Button 
+            <Button
               onClick={handleSave}
               disabled={!hasUploadedFile}
-              className="bg-orange-500 hover:bg-orange-600"
             >
               Upload Video
             </Button>

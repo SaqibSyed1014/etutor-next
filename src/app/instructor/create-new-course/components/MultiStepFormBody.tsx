@@ -2,7 +2,7 @@ import React from 'react';
 
 const MultiStepFormBody = ({ children }: { children: React.ReactNode })  => {
     return (
-        <div className="">
+        <div className="min-h-[60vh]">
             {children}
         </div>
     );

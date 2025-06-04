@@ -59,7 +59,7 @@ const Page = () => {
             <MultiStepFormHeader title="Basic Information" />
             <MultiStepFormBody>
                 <Form {...basicInfoForm}>
-                    <form onSubmit={basicInfoForm.handleSubmit(onFormSubmit)} className="space-y-6">
+                    <form onSubmit={basicInfoForm.handleSubmit(onFormSubmit)} className="tab-content-spacing space-y-6">
                         <FormField
                             control={basicInfoForm.control}
                             name="title"

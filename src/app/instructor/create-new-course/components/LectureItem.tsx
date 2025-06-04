@@ -75,24 +75,24 @@ const LectureItem: React.FC<LectureItemProps> = ({
           <div className="flex items-center space-x-3">
             <DropdownMenu onOpenChange={setIsOpen} open={isOpen}>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm" className="text-primary-500 font-bold flex items-center [&_svg]:size-3">
+                <Button variant="outline" className="text-primary-500 font-bold flex items-center text-sm leading-[40px] [&_svg]:size-3">
                   Contents {isOpen ? <ChevronUp /> : <ChevronDown />}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="bg-white">
-                <DropdownMenuItem onClick={() => handleContentAction('video')}>
+                <DropdownMenuItem className="hover:bg-primary-500 hover:text-white" onClick={() => handleContentAction('video')}>
                   Video
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleContentAction('attach')}>
+                <DropdownMenuItem className="hover:bg-primary-500 hover:text-white" onClick={() => handleContentAction('attach')}>
                   Attach File
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleContentAction('caption')}>
+                <DropdownMenuItem className="hover:bg-primary-500 hover:text-white" onClick={() => handleContentAction('caption')}>
                   Captions
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleContentAction('description')}>
+                <DropdownMenuItem className="hover:bg-primary-500 hover:text-white" onClick={() => handleContentAction('description')}>
                   Description
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleContentAction('notes')}>
+                <DropdownMenuItem className="hover:bg-primary-500 hover:text-white" onClick={() => handleContentAction('notes')}>
                   Lecture Notes
                 </DropdownMenuItem>
               </DropdownMenuContent>

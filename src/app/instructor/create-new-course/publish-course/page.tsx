@@ -44,7 +44,7 @@ const Page = () => {
             <MultiStepFormHeader title="Publish Course" />
             <MultiStepFormBody>
                 <Form {...messageForm}>
-                    <form onSubmit={messageForm.handleSubmit(onFormSubmit)} className="space-y-6 pb-24">
+                    <form onSubmit={messageForm.handleSubmit(onFormSubmit)} className="space-y-6 tab-content-spacing !pb-28">
                         <div className="space-y-6">
                             <label className="font-medium text-lg !pb-0">Message</label>
                             <div className="grid md:grid-cols-2 gap-6">

@@ -33,54 +33,53 @@ const AttachFileDialog: React.FC<AttachFileDialogProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>Attach File</DialogTitle>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="absolute right-4 top-4"
-            onClick={onClose}
-          >
-            <X className="h-4 w-4" />
-          </Button>
         </DialogHeader>
-        <div className="space-y-4">
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-            <div className="space-y-4">
-              <div className="text-lg font-medium">Attach File</div>
+        <div className="space-y-6 py-6 px-[22px]">
+          <div>
+            <div className="border py-6 flex flex-col gap-2 justify-center text-center">
+              <div className="text-base font-medium">Attach File</div>
               <div className="text-gray-500">
                 Drag an drop a file or{' '}
                 <button
-                  className="text-blue-500 underline"
-                  onClick={() => document.getElementById('file-upload')?.click()}
+                    className="text-gray-900"
+                    onClick={() => document.getElementById('file-upload')?.click()}
                 >
                   browse file
                 </button>
               </div>
               <input
-                type="file"
-                id="file-upload"
-                className="hidden"
-                onChange={handleFileUpload}
+                  type="file"
+                  id="file-upload"
+                  className="hidden"
+                  onChange={handleFileUpload}
               />
             </div>
-          </div>
-          
-          {selectedFile && (
-            <div className="text-sm text-green-600">
-              Selected: {selectedFile.name}
-            </div>
-          )}
-          
-          <div className="flex justify-end space-x-2">
-            <Button variant="outline" onClick={onClose}>
+
+            {selectedFile && (
+                <div className="text-sm text-gray-900 mt-2 space-y-1">
+                  <div className="flex justify-between items-center border px-3 py-1">
+                    {selectedFile.name}
+                    <button
+                        type="button"
+                        onClick={() => setSelectedFile(null)}
+                        className="text-error-500 text-xs hover:underline"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+            )}</div>
+
+          <div className="flex justify-between">
+            <Button variant="gray" onClick={onClose}>
               Cancel
             </Button>
-            <Button 
+            <Button
               onClick={handleSave}
               disabled={!selectedFile}
-              className="bg-orange-500 hover:bg-orange-600"
             >
               Attach File
             </Button>

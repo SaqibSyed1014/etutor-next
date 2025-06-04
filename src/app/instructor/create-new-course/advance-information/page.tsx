@@ -64,7 +64,7 @@ const Page = () => {
             <MultiStepFormHeader title="Advance Information" formStepIndex={1} />
             <MultiStepFormBody>
                 <div>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-10 py-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 tab-content-spacing">
                         {/* Course Thumbnail */}
                         <div className="space-y-4">
                             <label className="font-medium text-lg">Course Thumbnail</label>
@@ -150,7 +150,7 @@ const Page = () => {
                     <hr/>
 
                     {/* Course Description */}
-                    <div className="px-10 py-8">
+                    <div className="tab-content-spacing">
                         <div className="space-y-4">
                             <label className="font-medium text-lg">Course Descriptions</label>
                             <RichTextEditor
