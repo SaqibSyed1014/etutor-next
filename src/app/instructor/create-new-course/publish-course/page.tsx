@@ -20,7 +20,7 @@ const messageFormSchema = z.object({
 
 type MessageValues = z.infer<typeof messageFormSchema>;
 
-const Page = () => {
+const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
     const { toast } = useToast();
 
     const messageForm = useForm<MessageValues>({
@@ -33,6 +33,7 @@ const Page = () => {
 
     const onFormSubmit = (data :MessageValues) => {
         console.log('data', data)
+        stepCompleted();
         toast({
             title: "Changes saved",
             description: "Your account settings have been updated successfully.",
@@ -41,7 +42,7 @@ const Page = () => {
 
     return (
         <div>
-            <MultiStepFormHeader title="Publish Course" />
+            <MultiStepFormHeader title="Publish Course" submitForm={messageForm.handleSubmit(onFormSubmit)} />
             <MultiStepFormBody>
                 <Form {...messageForm}>
                     <form onSubmit={messageForm.handleSubmit(onFormSubmit)} className="space-y-6 tab-content-spacing !pb-28">
@@ -118,7 +119,7 @@ const Page = () => {
                 </Form>
             </MultiStepFormBody>
 
-            <MultiFormStepFooter formStepIndex={3} submitForm={onFormSubmit} />
+            <MultiFormStepFooter formStepIndex={3} submitForm={messageForm.handleSubmit(onFormSubmit)} />
         </div>
     );
 };

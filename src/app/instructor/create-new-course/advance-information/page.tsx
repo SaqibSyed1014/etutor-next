@@ -9,13 +9,16 @@ import DynamicSection from "@/components/common/DynamicSection";
 import RichTextEditor from "@/components/common/RichTextEditor";
 import {Upload, X} from "lucide-react";
 import {UploadSimple} from "@/assets/icons/common-icons";
+import {useRouter} from "next/navigation";
 
 interface SectionItem {
     id: string;
     text: string;
 }
 
-const Page = () => {
+const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
+    const router = useRouter();
+
     const [thumbnail, setThumbnail] = useState<string>('');
     const [trailer, setTrailer] = useState<string>('');
     const [description, setDescription] = useState('');
@@ -28,13 +31,12 @@ const Page = () => {
     const [targetAudience, setTargetAudience] = useState<SectionItem[]>([
         { id: '1', text: '' },
         { id: '2', text: '' },
-        { id: '3', text: '' }
+        { id: '3', text: '' },
+        { id: '4', text: '' }
     ]);
     const [requirements, setRequirements] = useState<SectionItem[]>([
         { id: '1', text: '' },
         { id: '2', text: '' },
-        { id: '3', text: '' },
-        { id: '4', text: '' }
     ]);
 
     const handleThumbnailUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,11 +59,12 @@ const Page = () => {
     };
 
     function saveForm() {
-
+        stepCompleted();
+        router.push('/instructor/create-new-course/curriculum')
     }
     return (
         <div>
-            <MultiStepFormHeader title="Advance Information" formStepIndex={1} />
+            <MultiStepFormHeader title="Advance Information" formStepIndex={1} submitForm={saveForm} />
             <MultiStepFormBody>
                 <div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 tab-content-spacing">

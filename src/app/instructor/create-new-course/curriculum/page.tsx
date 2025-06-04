@@ -10,6 +10,7 @@ import MultiFormStepFooter from "@/app/instructor/create-new-course/components/M
 import {useToast} from "@/hooks/use-toast";
 import MultiStepFormBody from "@/app/instructor/create-new-course/components/MultiStepFormBody";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import {useRouter} from "next/navigation";
 
 interface Lecture {
     id: string;
@@ -24,8 +25,10 @@ interface Section {
     lectures: Lecture[];
 }
 
-const Page = () => {
+const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
     const { toast } = useToast();
+    const router = useRouter();
+
 
     const [sections, setSections] = useState<Section[]>([
         {
@@ -138,6 +141,8 @@ const Page = () => {
     }
 
     const onFormSubmit = () => {
+        stepCompleted();
+        router.push('/instructor/create-new-course/publish-course')
         toast({
             title: "Changes saved",
             description: "Your account settings have been updated successfully.",
@@ -146,7 +151,7 @@ const Page = () => {
 
     return (
         <div className="">
-            <MultiStepFormHeader title="Curriculum" formStepIndex={2} />
+            <MultiStepFormHeader title="Curriculum" formStepIndex={2} submitForm={saveForm} />
 
             <MultiStepFormBody>
                 <div className="p-10 space-y-8">

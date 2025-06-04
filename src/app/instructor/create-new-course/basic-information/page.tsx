@@ -13,23 +13,26 @@ import MultiFormStepFooter from "@/app/instructor/create-new-course/components/M
 import {Select, SelectItem, SelectTrigger, SelectContent, SelectValue} from "@/components/ui/select";
 import {courseCategories} from "@/lib/@fake-db/courseCategories";
 import {courseLanguage, courseLevels, durations} from "@/lib/@fake-db/courses";
+import {Button} from "@/components/ui/button";
+import {useRouter} from "next/navigation";
 
 const basicInfoSchema = z.object({
     title: z.string().min(2, 'Title must be at least 2 characters'),
     subtitle: z.string().min(2, 'Subtitle must be at least 2 characters'),
-    category: z.string().min(3, 'Username must be at least 3 characters'),
-    subCategory: z.string().min(10, 'Username must be at least 3 characters'),
-    topic: z.string().min(2, 'topic must be at least 2 characters'),
-    language: z.string().min(2, 'Lang must be at least 2 characters'),
-    subLanguage: z.string().min(2, 'Lang must be at least 2 characters'),
-    level: z.string().min(2, 'Level must be at least 2 characters'),
-    duration: z.string().min(2, 'Duration must be at least 2 characters'),
+    category: z.string().min(2, 'Category is required'),
+    subCategory: z.string().min(2, 'Sub-category is required'),
+    topic: z.string().min(2, 'Topic must be at least 2 characters'),
+    language: z.string().min(2, 'Language is required'),
+    subLanguage: z.string().optional(),
+    level: z.string().min(2, 'Level is required'),
+    duration: z.string().min(2, 'Duration is required'),
 });
 
 type BasicInfoValues = z.infer<typeof basicInfoSchema>;
 
-const Page = () => {
+const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
     const { toast } = useToast();
+    const router = useRouter();
 
     const basicInfoForm = useForm<BasicInfoValues>({
         resolver: zodResolver(basicInfoSchema),
@@ -48,6 +51,8 @@ const Page = () => {
 
     const onFormSubmit = (data :BasicInfoValues) => {
         console.log('data', data)
+        stepCompleted();
+        router.push('/instructor/create-new-course/advance-information')
         toast({
             title: "Changes saved",
             description: "Your account settings have been updated successfully.",
@@ -56,7 +61,7 @@ const Page = () => {
 
     return (
         <div>
-            <MultiStepFormHeader title="Basic Information" />
+            <MultiStepFormHeader title="Basic Information" submitForm={basicInfoForm.handleSubmit(onFormSubmit)} />
             <MultiStepFormBody>
                 <Form {...basicInfoForm}>
                     <form onSubmit={basicInfoForm.handleSubmit(onFormSubmit)} className="tab-content-spacing space-y-6">
@@ -67,7 +72,7 @@ const Page = () => {
                                 <FormItem>
                                     <FormLabel>Title</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="You course title" charLimit={80} {...field} />
+                                        <Input control={basicInfoForm.control} placeholder="You course title" charLimit={80} {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -96,18 +101,15 @@ const Page = () => {
                                     <FormItem>
                                         <FormLabel>Course Category</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={(value) => console.log("Selected:", value)} {...field} >
+                                            <Select onValueChange={field.onChange} value={field.value} {...field} >
                                                 <SelectTrigger>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
 
                                                 <SelectContent>
                                                     {Object.entries(courseCategories).map(([key, category]) => (
-                                                        <SelectItem value={category.title}>{category.title}</SelectItem>
+                                                        <SelectItem key={category.title} value={category.title}>{category.title}</SelectItem>
                                                     ))}
-                                                    <SelectItem value="banana">Banana</SelectItem>
-                                                    <SelectItem value="grape">Grape</SelectItem>
-                                                    <SelectItem value="orange">Orange</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                         </FormControl>
@@ -123,14 +125,14 @@ const Page = () => {
                                     <FormItem>
                                         <FormLabel>Course Sub-Category</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={(value) => console.log("Selected:", value)} {...field} >
+                                            <Select onValueChange={field.onChange} value={field.value} {...field} >
                                                 <SelectTrigger>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
 
                                                 <SelectContent>
                                                     {Object.entries(courseCategories).map(([key, category]) => (
-                                                        <SelectItem value={category.title}>{category.title}</SelectItem>
+                                                        <SelectItem key={category.title} value={category.title}>{category.title}</SelectItem>
                                                     ))}
                                                 </SelectContent>
                                             </Select>
@@ -163,14 +165,14 @@ const Page = () => {
                                     <FormItem>
                                         <FormLabel>Course Language</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={(value) => console.log("Selected:", value)} {...field} >
+                                            <Select onValueChange={field.onChange} value={field.value} {...field} >
                                                 <SelectTrigger>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
 
                                                 <SelectContent>
                                                     {courseLanguage.map((item) => (
-                                                        <SelectItem value={item.value}>{item.name}</SelectItem>
+                                                        <SelectItem key={item.value} value={item.value}>{item.name}</SelectItem>
                                                     ))}
                                                 </SelectContent>
                                             </Select>
@@ -187,14 +189,14 @@ const Page = () => {
                                     <FormItem>
                                         <FormLabel>Subtitle Language (Optional)</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={(value) => console.log("Selected:", value)} {...field} >
+                                            <Select onValueChange={field.onChange} value={field.value} {...field} >
                                                 <SelectTrigger>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
 
                                                 <SelectContent>
                                                     {courseLanguage.map((item) => (
-                                                        <SelectItem value={item.value}>{item.name}</SelectItem>
+                                                        <SelectItem key={item.value} value={item.value}>{item.name}</SelectItem>
                                                     ))}
                                                 </SelectContent>
                                             </Select>
@@ -211,14 +213,14 @@ const Page = () => {
                                     <FormItem>
                                         <FormLabel>Course Level</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={(value) => console.log("Selected:", value)} {...field} >
+                                            <Select onValueChange={field.onChange} value={field.value} {...field} >
                                                 <SelectTrigger>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
 
                                                 <SelectContent>
                                                     {courseLevels.map(item => (
-                                                        <SelectItem value={item.id}>{item.name}</SelectItem>
+                                                        <SelectItem key={item.id} value={item.id}>{item.name}</SelectItem>
                                                     ))}
                                                 </SelectContent>
                                             </Select>
@@ -235,14 +237,14 @@ const Page = () => {
                                     <FormItem>
                                         <FormLabel>Course durations</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={(value) => console.log("Selected:", value)} {...field} >
+                                            <Select onValueChange={field.onChange} value={field.value} {...field} >
                                                 <SelectTrigger>
                                                     <SelectValue placeholder="Course duration"/>
                                                 </SelectTrigger>
 
                                                 <SelectContent>
                                                     {durations.map(item => (
-                                                        <SelectItem value={item.id}>{item.name}</SelectItem>
+                                                        <SelectItem key={item.id} value={item.id}>{item.name}</SelectItem>
                                                     ))}
                                                 </SelectContent>
                                             </Select>
@@ -253,10 +255,12 @@ const Page = () => {
                             />
                         </div>
 
+
                     </form>
                 </Form>
             </MultiStepFormBody>
-            <MultiFormStepFooter formStepIndex={0} submitForm={onFormSubmit} />
+
+            <MultiFormStepFooter formStepIndex={0} submitForm={basicInfoForm.handleSubmit(onFormSubmit)} />
         </div>
     );
 };
