@@ -18,16 +18,14 @@ const SearchBar: React.FC<SearchBarProps> = ({
      className = "",
  }) => {
     return (
-        <div className={`relative hidden lg:block`}>
-      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black">
-        <MagnifyingGlass />
-      </span>
+        <div className="relative block">
             <Input
                 type="text"
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
-                className={`pl-12 pr-4 py-2 w-full min-w-[424px] placeholder:text-gray-500 focus:ring-primary-500 focus:border-etutor-primary outline-0 ${className}`}
+                appendIcon={<div className="text-black"><MagnifyingGlass/></div>}
+                className={`pr-4 py-2 w-full min-w-[424px] placeholder:text-gray-500 focus:ring-primary-500 focus:border-etutor-primary outline-0 ${className}`}
             />
         </div>
     );

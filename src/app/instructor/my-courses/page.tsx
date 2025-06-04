@@ -3,9 +3,10 @@
 import React, {useMemo, useState} from 'react';
 import SearchInput from "@/components/common/SearchInput";
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
-import {courseProgressData, coursesData} from "@/lib/@fake-db/courses";
+import {courseLevels, courseProgressData, coursesData} from "@/lib/@fake-db/courses";
 import {CourseCard} from "@/components/CourseCard";
 import CustomPagination from "@/components/CustomPagination";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -68,9 +69,9 @@ const Page = () => {
 
     return (
         <div className="space-y-10">
-            <div className="flex [&_div]:grow gap-6">
+            <div className="grid grid-cols-10 gap-6">
                 {/* Search */}
-                <div className="relative">
+                <div className="relative col-span-4">
                     <label className="block text-sm text-gray-600">Search:</label>
                     <SearchInput
                         value={searchQuery}
@@ -84,45 +85,60 @@ const Page = () => {
                 </div>
 
                 {/* Sort */}
-                <div>
+                <div className="col-span-2">
                     <label className="block text-sm text-gray-500">Sort by:</label>
-                    <DropdownMenuWrapper
-                        options={sortOptions}
-                        selected={sortBy}
-                        onChange={(val) => {
-                            setSortBy(val);
-                            resetPagination();
-                        }}
-                        variant="white"
-                    />
+                    <Select onValueChange={(val) => {
+                        setSortBy(val);
+                        resetPagination();
+                    }}>
+                        <SelectTrigger className="bg-white border-0 text-gray-700 h-12 text-base">
+                            <SelectValue placeholder="Select..."/>
+                        </SelectTrigger>
+
+                        <SelectContent>
+                            {sortOptions.map(item => (
+                                <SelectItem value={item.value}>{item.label}</SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
                 </div>
 
                 {/* Rating */}
-                <div>
+                <div className="col-span-2">
                     <label className="block text-sm text-gray-500">Courses:</label>
-                    <DropdownMenuWrapper
-                        options={ratingFilters}
-                        selected={ratingFilter}
-                        onChange={(val) => {
-                            setRatingFilter(val);
-                            resetPagination();
-                        }}
-                        variant="white"
-                    />
+                    <Select onValueChange={(val) => {
+                        setRatingFilter(val);
+                        resetPagination();
+                    }}>
+                        <SelectTrigger className="bg-white border-0 text-gray-700 h-12 text-base">
+                            <SelectValue placeholder="Select..."/>
+                        </SelectTrigger>
+
+                        <SelectContent>
+                            {ratingFilters.map(item => (
+                                <SelectItem value={item.value}>{item.label}</SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
                 </div>
 
                 {/* Rating */}
-                <div>
-                    <label className="block text-sm text-gray-500 mb-1">Rating:</label>
-                    <DropdownMenuWrapper
-                        options={ratingFilters}
-                        selected={ratingFilter}
-                        onChange={(val) => {
-                            setRatingFilter(val);
-                            resetPagination();
-                        }}
-                        variant="white"
-                    />
+                <div className="col-span-2">
+                    <label className="block text-sm text-gray-500">Rating:</label>
+                    <Select onValueChange={(val) => {
+                        setRatingFilter(val);
+                        resetPagination();
+                    }}>
+                        <SelectTrigger className="bg-white border-0 text-gray-700 h-12 text-base">
+                            <SelectValue placeholder="Select..."/>
+                        </SelectTrigger>
+
+                        <SelectContent>
+                            {ratingFilters.map(item => (
+                                <SelectItem value={item.value}>{item.label}</SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
                 </div>
             </div>
 

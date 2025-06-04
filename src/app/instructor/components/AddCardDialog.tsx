@@ -83,7 +83,6 @@ const AddCardDialog: React.FC<AddCardDialogProps> = ({ open, onOpenChange, onAdd
 
           <div>
             <Label htmlFor="number">Card Number</Label>
-            <div className="relative">
               <Input
                 id="number"
                 placeholder="Label"
@@ -91,13 +90,13 @@ const AddCardDialog: React.FC<AddCardDialogProps> = ({ open, onOpenChange, onAdd
                 onChange={(e) => setFormData(prev => ({ ...prev, number: e.target.value }))}
                 maxLength={16}
                 required
-                className="pl-12"
+                appendIcon={
+                  <div className="text-primary-500 [&_svg]:size-5">
+                    <CreditCard/>
+                  </div>
+                }
+                showIconSeparator={true}
               />
-              <div className="absolute left-3 text-primary-500 top-1/2 transform -translate-y-1/2 [&_svg]:size-5">
-                <CreditCard/>
-              </div>
-              <div className="absolute h-7 w-px bg-gray-100 left-[40px] top-2.5 z-10"></div>
-            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">

@@ -135,7 +135,7 @@ const WatchCourse = () => {
                                 max={5}
                             />
                             <div>
-                                <div className="text-sm font-bold">512</div>
+                                <div className="text-sm font-semibold">512</div>
                                 <div className="text-xs text-gray-600">Students watching</div>
                             </div>
 
@@ -146,7 +146,7 @@ const WatchCourse = () => {
                         </div>
 
                         <hr/>
-                        <Tabs defaultValue="description" className="w-full space-y-10 mt-4">
+                        <Tabs defaultValue="description" className="w-full space-y-10">
                             <TabsList className="w-full grid grid-cols-4 border-b border-gray-100">
                                 <TabsTrigger value="description">Description</TabsTrigger>
                                 <TabsTrigger value="notes">Lectures Notes</TabsTrigger>

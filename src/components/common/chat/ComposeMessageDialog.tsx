@@ -51,7 +51,7 @@ const ComposeMessageDialog = ({ open, onOpenChange, onSendMessage }: ComposeMess
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="">
+      <DialogContent className="max-w-2xl">
         <DialogHeader>
           <div className="flex items-center justify-between">
             <DialogTitle>New Message</DialogTitle>
@@ -65,6 +65,7 @@ const ComposeMessageDialog = ({ open, onOpenChange, onSendMessage }: ComposeMess
                   options={teachersList}
                   selected={selectedTeacherID}
                   onChange={setSelectedTeacherID}
+                  defaultPlaceholder="Select..."
                   contentContentClasses="w-full min-w-[350px]"
               />
             </div>
@@ -77,7 +78,7 @@ const ComposeMessageDialog = ({ open, onOpenChange, onSendMessage }: ComposeMess
                   value={message}
                   rows={4}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full"
+                  className="w-full resize-none"
               />
             </div>
           </div>
@@ -91,8 +92,8 @@ const ComposeMessageDialog = ({ open, onOpenChange, onSendMessage }: ComposeMess
               onClick={handleSend}
               disabled={!selectedTeacherID || !message.trim()}
           >
-            <PaperPlaneRightSolid />
             Send Message
+            <PaperPlaneRightSolid />
           </Button>
         </DialogFooter>
 

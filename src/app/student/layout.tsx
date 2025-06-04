@@ -77,7 +77,7 @@ export default function StudentLayout({
                                 </div>
                             </div>
 
-                            <Tabs value={currentTab} onValueChange={handleTabChange} className="mt-4">
+                            <Tabs value={currentTab} onValueChange={handleTabChange} className="">
                                 <TabsList className="w-full grid grid-cols-7 border-b border-primary-100">
                                     <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
                                     <TabsTrigger value="courses">Courses</TabsTrigger>

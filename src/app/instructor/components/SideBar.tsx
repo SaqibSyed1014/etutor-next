@@ -70,7 +70,7 @@ const SideBar = () => {
                             </div>
                             <span>{link.label}</span>
                             {link.route === '/instructor/chats' && <div
-                                className="bg-primary-500 text-white rounded-full size-6 grid place-items-center ml-auto">
+                                className={`rounded-full size-6 grid place-items-center ml-auto ${pathname.startsWith(link.route) ? 'bg-white text-primary-500':'bg-primary-500 text-white'}`}>
                                 3
                             </div>}
                         </Link>

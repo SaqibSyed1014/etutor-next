@@ -342,19 +342,12 @@ const Page = () => {
                                             <FormItem>
                                                 <FormLabel>Personal Website</FormLabel>
                                                 <FormControl>
-                                                    <div className="relative">
-                                                        <Input
-                                                            placeholder="Personal website or portfolio url"
-                                                            type="url"
-                                                            className="pl-12"
-                                                            {...field}
-                                                        />
-
-                                                        <div className="absolute left-3 text-primary-500 top-1/2 transform -translate-y-1/2 [&_svg]:size-5">
-                                                            <Globe />
-                                                        </div>
-                                                        <div className="absolute h-7 w-px bg-gray-100 left-[40px] top-2.5 z-10"></div>
-                                                    </div>
+                                                    <Input
+                                                        placeholder="Username"
+                                                        appendIcon={<div className="[&_svg]:size-5 text-primary-500"><Globe/></div>}
+                                                        showIconSeparator={true}
+                                                        {...field}
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -369,14 +362,12 @@ const Page = () => {
                                                 <FormItem>
                                                     <FormLabel>Facebook</FormLabel>
                                                     <FormControl>
-                                                        <div className="relative">
-                                                            <Input placeholder="Username" {...field} className="pl-12"  />
-                                                            <div
-                                                                className="absolute left-3 text-primary-500 top-1/2 transform -translate-y-1/2 [&_svg]:size-5">
-                                                                <Facebook />
-                                                            </div>
-                                                            <div className="absolute h-7 w-px bg-gray-100 left-[40px] top-2.5 z-10"></div>
-                                                        </div>
+                                                        <Input
+                                                            placeholder="Username"
+                                                            appendIcon={<div className="[&_svg]:size-5 text-primary-500"><Facebook/></div>}
+                                                            showIconSeparator={true}
+                                                            {...field}
+                                                        />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -390,15 +381,12 @@ const Page = () => {
                                                 <FormItem>
                                                     <FormLabel>Instagram</FormLabel>
                                                     <FormControl>
-                                                        <div className="relative">
-                                                            <Input placeholder="Username" {...field} className="pl-12"/>
-                                                            <div
-                                                                className="absolute left-3 text-primary-500 top-1/2 transform -translate-y-1/2 [&_svg]:size-5">
-                                                                <Instagram/>
-                                                            </div>
-                                                            <div
-                                                                className="absolute h-7 w-px bg-gray-100 left-[40px] top-2.5 z-10"></div>
-                                                        </div>
+                                                        <Input
+                                                            placeholder="Username"
+                                                            appendIcon={<div className="[&_svg]:size-5 text-primary-500"><Instagram/></div>}
+                                                            showIconSeparator={true}
+                                                            {...field}
+                                                        />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -412,15 +400,12 @@ const Page = () => {
                                                 <FormItem>
                                                     <FormLabel>Linkedin</FormLabel>
                                                     <FormControl>
-                                                        <div className="relative">
-                                                            <Input placeholder="Username" {...field} className="pl-12"/>
-                                                            <div
-                                                                className="absolute left-3 text-primary-500 top-1/2 transform -translate-y-1/2 [&_svg]:size-5">
-                                                                <Linkedin />
-                                                            </div>
-                                                            <div
-                                                                className="absolute h-7 w-px bg-gray-100 left-[40px] top-2.5 z-10"></div>
-                                                        </div>
+                                                        <Input
+                                                            placeholder="Username"
+                                                            appendIcon={<div className="[&_svg]:size-5 text-primary-500"><Linkedin/></div>}
+                                                            showIconSeparator={true}
+                                                            {...field}
+                                                        />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -434,14 +419,12 @@ const Page = () => {
                                                 <FormItem>
                                                     <FormLabel>Twitter</FormLabel>
                                                     <FormControl>
-                                                        <div className="relative"><Input placeholder="Username" {...field} className="pl-12"/>
-                                                            <div
-                                                                className="absolute left-3 text-primary-500 top-1/2 transform -translate-y-1/2 [&_svg]:size-5">
-                                                                <Twitter/>
-                                                            </div>
-                                                            <div
-                                                                className="absolute h-7 w-px bg-gray-100 left-[40px] top-2.5 z-10"></div>
-                                                        </div>
+                                                        <Input
+                                                            placeholder="Username"
+                                                            appendIcon={<div className="[&_svg]:size-5 text-primary-500"><Twitter/></div>}
+                                                            showIconSeparator={true}
+                                                            {...field}
+                                                        />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -455,16 +438,12 @@ const Page = () => {
                                                 <FormItem>
                                                     <FormLabel>Whatsapp</FormLabel>
                                                     <FormControl>
-                                                        <div className="relative">
-                                                            <Input placeholder="Phone number" {...field}
-                                                                  className="pl-12"/>
-                                                            <div
-                                                                className="absolute left-3 text-primary-500 top-1/2 transform -translate-y-1/2 [&_svg]:size-5">
-                                                                <Whatsapp/>
-                                                            </div>
-                                                            <div
-                                                                className="absolute h-7 w-px bg-gray-100 left-[40px] top-2.5 z-10"></div>
-                                                        </div>
+                                                        <Input
+                                                            placeholder="Username"
+                                                            appendIcon={<div className="[&_svg]:size-5 text-primary-500"><Whatsapp/></div>}
+                                                            showIconSeparator={true}
+                                                            {...field}
+                                                        />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -478,15 +457,12 @@ const Page = () => {
                                                 <FormItem>
                                                     <FormLabel>Youtube</FormLabel>
                                                     <FormControl>
-                                                        <div className="relative">
-                                                            <Input placeholder="Username" {...field} className="pl-12"/>
-                                                            <div
-                                                                className="absolute left-3 text-primary-500 top-1/2 transform -translate-y-1/2 [&_svg]:size-5">
-                                                                <Youtube/>
-                                                            </div>
-                                                            <div
-                                                                className="absolute h-7 w-px bg-gray-100 left-[40px] top-2.5 z-10"></div>
-                                                        </div>
+                                                        <Input
+                                                            placeholder="Username"
+                                                            appendIcon={<div className="[&_svg]:size-5 text-primary-500"><Youtube/></div>}
+                                                            showIconSeparator={true}
+                                                            {...field}
+                                                        />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
