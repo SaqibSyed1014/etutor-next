@@ -9,6 +9,7 @@ import LectureCaptionDialog from './LectureCaptionDialog';
 import LectureDescriptionDialog from './LectureDescriptionDialog';
 import LectureNotesDialog from './LectureNotesDialog';
 import {ChevronUp, ChevronDown, PencilLine, ThreeBars, Trash} from "@/assets/icons/common-icons";
+import {DraggableProvidedDragHandleProps} from "@hello-pangea/dnd";
 
 interface Lecture {
   id: string;
@@ -23,6 +24,7 @@ interface LectureItemProps {
   sectionId: string;
   onUpdateLecture: (sectionId: string, lectureId: string, updatedLecture: Partial<Lecture>) => void;
   onDeleteLecture: (sectionId: string, lectureId: string) => void;
+  dragHandleProps?: DraggableProvidedDragHandleProps | null
 }
 
 const LectureItem: React.FC<LectureItemProps> = ({
@@ -30,7 +32,8 @@ const LectureItem: React.FC<LectureItemProps> = ({
   index,
   sectionId,
   onUpdateLecture,
-  onDeleteLecture
+  onDeleteLecture,
+  dragHandleProps
 }) => {
   const [editLectureDialog, setEditLectureDialog] = useState(false);
   const [videoDialog, setVideoDialog] = useState(false);
@@ -66,7 +69,7 @@ const LectureItem: React.FC<LectureItemProps> = ({
           className={`flex items-center justify-between p-3 bg-white`}
         >
           <div className="flex items-center space-x-3">
-            <div className="cursor-grab text-gray-500">
+            <div className="cursor-grab text-gray-500" {...dragHandleProps}>
               <ThreeBars />
             </div>
             <span className="text-sm text-gray-900">{lecture.name.length ? lecture.name : 'Lecture name'}</span>

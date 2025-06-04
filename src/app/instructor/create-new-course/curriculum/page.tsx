@@ -9,6 +9,7 @@ import MultiStepFormHeader from "@/app/instructor/create-new-course/components/M
 import MultiFormStepFooter from "@/app/instructor/create-new-course/components/MultiFormStepFooter";
 import {useToast} from "@/hooks/use-toast";
 import MultiStepFormBody from "@/app/instructor/create-new-course/components/MultiStepFormBody";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
 interface Lecture {
     id: string;
@@ -96,6 +97,46 @@ const Page = () => {
         ));
     };
 
+    function onDragEnd(result) {
+        const { source, destination, type } = result;
+        if (!destination) return;
+
+        if (type === 'section') {
+            const newSections = Array.from(sections);
+            const [moved] = newSections.splice(source.index, 1);
+            newSections.splice(destination.index, 0, moved);
+            setSections(newSections);
+        }
+
+        if (type === 'lecture') {
+            const sourceSection = sections.find(s => s.id === source.droppableId);
+            const destSection = sections.find(s => s.id === destination.droppableId);
+
+            if (!sourceSection || !destSection) return;
+
+            const sourceLectures = Array.from(sourceSection.lectures);
+            const [movedLecture] = sourceLectures.splice(source.index, 1);
+
+            if (sourceSection === destSection) {
+                sourceLectures.splice(destination.index, 0, movedLecture);
+                const updatedSections = sections.map(s =>
+                    s.id === sourceSection.id ? { ...s, lectures: sourceLectures } : s
+                );
+                setSections(updatedSections);
+            } else {
+                const destLectures = Array.from(destSection.lectures);
+                destLectures.splice(destination.index, 0, movedLecture);
+
+                const updatedSections = sections.map(s => {
+                    if (s.id === sourceSection.id) return { ...s, lectures: sourceLectures };
+                    if (s.id === destSection.id) return { ...s, lectures: destLectures };
+                    return s;
+                });
+                setSections(updatedSections);
+            }
+        }
+    }
+
     const onFormSubmit = () => {
         toast({
             title: "Changes saved",
@@ -109,22 +150,36 @@ const Page = () => {
 
             <MultiStepFormBody>
                 <div className="p-10 space-y-8">
-                            <div className="space-y-4">
-                                {sections.map((section, index) => (
-                                    <CurriculumSection
-                                        key={section.id}
-                                        section={section}
-                                        index={index}
-                                        onEditSection={(sectionId, sectionName) =>
-                                            setEditSectionDialog({isOpen: true, sectionId, sectionName})
-                                        }
-                                        onDeleteSection={deleteSection}
-                                        onAddLecture={addLecture}
-                                        onUpdateLecture={updateLecture}
-                                        onDeleteLecture={deleteLecture}
-                                    />
-                                ))}
-                            </div>
+                    <DragDropContext onDragEnd={onDragEnd}>
+                        <Droppable droppableId="sections-droppable" type="section">
+                            {(provided) => (
+                                <div ref={provided.innerRef} {...provided.droppableProps} className="space-y-4">
+                                    {sections.map((section, index) => (
+                                        <Draggable draggableId={section.id} index={index} key={section.id}>
+                                            {(provided) => (
+                                                <div ref={provided.innerRef} {...provided.draggableProps}>
+                                                    <CurriculumSection
+                                                        section={section}
+                                                        index={index}
+                                                        dragHandleProps={provided.dragHandleProps}
+                                                        onEditSection={(sectionId, sectionName) =>
+                                                            setEditSectionDialog({ isOpen: true, sectionId, sectionName })
+                                                        }
+                                                        onDeleteSection={deleteSection}
+                                                        onAddLecture={addLecture}
+                                                        onUpdateLecture={updateLecture}
+                                                        onDeleteLecture={deleteLecture}
+                                                    />
+                                                </div>
+                                            )}
+                                        </Draggable>
+                                    ))}
+                                    {provided.placeholder}
+                                </div>
+                            )}
+                        </Droppable>
+                    </DragDropContext>
+
 
                     <Button
                         onClick={addSection}
@@ -134,6 +189,7 @@ const Page = () => {
                         <Plus className="w-4 h-4 mr-2"/>
                         Add Sections
                     </Button>
+
                 </div>
             </MultiStepFormBody>
 

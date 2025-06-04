@@ -4,6 +4,8 @@ import React from 'react';
 import { Plus } from 'lucide-react';
 import LectureItem from './LectureItem';
 import {Trash, PencilLine, ThreeBars} from "@/assets/icons/common-icons";
+import { Droppable, Draggable } from "@hello-pangea/dnd";
+import { DraggableProvidedDragHandleProps } from "@hello-pangea/dnd";
 
 interface Lecture {
     id: string;
@@ -26,6 +28,7 @@ interface CurriculumSectionProps {
     onAddLecture: (sectionId: string) => void;
     onUpdateLecture: (sectionId: string, lectureId: string, updatedLecture: Partial<Lecture>) => void;
     onDeleteLecture: (sectionId: string, lectureId: string) => void;
+    dragHandleProps?: DraggableProvidedDragHandleProps | null
 }
 
 const CurriculumSection: React.FC<CurriculumSectionProps> = ({
@@ -35,16 +38,17 @@ const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                                                                  onDeleteSection,
                                                                  onAddLecture,
                                                                  onUpdateLecture,
-                                                                 onDeleteLecture
+                                                                 onDeleteLecture,
+                                                                 dragHandleProps
                                                              }) => {
     return (
 
                 <div
-                    className={`bg-gray-50 p-6`}
+                    className="bg-gray-50 p-6"
                 >
                     <div className="flex flex-row items-center justify-between py-4">
                         <div className="flex items-center space-x-3 text-gray-900 text-base">
-                            <div className="cursor-grab">
+                            <div className="cursor-grab" {...dragHandleProps}>
                                 <ThreeBars />
                             </div>
                             <span className="font-medium">Sections {String(index + 1).padStart(2, '0')}:</span>
@@ -73,18 +77,29 @@ const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                         </div>
                     </div>
                     <div className="pt-0">
-                                <div className="space-y-2">
-                                    {section.lectures.map((lecture, lectureIndex) => (
-                                        <LectureItem
-                                            key={lecture.id}
-                                            lecture={lecture}
-                                            index={lectureIndex}
-                                            sectionId={section.id}
-                                            onUpdateLecture={onUpdateLecture}
-                                            onDeleteLecture={onDeleteLecture}
-                                        />
+                        <Droppable droppableId={section.id} type="lecture">
+                            {(provided) => (
+                                <div ref={provided.innerRef} {...provided.droppableProps} className="space-y-2 mt-4">
+                                    {section.lectures.map((lecture, index) => (
+                                        <Draggable draggableId={lecture.id} index={index} key={lecture.id}>
+                                            {(provided) => (
+                                                <div ref={provided.innerRef} {...provided.draggableProps}>
+                                                    <LectureItem
+                                                        lecture={lecture}
+                                                        sectionId={section.id}
+                                                        index={index}
+                                                        dragHandleProps={provided.dragHandleProps}
+                                                        onUpdateLecture={onUpdateLecture}
+                                                        onDeleteLecture={onDeleteLecture}
+                                                    />
+                                                </div>
+                                            )}
+                                        </Draggable>
                                     ))}
+                                    {provided.placeholder}
                                 </div>
+                            )}
+                        </Droppable>
                     </div>
                 </div>
     );
