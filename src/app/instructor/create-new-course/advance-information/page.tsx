@@ -10,6 +10,7 @@ import RichTextEditor from "@/components/common/RichTextEditor";
 import {X} from "lucide-react";
 import {UploadSimple} from "@/assets/icons/common-icons";
 import {useRouter} from "next/navigation";
+import {useStepContext} from "@/context/CreateCourseContext";
 
 interface SectionItem {
     id: string;
@@ -18,6 +19,7 @@ interface SectionItem {
 
 const Page = () => {
     const router = useRouter();
+    const { setStepComplete, setCurrentTab } = useStepContext();
 
     const [thumbnail, setThumbnail] = useState<string>('');
     const [trailer, setTrailer] = useState<string>('');
@@ -59,7 +61,8 @@ const Page = () => {
     };
 
     function saveForm() {
-        stepCompleted();
+        setStepComplete('step2');
+        setCurrentTab('curriculum');
         router.push('/instructor/create-new-course/curriculum')
     }
     return (

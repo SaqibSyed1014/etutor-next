@@ -13,8 +13,8 @@ import MultiFormStepFooter from "@/app/instructor/create-new-course/components/M
 import {Select, SelectItem, SelectTrigger, SelectContent, SelectValue} from "@/components/ui/select";
 import {courseCategories} from "@/lib/@fake-db/courseCategories";
 import {courseLanguage, courseLevels, durations} from "@/lib/@fake-db/courses";
-import {Button} from "@/components/ui/button";
 import {useRouter} from "next/navigation";
+import { useStepContext } from "@/context/CreateCourseContext";
 
 const basicInfoSchema = z.object({
     title: z.string().min(2, 'Title must be at least 2 characters'),
@@ -30,9 +30,10 @@ const basicInfoSchema = z.object({
 
 type BasicInfoValues = z.infer<typeof basicInfoSchema>;
 
-const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
+const Page = () => {
     const { toast } = useToast();
     const router = useRouter();
+    const { setStepComplete, setCurrentTab } = useStepContext();
 
     const basicInfoForm = useForm<BasicInfoValues>({
         resolver: zodResolver(basicInfoSchema),
@@ -51,7 +52,8 @@ const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
 
     const onFormSubmit = (data :BasicInfoValues) => {
         console.log('data', data)
-        stepCompleted();
+        setStepComplete('step1');
+        setCurrentTab('advance-information');
         router.push('/instructor/create-new-course/advance-information')
         toast({
             title: "Changes saved",
@@ -97,12 +99,12 @@ const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
                             <FormField
                                 control={basicInfoForm.control}
                                 name="category"
-                                render={({field}) => (
+                                render={({field, fieldState}) => (
                                     <FormItem>
                                         <FormLabel>Course Category</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={field.onChange} value={field.value} {...field} >
-                                                <SelectTrigger>
+                                            <Select  onValueChange={field.onChange} value={field.value} {...field} >
+                                                <SelectTrigger className={ fieldState.error && 'field-error-state' }>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
 
@@ -121,12 +123,12 @@ const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
                             <FormField
                                 control={basicInfoForm.control}
                                 name="subCategory"
-                                render={({field}) => (
+                                render={({field, fieldState}) => (
                                     <FormItem>
                                         <FormLabel>Course Sub-Category</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange} value={field.value} {...field} >
-                                                <SelectTrigger>
+                                                <SelectTrigger className={ fieldState.error && 'field-error-state' }>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
 
@@ -161,12 +163,12 @@ const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
                             <FormField
                                 control={basicInfoForm.control}
                                 name="language"
-                                render={({field}) => (
+                                render={({field, fieldState}) => (
                                     <FormItem>
                                         <FormLabel>Course Language</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange} value={field.value} {...field} >
-                                                <SelectTrigger>
+                                                <SelectTrigger className={ fieldState.error && 'field-error-state' }>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
 
@@ -209,12 +211,12 @@ const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
                             <FormField
                                 control={basicInfoForm.control}
                                 name="level"
-                                render={({field}) => (
+                                render={({field, fieldState}) => (
                                     <FormItem>
                                         <FormLabel>Course Level</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange} value={field.value} {...field} >
-                                                <SelectTrigger>
+                                                <SelectTrigger className={ fieldState.error && 'field-error-state' }>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
 
@@ -233,12 +235,12 @@ const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
                             <FormField
                                 control={basicInfoForm.control}
                                 name="duration"
-                                render={({field}) => (
+                                render={({field, fieldState}) => (
                                     <FormItem>
                                         <FormLabel>Course durations</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange} value={field.value} {...field} >
-                                                <SelectTrigger>
+                                                <SelectTrigger className={ fieldState.error && 'field-error-state' }>
                                                     <SelectValue placeholder="Course duration"/>
                                                 </SelectTrigger>
 

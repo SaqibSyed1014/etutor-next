@@ -12,6 +12,7 @@ import MultiFormStepFooter from "@/app/instructor/create-new-course/components/M
 import SearchInput from "@/components/common/SearchInput";
 import {Avatar, AvatarImage} from "@/components/ui/avatar";
 import {X} from "lucide-react";
+import {useStepContext} from "@/context/CreateCourseContext";
 
 const messageFormSchema = z.object({
     message: z.string().min(2, 'Title must be at least 2 characters'),
@@ -20,8 +21,9 @@ const messageFormSchema = z.object({
 
 type MessageValues = z.infer<typeof messageFormSchema>;
 
-const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
+const Page = () => {
     const { toast } = useToast();
+    const { setStepComplete } = useStepContext();
 
     const messageForm = useForm<MessageValues>({
         resolver: zodResolver(messageFormSchema),
@@ -33,7 +35,7 @@ const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
 
     const onFormSubmit = (data :MessageValues) => {
         console.log('data', data)
-        stepCompleted();
+        setStepComplete('step4');
         toast({
             title: "Changes saved",
             description: "Your account settings have been updated successfully.",

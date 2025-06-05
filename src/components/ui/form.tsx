@@ -117,7 +117,7 @@ const FormControl = React.forwardRef<
           : `${formDescriptionId} ${formMessageId}`
       }
       aria-invalid={!!error}
-      className={error ? 'ring-1 ring-error-500 focus:border-error-500 focus:ring-error-500':''}
+      className={error ? 'field-error-state':''}
       {...props}
     />
   )
