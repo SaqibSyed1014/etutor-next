@@ -16,7 +16,7 @@ interface SectionItem {
     text: string;
 }
 
-const Page = ({ stepCompleted }: { stepCompleted: () => void; }) => {
+const Page = () => {
     const router = useRouter();
 
     const [thumbnail, setThumbnail] = useState<string>('');

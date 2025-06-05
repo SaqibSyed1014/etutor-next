@@ -108,11 +108,7 @@ const Layout = () => {
                                 />
                             </TabsContent>
                             <TabsContent value="advance-information">
-                                <AdvanceInformation
-                                    stepCompleted={() =>
-                                        setCompleteStatus((prev) => ({ ...prev, step2: true }))
-                                    }
-                                />
+                                <AdvanceInformation />
                             </TabsContent>
                             <TabsContent value="curriculum">
                                 <Curriculum
