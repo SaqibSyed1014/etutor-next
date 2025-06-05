@@ -103,7 +103,7 @@ const Page = () => {
                                     <FormItem>
                                         <FormLabel>Course Category</FormLabel>
                                         <FormControl>
-                                            <Select  onValueChange={field.onChange} value={field.value} {...field} >
+                                            <Select onValueChange={field.onChange} value={field.value}>
                                                 <SelectTrigger className={ fieldState.error && 'field-error-state' }>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
@@ -127,7 +127,7 @@ const Page = () => {
                                     <FormItem>
                                         <FormLabel>Course Sub-Category</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={field.onChange} value={field.value} {...field} >
+                                            <Select onValueChange={field.onChange} value={field.value} >
                                                 <SelectTrigger className={ fieldState.error && 'field-error-state' }>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
@@ -167,7 +167,7 @@ const Page = () => {
                                     <FormItem>
                                         <FormLabel>Course Language</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={field.onChange} value={field.value} {...field} >
+                                            <Select onValueChange={field.onChange} value={field.value} >
                                                 <SelectTrigger className={ fieldState.error && 'field-error-state' }>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
@@ -191,7 +191,7 @@ const Page = () => {
                                     <FormItem>
                                         <FormLabel>Subtitle Language (Optional)</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={field.onChange} value={field.value} {...field} >
+                                            <Select onValueChange={field.onChange} value={field.value} >
                                                 <SelectTrigger>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
@@ -215,7 +215,7 @@ const Page = () => {
                                     <FormItem>
                                         <FormLabel>Course Level</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={field.onChange} value={field.value} {...field} >
+                                            <Select onValueChange={field.onChange} value={field.value}>
                                                 <SelectTrigger className={ fieldState.error && 'field-error-state' }>
                                                     <SelectValue placeholder="Select..."/>
                                                 </SelectTrigger>
@@ -239,7 +239,7 @@ const Page = () => {
                                     <FormItem>
                                         <FormLabel>Course durations</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={field.onChange} value={field.value} {...field} >
+                                            <Select onValueChange={field.onChange} value={field.value}>
                                                 <SelectTrigger className={ fieldState.error && 'field-error-state' }>
                                                     <SelectValue placeholder="Course duration"/>
                                                 </SelectTrigger>
