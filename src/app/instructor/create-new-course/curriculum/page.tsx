@@ -9,7 +9,7 @@ import MultiStepFormHeader from "@/app/instructor/create-new-course/components/M
 import MultiFormStepFooter from "@/app/instructor/create-new-course/components/MultiFormStepFooter";
 import {useToast} from "@/hooks/use-toast";
 import MultiStepFormBody from "@/app/instructor/create-new-course/components/MultiStepFormBody";
-import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import {DragDropContext, Droppable, Draggable, DropResult} from "@hello-pangea/dnd";
 import {useRouter} from "next/navigation";
 import {useStepContext} from "@/context/CreateCourseContext";
 
@@ -102,7 +102,7 @@ const Page = () => {
         ));
     };
 
-    function onDragEnd(result) {
+    function onDragEnd(result :DropResult) {
         const { source, destination, type } = result;
         if (!destination) return;
 
