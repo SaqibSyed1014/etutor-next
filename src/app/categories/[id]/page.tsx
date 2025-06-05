@@ -103,9 +103,9 @@ const Page = () => {
                                     <div className="flex gap-2">
                                         <button
                                             type="button"
-                                            className="size-12 flex items-center justify-center rounded-full text-primary-500 transition hover:bg-primary-100 disabled:hover:bg-transparent disabled:text-primary-100"
+                                            className="size-12 [&>svg]:size-4 flex items-center justify-center rounded-full text-primary-500 transition hover:bg-primary-100 disabled:hover:bg-transparent disabled:text-primary-100"
                                         >
-                                            <ArrowLeft classes="h-4 w-4"/>
+                                            <ArrowLeft />
                                         </button>
                                         <button
                                             type="button"
