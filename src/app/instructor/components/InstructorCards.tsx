@@ -11,9 +11,7 @@ const InstructorCards = () => {
                 <CardTitle>Cards</CardTitle>
             </CardHeader>
             <CardContent className="p-5">
-                <div>
-                    <CreditCardCarousel />
-                </div>
+                <CreditCardCarousel />
             </CardContent>
         </Card>
     );

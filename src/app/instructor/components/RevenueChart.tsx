@@ -2,37 +2,37 @@
 
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AreaChart, XAxis, YAxis, ResponsiveContainer, Tooltip, Area } from 'recharts';
 
 const RevenueChart = ({ cardTitle = 'Revenue', chartColor = '#6366f1' }: { cardTitle?: string; chartColor?: string }) => {
   const [timeframe, setTimeframe] = useState('today');
 
   const dataToday = [
-    { name: 'Aug 07', value: 100 },
-    { name: 'Aug 08', value: 200 },
-    { name: 'Aug 09', value: 250 },
-    { name: 'Aug 10', value: 80 },
-    { name: 'Aug 11', value: 70 },
-    { name: 'Aug 12', value: 165 },
-    { name: 'Aug 13', value: 300 },
+    { name: 'Aug 01', value: 105000 },
+    { name: 'Aug 05', value: 392000 },
+    { name: 'Aug 10', value: 30000 },
+    { name: 'Aug 15', value: 290000 },
+    { name: 'Aug 20', value: 70000 },
+    { name: 'Aug 25', value: 9000 },
+    { name: 'Aug 30', value: 750000 },
   ];
 
   const dataWeek = [
-    { name: 'Week 1', value: 2800 },
-    { name: 'Week 2', value: 3200 },
-    { name: 'Week 3', value: 2900 },
-    { name: 'Week 4', value: 3500 },
-    { name: 'Week 5', value: 3100 },
+    { name: 'Week 1', value: 500000 },
+    { name: 'Week 2', value: 100000 },
+    { name: 'Week 3', value: 800000 },
+    { name: 'Week 4', value: 90000 },
+    { name: 'Week 5', value: 50000 },
   ];
 
   const dataMonth = [
-    { name: 'Jan', value: 12000 },
-    { name: 'Feb', value: 15000 },
-    { name: 'Mar', value: 13500 },
+    { name: 'Jan', value: 700000 },
+    { name: 'Feb', value: 100000 },
+    { name: 'Mar', value: 800000 },
     { name: 'Apr', value: 18000 },
-    { name: 'May', value: 16500 },
-    { name: 'Jun', value: 20000 },
+    { name: 'May', value: 70000 },
+    { name: 'Jun', value: 10000 },
   ];
 
   const getCurrentData = () => {
@@ -57,16 +57,16 @@ const RevenueChart = ({ cardTitle = 'Revenue', chartColor = '#6366f1' }: { cardT
     <Card className="dashboard-card h-full flex flex-col">
       <CardHeader className="dashboard-card-header">
         <CardTitle>{cardTitle}</CardTitle>
-        {/*<Select value={timeframe} onValueChange={setTimeframe}>*/}
-        {/*  <SelectTrigger className="w-32">*/}
-        {/*    <SelectValue />*/}
-        {/*  </SelectTrigger>*/}
-        {/*  <SelectContent>*/}
-        {/*    <SelectItem value="today">Today</SelectItem>*/}
-        {/*    <SelectItem value="week">This week</SelectItem>*/}
-        {/*    <SelectItem value="month">This month</SelectItem>*/}
-        {/*  </SelectContent>*/}
-        {/*</Select>*/}
+        <Select value={timeframe} onValueChange={setTimeframe}>
+          <SelectTrigger className="chart-dropdown">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="today">Today</SelectItem>
+            <SelectItem value="week">This week</SelectItem>
+            <SelectItem value="month">This month</SelectItem>
+          </SelectContent>
+        </Select>
       </CardHeader>
       <CardContent className="flex-1 flex items-end">
         <div className="h-[330px] w-full">
@@ -89,6 +89,12 @@ const RevenueChart = ({ cardTitle = 'Revenue', chartColor = '#6366f1' }: { cardT
                   domain={[1, 'auto']}
                   axisLine={false}
                   tickLine={false}
+                  ticks={[1, 1000, 10000, 50000, 100000, 500000, 1000000]}
+                  tickFormatter={(value) => {
+                    if (value === 0) return '0';
+                    if (value >= 1000) return `${value / 1000}k`;
+                    return value.toString();
+                  }}
                   tick={{ fill: '#999', fontSize: 12 }}
                   tickMargin={15}
                   type="number"
@@ -100,16 +106,6 @@ const RevenueChart = ({ cardTitle = 'Revenue', chartColor = '#6366f1' }: { cardT
                   itemStyle={{ color: '#8C94A3' }}
                   formatter={(value: number) => value.toLocaleString()}
               />
-              {/*<Line*/}
-              {/*    type="monotone"*/}
-              {/*    dataKey="value"*/}
-              {/*    stroke="#564FFD"*/}
-              {/*    strokeWidth={2}*/}
-              {/*    dot={false}*/}
-              {/*    activeDot={{ r: 6, stroke: '#fff', strokeWidth: 2, fill: '#564FFD' }}*/}
-              {/*    fill="url(#gradient)"*/}
-              {/*    fillOpacity={1}*/}
-              {/*/>*/}
               <Area type="monotone" dataKey="value" strokeWidth={3} stroke={chartColor} fill="url(#gradient)" />
             </AreaChart>
           </ResponsiveContainer>

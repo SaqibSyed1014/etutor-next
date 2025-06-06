@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import {XAxis, YAxis, ResponsiveContainer, AreaChart, Tooltip, Area} from 'recharts';
 
 const CourseOverviewChart = () => {
@@ -19,15 +19,16 @@ const CourseOverviewChart = () => {
   ];
 
   const overviewDataMonth = [
-    { name: 'Week 1', enrollments: 280, completions: 220 },
-    { name: 'Week 2', enrollments: 320, completions: 250 },
-    { name: 'Week 3', enrollments: 350, completions: 280 },
-    { name: 'Week 4', enrollments: 400, completions: 320 },
+    { name: 'Jan', enrollments: 80, completions: 50 },
+    { name: 'Feb', enrollments: 75, completions: 90 },
+    { name: 'Mar', enrollments: 50, completions: 15 },
+    { name: 'Apr', enrollments: 60, completions: 30 },
+    { name: 'May', enrollments: 45, completions: 80 },
+    { name: 'June', enrollments: 90, completions: 55 },
   ];
 
   const getCurrentData = () => {
     switch (timeframe) {
-      case 'today': return overviewDataWeek.slice(0, 1);
       case 'week': return overviewDataWeek;
       case 'month': return overviewDataMonth;
       default: return overviewDataWeek;
@@ -38,16 +39,15 @@ const CourseOverviewChart = () => {
     <Card className="dashboard-card h-full flex flex-col">
       <CardHeader className="dashboard-card-header">
         <CardTitle>Course Overview</CardTitle>
-        {/*<Select value={timeframe} onValueChange={setTimeframe}>*/}
-        {/*  <SelectTrigger className="w-32">*/}
-        {/*    <SelectValue />*/}
-        {/*  </SelectTrigger>*/}
-        {/*  <SelectContent>*/}
-        {/*    <SelectItem value="today">Today</SelectItem>*/}
-        {/*    <SelectItem value="week">This week</SelectItem>*/}
-        {/*    <SelectItem value="month">This month</SelectItem>*/}
-        {/*  </SelectContent>*/}
-        {/*</Select>*/}
+        <Select value={timeframe} onValueChange={setTimeframe}>
+          <SelectTrigger className="chart-dropdown">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="week">This week</SelectItem>
+            <SelectItem value="month">This month</SelectItem>
+          </SelectContent>
+        </Select>
       </CardHeader>
       <CardContent className="flex-1 flex items-end">
         <div className="h-[330px] w-full">

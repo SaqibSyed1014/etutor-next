@@ -64,7 +64,7 @@ const AddCardDialog: React.FC<AddCardDialogProps> = ({ open, onOpenChange, onAdd
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle>New Payment Card</DialogTitle>
         </DialogHeader>

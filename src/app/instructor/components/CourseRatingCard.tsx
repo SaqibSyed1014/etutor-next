@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import RatingSummary from "@/components/common/RatingSummary";
 import RatingDistribution from "@/components/common/chat/RatingDistribution";
@@ -10,7 +10,7 @@ import RatingDistribution from "@/components/common/chat/RatingDistribution";
 const CourseRatingCard = () => {
   const [timeframe, setTimeframe] = useState('week');
 
-  const ratingData = [
+  const dataToday = [
     { name: 'Mon', value: 4.2 },
     { name: 'Tue', value: 4.5 },
     { name: 'Wed', value: 4.3 },
@@ -19,6 +19,35 @@ const CourseRatingCard = () => {
     { name: 'Sat', value: 4.7 },
     { name: 'Sun', value: 4.6 },
   ];
+
+  const dataWeek = [
+    { name: 'Mon', value: 4.0 },
+    { name: 'Tue', value: 4.4 },
+    { name: 'Wed', value: 4.5 },
+    { name: 'Thu', value: 4.9 },
+    { name: 'Fri', value: 4.2 },
+    { name: 'Sat', value: 4.4 },
+    { name: 'Sun', value: 4.1 },
+  ];
+
+  const dataMonth = [
+    { name: 'Mon', value: 4.9 },
+    { name: 'Tue', value: 4.6 },
+    { name: 'Wed', value: 4.2 },
+    { name: 'Thu', value: 4.8 },
+    { name: 'Fri', value: 4.1 },
+    { name: 'Sat', value: 4.7 },
+    { name: 'Sun', value: 4.9 },
+  ];
+
+  const getCurrentData = () => {
+    switch (timeframe) {
+      case 'today': return dataToday;
+      case 'week': return dataWeek;
+      case 'month': return dataMonth;
+      default: return dataToday;
+    }
+  };
 
   const ratingBreakdown = [
     { stars: 5, percentage: 56, color: 'bg-orange-400' },
@@ -32,16 +61,16 @@ const CourseRatingCard = () => {
     <Card className="dashboard-card">
       <CardHeader className="dashboard-card-header">
         <CardTitle>Overall Course Rating</CardTitle>
-        {/*<Select value={timeframe} onValueChange={setTimeframe}>*/}
-        {/*  <SelectTrigger className="w-32">*/}
-        {/*    <SelectValue />*/}
-        {/*  </SelectTrigger>*/}
-        {/*  <SelectContent>*/}
-        {/*    <SelectItem value="today">Today</SelectItem>*/}
-        {/*    <SelectItem value="week">This week</SelectItem>*/}
-        {/*    <SelectItem value="month">This month</SelectItem>*/}
-        {/*  </SelectContent>*/}
-        {/*</Select>*/}
+        <Select value={timeframe} onValueChange={setTimeframe}>
+          <SelectTrigger className="chart-dropdown">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="today">Today</SelectItem>
+            <SelectItem value="week">This week</SelectItem>
+            <SelectItem value="month">This month</SelectItem>
+          </SelectContent>
+        </Select>
       </CardHeader>
       <CardContent className="p-0">
         <div className="flex px-5 py-6">
@@ -56,7 +85,7 @@ const CourseRatingCard = () => {
           <div className="flex-1">
             <div className="h-full">
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={ratingData}>
+                <AreaChart data={getCurrentData()}>
                   <XAxis hide dataKey="name" axisLine={false} tickLine={false} />
                   <YAxis hide domain={[4, 5]} />
                   <Area type="monotone" dataKey="value" strokeWidth={3} stroke="#FD8E1F" fill="#FFF2E5" />
@@ -72,6 +101,7 @@ const CourseRatingCard = () => {
         <div className="px-5 py-6">
           <RatingDistribution
               showStars={true}
+              progressLabel="Star"
               showBelowLine={false}
               isGrayProgressBar={true}
             />

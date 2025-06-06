@@ -19,19 +19,19 @@ interface CreditCard {
 
 const CreditCardCarousel = () => {
   const [cards, setCards] = useState<CreditCard[]>([
-    {
-      id: '1',
-      number: '4855 **** **** ****',
-      name: 'Vako Shvili',
-      expiry: '04/24',
-      type: 'visa',
-      background: 'bg-gradient-to-br from-purple-600 to-blue-600'
-    },
       {
           id: '1',
           number: '4855 **** **** ****',
           name: 'Vako Shvili',
           expiry: '04/24',
+          type: 'visa',
+          background: 'bg-gradient-to-br from-purple-600 to-blue-600'
+      },
+      {
+          id: '2',
+          number: '4952 **** **** ****',
+          name: 'Vako Shvili',
+          expiry: '11/28',
           type: 'mastercard',
           background: 'bg-gradient-to-br from-purple-600 to-blue-600'
       }

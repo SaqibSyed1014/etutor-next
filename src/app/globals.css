@@ -95,4 +95,7 @@
     .field-error-state{
         @apply ring-1 ring-error-500 focus:border-error-500 focus:ring-error-500;
     }
+    .chart-dropdown{
+        @apply w-fit gap-2 border-0 p-0 h-auto text-sm [&_svg]:text-gray-600 data-[state=open]:!ring-0;
+    }
 }

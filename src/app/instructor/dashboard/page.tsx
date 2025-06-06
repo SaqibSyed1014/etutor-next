@@ -11,6 +11,7 @@ import RecentActivityList from '@/app/instructor/components/RecentActivityList';
 import {statsData, additionalStats} from "@/lib/@fake-db/dashboard";
 import {Button} from "@/components/ui/button";
 import {ArrowDown} from "@/assets/icons/common-icons";
+import Link from "next/link";
 
 const Dashboard = () => {
 
@@ -38,7 +39,7 @@ const Dashboard = () => {
                 <div className="flex items-center gap-7">
                     <div className="flex items-center gap-6">
                         <img
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face"
+                            src="/images/people/man-5.png"
                             alt="Vako Shvili"
                             className="size-20 rounded-full"
                         />
@@ -57,9 +58,11 @@ const Dashboard = () => {
                     <div className="flex items-center gap-4">
 
                         <div className="flex gap-3">
-                            <Button>
-                                Edit Biography
-                            </Button>
+                            <Link href="/instructor/settings">
+                                <Button>
+                                    Edit Biography
+                                </Button>
+                            </Link>
                             <div className="size-12 text-white bg-white/5 grid place-items-center cursor-pointer hover:bg-white/10">
                                 <ArrowDown />
                             </div>

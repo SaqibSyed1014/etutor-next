@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip} from 'recharts';
 
 const ProfileViewChart = () => {
   const [timeframe, setTimeframe] = useState('today');
@@ -17,24 +17,27 @@ const ProfileViewChart = () => {
     { name: '9PM', firstValue: 50, secondValue: 50 },
     { name: '3PM', firstValue: 40, secondValue: 60 },
     { name: '6PM', firstValue: 50, secondValue: 50 },
-    { name: '9PM', firstValue: 45, secondValue: 55 },
+    { name: '9PM', firstValue: 45, secondValue: 55 }
   ];
 
   const dataWeek = [
-    { name: 'Mon', value: 200 },
-    { name: 'Tue', value: 300 },
-    { name: 'Wed', value: 250 },
-    { name: 'Thu', value: 400 },
-    { name: 'Fri', value: 350 },
-    { name: 'Sat', value: 300 },
-    { name: 'Sun', value: 180 },
+    { name: 'Mon', firstValue: 20, secondValue: 80 },
+    { name: 'Tues', firstValue: 90, secondValue: 10 },
+    { name: 'Wed', firstValue: 5, secondValue: 95 },
+    { name: 'Thurs', firstValue: 25, secondValue: 75 },
+    { name: 'Fri', firstValue: 50, secondValue: 50 },
+    { name: 'Sat', firstValue: 80, secondValue: 20 },
+    { name: 'Sun', firstValue: 50, secondValue: 50 },
   ];
 
   const dataMonth = [
-    { name: 'Week 1', value: 1200 },
-    { name: 'Week 2', value: 1800 },
-    { name: 'Week 3', value: 1500 },
-    { name: 'Week 4', value: 2200 },
+    { name: 'Jan', firstValue: 10, secondValue: 90 },
+    { name: 'Feb', firstValue: 50, secondValue: 50 },
+    { name: 'Mar', firstValue: 35, secondValue: 65 },
+    { name: 'Apr', firstValue: 20, secondValue: 80 },
+    { name: 'May', firstValue: 50, secondValue: 50 },
+    { name: 'Jun', firstValue: 10, secondValue: 90 },
+    { name: 'July', firstValue: 60, secondValue: 40 },
   ];
 
   const getCurrentData = () => {
@@ -59,16 +62,16 @@ const ProfileViewChart = () => {
     <Card className="dashboard-card h-full flex flex-col">
       <CardHeader className="dashboard-card-header">
         <CardTitle>Profile View</CardTitle>
-        {/*<Select value={timeframe} onValueChange={setTimeframe}>*/}
-        {/*  <SelectTrigger className="w-32">*/}
-        {/*    <SelectValue />*/}
-        {/*  </SelectTrigger>*/}
-        {/*  <SelectContent>*/}
-        {/*    <SelectItem value="today">Today</SelectItem>*/}
-        {/*    <SelectItem value="week">This week</SelectItem>*/}
-        {/*    <SelectItem value="month">This month</SelectItem>*/}
-        {/*  </SelectContent>*/}
-        {/*</Select>*/}
+        <Select value={timeframe} onValueChange={setTimeframe}>
+          <SelectTrigger className="chart-dropdown">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="today">Today</SelectItem>
+            <SelectItem value="week">This week</SelectItem>
+            <SelectItem value="month">This month</SelectItem>
+          </SelectContent>
+        </Select>
       </CardHeader>
       <CardContent className="h-full flex flex-col grow flex-1">
         <div className="h-[270px]">
