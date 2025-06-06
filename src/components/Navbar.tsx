@@ -98,10 +98,10 @@ const Navbar = () => {
       </nav>
 
       {/* Main navbar */}
-      <div className="bg-white py-6 px-8" style={{ boxShadow: '0px -1px 0px 0px #E9EAF0 inset'}}>
+      <div className="bg-white py-3 xl:py-6 px-4 xl:px-8" style={{ boxShadow: '0px -1px 0px 0px #E9EAF0 inset'}}>
         <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-12">
-            <Link href="/" className="flex items-center space-x-2">
+          <div className="flex items-center space-x-4 xl:space-x-12">
+            <Link href="/" className="flex items-center space-x-2 max-xl:[&_svg]:size-24">
               <BrandLogo />
             </Link>
 
@@ -111,8 +111,8 @@ const Navbar = () => {
                   selected={selectedBrowse}
                   onChange={selectBrowse}
                   defaultPlaceholder="Browse"
-                  triggerClasses="text-sm text-gray-700 flex items-center gap-1.5 border border-gray-100 justify-between min-w-[200px] px-[18px] py-3"
-                  contentContentClasses="min-w-[200px] bg-white border border-gray-100 !text-gray-900"
+                  triggerClasses="min-w-[150px] xl:min-w-[200px] text-sm text-gray-700 flex items-center gap-1.5 border border-gray-100 justify-between px-[18px] py-3"
+                  contentContentClasses="min-w-[150px] xl:min-w-[200px] bg-white border border-gray-100 !text-gray-900"
                   activeOptionClass="bg-gray-200"
               />
 

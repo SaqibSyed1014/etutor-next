@@ -23,7 +23,7 @@ const TrustedCompanies = ({ title, showStats, BGColor } : { title?: string; show
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   {trustedCompanies.map((company) => (
                       <div key={company.id}
-                           className="h-[100px] px-[50px] bg-white flex items-center justify-center shadow-custom">
+                           className="h-[100px] px-7 xl:px-10 bg-white flex items-center justify-center shadow-custom">
                         {company.logo}
                       </div>
                   ))}

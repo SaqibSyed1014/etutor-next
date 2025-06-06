@@ -19,7 +19,7 @@ const Career = () => {
 
             {/* Hero Section */}
             <section className="" style={{ boxShadow: '0px -1px 0px 0px #E9EAF0 inset' }}>
-                <div className="container relative pt-[180px] pb-[148px]">
+                <div className="container relative pt-[180px] pb-[148px] overflow-hidden">
                     <div className="flex flex-col items-start gap-6 max-w-[536px]">
                         <h1 className="text-5xl">Join the most incredible & creative team.</h1>
                         <p className="text-lg">
@@ -180,8 +180,8 @@ const Career = () => {
                                                     className="text-primary-500">Deadline:</span> {job.deadline}</span>
                                             </div>
                                             <Link href={`/career/${job.id}`} className="shrink-0">
-                                                <Button variant="outline" className="size-12">
-                                                    <ArrowRight classes="h-5 w-5 text-primary-500"/>
+                                                <Button variant="outline" className="size-12 group ">
+                                                    <ArrowRight classes="h-5 w-5 group-hover:text-white text-primary-500"/>
                                                 </Button>
                                             </Link>
                                         </div>

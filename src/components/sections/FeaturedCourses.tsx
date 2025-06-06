@@ -8,7 +8,7 @@ import {CourseCard} from "@/components/CourseCard";
 const FeaturedCourses = () => {
   return (
     <section className="py-20 relative -top-[350px] mb-[-350px]">
-      <div className="bg-white border border-gray-100 p-20 mx-auto w-fit">
+      <div className="bg-white border border-gray-100 p-16 xl:p-20 mx-auto w-fit">
         <div className="container m-0">
           <div className="section-layout">
             <div className="flex flex-col md:flex-row justify-between items-center">

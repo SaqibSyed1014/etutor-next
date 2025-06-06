@@ -13,7 +13,7 @@ const Contact = () => {
 
             {/* Hero Section */}
             <section style={{ boxShadow: '0px -1px 0px 0px #FFDDD1 inset' }}>
-                <div className="container relative pt-[180px] pb-[148px]">
+                <div className="container relative pt-[180px] pb-[148px] overflow-hidden">
                     <div className="flex flex-col items-start gap-6 max-w-[424px]">
                         <h1 className="text-5xl">Connect with us</h1>
                         <p className="text-lg max-w-md">
@@ -26,11 +26,11 @@ const Contact = () => {
                             Copy Email
                         </Button>
                     </div>
-                    <div className="absolute bottom-0 -right-10">
+                    <div className="absolute bottom-0 right-0 xl:-right-10 flex justify-center">
                         <img
                             src="/images/girl-caller.png"
                             alt="Customer Support Representative"
-                            className="w-full h-full object-cover"
+                            className="w-[80%] xl:w-full h-full object-cover"
                         />
                     </div>
                 </div>

@@ -6,11 +6,11 @@ const Hero = () => {
   return (
     <div className="relative bg-gradient-to-r from-white to-gray-100" style={{ background: 'linear-gradient(180deg, rgba(240, 242, 245, 0) 0.02%, #F0F2F5 220.8%)' }}>
       <div className="container py-[100px] flex flex-col gap-20 lg:flex-row items-center">
-        <div className="flex flex-col items-start gap-10 w-full max-w-[648px] mb-10 lg:mb-0">
-          <h1 className="text-5xl md:text-7xl">
+        <div className="flex flex-col items-start gap-10 w-full max-w-lg xl:max-w-[648px] mb-10 lg:mb-0">
+          <h1 className="text-5xl md:text-6xl xl:text-7xl">
             Learn with expert <br /> anytime anywhere
           </h1>
-          <p className="text-2xl">
+          <p className="text-xl xl:text-2xl">
             Our mission is to help people to find the best course
             online and learn with expert anytime, anywhere.
           </p>

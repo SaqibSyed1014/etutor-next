@@ -20,17 +20,17 @@ export const OurGallery = ({ showButton, BGColor } : { showButton?: boolean, BGC
                         {showButton && <Button>Join Our Team <ArrowRight  /> </Button>}
                     </div>
                     <div className="shrink-0">
-                        <div className="flex flex-col items-center gap-5">
-                            <div className="flex gap-6 items-end">
+                        <div className="flex flex-col items-center gap-3 xl:gap-5">
+                            <div className="flex gap-3 xl:gap-6 items-end">
                                 <img
                                     src="/images/workplace.png"
                                     alt="Office space"
-                                    className="w-[280px]"
+                                    className="w-[170px] xl:w-[280px]"
                                 />
                                 <img
                                     src="/images/working.png"
                                     alt="Team meeting"
-                                    className="w-[312px]"
+                                    className="w-[200px] xl:w-[312px]"
                                 />
                                 <img
                                     src="/images/caller.png"
@@ -38,27 +38,27 @@ export const OurGallery = ({ showButton, BGColor } : { showButton?: boolean, BGC
                                     className="w-full object-cover"
                                 />
                             </div>
-                            <div className="flex gap-6 items-start">
+                            <div className="flex gap-3 xl:gap-6 items-start">
                                 <img
                                     src="/images/work.png"
                                     alt="Office space"
-                                    className="w-[224px]"
+                                    className="w-[100px] xl:w-[224px]"
                                 />
                                 <img
                                     src="/images/meeting.png"
                                     alt="Team meeting"
-                                    className="w-[424px]"
+                                    className="w-[300px] xl:w-[424px]"
                                 />
-                                <div className="flex flex-col gap-6">
+                                <div className="flex flex-col gap-3 xl:gap-6">
                                     <img
                                         src="/images/two-people-discussion.png"
                                         alt="Support team"
-                                        className="w-[238px]"
+                                        className="w-[100px] xl:w-[238px]"
                                     />
                                     <img
                                         src="/images/girl-talking.png"
                                         alt="Support team"
-                                        className="w-[124px]"
+                                        className="w-[60px] xl:w-[124px]"
                                     />
                                 </div>
                             </div>

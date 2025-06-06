@@ -288,7 +288,7 @@ const Page = () => {
 
                 <section className="py-20">
                     <div className="container">
-                        <div className="flex justify-between items-center gap-28 shrink-0">
+                        <div className="flex justify-between items-center gap-20 xl:gap-28 shrink-0">
                             <div className="max-w-[536px] w-full shrink-0">
                                 <h2 className="section-heading !text-left mb-6">
                                     20k+ Instructor created their success story with eduguard
@@ -304,55 +304,55 @@ const Page = () => {
                                 </div>
                             </div>
 
-                            <div className="shrink-0">
-                                <div className="flex items-center gap-6">
+                            <div className="shrink-0 max-xl:pr-14">
+                                <div className="flex items-center gap-3 xl:gap-6">
                                     <div className="flex gap-6 items-end">
-                                        <div className="flex flex-col gap-6">
+                                        <div className="flex flex-col gap-3 xl:gap-6">
                                             <div className="flex justify-between items-end">
                                                 <img
                                                     src="/images/people/man-2.png"
                                                     alt="Boy"
-                                                    className="w-[129px] aspect-square shrink-0"
+                                                    className="w-[60px] xl:w-[129px] aspect-square shrink-0"
                                                 />
                                                 <img
                                                     src="/images/people/girl-1.png"
                                                     alt="Girl"
-                                                    className="w-[200px] aspect-square shrink-0"
+                                                    className="w-[100px] xl:w-[200px] aspect-square shrink-0"
                                                 />
                                             </div>
                                             <img
                                                 src="/images/people/girl-6.png"
                                                 alt="Girl"
-                                                className="w-[424px] aspect-square"
+                                                className="w-[225px] xl:w-[424px] aspect-square"
                                             />
-                                            <div className="flex items-start gap-6">
+                                            <div className="flex items-start gap-3 xl:gap-6">
                                                 <img
                                                     src="/images/people/man-3.png"
                                                     alt="Boy"
-                                                    className="w-[200px] aspect-square"
+                                                    className="w-[100px] xl:w-[200px] aspect-square"
                                                 />
                                                 <img
                                                     src="/images/people/girl-7.png"
                                                     alt="Girl"
-                                                    className="w-[200px] h-[312px] shrink-0"
+                                                    className="w-[100px] xl:w-[200px] h-[180px] xl:h-[312px] shrink-0"
                                                 />
                                             </div>
                                         </div>
-                                        <div className="flex flex-col gap-6">
+                                        <div className="flex flex-col gap-3 xl:gap-6">
                                             <img
                                                 src="/images/people/girl-4.png"
                                                 alt="Girl"
-                                                className="w-[220px] h-[312px] aspect-square"
+                                                className="w-[120px] xl:w-[220px] h-[200px] xl:h-[312px] aspect-square"
                                             />
                                             <img
                                                 src="/images/people/man-5.png"
                                                 alt="Boy"
-                                                className="w-[312px] aspect-square"
+                                                className="w-[150px] xl:w-[312px] aspect-square"
                                             />
                                             <img
                                                 src="/images/people/man-1.png"
                                                 alt="Boy"
-                                                className="w-[200px] aspect-square"
+                                                className="w-[100px] xl:w-[200px] aspect-square"
                                             />
                                         </div>
                                     </div>

@@ -59,7 +59,7 @@ const Courses = ({ preSelectedFilters }: Props) => {
 
     return (
         <>
-            <div className="py-10">
+            <div className="py-10 overflow-hidden">
                 <div className="container">
                     <div className="section-layout">
                         <div className="flex flex-col">

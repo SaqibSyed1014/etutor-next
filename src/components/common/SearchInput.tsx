@@ -25,7 +25,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
                 value={value}
                 onChange={onChange}
                 appendIcon={<div className="text-black"><MagnifyingGlass/></div>}
-                className={`pr-4 py-2 w-full min-w-[424px] placeholder:text-gray-500 focus:ring-primary-500 focus:border-etutor-primary outline-0 ${className}`}
+                className={`pr-4 py-2 w-full min-w-[350px] xl:min-w-[424px] placeholder:text-gray-500 focus:ring-primary-500 focus:border-etutor-primary outline-0 ${className}`}
             />
         </div>
     );
