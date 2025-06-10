@@ -57,7 +57,7 @@ const CourseComments: React.FC = () => {
         setComments(updatedComments);
     };
 
-    const resetAllReplyFields = (comments :any) => {
+    const resetAllReplyFields = (comments :any) :any => {
         return comments.map((comment :any) => {
             const newComment = { ...comment, openReplyField: false };
             if (comment.replies && comment.replies.length > 0) {
@@ -66,7 +66,7 @@ const CourseComments: React.FC = () => {
             return newComment;
         });
     };
-    const findCommentById = (comments :any, commentId :string) => {
+    const findCommentById = (comments :any, commentId :string) :any => {
         for (const comment of comments) {
             if (comment.id === commentId) {
                 return comment;
@@ -80,7 +80,7 @@ const CourseComments: React.FC = () => {
         }
         return undefined;
     };
-    const toggleReplyField = (comments :any, commentId :string) => {
+    const toggleReplyField = (comments :any, commentId :string) :any => {
         const targetComment = findCommentById(comments, commentId);
         const willOpenNewField = targetComment ? !targetComment.openReplyField : true;
 
