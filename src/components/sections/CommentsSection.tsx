@@ -58,7 +58,7 @@ const CourseComments: React.FC = () => {
     };
 
     const resetAllReplyFields = (comments :any) => {
-        return comments.map(comment => {
+        return comments.map((comment :any) => {
             const newComment = { ...comment, openReplyField: false };
             if (comment.replies && comment.replies.length > 0) {
                 newComment.replies = resetAllReplyFields(comment.replies);
@@ -67,7 +67,7 @@ const CourseComments: React.FC = () => {
         });
     };
     const findCommentById = (comments :any, commentId :string) => {
-        for (const comment of comments) {
+        for (const comment :any of comments) {
             if (comment.id === commentId) {
                 return comment;
             }
@@ -90,7 +90,7 @@ const CourseComments: React.FC = () => {
             baseComments = resetAllReplyFields(comments);
         }
 
-        return baseComments.map(comment => {
+        return baseComments.map((comment :any) => {
             if (comment.id === commentId) {
                 return {
                     ...comment,
