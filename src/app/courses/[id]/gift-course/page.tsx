@@ -2,13 +2,15 @@
 
 import { useParams } from "next/navigation";
 import { coursesData } from "@/lib/@fake-db/courses";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import {Breadcrumbs} from "@/components/Breadcrumbs";
 import {CheckCircle, CreditCard} from "@/assets/icons/common-icons";
 import {Checkbox} from "@/components/ui/checkbox";
+import {Label} from "@/components/ui/label";
+import {Input} from "@/components/ui/input";
 
 export default function Page() {
     const params = useParams();
@@ -179,15 +181,18 @@ export default function Page() {
                                         </div>
 
                                         <div>
-                                            <label>Card Number</label>
-                                            <div className="relative">
-                                                <input
-                                                    type="text"
-                                                    name="cardNumber"
-                                                    value={formData.cardNumber}
-                                                    onChange={handleChange}
+                                            <div>
+                                                <Label htmlFor="number">Card Number</Label>
+                                                <Input
+                                                    id="number"
                                                     placeholder="Card Number"
-                                                    className="input"
+                                                    required
+                                                    appendIcon={
+                                                        <div className="text-primary-500 [&_svg]:size-5">
+                                                            <CreditCard/>
+                                                        </div>
+                                                    }
+                                                    showIconSeparator={true}
                                                 />
                                             </div>
                                         </div>
@@ -230,7 +235,7 @@ export default function Page() {
                                                     }));
                                                 }}
                                             />
-                                            <label htmlFor="rememberMe" className="text-sm text-gray-600 !pb-0">
+                                            <label htmlFor="rememberMe" className="text-sm text-gray-700 !pb-0">
                                                 Remember this card, save it on my card list
                                             </label>
                                         </div>

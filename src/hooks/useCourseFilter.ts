@@ -10,6 +10,7 @@ export const useCourseFilter = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(12);
     const [sortOption, setSortOption] = useState<SortOption>('trending');
+    let [count, setCount] = useState<number>(0);
     const [filters, setFilters] = useState<FilterState>({
         search: '',
         categories: [],
@@ -23,6 +24,7 @@ export const useCourseFilter = () => {
     // Apply filters and sorting
     useEffect(() => {
         let result = [...courses];
+        setCount(0);
 
         // Apply search filter
         if (filters.search) {
@@ -34,14 +36,16 @@ export const useCourseFilter = () => {
                     course.title.toLowerCase().includes(searchLower) ||
                     (course.description?.toLowerCase().includes(searchLower))
                 );
+                setCount(prevCount => prevCount + 1);
             }
         }
 
         // Apply category filter
         if (filters.categories.length > 0) {
-            console.log('here ', result, filters)
             result = result.filter(course => filters.categories.includes(course.category.title.toLowerCase()));
+            setCount(prevCount => prevCount + 1);
         }
+
 
         // Apply rating filter
         if (filters.ratings.length > 0) {
@@ -49,6 +53,7 @@ export const useCourseFilter = () => {
                 const courseRating = Math.floor(course.rating);
                 return filters.ratings.some(rating => courseRating >= rating);
             });
+            setCount(prevCount => prevCount + 1);
         }
 
         // Apply level filter
@@ -58,6 +63,7 @@ export const useCourseFilter = () => {
                     filters.levels.some(level => course.level.toLowerCase() === level.toLowerCase())
                 );
             }
+            setCount(prevCount => prevCount + 1);
         }
 
         // Apply price filter
@@ -72,6 +78,9 @@ export const useCourseFilter = () => {
                 break;
             case 'high-rating':
                 result.sort((a, b) => b.rating - a.rating);
+                break;
+            case 'low-rating':
+                result.sort((a, b) => a.rating - b.rating);
                 break;
         }
 
@@ -92,6 +101,7 @@ export const useCourseFilter = () => {
 
     return {
         allCourses: courses,
+        count,
         filteredCourses,
         paginatedCourses,
         currentPage,

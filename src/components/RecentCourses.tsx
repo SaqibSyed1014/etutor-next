@@ -27,7 +27,7 @@ const RecentCourses = () => {
 
             <Link href="/courses" className="mx-auto">
                 <Button variant="outline">
-                    Browse All Course <ArrowRight classes="scale-150 ml-1" />
+                    Browse All Course <ArrowRight />
                 </Button>
             </Link>
         </div>

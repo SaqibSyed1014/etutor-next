@@ -155,13 +155,14 @@ const Page = () => {
                                                 onChange={(e) => setCouponCode(e.target.value)}
                                                 className="w-full"
                                             />
-                                            <div className="absolute top-1 right-1.5 bottom-1.5">
+                                            <div className="absolute top-[5px] right-1.5 bottom-1.5">
                                                 <Button
                                                     className="h-9 px-4 text-sm bg-gray-900 hover:bg-gray-700"
                                                     onClick={handleApplyCoupon}
                                                 >
                                                     Apply
-                                                </Button></div>
+                                                </Button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

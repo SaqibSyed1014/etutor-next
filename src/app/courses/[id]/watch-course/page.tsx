@@ -55,38 +55,38 @@ const WatchCourse = () => {
                                 <DialogTrigger asChild>
                                     <Button variant="outlineInvert">Write a Review</Button>
                                 </DialogTrigger>
-                                <DialogContent>
+                                <DialogContent className="max-w-2xl">
                                     <DialogHeader>
                                         <DialogTitle>Write a Review</DialogTitle>
                                     </DialogHeader>
-                                    <DialogDescription>
-                                        <div className="flex flex-col items-center gap-3">
-                                            <h4 className="text-xl font-bold">
-                                                4.5 <span className="text-lg font-normal text-gray-500">(Good/Amazing)</span>
-                                            </h4>
-                                            <div className="flex [&_svg]:size-12">
-                                                <Star />
-                                                <Star />
-                                                <Star />
-                                                <Star />
-                                                <Star />
+                                        <div className="space-y-6 px-[22px] py-6">
+                                            <div className="flex flex-col items-center gap-3">
+                                                <h4 className="text-xl font-bold">
+                                                    4.5 <span
+                                                    className="text-lg font-normal text-gray-500">(Good/Amazing)</span>
+                                                </h4>
+                                                <div className="flex [&_svg]:size-12">
+                                                    <Star/>
+                                                    <Star/>
+                                                    <Star/>
+                                                    <Star/>
+                                                    <Star/>
 
+                                                </div>
                                             </div>
+                                            <div className="flex flex-col gap-1 mt-6">
+                                                <label htmlFor="">Feedback</label>
+                                                <textarea rows={4} placeholder="Write down your feedback here..."
+                                                          className="w-full resize-none"/>
+                                            </div>
+                                            <div className="flex justify-between">
+                                                    <Button variant="gray">Cancel</Button>
+                                                <Button>
+                                                    Submit Review
+                                                    <PaperPlaneRightSolid />
+                                                </Button>
                                         </div>
-                                        <div className="flex flex-col gap-1 mt-6">
-                                            <label htmlFor="">Feedback</label>
-                                            <textarea rows={4} placeholder="Write down your feedback here..." className="w-full" />
                                         </div>
-                                    </DialogDescription>
-                                    <DialogFooter>
-                                        <DialogClose asChild>
-                                            <Button variant="gray">Cancel</Button>
-                                        </DialogClose>
-                                        <Button>
-                                            Submit Review
-                                            <PaperPlaneRightSolid />
-                                        </Button>
-                                    </DialogFooter>
                                 </DialogContent>
                             </Dialog>
 

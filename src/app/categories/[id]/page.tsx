@@ -87,7 +87,7 @@ const Page = () => {
 
                             <div className="grid grid-cols-5 gap-4">
                                 {categoryCourses.map((course) => (
-                                    <CourseCard course={course} key={course.id}/>
+                                    <CourseCard course={course} key={course.id} showStudentIcon={false} />
                                 ))}
                             </div>
                         </div>
@@ -103,15 +103,15 @@ const Page = () => {
                                     <div className="flex gap-2">
                                         <button
                                             type="button"
-                                            className="size-12 [&>svg]:size-4 flex items-center justify-center rounded-full text-primary-500 transition hover:bg-primary-100 disabled:hover:bg-transparent disabled:text-primary-100"
+                                            className="size-12 [&_svg]:size-6 flex items-center justify-center rounded-full text-primary-500 transition hover:bg-primary-100 disabled:hover:bg-transparent disabled:text-primary-100"
                                         >
                                             <ArrowLeft />
                                         </button>
                                         <button
                                             type="button"
-                                            className="size-12 flex items-center justify-center rounded-full text-primary-500 transition hover:bg-primary-100 disabled:hover:bg-transparent disabled:text-primary-100"
+                                            className="size-12 [&_svg]:size-6 flex items-center justify-center rounded-full text-primary-500 transition hover:bg-primary-100 disabled:hover:bg-transparent disabled:text-primary-100"
                                         >
-                                            <ArrowRight classes="h-4 w-4"/>
+                                            <ArrowRight />
                                         </button>
                                     </div>
                                 </div>
@@ -124,8 +124,8 @@ const Page = () => {
                                                 className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5 xl:basis-1/6"
                                             >
                                                 <Card
-                                                    className="p-6 h-[94px] flex flex-col items-center hover:text-primary-500 transition-all justify-center text-center hover:shadow-[0_12px_32px_0_#1D20261A]">
-                                                    <div className="font-medium text-base text-gray-900">
+                                                    className="group p-6 h-[94px] flex flex-col items-center transition-all justify-center text-center hover:border-0 hover:shadow-[0_12px_32px_0_#1D20261A]">
+                                                    <div className="font-medium text-base text-gray-900 group-hover:text-primary-500">
                                                         {tool.name}
                                                     </div>
                                                     <div className="text-xs text-gray-500 mt-2">

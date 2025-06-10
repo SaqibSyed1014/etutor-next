@@ -43,7 +43,7 @@ const StudentsFeedback = ({ reviews, rating, showRatingSummary = true }: CourseR
 
   return (
     <div>
-      {showRatingSummary && <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {showRatingSummary && <div className="grid grid-cols-1 md:grid-cols-3 items-stretch gap-2">
         {/* Rating Summary */}
         <RatingSummary
           rating={rating}

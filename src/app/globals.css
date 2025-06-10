@@ -70,7 +70,7 @@
         @apply flex flex-col gap-10;
     }
     .plain-link{
-        @apply flex gap-2 items-center text-primary-500 text-sm font-medium hover:opacity-60 transition;
+        @apply flex gap-2 items-center [&>svg]:size-6 text-primary-500 text-sm font-medium hover:opacity-60 transition;
     }
     .error-message{
         @apply text-red-500 text-xs mt-1;

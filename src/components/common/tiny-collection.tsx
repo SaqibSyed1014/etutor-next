@@ -35,7 +35,7 @@ export const CategoryBadge = ({ category } : { category: CourseCategory }) => {
 
     return (
         <div
-            className={`inline-block text-[10px] px-2 py-1 uppercase font-medium mb-2 ${colorClass}`}>
+            className={`inline-block text-[10px] px-2 py-1 uppercase font-medium ${colorClass}`}>
             {category.title}
         </div>
     )

@@ -2,14 +2,12 @@
 
 import {CourseCard} from "@/components/CourseCard";
 import { useState, useEffect } from "react";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import FilterSidebar from "./FilterSidebar";
 import SearchSuggestions from "@/components/SearchSuggestions";
 import CustomPagination from "@/components/CustomPagination";
 import { useCourseFilter } from "@/hooks/useCourseFilter";
 import {FilterState, SortOption} from "@/lib/@fake-db/courses/type";
-import {MagnifyingGlass} from "@/assets/icons/common-icons";
 import {FilterFaders} from "@/assets/icons/icons";
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import {sortOptions} from "@/lib/@fake-db/courses";
@@ -31,6 +29,7 @@ const Courses = ({ preSelectedFilters }: Props) => {
         setCurrentPage,
         setFilters,
         setSortOption,
+        count
     } = useCourseFilter();
 
     useEffect(() => {
@@ -55,6 +54,8 @@ const Courses = ({ preSelectedFilters }: Props) => {
         setFilters({ ...filters, search: suggestion });
     };
 
+
+
     const suggestions = ["user interface", "user experience", "web design", "interface", "app"];
 
     return (
@@ -72,13 +73,18 @@ const Courses = ({ preSelectedFilters }: Props) => {
                                     >
                                         <FilterFaders/>
                                         Filter
-                                        <span
-                                            className="bg-primary-500 text-white h-6 px-1.5 grid place-items-center text-xs ml-2">
-                                          3
-                                        </span>
+                                        <div>
+                                            {count > 0 ? (
+                                                <span
+                                                    className="bg-primary-500 text-white h-6 px-1.5 grid place-items-center text-xs ml-2">
+                                                    {count}
+                                                </span>
+                                            ):''}
+                                        </div>
                                     </Button>
                                     <div className="relative hidden lg:block ">
                                         <SearchInput placeholder="Search..." />
+
                                     </div>
                                 </div>
 
@@ -136,7 +142,7 @@ const Courses = ({ preSelectedFilters }: Props) => {
                             <div className={showFilters ? "md:w-3/4" : "w-full"}>
                                 {/* Course Cards */}
                                 <div
-                                    className={`grid gap-6 ${showFilters ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'}`}>
+                                    className={`grid gap-6 [&_h3]:text-base ${showFilters ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'}`}>
                                     {paginatedCourses.map((course, index) => (
                                         <CourseCard key={index} course={course}/>
                                     ))}

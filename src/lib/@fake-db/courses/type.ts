@@ -1,4 +1,5 @@
 import {CourseCategory} from "@/lib/@fake-db/courseCategories/type";
+import {Instructor} from "@/lib/@fake-db/instructors";
 
 export interface Course {
     id: number;
@@ -10,16 +11,8 @@ export interface Course {
     rating: number;
     reviewCount: number;
     students: number;
-    instructor: {
-        id: string;
-        name: string;
-        avatar: string;
-    };
-    coInstructor?: {
-        id: string;
-        name: string;
-        avatar: string;
-    };
+    instructor: Instructor
+    coInstructor?: Instructor
     image: string;
     duration: number;
     level: 'Beginner' | 'Intermediate' | 'Advanced';
@@ -37,7 +30,7 @@ export interface CourseProgress extends Course {
     progress?: number; // e.g., percentage completed
 }
 
-export type SortOption = 'trending' | 'high-rating' | 'lowest-rating';
+export type SortOption = 'trending' | 'high-rating' | 'low-rating';
 
 export interface FilterState {
     search: string;

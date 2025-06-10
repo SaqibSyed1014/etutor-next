@@ -71,7 +71,7 @@ export const CourseCard = ({
     return (
         <div className={`relative group text-primary-100 ${showCourseOptions && 'bg-white'}`}>
             {inListForm ?
-                <Card className="overflow-hidden flex flex-col md:flex-row border-0 hover:shadow-[0_2px_6px_0px_#1D20260F] transition">
+                <Card className="group overflow-hidden flex flex-col md:flex-row border-0 hover:shadow-[0_2px_6px_0px_#1D20260F] transition">
                     <div className="w-full md:w-[220px] md:h-[195px] shrink-0">
                         <img
                             src={course.image}
@@ -86,11 +86,15 @@ export const CourseCard = ({
                                     <div className="flex justify-between items-center">
                                         <CategoryBadge category={course.category} />
                                         <div className="flex items-center gap-1">
-                                            <span className="text-lg text-gray-900">$14.00</span>
-                                            <span className="text-gray-400" style={{textDecoration: 'line-through'}}>$26.00</span>
+                                            <span className="text-base text-gray-900">
+                                                {course.price.toFixed(2)}
+                                            </span>
+                                            <span className="text-gray-400" style={{textDecoration: 'line-through'}}>
+                                                {course.originalPrice && `$${course.originalPrice.toFixed(2)}`}
+                                            </span>
                                         </div>
                                     </div>
-                                    <h3 className="text-base md:text-lg line-clamp-1 font-medium">
+                                    <h3 className="text-base leading-[22px] line-clamp-1 font-medium group-hover:text-primary-500">
                                         {course.title}
                                     </h3>
                                 </div>
@@ -127,7 +131,7 @@ export const CourseCard = ({
                     </div>
                 </Card>
                 :
-                <Card className="overflow-hidden h-full group-hover:shadow-[0_2px_6px_0px_#1D20260F]">
+                <Card className="overflow-hidden h-full group-hover:shadow-[0_2px_6px_0px_#1D20260F] bg-white">
                     <div className="aspect-[4/3] w-full overflow-hidden">
                         <img
                             src={course.image}
@@ -135,7 +139,7 @@ export const CourseCard = ({
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <CardContent className="p-4">
+                    <CardContent className="p-4 space-y-2">
                         <div className="flex justify-between">
                             <CategoryBadge category={course.category}/>
                             {!showCourseOptions && <span
@@ -184,7 +188,7 @@ export const CourseCard = ({
                 <div className="px-6">
                     <CategoryBadge category={course.category}/>
 
-                    <h3 className="text-xl font-bold mb-4">{course.title}</h3>
+                    <h4 className="text-xl mb-4">{course.title}</h4>
 
                     <div className="flex flex-col gap-5">
                         <div className="flex justify-between items-center">

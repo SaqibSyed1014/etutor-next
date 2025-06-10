@@ -5,7 +5,7 @@ import {Button} from "@/components/ui/button";
 
 const InstructorCard = ({ instructor, showSendMessageOption }: { instructor: typeof topInstructors[0], showSendMessageOption?: boolean }) => {
     return (
-        <Card className="overflow-hidden text-center">
+        <Card className="overflow-hidden text-center bg-white">
             <div className="aspect-square w-full overflow-hidden bg-yellow-500">
                 <img
                     src={instructor.avatar}

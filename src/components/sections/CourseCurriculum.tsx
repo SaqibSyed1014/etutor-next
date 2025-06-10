@@ -102,7 +102,7 @@ const CourseCurriculum = ({ showHeader = true, showFinishedStat, showControlHand
                                         {section.items.map(item => (
                                             <div key={item.id}
                                                  className="flex justify-between items-center px-5">
-                                                <div className="flex items-center gap-2">
+                                                <div className="flex items-center gap-2 text-gray-900">
                                                     {item.type === 'video' ? (
                                                         <Link href={`/courses/${id}/watch-course`}>
                                                             <Play/>

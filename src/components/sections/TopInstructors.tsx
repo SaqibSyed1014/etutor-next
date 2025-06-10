@@ -20,7 +20,7 @@ const TopInstructors = ({ title, aboveTheSection, showBottomLine } : { title: st
                       ))}
                   </div>
                   {showBottomLine && <div className="flex gap-2 items-center mx-auto">
-                      <p>Thousands of students waiting for a instructor. Start teaching &
+                      <p className="text-gray-600">Thousands of students waiting for a instructor. Start teaching &
                           earning now.</p>
                       <Link href="/become-instructor" className="plain-link">
                           Become Instructor <ArrowRight/>

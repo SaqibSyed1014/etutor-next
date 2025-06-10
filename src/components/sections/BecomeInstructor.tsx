@@ -19,7 +19,7 @@ const BecomeInstructor = () => {
             <Button
               variant="outlineInvert"
             >
-              Start Teaching <ArrowRight classes="scale-150 ml-1" />
+              Start Teaching <ArrowRight />
             </Button>
 
             <img src="/images/boy-pointing.png" alt="Boy Pointing" className="absolute w-[320px] top-3 bottom-0 right-3"/>

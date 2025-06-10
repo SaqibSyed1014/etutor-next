@@ -4,21 +4,28 @@ import React, { useState } from 'react';
 import {instructorsData} from "@/lib/@fake-db/instructors";
 import {useParams} from "next/navigation";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
-import {SocialMediaLinks, StudentCount} from "@/components/common/tiny-collection";
+import {SocialMediaLinks} from "@/components/common/tiny-collection";
 import Link from 'next/link'
 import {PlayCircleFill, Star, Users} from "@/assets/icons/common-icons";
-import StudentDashboard from "@/app/student/dashboard/page";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {CourseCard} from "@/components/CourseCard";
 import StudentsFeedback from "@/components/common/StudentsFeedback";
 import {instructorReviews} from "@/lib/@fake-db/reviews";
-import {User} from "lucide-react";
+import {coursesData} from "@/lib/@fake-db/courses"
 
 const TeacherDetail = () => {
     const [activeTab, setActiveTab] = useState('courses');
 
     const params = useParams();
     const id = params?.id;
+
+    instructorsData.forEach((instructor) => {
+        instructor.courses = coursesData.filter(
+            (course) =>
+                course.instructor.id === instructor.id ||
+                course.coInstructor?.id === instructor.id
+        );
+    });
 
     const teacher = instructorsData.find((c) => c.id === Number(id)) || instructorsData[0];
 

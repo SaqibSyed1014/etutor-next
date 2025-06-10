@@ -7,7 +7,7 @@ const RatingDistribution = ({ showStars, progressLabel = 'Star Rating', showBelo
         { stars: 4, percentage: 21 },
         { stars: 3, percentage: 3 },
         { stars: 2, percentage: 1 },
-        { stars: 1, percentage: 0 }
+        { stars: 1, percentage: 1 }
     ];
     return (
         <div>
@@ -28,12 +28,12 @@ const RatingDistribution = ({ showStars, progressLabel = 'Star Rating', showBelo
                         <div className={`h-2 ${isGrayProgressBar ? 'bg-gray-100':'bg-warning-100'}`}>
                             <div
                                 className="h-2 bg-warning-500"
-                                style={{ width: `${item.percentage}%` }}
+                                style={{ width: item.stars === 2 ? '2%' : `${item.percentage}%` }}
                             ></div>
                         </div>
                     </div>
 
-                    <div className="text-right font-medium text-gray-900">{item.percentage}%</div>
+                    <div className="text-right font-medium text-gray-900">{item.percentage === 0 ? '<1%':`${item.percentage}%`}</div>
                 </div>
             ))}
 

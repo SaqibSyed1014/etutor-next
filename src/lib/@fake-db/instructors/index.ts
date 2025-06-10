@@ -20,7 +20,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/man-1.png',
     rating: 4.8,
     students: 8100,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -30,7 +29,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/man-2.png',
     rating: 4.6,
     students: 4442,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -40,7 +38,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-1.png',
     rating: 4.8,
     students: 8092,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -50,7 +47,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/man-3.png',
     rating: 4.7,
     students: 300872,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -60,7 +56,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/man-4.png',
     rating: 4.6,
     students: 300872,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -70,7 +65,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/man-6.png',
     rating: 4.2,
     students: 8492,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -80,7 +74,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-2.png',
     rating: 4.4,
     students: 300872,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -90,7 +83,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-4.png',
     rating: 4.4,
     students: 1566,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -100,7 +92,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/man-5.png',
     rating: 4.1,
     students: 300872,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -110,7 +101,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-6.png',
     rating: 4.5,
     students: 5020,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -120,7 +110,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-7.png',
     rating: 4.4,
     students: 4890,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -130,7 +119,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/man-5.png',
     rating: 4.2,
     students: 346,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -140,7 +128,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-9.png',
     rating: 3.5,
     students: 4500,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   },
   {
@@ -150,7 +137,6 @@ export const instructorsData: Instructor[] = [
     avatar: '/images/people/girl-8.jpg',
     rating: 4.3,
     students: 2090,
-    courses: [coursesData[0], coursesData[1]],
     reviews: 134633
   }
 ];

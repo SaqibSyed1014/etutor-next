@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import Link from "next/link";
-import {Facebook, Instagram, Linkedin, Youtube} from "@/assets/icons/icons";
+import {Facebook, Instagram, Linkedin, Whatsapp, Youtube} from "@/assets/icons/icons";
 import {
     Alarm,
     ArrowRight,
@@ -52,7 +52,7 @@ export default function CourseDetailsPage() {
         },
         {
             name: '',
-            icon: <Youtube />,
+            icon: <Whatsapp />,
             link: ''
         }
     ]
@@ -96,7 +96,7 @@ export default function CourseDetailsPage() {
                                                 <img src={course.instructor.avatar} alt={course.instructor.name}
                                                      className="w-full h-full object-cover"/>
                                             </div>
-                                            {course.coInstructor && <div
+                                            {course.coInstructor?.id && <div
                                                 className="size-[50px] shrink-0 rounded-full overflow-hidden border border-white ml-[-1rem]">
                                                 <img src={course.coInstructor.avatar} alt={course.coInstructor.name}
                                                      className="w-full h-full object-cover"/>
@@ -104,7 +104,9 @@ export default function CourseDetailsPage() {
                                         </div>
                                         <div className="flex flex-col">
                                             <div className="text-gray-600 text-sm">Created By:</div>
-                                            <span className="text-gray-900 font-medium text-base">{course.instructor.name}</span>
+                                            <span className="text-gray-900 font-medium text-base leading-[22px]">
+                                                {course.instructor.name} {course.coInstructor && `• ${course.coInstructor.name}`}
+                                            </span>
                                         </div>
                                     </div>
 
@@ -322,7 +324,7 @@ export default function CourseDetailsPage() {
                         </div>
 
                         <div className="col-span-2">
-                            <Card className="bg-white border border-gray-100">
+                            <Card className="bg-white border border-gray-100" style={{ boxShadow: '0px 6px 16px 0px rgba(0, 0, 0, 0.06)' }}>
                                 <CardContent className="p-0">
                                     <div className="flex flex-col gap-3 p-6">
                                         <div className="flex justify-between items-center">
@@ -396,9 +398,9 @@ export default function CourseDetailsPage() {
                                             </Button>
                                         </Link>
 
-                                        <Link href={`/courses/${course.id}`}>
+                                        <Link href="/shopping-cart">
                                             <Button variant="outline" className="w-full">
-                                                Course Detail
+                                                Buy Now
                                             </Button>
                                         </Link>
 
