@@ -67,7 +67,7 @@ const CourseComments: React.FC = () => {
         });
     };
     const findCommentById = (comments :any, commentId :string) => {
-        for (const comment :any of comments) {
+        for (const comment of comments) {
             if (comment.id === commentId) {
                 return comment;
             }
