@@ -11,14 +11,16 @@ const CourseComments: React.FC = () => {
     const handleAddComment = (content: string) => {
         const newComment = {
             id: `comment-${Date.now()}`,
+            parentId: null,
             author: {
                 id: 'current-user',
-                name: 'Your Name',
+                name: 'You',
                 avatar: '',
             },
             content,
             createdAt: 'Just now',
             openReplyField: false,
+            isParent: true,
             replies: [],
         };
 
@@ -34,6 +36,7 @@ const CourseComments: React.FC = () => {
                         ...comment.replies,
                         {
                             id: `reply-${Date.now()}`,
+                            parentId: commentId,
                             author: {
                                 id: 'current-user',
                                 name: 'Your Name',
@@ -41,6 +44,8 @@ const CourseComments: React.FC = () => {
                             },
                             content,
                             createdAt: 'Just now',
+                            openReplyField: false,
+                            isParent: false,
                             replies: [],
                         },
                     ],

@@ -27,7 +27,7 @@ interface Comment {
 interface CommentListProps {
     comments: Comment[];
     onAddComment?: (content: string) => void;
-    onAddReply?: (commentId: string, content: string) => void;
+    onAddReply?: (commentId: string, content: string, parentId: string) => void;
     toggleReplyBtn: (commentId: string) => void
 }
 
@@ -43,8 +43,10 @@ const CommentList: React.FC<CommentListProps> = ({
     const [showCommentField, setField] = useState<boolean>(false);
 
     const handleAddComment = () => {
-        if (newComment.trim()) {
-            onAddComment?.(newComment);
+        if (replyContent.trim()) {
+            if (onAddComment) {
+                onAddComment(replyContent);
+            }
             setNewComment('');
             toast({
                 title: "Comment added",
@@ -53,9 +55,9 @@ const CommentList: React.FC<CommentListProps> = ({
         }
     };
 
-    const handleAddReply = (commentId: string) => {
+    const handleAddReply = (commentId: string, parentId: string) => {
         if (replyContent.trim()) {
-            onAddReply?.(commentId, replyContent);
+            onAddReply?.(commentId, replyContent, parentId);
             setReplyingTo(null);
             setReplyContent('');
             toast({
@@ -132,7 +134,9 @@ const CommentList: React.FC<CommentListProps> = ({
                                     <ChatCircle/>
                                 </div>
                             </div>
-                            <Button onClick={() => handleAddReply(comment.id)}>
+                            <Button onClick={() => {
+                                handleAddReply(comment.id, comment.parentId)
+                            }}>
                                 Post Reply
                             </Button>
                         </div>

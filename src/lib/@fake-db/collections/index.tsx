@@ -421,7 +421,7 @@ export const courseComments = [
         },
         content: 'Maecenas risus tortor, tincidunt nec purus eu, gravida suscipit tortor.',
         createdAt: '1 week ago',
-        openReplyField: true,
+        openReplyField: false,
         isParent: true,
         replies: [
             {
