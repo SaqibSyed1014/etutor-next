@@ -27,7 +27,7 @@ interface Comment {
 interface CommentListProps {
     comments: Comment[];
     onAddComment?: (content: string) => void;
-    onAddReply?: (commentId: string, content: string, parentId: string) => void;
+    onAddReply?: (commentId: string, content: string, parentId: string | null) => void;
     toggleReplyBtn: (commentId: string) => void
 }
 
@@ -55,7 +55,7 @@ const CommentList: React.FC<CommentListProps> = ({
         }
     };
 
-    const handleAddReply = (commentId: string, parentId: string) => {
+    const handleAddReply = (commentId: string, parentId: string | null) => {
         if (replyContent.trim()) {
             onAddReply?.(commentId, replyContent, parentId);
             setReplyingTo(null);
