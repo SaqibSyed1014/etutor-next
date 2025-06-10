@@ -243,7 +243,7 @@ const WatchCourse = () => {
                         <div className="">
                             <div className="flex justify-between items-center mb-4">
                                 <h4>Course Contents</h4>
-                                <div className="text-base font-bold text-success-500">
+                                <div className="text-base font-semibold text-success-500">
                                     {completionPercentage}% Completed
                                 </div>
                             </div>

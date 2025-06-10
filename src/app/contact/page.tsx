@@ -164,12 +164,12 @@ const Contact = () => {
 
                                     <div>
                                         <label htmlFor="subject" className="">Subject</label>
-                                        <input required={true} id="subject" placeholder="Message Subject"/>
+                                        <input required={true} id="subject" placeholder="Message Subject" />
                                     </div>
 
                                     <div className="col-span-2">
                                         <label htmlFor="message" className="">Message</label>
-                                        <textarea required={true} id="message" rows={4} placeholder="Message Subject" className="w-full"/>
+                                        <textarea required={true} id="message" rows={4} placeholder="Message Subject" className="w-full resize-none"/>
                                     </div>
 
                                     </div>

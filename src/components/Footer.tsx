@@ -5,9 +5,14 @@ import {ArrowRight, BrandLogo} from "@/assets/icons/common-icons";
 import {useState} from "react";
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import {SocialMediaLinks} from "@/components/common/tiny-collection";
+import {usePathname} from "next/navigation";
+import {courseCategories} from "@/lib/@fake-db/courseCategories";
 
 const Footer = () => {
   const [selectedLang, selectLang] = useState('eng');
+  const pathName = usePathname();
+
+  const categories = [courseCategories.DEVELOPMENTS, courseCategories.FINANCE, courseCategories.DESIGN, courseCategories.BUSINESS]
 
   const languages = [
     {
@@ -41,30 +46,17 @@ const Footer = () => {
           <div>
             <p className="text-white font-medium mb-5">TOP 4 CATEGORY</p>
             <ul className="flex gap-2 flex-col items-start">
-              <li>
-                <Link href="/category/development" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
-                  Development
-                  <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
-                </Link>
-              </li>
-              <li>
-                <Link href="/category/finance" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
-                  Finance & Accounting
-                  <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
-                </Link>
-              </li>
-              <li>
-                <Link href="/category/design" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
-                  Design
-                  <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
-                </Link>
-              </li>
-              <li>
-                <Link href="/category/business" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
-                  Business
-                  <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
-                </Link>
-              </li>
+              {categories.map((cat) => {
+                return  (
+                  <li>
+                    <Link href={`/categories/${cat.id}`}
+                          className={`flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group ${pathName === `/categories/${cat.id}`?'text-white shadow-[0px_-1.5px_0px_0px_#FF6636_inset]':''}`}>
+                      {cat.title}
+                      <ArrowRight classes={`opacity-0 group-hover:opacity-100 text-etutor-primary ${pathName === `/categories/${cat.id}`?'opacity-100':''}`}/>
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           </div>
 
@@ -72,39 +64,39 @@ const Footer = () => {
             <p className="text-white font-medium mb-5">QUICK LINKS</p>
             <ul className="flex gap-2 flex-col items-start">
               <li>
-                <Link href="/about" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
+                <Link href="/about" className={`flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group ${pathName === '/about'?'text-white shadow-[0px_-1.5px_0px_0px_#FF6636_inset]':''}`}>
                   About
-                  <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
+                  <ArrowRight classes={`opacity-0 group-hover:opacity-100 text-etutor-primary ${pathName === '/about'?'opacity-100':''}`} />
                 </Link>
               </li>
               <li>
-                <Link href="/become-an-instructor" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
+                <Link href="/become-an-instructor" className={`flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group ${pathName === '/become-an-instructor'?'text-white shadow-[0px_-1.5px_0px_0px_#FF6636_inset]':''}`}>
                   Become Instructor
-                  <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
+                  <ArrowRight classes={`opacity-0 group-hover:opacity-100 text-etutor-primary ${pathName === '/become-an-instructor'?'opacity-100':''}`} />
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
+                <Link href="/contact" className={`flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group ${pathName === '/contact'?'text-white shadow-[0px_-1.5px_0px_0px_#FF6636_inset]':''}`}>
                   Contact
-                  <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
+                  <ArrowRight classes={`opacity-0 group-hover:opacity-100 text-etutor-primary ${pathName === '/contact'?'opacity-100':''}`} />
                 </Link>
               </li>
               <li>
-                <Link href="/career" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
+                <Link href="/career" className={`flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group ${pathName === '/career'?'text-white shadow-[0px_-1.5px_0px_0px_#FF6636_inset]':''}`}>
                   Career
-                  <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
+                  <ArrowRight classes={`opacity-0 group-hover:opacity-100 text-etutor-primary ${pathName === '/career'?'opacity-100':''}`} />
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
+                <Link href="/coming-soon" className={`flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group ${pathName === '/coming-soon'?'text-white shadow-[0px_-1.5px_0px_0px_#FF6636_inset]':''}`}>
                   Coming Soon
-                  <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
+                  <ArrowRight classes={`opacity-0 group-hover:opacity-100 text-etutor-primary ${pathName === '/coming-soon'?'opacity-100':''}`} />
                 </Link>
               </li>
               <li>
-                <Link href="/404" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
+                <Link href="/404" className={`flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group ${pathName === '/404'?'text-white shadow-[0px_-1.5px_0px_0px_#FF6636_inset]':''}`}>
                   404 Not Found
-                  <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
+                  <ArrowRight classes={`opacity-0 group-hover:opacity-100 text-etutor-primary ${pathName === '/404'?'opacity-100':''}`} />
                 </Link>
               </li>
             </ul>
@@ -120,9 +112,9 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/faqs" className="flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group">
+                <Link href="/faqs" className={`flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group ${pathName === '/faqs'?'text-white shadow-[0px_-1.5px_0px_0px_#FF6636_inset]':''}`}>
                   FAQs
-                  <ArrowRight classes="opacity-0 group-hover:opacity-100 text-etutor-primary" />
+                  <ArrowRight classes={`opacity-0 group-hover:opacity-100 text-etutor-primary ${pathName === '/faqs'?'opacity-100':''}`} />
                 </Link>
               </li>
               <li>

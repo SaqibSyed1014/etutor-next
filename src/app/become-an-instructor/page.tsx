@@ -189,7 +189,7 @@ const Page = () => {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                 {steps.map((step) => (
-                                    <div key={step.id} className="flex flex-col items-center text-center p-6">
+                                    <div key={step.id} className="flex flex-col items-center text-center p-6 bg-white">
                                         <div className={`${step.bgColor} grid place-items-center size-20 mb-6`}>
                                             {step.icon}
                                         </div>
@@ -200,14 +200,13 @@ const Page = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full border-t border-gray-200 mt-16"></div>
                 </section>
 
                 <section className="py-20">
                     <div className="container">
                         <div className="flex justify-between items-center">
                             <div className="flex flex-col gap-6 max-w-[536px] w-full">
-                                <h2 className="section-heading !text-left">Instructor rules & regulations</h2>
+                                <h2 className="section-heading !text-left">Instructor rules <br/> & regulations</h2>
 
                                 <p className="text-gray-600 text-lg">
                                     We maintain high standards for our instructors to ensure students receive the best possible
@@ -266,7 +265,7 @@ const Page = () => {
                                             <div className="shrink-0">
                                                 <ArrowRight classes="text-primary-500"/>
                                             </div>
-                                            <span className="text-gray-700 text-sm">{point}</span>
+                                            <span className="text-sm">{point}</span>
                                         </li>
                                     ))}
                                 </ul>
