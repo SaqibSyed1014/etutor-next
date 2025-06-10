@@ -7,7 +7,7 @@ import StackedAvatars from '@/components/common/StackedAvatars';
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import CourseLength from "@/components/common/CourseLength";
 import {
-    ArrowLeft, DownloadSimple, PaperPlaneRight, PaperPlaneRightSolid, Star,
+    ArrowLeft, DownloadSimple, PaperPlaneRightSolid, Star,
 } from "@/assets/icons/common-icons";
 import {Button} from "@/components/ui/button";
 import CourseCurriculum from "@/components/sections/CourseCurriculum";
@@ -19,9 +19,6 @@ import {
     DialogContent,
     DialogHeader,
     DialogTitle,
-    DialogDescription,
-    DialogFooter,
-    DialogClose,
 } from "@/components/ui/dialog"
 import {useRouter} from "next/navigation";
 

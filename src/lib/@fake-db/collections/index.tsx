@@ -413,6 +413,7 @@ export const curriculumData: CurriculumSection[] = [
 export const courseComments = [
     {
         id: '1',
+        parentId: null,
         author: {
             id: '101',
             name: 'Ronald Richards',
@@ -420,9 +421,12 @@ export const courseComments = [
         },
         content: 'Maecenas risus tortor, tincidunt nec purus eu, gravida suscipit tortor.',
         createdAt: '1 week ago',
+        openReplyField: true,
+        isParent: true,
         replies: [
             {
                 id: '2',
+                parentId: '1',
                 author: {
                     id: '102',
                     name: 'Kristin Watson',
@@ -431,10 +435,13 @@ export const courseComments = [
                 },
                 content: 'Nulla pellentesque leo vitae lorem hendrerit, sit amet elementum ipsum rutrum. Morbi ultricies volutpat orci quis fringilla. Suspendisse faucibus augue quis dictum egestas.',
                 createdAt: '1 week ago',
+                openReplyField: false,
+                isParent: false,
                 replies: [],
             },
             {
                 id: '3',
+                parentId: '1',
                 author: {
                     id: '103',
                     name: 'Cody Fisher',
@@ -442,12 +449,15 @@ export const courseComments = [
                 },
                 content: 'Thank You so much sir, you\'re a great mentor.',
                 createdAt: '1 week ago',
+                openReplyField: false,
+                isParent: false,
                 replies: [],
             },
         ],
     },
     {
         id: '4',
+        parentId: null,
         author: {
             id: '104',
             name: 'Guy Hawkins',
@@ -455,9 +465,12 @@ export const courseComments = [
         },
         content: 'Thank you for your helpful video. May I ask what is the application use to demo the animation at [4:24], is it the runnable mobile application?\n\nAs what I know, Figma Mirror app cannot do that. Please help me\n\nGreat thanks',
         createdAt: '2 weeks ago',
+        openReplyField: false,
+        isParent: true,
         replies: [
             {
                 id: '5',
+                parentId: '4',
                 author: {
                     id: '105',
                     name: 'Esther Howard',
@@ -465,12 +478,15 @@ export const courseComments = [
                 },
                 content: 'Quality content',
                 createdAt: '2 weeks ago',
+                openReplyField: false,
+                isParent: false,
                 replies: [],
             },
         ],
     },
     {
         id: '6',
+        parentId: null,
         author: {
             id: '106',
             name: 'Theresa Webb',
@@ -478,6 +494,8 @@ export const courseComments = [
         },
         content: 'Now i know that i will spent that 5 minutes of my life with pure pleasure',
         createdAt: '3 weeks ago',
+        openReplyField: false,
+        isParent: true,
         replies: [],
     },
 ];

@@ -18,6 +18,7 @@ const CourseComments: React.FC = () => {
             },
             content,
             createdAt: 'Just now',
+            openReplyField: false,
             replies: [],
         };
 
@@ -51,6 +52,66 @@ const CourseComments: React.FC = () => {
         setComments(updatedComments);
     };
 
+    const resetAllReplyFields = (comments) => {
+        return comments.map(comment => {
+            const newComment = { ...comment, openReplyField: false };
+            if (comment.replies && comment.replies.length > 0) {
+                newComment.replies = resetAllReplyFields(comment.replies);
+            }
+            return newComment;
+        });
+    };
+    const findCommentById = (comments, commentId) => {
+        for (const comment of comments) {
+            if (comment.id === commentId) {
+                return comment;
+            }
+            if (comment.replies && comment.replies.length > 0) {
+                const foundInReplies = findCommentById(comment.replies, commentId);
+                if (foundInReplies) {
+                    return foundInReplies;
+                }
+            }
+        }
+        return undefined;
+    };
+    const toggleReplyField = (comments, commentId) => {
+        const targetComment = findCommentById(comments, commentId);
+        const willOpenNewField = targetComment ? !targetComment.openReplyField : true;
+
+        let baseComments = comments;
+
+        if (willOpenNewField) {
+            baseComments = resetAllReplyFields(comments);
+        }
+
+        return baseComments.map(comment => {
+            if (comment.id === commentId) {
+                return {
+                    ...comment,
+                    openReplyField: !comment.openReplyField,
+                };
+            }
+
+            if (comment.replies && comment.replies.length > 0) {
+                const updatedReplies = toggleReplyField(comment.replies, commentId);
+                if (updatedReplies !== comment.replies) {
+                    return {
+                        ...comment,
+                        replies: updatedReplies,
+                    };
+                }
+            }
+            return comment;
+        });
+    };
+
+    function handleReplyButtonClick(commentId) {
+        const updatedComments = toggleReplyField(comments, commentId);
+        setComments(updatedComments);
+    }
+
+
     return (
         <div>
             <h4>Comments <span className="font-normal">({comments.length})</span></h4>
@@ -58,6 +119,7 @@ const CourseComments: React.FC = () => {
                 comments={comments}
                 onAddComment={handleAddComment}
                 onAddReply={handleAddReply}
+                toggleReplyBtn={handleReplyButtonClick}
             />
         </div>
     );

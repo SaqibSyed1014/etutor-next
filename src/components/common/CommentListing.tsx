@@ -15,9 +15,12 @@ interface CommentAuthor {
 
 interface Comment {
     id: string;
+    parentId: string | null
     author: CommentAuthor;
     content: string;
     createdAt: string;
+    openReplyField: boolean;
+    isParent: boolean;
     replies: Comment[];
 }
 
@@ -25,16 +28,19 @@ interface CommentListProps {
     comments: Comment[];
     onAddComment?: (content: string) => void;
     onAddReply?: (commentId: string, content: string) => void;
+    toggleReplyBtn: (commentId: string) => void
 }
 
 const CommentList: React.FC<CommentListProps> = ({
                                                      comments,
                                                      onAddComment,
                                                      onAddReply,
+                                                     toggleReplyBtn,
                                                  }) => {
     const [newComment, setNewComment] = useState<string>('');
     const [replyingTo, setReplyingTo] = useState<string | null>(null);
     const [replyContent, setReplyContent] = useState<string>('');
+    const [showCommentField, setField] = useState<boolean>(false);
 
     const handleAddComment = () => {
         if (newComment.trim()) {
@@ -66,11 +72,12 @@ const CommentList: React.FC<CommentListProps> = ({
         return dateString;
     };
 
+
     const renderComment = (comment: Comment, isReply: boolean = false, isLastReply = false) => (
         <div key={comment.id} className={`flex gap-3 relative ${isReply ? 'mt-2' : 'mt-5'}`}>
             {!isReply && !!comment.replies.length && <div className="w-5 bg-white h-[100%] border-r border-gray-100 absolute top-0 left-0 bottom-0 z-10"></div>}
 
-            {isLastReply && <div className="h-[calc(100%_-_20px)] bg-white w-10 absolute -left-[40px] bottom-0 z-10"></div>}
+            { !comment.openReplyField && isLastReply && replyingTo !== comment.parentId && <div className="h-[calc(100%_-_20px)] bg-white w-7 absolute -left-[40px] bottom-0 z-10"></div>}
 
             <div className={`relative ${isReply && 'h-fit'}`}>
                 <div className={`relative ${isReply && 'h-fit'}`}>
@@ -86,7 +93,8 @@ const CommentList: React.FC<CommentListProps> = ({
 
             <div className="flex-1 flex flex-col gap-2">
                 <div className="flex items-center gap-2">
-                    <span className="font-medium text-sm text-gray-900">{comment.author.name} {isLastReply && 'isReply'}</span>
+                    <span className="font-medium text-sm text-gray-900">{comment.author.name}</span>
+
                     {comment.author.isAdmin && (
                         <span className="bg-secondary-500 text-white text-[10px] px-1.5 py-0.5">ADMIN</span>
                     )}
@@ -96,8 +104,13 @@ const CommentList: React.FC<CommentListProps> = ({
                 <p>{comment.content}</p>
 
                 <button
-                    className="flex items-center gap-2 text-gray-500 hover:text-primary-500"
-                    onClick={() => setReplyingTo(replyingTo === comment.id ? null : comment.id)}
+                    className={`flex items-center gap-2 text-gray-500 hover:text-primary-500 ${isReply ? 'opacity-50' : ''}`}
+                    onClick={() => {
+                        if (isReply) return;
+                        toggleReplyBtn(comment.id)
+                        setField(!showCommentField);
+                        setReplyingTo(replyingTo === comment.id ? null : comment.id)
+                    }}
                 >
                     <ChatCircle  />
                     <span className="text-sm">REPLY</span>
@@ -105,7 +118,7 @@ const CommentList: React.FC<CommentListProps> = ({
 
                 {comment.replies?.map((reply, index) => renderComment(reply, true, index === comment.replies.length - 1))}
 
-                {replyingTo === comment.id && (
+                {comment.openReplyField && (
                     <div className="mt-3 relative">
                         <div className="flex gap-2">
                             <div className="relative flex-1">
@@ -119,14 +132,12 @@ const CommentList: React.FC<CommentListProps> = ({
                                     <ChatCircle/>
                                 </div>
                             </div>
-                            <Button
-                                onClick={() => handleAddReply(comment.id)}
-                            >
+                            <Button onClick={() => handleAddReply(comment.id)}>
                                 Post Reply
                             </Button>
                         </div>
 
-                        <div className="w-8 h-px bg-gray-100 absolute right-full top-1/2 -translate-y-1/2"></div>
+                        <div className="w-6 h-0.5 bg-gray-100 absolute -left-[40px] top-1/2 -translate-y-1/2"></div>
 
                         <div className="h-[50%] bg-white w-10 absolute -left-[40px] bottom-0 z-10"></div>
                     </div>
@@ -138,32 +149,6 @@ const CommentList: React.FC<CommentListProps> = ({
     return (
         <div className="w-full">
             {comments.map((comment) => renderComment(comment))}
-
-            {/* Add new comment section */}
-            {/*<div className="mt-8 border-t border-gray-100 pt-6">*/}
-            {/*    <div className="flex gap-3">*/}
-            {/*        <Avatar className="h-10 w-10">*/}
-            {/*            <AvatarFallback>Y</AvatarFallback>*/}
-            {/*        </Avatar>*/}
-
-            {/*        <div className="flex-1">*/}
-            {/*            <textarea*/}
-            {/*                placeholder="Write your reply"*/}
-            {/*                className="min-h-[80px] w-full mb-2"*/}
-            {/*                value={newComment}*/}
-            {/*                onChange={(e) => setNewComment(e.target.value)}*/}
-            {/*            />*/}
-            {/*            <div className="flex justify-end">*/}
-            {/*                <Button*/}
-            {/*                    onClick={handleAddComment}*/}
-            {/*                    className="bg-primary hover:bg-primary/90"*/}
-            {/*                >*/}
-            {/*                    Post Reply*/}
-            {/*                </Button>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
         </div>
     );
 };
