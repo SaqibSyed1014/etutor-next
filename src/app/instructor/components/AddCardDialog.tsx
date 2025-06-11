@@ -6,6 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {CreditCard} from "@/assets/icons/common-icons";
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 
 interface AddCardDialogProps {
   open: boolean;
@@ -19,24 +22,30 @@ interface AddCardDialogProps {
   }) => void;
 }
 
+const cardSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  number: z.string().min(16, "Card number must be 16 digits").max(16),
+  expiry: z.string().regex(/^\d{2}\/\d{2}$/, "Expiry must be in MM/YY format"),
+  cvc: z.string().min(3, "CVC must be 3 digits").max(3)
+});
+
+type CardFormData = z.infer<typeof cardSchema>;
+
 const AddCardDialog: React.FC<AddCardDialogProps> = ({ open, onOpenChange, onAddCard }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    number: '',
-    expiry: '',
-    cvc: ''
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    reset,
+  } = useForm<CardFormData>({
+    resolver: zodResolver(cardSchema),
+    mode: "onChange",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Format card number for display
+  const onSubmit = (formData: CardFormData) => {
     const maskedNumber = formData.number.slice(0, 4) + ' **** **** ****';
-
-    // Determine card type based on first digit
     const cardType = formData.number.startsWith('4') ? 'visa' : 'mastercard';
 
-    // Random background gradient
     const backgrounds = [
       'bg-gradient-to-br from-purple-600 to-blue-600',
       'bg-gradient-to-br from-green-600 to-teal-600',
@@ -53,88 +62,65 @@ const AddCardDialog: React.FC<AddCardDialogProps> = ({ open, onOpenChange, onAdd
       background: randomBackground
     });
 
-    // Reset form
-    setFormData({ name: '', number: '', expiry: '', cvc: '' });
-  };
-
-  const handleCancel = () => {
-    setFormData({ name: '', number: '', expiry: '', cvc: '' });
-    onOpenChange(false);
+    reset();
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-2xl">
-        <DialogHeader>
-          <DialogTitle>New Payment Card</DialogTitle>
-        </DialogHeader>
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="sm:max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>New Payment Card</DialogTitle>
+          </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-4 p-6">
-          <div>
-            <Label htmlFor="name">Name</Label>
-            <Input
-              id="name"
-              placeholder="Name on card"
-              value={formData.name}
-              onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-              required
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="number">Card Number</Label>
-              <Input
-                id="number"
-                placeholder="Label"
-                value={formData.number}
-                onChange={(e) => setFormData(prev => ({ ...prev, number: e.target.value }))}
-                maxLength={16}
-                required
-                appendIcon={
-                  <div className="text-primary-500 [&_svg]:size-5">
-                    <CreditCard/>
-                  </div>
-                }
-                showIconSeparator={true}
-              />
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 p-6">
             <div>
-              <Label htmlFor="expiry">MM / YY</Label>
-              <Input
-                id="expiry"
-                placeholder="MM / YY"
-                value={formData.expiry}
-                onChange={(e) => setFormData(prev => ({ ...prev, expiry: e.target.value }))}
-                maxLength={5}
-                required
-              />
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" placeholder="Name on card" {...register("name")} />
+              {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
             </div>
-            <div>
-              <Label htmlFor="cvc">CVC</Label>
-              <Input
-                id="cvc"
-                placeholder="Security Code"
-                value={formData.cvc}
-                onChange={(e) => setFormData(prev => ({ ...prev, cvc: e.target.value }))}
-                maxLength={3}
-                required
-              />
-            </div>
-          </div>
-        </form>
 
-        <DialogFooter className="flex justify-between pt-4">
-          <DialogClose asChild>
-            <Button variant="gray">Cancel</Button>
-          </DialogClose>
-          <Button onClick={handleSubmit} type="submit">
-            Add Card
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+            <div>
+              <Label htmlFor="number">Card Number</Label>
+              <Input
+                  id="number"
+                  placeholder="Card Number"
+                  maxLength={16}
+                  {...register("number")}
+                  appendIcon={
+                    <div className="text-primary-500 [&_svg]:size-5">
+                      <CreditCard />
+                    </div>
+                  }
+                  showIconSeparator={true}
+              />
+              {errors.number && <p className="text-red-500 text-sm">{errors.number.message}</p>}
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="expiry">MM / YY</Label>
+                <Input id="expiry" placeholder="MM / YY" maxLength={5} {...register("expiry")} />
+                {errors.expiry && <p className="text-red-500 text-sm">{errors.expiry.message}</p>}
+              </div>
+              <div>
+                <Label htmlFor="cvc">CVC</Label>
+                <Input id="cvc" placeholder="Security Code" maxLength={3} {...register("cvc")} />
+                {errors.cvc && <p className="text-red-500 text-sm">{errors.cvc.message}</p>}
+              </div>
+            </div>
+
+            <DialogFooter className="flex justify-between p-0 pt-2">
+              <DialogClose asChild>
+                <Button variant="gray" type="button">Cancel</Button>
+              </DialogClose>
+              <Button type="submit" disabled={!isValid}>
+                Add Card
+              </Button>
+            </DialogFooter>
+          </form>
+
+        </DialogContent>
+      </Dialog>
   );
 };
 
