@@ -17,9 +17,9 @@ interface SectionItem {
     text: string;
 }
 
-const Page = ({ enablePreview }: { enablePreview: boolean }) => {
+const Page = () => {
     const router = useRouter();
-    const { setStepComplete, setCurrentTab } = useStepContext();
+    const { setStepComplete, setCurrentTab, stepsComplete } = useStepContext();
 
     const [thumbnail, setThumbnail] = useState<string>('');
     const [trailer, setTrailer] = useState<string>('');
@@ -67,7 +67,7 @@ const Page = ({ enablePreview }: { enablePreview: boolean }) => {
     }
     return (
         <div>
-            <MultiStepFormHeader title="Advance Information" formStepIndex={1} submitForm={saveForm} enablePreviewBtn={enablePreview} />
+            <MultiStepFormHeader title="Advance Information" formStepIndex={1} submitForm={saveForm} enablePreviewBtn={!stepsComplete.step4} />
             <MultiStepFormBody>
                 <div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 tab-content-spacing">

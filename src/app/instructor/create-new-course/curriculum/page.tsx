@@ -26,10 +26,10 @@ interface Section {
     lectures: Lecture[];
 }
 
-const Page = ({ enablePreview }: { enablePreview: boolean }) => {
+const Page = () => {
     const { toast } = useToast();
     const router = useRouter();
-    const { setStepComplete, setCurrentTab } = useStepContext();
+    const { setStepComplete, setCurrentTab, stepsComplete } = useStepContext();
 
 
     const [sections, setSections] = useState<Section[]>([
@@ -154,7 +154,7 @@ const Page = ({ enablePreview }: { enablePreview: boolean }) => {
 
     return (
         <div className="">
-            <MultiStepFormHeader title="Curriculum" formStepIndex={2} submitForm={onFormSubmit} enablePreviewBtn={enablePreview} />
+            <MultiStepFormHeader title="Curriculum" formStepIndex={2} submitForm={onFormSubmit} enablePreviewBtn={!stepsComplete.step4} />
 
             <MultiStepFormBody>
                 <div className="p-10 space-y-8">

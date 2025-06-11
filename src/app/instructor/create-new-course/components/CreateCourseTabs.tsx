@@ -105,16 +105,16 @@ const CreateCourseTabs = () => {
                 </TabsTrigger>
             </TabsList>
             <TabsContent value="basic-information">
-                <BasicInformation enablePreview={!stepsComplete.step4} />
+                <BasicInformation />
             </TabsContent>
             <TabsContent value="advance-information">
-                <AdvanceInformation enablePreview={!stepsComplete.step4} />
+                <AdvanceInformation />
             </TabsContent>
             <TabsContent value="curriculum">
-                <Curriculum enablePreview={!stepsComplete.step4} />
+                <Curriculum />
             </TabsContent>
             <TabsContent value="publish-course">
-                <PublishCourse enablePreview={!stepsComplete.step4} />
+                <PublishCourse />
             </TabsContent>
         </Tabs>
     );

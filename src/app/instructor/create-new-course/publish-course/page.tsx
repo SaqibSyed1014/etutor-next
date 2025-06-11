@@ -22,9 +22,9 @@ const messageFormSchema = z.object({
 
 type MessageValues = z.infer<typeof messageFormSchema>;
 
-const Page = ({ enablePreview }: { enablePreview: boolean }) => {
+const Page = () => {
     const { toast } = useToast();
-    const { setStepComplete } = useStepContext();
+    const { setStepComplete, stepsComplete } = useStepContext();
 
     const messageForm = useForm<MessageValues>({
         resolver: zodResolver(messageFormSchema),
@@ -72,7 +72,7 @@ const Page = ({ enablePreview }: { enablePreview: boolean }) => {
 
     return (
         <div ref={containerRef}>
-            <MultiStepFormHeader title="Publish Course" submitForm={messageForm.handleSubmit(onFormSubmit)} enablePreviewBtn={enablePreview} />
+            <MultiStepFormHeader title="Publish Course" submitForm={messageForm.handleSubmit(onFormSubmit)} enablePreviewBtn={!stepsComplete.step4} />
             <MultiStepFormBody>
                 <Form {...messageForm}>
                     <form onSubmit={messageForm.handleSubmit(onFormSubmit)} className="space-y-6 tab-content-spacing !pb-28">

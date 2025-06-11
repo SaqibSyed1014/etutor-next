@@ -30,10 +30,10 @@ const basicInfoSchema = z.object({
 
 type BasicInfoValues = z.infer<typeof basicInfoSchema>;
 
-const Page = ({ enablePreview }: { enablePreview: boolean }) => {
+const Page = () => {
     const { toast } = useToast();
     const router = useRouter();
-    const { setStepComplete, setCurrentTab } = useStepContext();
+    const { setStepComplete, setCurrentTab, stepsComplete } = useStepContext();
 
     const basicInfoForm = useForm<BasicInfoValues>({
         resolver: zodResolver(basicInfoSchema),
@@ -63,7 +63,7 @@ const Page = ({ enablePreview }: { enablePreview: boolean }) => {
 
     return (
         <div>
-            <MultiStepFormHeader title="Basic Information" submitForm={basicInfoForm.handleSubmit(onFormSubmit)} enablePreviewBtn={enablePreview} />
+            <MultiStepFormHeader title="Basic Information" submitForm={basicInfoForm.handleSubmit(onFormSubmit)} enablePreviewBtn={!stepsComplete.step4} />
             <MultiStepFormBody>
                 <Form {...basicInfoForm}>
                     <form onSubmit={basicInfoForm.handleSubmit(onFormSubmit)} className="tab-content-spacing space-y-6">
