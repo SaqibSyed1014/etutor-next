@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Accordion,
     AccordionItem,
@@ -40,12 +40,14 @@ const Page = () => {
     const handleSubmitQuestion = (e: React.FormEvent) => {
         e.preventDefault();
         // Handle form submission logic here
-        alert(`Question submitted! Subject: ${subject}, Message: ${message}`);
         setSubject("");
         setMessage("");
     };
 
-    const [activeFaq, setActiveFaq] = React.useState<string | undefined>(undefined);
+    const [activeFaq, setActiveFaq] = React.useState<string>('');
+    useEffect(() => {
+        setActiveFaq(filteredFAQs[0].id);
+    }, [filteredFAQs]);
 
     const [selectedOption, setSelectedOption] = useState('students');
     const dropdownOptions :DropdownOption[] = [
@@ -105,14 +107,14 @@ const Page = () => {
 
                             {/* Middle section - FAQ Accordion */}
                             <div className="w-full lg:w-2/4">
-                                <Accordion type="single" onValueChange={(e) => setActiveFaq(e)} collapsible
-                                           className="w-full flex flex-col gap-6">
+                                <Accordion type="single" value={activeFaq} onValueChange={(e) => setActiveFaq(e)} collapsible
+                                           className="w-full flex flex-col gap-6" defaultValue={filteredFAQs[0].id}>
                                     {filteredFAQs.map((faq) => (
                                         <AccordionItem key={faq.id} value={faq.id}
                                                        className={`border-b ${activeFaq === faq.id ? 'shadow-[0_12px_32px_0_#1D20261A]' : ''}`}>
                                             <AccordionTrigger icon={<ArrowUp/>}
                                                               className={`text-left text-base py-5 px-6 ${activeFaq === faq.id ? 'bg-gray-900 text-white' : ''}`}>
-                                                {faq.question}
+                                                {faq.question} {faq.id} {filteredFAQs[0].id}
                                             </AccordionTrigger>
                                             <AccordionContent className="text-gray-700 text-sm">
                                                 {faq.answer}

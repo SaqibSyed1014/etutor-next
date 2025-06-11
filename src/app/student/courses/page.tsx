@@ -6,6 +6,9 @@ import {CourseProgressCard} from "@/components/CourseCard";
 import CustomPagination from "@/components/CustomPagination";
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import SearchInput from "@/components/common/SearchInput";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
+import { courseSortOptions } from "@/lib/@fake-db/collections";
+import NoResultFound from "@/components/common/NoResultFound";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -27,7 +30,7 @@ const CourseListingPage = () => {
     const filteredCourses = useMemo(() => {
         return courseProgressData.filter((course) => {
             const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase());
-            const matchesStatus = statusFilter === 'all' || true; // TODO: Replace with real status logic
+            const matchesStatus = statusFilter === 'all' || course.status === statusFilter;
             const matchesTeacher = teacherFilter === 'all' || course.instructor.name === teacherFilter;
 
             return matchesSearch && matchesStatus && matchesTeacher;
@@ -58,13 +61,6 @@ const CourseListingPage = () => {
         return sortedCourses.slice(start, start + ITEMS_PER_PAGE);
     }, [sortedCourses, currentPage]);
 
-    const sortOptions = [
-        { label: "Latest", value: "latest" },
-        { label: "Popular", value: "popular" },
-        { label: "Price: Low to High", value: "price-low" },
-        { label: "Price: High to Low", value: "price-high" },
-    ];
-
     const courseFilters = [
         { label: "All Courses", value: "all" },
         { label: "In Progress", value: "in-progress" },
@@ -76,9 +72,9 @@ const CourseListingPage = () => {
             <div className="mb-8">
                 <h1 className="text-2xl font-semibold">Courses <span className="font-normal">({filteredCourses.length})</span></h1>
 
-                <div className="flex [&_div]:grow gap-6 mt-6">
+                <div className="grid grid-cols-10 gap-6 mt-6">
                     {/* Search */}
-                    <div className="relative">
+                    <div className="col-span-4">
                         <label className="block text-sm text-gray-600 mb-1">Search:</label>
                         <SearchInput
                             value={searchQuery}
@@ -91,42 +87,61 @@ const CourseListingPage = () => {
                     </div>
 
                     {/* Sort */}
-                    <div>
-                        <label className="block text-sm text-gray-500 mb-1">Sort by:</label>
-                        <DropdownMenuWrapper
-                            options={sortOptions}
-                            selected={sortBy}
-                            onChange={(val) => {
-                                setSortBy(val);
-                                resetPagination();
-                            }}
-                        />
+                    <div className="col-span-2">
+                        <label className="block text-sm text-gray-600 mb-1">Sort by:</label>
+                        <Select value={sortBy} onValueChange={(val) => {
+                            setSortBy(val);
+                            resetPagination();
+                        }}>
+                            <SelectTrigger className="h-12">
+                                <SelectValue placeholder="Select..."/>
+                            </SelectTrigger>
+
+                            <SelectContent>
+                                {courseSortOptions.map(item => (
+                                    <SelectItem value={item.value}>{item.label}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
                     </div>
 
                     {/* Status */}
-                    <div>
-                        <label className="block text-sm text-gray-500 mb-1">Status:</label>
-                        <DropdownMenuWrapper
-                            options={courseFilters}
-                            selected={statusFilter}
-                            onChange={(val) => {
-                                setStatusFilter(val);
-                                resetPagination();
-                            }}
-                        />
+                    <div className="col-span-2">
+                        <label className="block text-sm text-gray-600 mb-1">Status:</label>
+                        <Select value={statusFilter} onValueChange={(val) => {
+                            setStatusFilter(val);
+                            resetPagination();
+                        }}>
+                            <SelectTrigger className="h-12">
+                                <SelectValue placeholder="Select..."/>
+                            </SelectTrigger>
+
+                            <SelectContent>
+                                {courseFilters.map(item => (
+                                    <SelectItem value={item.value}>{item.label}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
                     </div>
 
                     {/* Teacher */}
-                    <div>
-                        <label className="block text-sm text-gray-500 mb-1">Teacher:</label>
-                        <DropdownMenuWrapper
-                            options={[{ label: 'All Teachers', value: 'all' }, ...instructors]}
-                            selected={teacherFilter}
-                            onChange={(val) => {
-                                setTeacherFilter(val);
-                                resetPagination();
-                            }}
-                        />
+                    <div className="col-span-2">
+                        <label className="block text-sm text-gray-600 mb-1">Teacher:</label>
+                        <Select value={teacherFilter} onValueChange={(val) => {
+                            setTeacherFilter(val);
+                            resetPagination();
+                        }}>
+                            <SelectTrigger className="h-12">
+                                <SelectValue placeholder="Select..."/>
+                            </SelectTrigger>
+
+                            <SelectContent>
+                                <SelectItem value="all">All Teachers</SelectItem>
+                                {instructors.map(item => (
+                                    <SelectItem value={item.value}>{item.label}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
                     </div>
                 </div>
             </div>
@@ -139,6 +154,11 @@ const CourseListingPage = () => {
                     </div>
                 ))}
             </div>
+
+            {/* No Results */}
+            {paginatedCourses.length === 0 && (
+                <NoResultFound type='courses' />
+            )}
 
             {/* Pagination */}
             {totalPages > 1 && (

@@ -3,13 +3,13 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Card, CardContent, CardFooter} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
-import {Heart, Stack, Clock, BarChart, DotsThree} from "@/assets/icons/common-icons";
+import {Heart, Clock, BarChart, DotsThree} from "@/assets/icons/common-icons";
 import {CategoryBadge, Rating, StudentCount} from "@/components/common/tiny-collection";
 import {Course, CourseProgress} from "@/lib/@fake-db/courses/type";
 import Link from 'next/link'
-import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import {DropdownOption} from "../../types";
 import {useRouter} from "next/navigation";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 interface CourseCardProps {
     course: Course;
@@ -18,6 +18,7 @@ interface CourseCardProps {
     cardBig?: boolean;
     showDetailPopup?: boolean;
     showCourseOptions?: boolean
+    onDelete?: (id: number) => void;
 }
 
 export const CourseCard = ({
@@ -26,7 +27,8 @@ export const CourseCard = ({
    showStudentIcon = true,
    cardBig,
    showDetailPopup = true,
-   showCourseOptions = false
+   showCourseOptions = false,
+   onDelete
 }: CourseCardProps) => {
     const popupRef = useRef<HTMLDivElement>(null);
     const [positionLeft, setPositionLeft] = useState(false);
@@ -66,6 +68,7 @@ export const CourseCard = ({
 
     useEffect(() => {
         if (selectedOption === 'view') router.push(`/instructor/my-courses/${course.id}`)
+        setSelectedOption('');
     }, [selectedOption]);
 
     return (
@@ -159,18 +162,26 @@ export const CourseCard = ({
                         </div>
                         {showCourseOptions && <div className="flex items-center justify-between w-full p-4 border-t border-gray-100">
                             <span className="font-semibold text-primary-500 text-lg">${course.price}</span>
-                            <DropdownMenuWrapper
-                                options={courseOptions}
-                                selected={selectedOption}
-                                onChange={setSelectedOption}
-                                variant="primary"
-                                contentContentClasses="!w-[200px]"
-                                customTrigger={
+
+
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
                                     <div className="text-gray-600 hover:text-gray-900 cursor-pointer">
                                         <DotsThree/>
                                     </div>
-                                }>
-                            </DropdownMenuWrapper>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end" className="bg-white">
+                                    <DropdownMenuItem className="hover:bg-primary-500 hover:text-white">
+                                        <Link href={`/instructor/my-courses/${course.id}`}>View Details</Link>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem className="hover:bg-primary-500 hover:text-white">
+                                        Edit Course
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => onDelete ? onDelete(course.id) : null} className="hover:bg-error-500 hover:text-white">
+                                        Delete Course
+                                    </DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
                         </div>}
 
                     </CardFooter>
@@ -290,12 +301,16 @@ export const CourseProgressCard = ({ course } : { course: CourseProgress }) => {
             </div>
             <div className="p-4 mt-auto border-t border-gray-100">
                 <div className="flex justify-between items-center">
-                    <Link
-                        href={`/course/${course.id}/watch-course`}
-                        className="w-full flex-1"
-                    >
-                        <Button variant="outline" className="w-full">Watch Lecture</Button>
-                    </Link>
+                    {course.status === 'completed' ?
+                        <Button className="w-full">Completed</Button>
+                        :
+                        <Link
+                            href={`/course/${course.id}/watch-course`}
+                            className="w-full flex-1"
+                        >
+                            <Button variant="outline" className="w-full">Watch Lecture</Button>
+                        </Link>
+                    }
                     {course.progress && <span className="text-success-500 font-medium text-sm flex-1 text-end">{course.progress}% Completed</span>}
                     {course.progress && <div className="bg-primary-500 h-[2px] absolute bottom-0 left-0" style={{ width: `${course.progress}%` }}></div>}
                 </div>

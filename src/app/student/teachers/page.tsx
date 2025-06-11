@@ -8,6 +8,8 @@ import CustomPagination from "@/components/CustomPagination";
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import SearchInput from "@/components/common/SearchInput";
 import InstructorCard from "@/components/InstructorsCard";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
+import NoResultFound from "@/components/common/NoResultFound";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -67,9 +69,9 @@ const CourseListingPage = () => {
             <div className="mb-8">
                 <h1 className="text-2xl font-semibold">Instructors <span className="font-normal">({filteredCourses.length})</span></h1>
 
-                <div className="flex [&_div]:grow gap-6 mt-6">
+                <div className="grid grid-cols-9 gap-6 mt-6">
                     {/* Search */}
-                    <div className="relative">
+                    <div className="col-span-4">
                         <label className="block text-sm text-gray-600 mb-1">Search:</label>
                         <SearchInput
                             value={searchQuery}
@@ -82,34 +84,47 @@ const CourseListingPage = () => {
                     </div>
 
                     {/* Courses */}
-                    <div>
+                    <div className="col-span-3">
                         <label className="block text-sm text-gray-500 mb-1">Courses:</label>
-                        <DropdownMenuWrapper
-                            options={courseFilters}
-                            selected={courseFilter}
-                            onChange={(val) => {
-                                setCourseBy(val);
-                                resetPagination();
-                            }}
-                        />
+                        <Select value={courseFilter} onValueChange={(val) => {
+                            setCourseBy(val);
+                            resetPagination();
+                        }}>
+                            <SelectTrigger className="h-12">
+                                <SelectValue placeholder="Select..."/>
+                            </SelectTrigger>
+
+                            <SelectContent>
+                                {courseFilters.map(item => (
+                                    <SelectItem value={item.value}>{item.label}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
                     </div>
 
                     {/* Teacher */}
-                    <div>
+                    <div className="col-span-2">
                         <label className="block text-sm text-gray-500 mb-1">Teacher:</label>
-                        <DropdownMenuWrapper
-                            options={[{ label: 'All Teachers', value: 'all' }, ...instructors]}
-                            selected={teacherFilter}
-                            onChange={(val) => {
-                                setTeacherFilter(val);
-                                resetPagination();
-                            }}
-                        />
+                        <Select value={teacherFilter} onValueChange={(val) => {
+                            setTeacherFilter(val);
+                            resetPagination();
+                        }}>
+                            <SelectTrigger className="h-12">
+                                <SelectValue placeholder="Select..."/>
+                            </SelectTrigger>
+
+                            <SelectContent>
+                                <SelectItem value="all">All Teachers</SelectItem>
+                                {instructors.map(item => (
+                                    <SelectItem value={item.value}>{item.label}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
                     </div>
                 </div>
             </div>
 
-            {/* Course Grid */}
+            {/* Teachers Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {paginatedInstructors.map((instructor) => (
                     <div key={instructor.id} className="h-full">
@@ -117,6 +132,11 @@ const CourseListingPage = () => {
                     </div>
                 ))}
             </div>
+
+            {/* No Results */}
+            {paginatedInstructors.length === 0 && (
+                <NoResultFound type='instructors' />
+            )}
 
             {/* Pagination */}
             {totalPages > 1 && (

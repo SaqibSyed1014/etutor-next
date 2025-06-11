@@ -12,6 +12,7 @@ import {FilterFaders} from "@/assets/icons/icons";
 import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import {sortOptions} from "@/lib/@fake-db/courses";
 import SearchInput from "@/components/common/SearchInput";
+import NoResultFound from "@/components/common/NoResultFound";
 
 type Props = {
     preSelectedFilters?: FilterState;
@@ -83,8 +84,11 @@ const Courses = ({ preSelectedFilters }: Props) => {
                                         </div>
                                     </Button>
                                     <div className="relative hidden lg:block ">
-                                        <SearchInput placeholder="Search..." />
-
+                                        <SearchInput
+                                            placeholder="Search..."
+                                            value={searchInput}
+                                            onChange={(e) => handleSearch(e.target.value)}
+                                        />
                                     </div>
                                 </div>
 
@@ -150,11 +154,7 @@ const Courses = ({ preSelectedFilters }: Props) => {
 
                                 {/* No Results */}
                                 {paginatedCourses.length === 0 && (
-                                    <div className="text-center py-10">
-                                        <h3 className="text-xl font-semibold mb-2">No courses found</h3>
-                                        <p className="text-gray-500">Try adjusting your search or filter
-                                            criteria</p>
-                                    </div>
+                                    <NoResultFound type='courses' />
                                 )}
 
                                 {/* Pagination */}

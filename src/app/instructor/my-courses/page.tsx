@@ -7,10 +7,12 @@ import {courseLevels, courseProgressData, coursesData} from "@/lib/@fake-db/cour
 import {CourseCard} from "@/components/CourseCard";
 import CustomPagination from "@/components/CustomPagination";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
+import { courseSortOptions } from "@/lib/@fake-db/collections";
 
 const ITEMS_PER_PAGE = 12;
 
 const Page = () => {
+    const [courses, setCourses] = useState(courseProgressData);
     const [searchQuery, setSearchQuery] = useState('');
     const [sortBy, setSortBy] = useState('latest');
     const [categoryFilter, setCategoryFilter] = useState('all');
@@ -20,14 +22,14 @@ const Page = () => {
     const resetPagination = () => setCurrentPage(1);
 
     const filteredCourses = useMemo(() => {
-        return courseProgressData.filter((course) => {
+        return courses.filter((course) => {
             const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase());
             const matchesStatus = categoryFilter === 'all' || true; // TODO: Replace with real status logic
             const matchesTeacher = ratingFilter === 'all';
 
             return matchesSearch && matchesStatus && matchesTeacher;
         });
-    }, [searchQuery, categoryFilter, ratingFilter]);
+    }, [searchQuery, categoryFilter, ratingFilter, courses]);
 
 
     const sortedCourses = useMemo(() => {
@@ -54,12 +56,9 @@ const Page = () => {
         return sortedCourses.slice(start, start + ITEMS_PER_PAGE);
     }, [sortedCourses, currentPage]);
 
-    const sortOptions = [
-        { label: "Latest", value: "latest" },
-        { label: "Popular", value: "popular" },
-        { label: "Price: Low to High", value: "price-low" },
-        { label: "Price: High to Low", value: "price-high" },
-    ];
+    const handleDelete = (id: number) => {
+        setCourses(prev => prev.filter(course => course.id !== id));
+    };
 
     const ratingFilters = [
         { label: "All Courses", value: "all" },
@@ -96,7 +95,7 @@ const Page = () => {
                         </SelectTrigger>
 
                         <SelectContent>
-                            {sortOptions.map(item => (
+                            {courseSortOptions.map(item => (
                                 <SelectItem value={item.value}>{item.label}</SelectItem>
                             ))}
                         </SelectContent>
@@ -152,6 +151,7 @@ const Page = () => {
                             showDetailPopup={false}
                             cardBig={true}
                             showCourseOptions={true}
+                            onDelete={handleDelete}
                         />
                     )
                 })}

@@ -41,11 +41,11 @@ const Page = () => {
   const accountForm = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      username: '',
-      email: '',
-      bio: '',
+      firstName: 'Kevin',
+      lastName: 'Gilbert',
+      username: 'kevin1092',
+      email: 'kevingil101@gmail.com',
+      bio: 'Web Designer & Best-Selling Instructor',
     },
   });
 
@@ -172,6 +172,7 @@ const Page = () => {
                       <div className="col-span-2">
                           <FormField
                               control={accountForm.control}
+                              disabled={true}
                               name="username"
                               render={({field}) => (
                                   <FormItem>
@@ -188,6 +189,7 @@ const Page = () => {
                       <div className="col-span-2">
                         <FormField
                           control={accountForm.control}
+                          disabled={true}
                           name="email"
                           render={({ field }) => (
                             <FormItem>

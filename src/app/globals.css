@@ -64,7 +64,7 @@
     }
 
     .section-heading{
-        @apply text-[40px] leading-[48px] font-semibold text-center;
+        @apply text-3xl xl:text-[40px] xl:leading-[48px] font-semibold text-center;
     }
     .section-layout{
         @apply flex flex-col gap-10;

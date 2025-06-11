@@ -500,5 +500,12 @@ export const courseComments = [
     },
 ];
 
+export const courseSortOptions = [
+    { label: "Latest", value: "latest" },
+    { label: "Popular", value: "popular" },
+    { label: "Price: Low to High", value: "price-low" },
+    { label: "Price: High to Low", value: "price-high" },
+];
+
 
 

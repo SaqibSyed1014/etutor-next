@@ -17,7 +17,7 @@ const Page = () => {
     const subtotal = cartItems.reduce((sum, item) => sum + item.price, 0);
     const couponDiscount = 8; // 8%
     const discountAmount = (subtotal * couponDiscount) / 100;
-    const tax = 17.99;
+    const tax = 0;
     const total = subtotal - discountAmount + tax;
 
     const removeFromCart = (id: number) => {
@@ -110,6 +110,8 @@ const Page = () => {
                                                     </div>
                                                 </div>
                                             ))}
+
+                                            {!cartItems.length && <h5 className="text-center">No items in the cart</h5>}
                                         </div>
                                     </div>
                                 </div>

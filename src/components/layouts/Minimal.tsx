@@ -40,7 +40,7 @@ const Layout = ({ children, slot = null }: LayoutProps) => {
     };
 
     return (
-        <div className="min-h-screen bg-white flex flex-col bg-white">
+        <div className="h-screen bg-white flex flex-col">
             <div
                 className="bg-white py-6 px-8"
                 style={{ boxShadow: '0px -1px 0px 0px #E9EAF0 inset' }}

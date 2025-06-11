@@ -7,9 +7,9 @@ const Footer = () => {
             <div className="container">
                 <div className="flex justify-between items-center">
                     <p className="text-gray-600">
-                        © 2021 - Eduguard. Designed by <span className="text-gray-900">Templatecookie</span>. All rights reserved
+                        © 2025 - Eduguard. Designed by <span className="text-gray-900">DevDock</span>. All rights reserved
                     </p>
-                    <div className="space-x-6 text-gray-600">
+                    <div className="space-x-6 text-gray-600 text-sm">
                         <Link href="/faqs">
                             FAQs
                         </Link>

@@ -14,6 +14,7 @@ import {Rating} from "@/components/common/tiny-collection";
 import {DotsThree, Star} from "@/assets/icons/common-icons";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
+import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
 
 const Page = () => {
     const params = useParams();
@@ -39,8 +40,8 @@ const Page = () => {
                     </div>
                     <div className="bg-white p-6">
                         <div className="flex gap-6">
-                            <div className="w-[352px]">
-                                <img src={course.image} alt={course.title}/>
+                            <div className="w-[352px] h-[264px] overflow-hidden">
+                                <img src={course.image} alt={course.title} className="size-full object-cover"/>
                             </div>
                             <div className="space-y-6 grow">
                                 <div className="flex flex-col gap-3">
@@ -56,7 +57,7 @@ const Page = () => {
                                     </div>
                                     <div className="space-y-2">
                                         <h3 className="text-xl">{course.title}</h3>
-                                        <p className="text-gray-600">{course.description}</p>
+                                        <p className="text-gray-600">3 in 1 Course: Learn to design websites with Figma, build with Webflow, and make a living freelancing.</p>
                                     </div>
                                 </div>
                                 <div className="flex justify-between items-start">
@@ -97,6 +98,8 @@ const Page = () => {
                                         </p>
                                     </div>
                                 </div>
+
+                                <hr/>
                                 <div className="flex justify-between items-center">
                                     <div className="flex gap-8 items-center">
                                         <div className="space-y-1">
@@ -111,9 +114,24 @@ const Page = () => {
                                     </div>
                                     <div className="flex gap-3">
                                         <Button>Withdrew Money</Button>
-                                        <Button size="icon" variant="onlyIcon">
-                                            <DotsThree />
-                                        </Button>
+
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger asChild>
+                                                <Button size="icon" variant="onlyIcon">
+                                                    <DotsThree />
+                                                </Button>
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent align="end" className="bg-white">
+                                                <DropdownMenuItem className="hover:bg-primary-500 hover:text-white">
+                                                    Edit Course
+                                                </DropdownMenuItem>
+                                                <DropdownMenuItem className="hover:bg-error-500 hover:text-white">
+                                                    <Link href="/instructor/my-courses">
+                                                        Delete Course
+                                                    </Link>
+                                                </DropdownMenuItem>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
                                     </div>
                                 </div>
                             </div>

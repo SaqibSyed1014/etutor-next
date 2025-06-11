@@ -137,16 +137,18 @@ const ComingSoon = () => {
                                     <h2 className="text-2xl font-semibold">Get notified when we launch</h2>
                                     <form onSubmit={handleSubmit}>
                                         <div className="flex gap-4">
-                                            <Input
-                                                type="email"
-                                                placeholder="Email address"
-                                                value={email}
-                                                onChange={(e) => {
-                                                    setEmail(e.target.value);
-                                                    if (emailError) setEmailError("");
-                                                }}
-                                                className={emailError ? "border-red-500" : ""}
-                                            />
+                                            <div className="flex-1">
+                                                <Input
+                                                    type="email"
+                                                    placeholder="Email address"
+                                                    value={email}
+                                                    onChange={(e) => {
+                                                        setEmail(e.target.value);
+                                                        if (emailError) setEmailError("");
+                                                    }}
+                                                    className={emailError ? "border-red-500" : ""}
+                                                />
+                                            </div>
                                             <Button type="submit">
                                                 Notify Me
                                             </Button>
@@ -163,7 +165,7 @@ const ComingSoon = () => {
                     <div className="container py-6">
                         <div className="flex justify-between items-center text-sm">
                             <p className="text-gray-900">
-                                © 2021 - Eduguard. Designed by <span className="font-medium">Templatecookie</span>. All
+                                © 2025 - Eduguard. Designed by <span className="font-medium">DevDock</span>. All
                                 rights reserved
                             </p>
 

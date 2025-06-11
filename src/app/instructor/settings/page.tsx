@@ -12,7 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Checkbox } from '@/components/ui/checkbox';
 import { Eye, EyeOff } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import {Globe} from "@/assets/icons/common-icons";
+import {Globe, UploadSimple} from "@/assets/icons/common-icons";
 import {Facebook, Instagram, Linkedin, Twitter, Whatsapp, Youtube} from "@/assets/icons/icons";
 
 const accountFormSchema = z.object({
@@ -58,7 +58,7 @@ const notificationOptions = [
 ];
 
 const Page = () => {
-    const [profileImage, setProfileImage] = useState<string>("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face");
+    const [profileImage, setProfileImage] = useState<string>("/images/people/man-1.png");
     const [showCurrentPassword, setShowCurrentPassword] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -68,9 +68,9 @@ const Page = () => {
     const accountForm = useForm<AccountFormValues>({
         resolver: zodResolver(accountFormSchema),
         defaultValues: {
-            firstName: '',
-            lastName: '',
-            username: '',
+            firstName: 'Vako',
+            lastName: 'Shvili',
+            username: 'vako219',
             phoneNumber: '',
             title: '',
             biography: '',
@@ -197,6 +197,7 @@ const Page = () => {
 
                                             <FormField
                                                 control={accountForm.control}
+                                                disabled={true}
                                                 name="username"
                                                 render={({ field }) => (
                                                     <FormItem>
@@ -248,21 +249,9 @@ const Page = () => {
                                                     />
 
                                                     <label htmlFor="image-upload"
-                                                           className="cursor-pointer absolute bottom-0 left-0 right-0 py-3 flex gap-2 justify-center items-center bg-black/50 hover:bg-black/80 transition">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                                             fill="none">
-                                                            <path d="M8.0625 7.68647L12 3.75L15.9375 7.68647" stroke="white"
-                                                                  strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                                            <path d="M12 14.2492V3.75195" stroke="white" strokeWidth="1.5"
-                                                                  strokeLinecap="round" strokeLinejoin="round"/>
-                                                            <path
-                                                                d="M20.25 14.25V19.5C20.25 19.6989 20.171 19.8897 20.0303 20.0303C19.8897 20.171 19.6989 20.25 19.5 20.25H4.5C4.30109 20.25 4.11032 20.171 3.96967 20.0303C3.82902 19.8897 3.75 19.6989 3.75 19.5V14.25"
-                                                                stroke="white" stroke-width="1.5" stroke-linecap="round"
-                                                                stroke-linejoin="round"/>
-                                                        </svg>
-                                                        <p className="text-white text-sm">
-                                                            Upload Photo
-                                                        </p>
+                                                           className="cursor-pointer text-sm absolute bottom-0 left-0 right-0 text-white py-3 flex gap-2 justify-center items-center bg-black/50 hover:bg-black/80 transition">
+                                                        <UploadSimple />
+                                                        <span>Upload Photo</span>
                                                     </label>
                                                 </div>
                                                 <div className="text-center">

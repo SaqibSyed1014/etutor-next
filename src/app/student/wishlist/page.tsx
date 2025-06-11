@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, {useState} from 'react';
 import { Heart } from 'lucide-react';
 import {Star} from "@/assets/icons/common-icons"
 import { Button } from '@/components/ui/button';
@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import Link from "next/link";
 
 interface WishlistItem {
   id: number;
@@ -24,44 +25,42 @@ interface WishlistItem {
   originalPrice?: number;
 }
 
-const wishlistItems: WishlistItem[] = [
-  {
-    id: 1,
-    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop",
-    title: "The Ultimate Drawing Course - Beginner to Advanced",
-    instructors: ["Harry Potter", "John Wick"],
-    rating: 4.8,
-    reviewCount: 43444,
-    currentPrice: 37.00,
-    originalPrice: 49.00
-  },
-  {
-    id: 2,
-    image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=300&h=200&fit=crop",
-    title: "Digital Marketing Masterclass - 23 Courses in 1",
-    instructors: ["Nobody"],
-    rating: 4.8,
-    reviewCount: 43444,
-    currentPrice: 24.00
-  },
-  {
-    id: 3,
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=200&fit=crop",
-    title: "Angular - The Complete Guide (2021 Edition)",
-    instructors: ["Kevin Gilbert"],
-    rating: 4.7,
-    reviewCount: 49144,
-    currentPrice: 13.00
-  }
-];
-
 const Page = () => {
+  const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>(
+      [
+        {
+          id: 1,
+          image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop",
+          title: "The Ultimate Drawing Course - Beginner to Advanced",
+          instructors: ["Harry Potter", "John Wick"],
+          rating: 4.8,
+          reviewCount: 43444,
+          currentPrice: 37.00,
+          originalPrice: 49.00
+        },
+        {
+          id: 2,
+          image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=300&h=200&fit=crop",
+          title: "Digital Marketing Masterclass - 23 Courses in 1",
+          instructors: ["Nobody"],
+          rating: 4.8,
+          reviewCount: 43444,
+          currentPrice: 24.00
+        },
+        {
+          id: 3,
+          image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=200&fit=crop",
+          title: "Angular - The Complete Guide (2021 Edition)",
+          instructors: ["Kevin Gilbert"],
+          rating: 4.7,
+          reviewCount: 49144,
+          currentPrice: 13.00
+        }
+      ]
+  );
   const removeFromWishlist = (id: number) => {
-    console.log('Remove from wishlist:', id);
-  };
-
-  const addToCart = (id: number) => {
-    console.log('Add to cart:', id);
+    const updatedWishlist = wishlistItems.filter(item => item.id !== id);
+    setWishlistItems(updatedWishlist);
   };
 
   return (
@@ -78,8 +77,8 @@ const Page = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {wishlistItems.map((item) => (
-              <TableRow key={item.id} className="border-b border-gray-100 pb-6 last:pb-0 last:border-b-0">
+            {wishlistItems.map((item, index) => (
+              <TableRow key={index} className="border-b border-gray-100 pb-6 last:pb-0 last:border-b-0">
                 <TableCell>
                   <div className="flex gap-5 items-stretch">
                     <div className="w-40 h-[130px]">
@@ -128,19 +127,19 @@ const Page = () => {
                 </TableCell>
                 <TableCell>
                   <div className="flex items-center gap-3">
-                    <Button
-                      variant="secondary"
-                      className="bg-gray-50 max-w-[176px] w-full border-none"
-                      onClick={() => addToCart(item.id)}
-                    >
-                      Buy Now
-                    </Button>
-                    <Button
-                        className="max-w-[176px] w-full"
-                      onClick={() => addToCart(item.id)}
-                    >
-                      Add To Cart
-                    </Button>
+                    <Link href="/checkout" className="max-w-[176px] w-full">
+                        <Button
+                          variant="secondary"
+                          className="bg-gray-50  border-none w-full"
+                      >
+                        Buy Now
+                      </Button>
+                    </Link>
+                    <Link href="/shopping-cart" className="max-w-[176px] w-full">
+                      <Button className="w-full">
+                        Add To Cart
+                      </Button>
+                    </Link>
                     <Button
                       variant="outline"
                       size="icon"
@@ -153,6 +152,13 @@ const Page = () => {
                 </TableCell>
               </TableRow>
             ))}
+            {!wishlistItems.length &&
+                <TableRow>
+                  <TableCell colSpan={3}>
+                    <p className="text-center text-xl font-medium py-6">No items found in wishlist</p>
+                  </TableCell>
+                </TableRow>
+            }
           </TableBody>
         </Table>
       </div>

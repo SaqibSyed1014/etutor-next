@@ -15,6 +15,7 @@ import DropdownMenuWrapper from "@/components/DropdownMenuWrapper";
 import {Instructor, instructorsData} from "@/lib/@fake-db/instructors";
 import {PaperPlaneRightSolid} from "@/assets/icons/common-icons";
 import {DropdownOption} from "../../../../types";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 
 interface ComposeMessageDialogProps {
   open: boolean;
@@ -61,13 +62,19 @@ const ComposeMessageDialog = ({ open, onOpenChange, onSendMessage }: ComposeMess
           <div className="space-y-4">
             <div>
               <Label htmlFor="teacher">Teacher:</Label>
-              <DropdownMenuWrapper
-                  options={teachersList}
-                  selected={selectedTeacherID}
-                  onChange={setSelectedTeacherID}
-                  defaultPlaceholder="Select..."
-                  contentContentClasses="w-full min-w-[350px]"
-              />
+              <Select value={selectedTeacherID} onValueChange={(val) => {
+                setSelectedTeacherID(val);
+              }}>
+                <SelectTrigger className="h-12">
+                  <SelectValue placeholder="Select..."/>
+                </SelectTrigger>
+
+                <SelectContent>
+                  {teachersList.map(item => (
+                      <SelectItem value={item.value}>{item.label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div>

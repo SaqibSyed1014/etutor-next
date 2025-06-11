@@ -46,9 +46,9 @@ const Footer = () => {
           <div>
             <p className="text-white font-medium mb-5">TOP 4 CATEGORY</p>
             <ul className="flex gap-2 flex-col items-start">
-              {categories.map((cat) => {
+              {categories.map((cat, index) => {
                 return  (
-                  <li>
+                  <li key={index}>
                     <Link href={`/categories/${cat.id}`}
                           className={`flex gap-2 pb-1 text-gray-500 hover:text-white hover:shadow-[0px_-1.5px_0px_0px_#FF6636_inset] group ${pathName === `/categories/${cat.id}`?'text-white shadow-[0px_-1.5px_0px_0px_#FF6636_inset]':''}`}>
                       {cat.title}
@@ -153,7 +153,7 @@ const Footer = () => {
           <div className="container">
             <div className="py-6 flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-500 text-sm">
-                © 2023 - E-tutor. Designed by <span className="text-white">Templatecookie</span>. All rights reserved
+                © 2023 - E-tutor. Designed by <span className="text-white">DevDock</span>. All rights reserved
               </p>
 
               <DropdownMenuWrapper

@@ -68,7 +68,7 @@ export default function DropdownMenuWrapper({
         default: "bg-gray-200",
         dark: "bg-gray-300 text-gray-900",
         white: "bg-gray-700 text-white",
-        primary: ""
+        primary: "bg-primary-500 text-white"
     };
 
     return (

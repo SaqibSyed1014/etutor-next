@@ -19,7 +19,14 @@ export const coursesData: Course[] = [
     duration: 6,
     level: 'Beginner',
     subtitle: "",
-    isBestSelling: true
+    isBestSelling: true,
+    learningPoints: [
+      "Build ML models using libraries like scikit-learn & caret.",
+      "Understand Supervised vs Unsupervised Learning.",
+      "Master data preprocessing techniques.",
+      "Implement algorithms like SVM, Decision Trees, and Random Forest.",
+      "Visualize results using matplotlib and ggplot2."
+    ]
   },
   {
     id: 2,
@@ -34,11 +41,18 @@ export const coursesData: Course[] = [
     image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3540&q=80',
     duration: 6,
     level: 'Beginner',
-    isBestSelling: false
+    isBestSelling: false,
+    learningPoints: [
+      'Build web apps with HTML, CSS, JavaScript, and Node.js',
+      'Use MongoDB and Express for backend development',
+      'Deploy web projects using Git and GitHub',
+      'Learn RESTful API integration',
+      'Master responsive design with Bootstrap'
+    ]
   },
   {
     id: 3,
-    title: 'Learn Python and Django Programming Masterclass',
+    title: 'Learn Business Development as an Expert',
     category: courseCategories.BUSINESS,
     price: 97,
     originalPrice: 235.99,
@@ -49,7 +63,13 @@ export const coursesData: Course[] = [
     image: 'https://images.unsplash.com/photo-1587691592099-24045742c181?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3540&q=80',
     duration: 6,
     level: 'Beginner',
-    isBestSelling: true
+    isBestSelling: true,
+    learningPoints: [
+      'Identify and qualify new business opportunities',
+      'Build long-term strategic partnerships',
+      'Create and manage sales pipelines',
+      'Understand go-to-market strategies'
+    ]
   },
   {
     id: 4,
@@ -65,7 +85,12 @@ export const coursesData: Course[] = [
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3540&q=80',
     duration: 6,
     level: 'Beginner',
-    isBestSelling: true
+    isBestSelling: true,
+    learningPoints: [
+      'Run effective campaigns on Google Ads and Facebook Ads',
+      'Perform SEO optimization and keyword targeting',
+      'Track marketing results using Google Analytics'
+    ]
   },
   {
     id: 5,
@@ -81,7 +106,13 @@ export const coursesData: Course[] = [
     image: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3540&q=80',
     duration: 6,
     level: 'Beginner',
-    isBestSelling: false
+    isBestSelling: false,
+    learningPoints: [
+      'Understand React component architecture',
+      'Use hooks like useState and useEffect',
+      'Build dynamic user interfaces with props and state',
+      'Apply conditional rendering techniques'
+    ]
   },
   {
     id: 6,
@@ -96,7 +127,13 @@ export const coursesData: Course[] = [
     image: 'https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3540&q=80',
     duration: 6,
     level: 'Beginner',
-    isBestSelling: false
+    isBestSelling: false,
+    learningPoints: [
+      'Understand stock market fundamentals',
+      'Learn technical vs. fundamental analysis',
+      'Read and interpret candlestick charts',
+      'Practice risk management and trade psychology'
+    ]
   },
   {
     id: 7,
@@ -111,7 +148,14 @@ export const coursesData: Course[] = [
     image: 'https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3540&q=80',
     duration: 6,
     level: 'Beginner',
-    isBestSelling: true
+    isBestSelling: true,
+    learningPoints: [
+      'Build advanced Excel models',
+      'Perform financial forecasting and budgeting',
+      'Master business valuation techniques',
+      'Use Excel for scenario and sensitivity analysis',
+      'Understand real-world case studies'
+    ]
   },
   {
     id: 8,
@@ -149,11 +193,11 @@ export const coursesData: Course[] = [
     duration: 6,
     level: 'Beginner',
     learningPoints: [
-      'Learn to use Python professionally, learning both Python 2 and Python 3',
-      'Create games with Python, like Tic Tac Toe and Blackjack',
-      'Create web applications with Python'
+      "Learn persuasive writing techniques for sales and marketing",
+      "Understand client briefs and write high-converting copy",
+      "Build a sustainable freelance business"
     ],
-    isBestSelling: true
+    isBestSelling: true,
   },
   {
     id: 10,
@@ -169,9 +213,11 @@ export const coursesData: Course[] = [
     duration: 6,
     level: 'Beginner',
     learningPoints: [
-      'Learn to use Python professionally, learning both Python 2 and Python 3',
-      'Create games with Python, like Tic Tac Toe and Blackjack',
-      'Create web applications with Python'
+      'Understand GA metrics, dimensions, and data reports',
+      'Learn how to set up goals, filters, and segments',
+      'Track user behavior across websites and devices',
+      'Prepare confidently for the certification exam',
+      'Apply analytics insights to optimize web performance'
     ],
     isBestSelling: true
   },
@@ -190,9 +236,10 @@ export const coursesData: Course[] = [
     duration: 6,
     level: 'Beginner',
     learningPoints: [
-      'Learn to use Python professionally, learning both Python 2 and Python 3',
-      'Create games with Python, like Tic Tac Toe and Blackjack',
-      'Create web applications with Python'
+      'Implement on-page and technical SEO strategies',
+      'Use tools like Google Search Console and SEMrush',
+      'Optimize meta tags, headings, and site structure',
+      'Learn keyword research and content planning',
     ],
     isBestSelling: false
   },
@@ -211,9 +258,8 @@ export const coursesData: Course[] = [
     duration: 6,
     level: 'Beginner',
     learningPoints: [
-      'Learn to use Python professionally, learning both Python 2 and Python 3',
-      'Create games with Python, like Tic Tac Toe and Blackjack',
-      'Create web applications with Python'
+      'Understand stock market fundamentals and terminology',
+      'Learn how to evaluate stocks using key indicators',
     ],
     isBestSelling: false
   },
@@ -232,9 +278,8 @@ export const coursesData: Course[] = [
     duration: 6,
     level: 'Beginner',
     learningPoints: [
-      'Learn to use Python professionally, learning both Python 2 and Python 3',
-      'Create games with Python, like Tic Tac Toe and Blackjack',
-      'Create web applications with Python'
+      'Collaborate and share designs with clients and teams',
+      'Learn design best practices and accessibility'
     ],
     isBestSelling: true
   },
@@ -252,9 +297,9 @@ export const coursesData: Course[] = [
     duration: 6,
     level: 'Beginner',
     learningPoints: [
-      'Learn to use Python professionally, learning both Python 2 and Python 3',
-      'Create games with Python, like Tic Tac Toe and Blackjack',
-      'Create web applications with Python'
+      'Learn Python syntax, data structures, and libraries',
+      'Build apps with Flask, Tkinter, and Django',
+      'Connect Python to databases and APIs'
     ],
     isBestSelling: false
   },
@@ -271,7 +316,14 @@ export const coursesData: Course[] = [
     image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3540&q=80',
     duration: 6,
     level: 'Beginner',
-    isBestSelling: true
+    isBestSelling: true,
+    learningPoints: [
+      'Create and manage Facebook ad campaigns',
+      'Target the right audience using pixel and custom audiences',
+      'Design effective ad creatives and landing pages',
+      'Analyze campaign performance with FB Ads Manager',
+      'Scale successful ads for higher ROI'
+    ]
   },
   {
     id: 16,
@@ -290,7 +342,6 @@ export const coursesData: Course[] = [
     description: '2021 Complete Python Bootcamp From Zero to Hero in Python',
     learningPoints: [
       'Learn to use Python professionally, learning both Python 2 and Python 3',
-      'Create games with Python, like Tic Tac Toe and Blackjack',
       'Create games with Python, like Tic Tac Toe and Blackjack'
     ],
     isBestSelling: false
@@ -315,7 +366,7 @@ export const courseProgressData :CourseProgress[] = [
     ...coursesData[2],
     currentLecture: "Intorductions",
     lectureNumber: 1,
-    status: 'in-progress'
+    status: 'completed'
   },
   {
     ...coursesData[3],
@@ -341,8 +392,7 @@ export const courseProgressData :CourseProgress[] = [
     ...coursesData[7],
     currentLecture: "Intorductions",
     lectureNumber: 1,
-    status: 'in-progress',
-    progress: 95,
+    status: 'completed'
   },
   {
     ...coursesData[9],
@@ -374,7 +424,7 @@ export const courseProgressData :CourseProgress[] = [
     ...coursesData[12],
     currentLecture: "Intorductions",
     lectureNumber: 1,
-    status: 'in-progress'
+    status: 'completed'
   },
   {
     ...coursesData[13],
@@ -393,8 +443,7 @@ export const courseProgressData :CourseProgress[] = [
     ...coursesData[15],
     currentLecture: "Intorductions",
     lectureNumber: 1,
-    status: 'in-progress',
-    progress: 38,
+    status: 'completed'
   },
 ];
 
