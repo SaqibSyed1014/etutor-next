@@ -10,7 +10,7 @@ const Layout = () => {
 
 
     return (
-        <section className="py-10 bg-white">
+        <section className="bg-white">
             <StepProvider>
                 <CreateCourseTabs />
             </StepProvider>

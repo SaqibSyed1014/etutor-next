@@ -26,7 +26,7 @@ interface Section {
     lectures: Lecture[];
 }
 
-const Page = () => {
+const Page = ({ enablePreview }: { enablePreview: boolean }) => {
     const { toast } = useToast();
     const router = useRouter();
     const { setStepComplete, setCurrentTab } = useStepContext();
@@ -154,7 +154,7 @@ const Page = () => {
 
     return (
         <div className="">
-            <MultiStepFormHeader title="Curriculum" formStepIndex={2} submitForm={onFormSubmit} />
+            <MultiStepFormHeader title="Curriculum" formStepIndex={2} submitForm={onFormSubmit} enablePreviewBtn={enablePreview} />
 
             <MultiStepFormBody>
                 <div className="p-10 space-y-8">

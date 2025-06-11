@@ -5,9 +5,7 @@ import BasicInformation from "@/app/instructor/create-new-course/basic-informati
 
 const Page = () => {
     return (
-        <div>
-            <BasicInformation />
-        </div>
+        <BasicInformation />
     );
 };
 

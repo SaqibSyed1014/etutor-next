@@ -9,6 +9,7 @@ import Curriculum from "@/app/instructor/create-new-course/curriculum/page";
 import PublishCourse from "@/app/instructor/create-new-course/publish-course/page";
 import {usePathname, useRouter} from "next/navigation";
 import {useStepContext} from "@/context/CreateCourseContext";
+import {useToast} from "@/hooks/use-toast";
 
 const CreateCourseTabs = () => {
     const tabRoutes = [
@@ -19,6 +20,7 @@ const CreateCourseTabs = () => {
     ]
     const router = useRouter();
     const pathname = usePathname();
+    const toast = useToast();
     const { currentTab, setCurrentTab, stepsComplete } = useStepContext();
 
 
@@ -30,9 +32,25 @@ const CreateCourseTabs = () => {
     }, [pathname])
 
     const handleTabChange = (value: string) => {
-        setCurrentTab(value)
-        router.push(`/instructor/create-new-course/${value}`)
+        if (checkTabCompleted(value)) {
+            setCurrentTab(value)
+            router.push(`/instructor/create-new-course/${value}`)
+        }
     }
+
+    function checkTabCompleted(value :string) {
+        const tabIndex = tabRoutes.indexOf(value);
+        if (tabIndex === -1) return false;
+
+        if (tabIndex === 0) return true;
+
+        if (tabIndex === 1) return stepsComplete.step1;
+        if (tabIndex === 2) return stepsComplete.step1 && stepsComplete.step2;
+        if (tabIndex === 3) return stepsComplete.step1 && stepsComplete.step2 && stepsComplete.step3;
+
+        return false;
+    }
+
     return (
         <Tabs value={currentTab} onValueChange={handleTabChange}>
             <TabsList className="w-full grid grid-cols-4 border-b border-gray-100 [&_button]:h-16 [&_button]:justify-start">
@@ -58,7 +76,6 @@ const CreateCourseTabs = () => {
                         <path d="M8.25 6.75V6C8.25 5.00544 8.64509 4.05161 9.34835 3.34835C10.0516 2.64509 11.0054 2.25 12 2.25C12.9946 2.25 13.9484 2.64509 14.6517 3.34835C15.3549 4.05161 15.75 5.00544 15.75 6V6.75H8.25Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     Advance Information
-
                     {stepsComplete.step2 && <div className="ml-auto">
                         <Checks/>
                     </div>}
@@ -71,7 +88,6 @@ const CreateCourseTabs = () => {
                         <path d="M15 11.25L10.5 8.25V14.25L15 11.25Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     Curriculum
-
                     {stepsComplete.step3 && <div className="ml-auto">
                         <Checks/>
                     </div>}
@@ -83,23 +99,22 @@ const CreateCourseTabs = () => {
                         <path d="M15 12L10.5 9V15L15 12Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     Publish Course
-
                     {stepsComplete.step4 && <div className="ml-auto">
                         <Checks/>
                     </div>}
                 </TabsTrigger>
             </TabsList>
             <TabsContent value="basic-information">
-                <BasicInformation />
+                <BasicInformation enablePreview={!stepsComplete.step4} />
             </TabsContent>
             <TabsContent value="advance-information">
-                <AdvanceInformation />
+                <AdvanceInformation enablePreview={!stepsComplete.step4} />
             </TabsContent>
             <TabsContent value="curriculum">
-                <Curriculum />
+                <Curriculum enablePreview={!stepsComplete.step4} />
             </TabsContent>
             <TabsContent value="publish-course">
-                <PublishCourse />
+                <PublishCourse enablePreview={!stepsComplete.step4} />
             </TabsContent>
         </Tabs>
     );

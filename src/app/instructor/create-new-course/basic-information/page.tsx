@@ -30,7 +30,7 @@ const basicInfoSchema = z.object({
 
 type BasicInfoValues = z.infer<typeof basicInfoSchema>;
 
-const Page = () => {
+const Page = ({ enablePreview }: { enablePreview: boolean }) => {
     const { toast } = useToast();
     const router = useRouter();
     const { setStepComplete, setCurrentTab } = useStepContext();
@@ -63,7 +63,7 @@ const Page = () => {
 
     return (
         <div>
-            <MultiStepFormHeader title="Basic Information" submitForm={basicInfoForm.handleSubmit(onFormSubmit)} />
+            <MultiStepFormHeader title="Basic Information" submitForm={basicInfoForm.handleSubmit(onFormSubmit)} enablePreviewBtn={enablePreview} />
             <MultiStepFormBody>
                 <Form {...basicInfoForm}>
                     <form onSubmit={basicInfoForm.handleSubmit(onFormSubmit)} className="tab-content-spacing space-y-6">

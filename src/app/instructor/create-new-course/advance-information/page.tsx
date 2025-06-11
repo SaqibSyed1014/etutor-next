@@ -17,7 +17,7 @@ interface SectionItem {
     text: string;
 }
 
-const Page = () => {
+const Page = ({ enablePreview }: { enablePreview: boolean }) => {
     const router = useRouter();
     const { setStepComplete, setCurrentTab } = useStepContext();
 
@@ -67,7 +67,7 @@ const Page = () => {
     }
     return (
         <div>
-            <MultiStepFormHeader title="Advance Information" formStepIndex={1} submitForm={saveForm} />
+            <MultiStepFormHeader title="Advance Information" formStepIndex={1} submitForm={saveForm} enablePreviewBtn={enablePreview} />
             <MultiStepFormBody>
                 <div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 tab-content-spacing">
