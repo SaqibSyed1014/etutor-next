@@ -51,16 +51,16 @@ const Page = () => {
         setSelectedInstructors(selectedInstructors.filter((i) => i.id !== id))
     }
 
-    useEffect(() => {
-        const handleClickOutside = (event :MouseEvent) => {
-            if (containerRef.current && !containerRef.current.contains(event.target)) {
-                setDropdownOpen(false)
-            }
-        }
-
-        document.addEventListener("mousedown", handleClickOutside)
-        return () => document.removeEventListener("mousedown", handleClickOutside)
-    }, [])
+    // useEffect(() => {
+    //     const handleClickOutside = (event :MouseEvent) => {
+    //         if (containerRef.current && !containerRef.current.contains(event.target)) {
+    //             setDropdownOpen(false)
+    //         }
+    //     }
+    //
+    //     document.addEventListener("mousedown", handleClickOutside)
+    //     return () => document.removeEventListener("mousedown", handleClickOutside)
+    // }, [])
 
     const onFormSubmit = (data :MessageValues) => {
         setStepComplete('step4');
