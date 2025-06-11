@@ -52,7 +52,7 @@ const Page = () => {
     }
 
     useEffect(() => {
-        const handleClickOutside = (event) => {
+        const handleClickOutside = (event :MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(event.target)) {
                 setDropdownOpen(false)
             }
