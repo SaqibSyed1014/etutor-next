@@ -72,19 +72,19 @@ const Dashboard = () => {
             </Card>
 
             {/* Charts Section */}
-            <div className="flex items-stretch gap-6">
+            <div className="grid grid-cols-3 items-stretch gap-6">
                 {/* Recent Activity */}
-                <div className="w-full max-w-[424px] h-[424px]">
+                <div className="h-[424px]">
                     <RecentActivityList />
                 </div>
 
                 {/* Revenue Chart */}
-                <div className="grow">
+                <div className="">
                     <RevenueChart />
                 </div>
 
                 {/* Profile View Chart */}
-                <div className="w-full max-w-[312px] h-[424px] shrink-0">
+                <div className="h-[424px] shrink-0">
                     <ProfileViewChart />
                 </div>
             </div>
